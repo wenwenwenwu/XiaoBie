@@ -1,0 +1,6 @@
+framework module Pods_XiaoBie {
+  umbrella header "Pods-XiaoBie-umbrella.h"
+
+  export *
+  module * { export * }
+}
