@@ -7,21 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50E1BC20284EDC00B365C8 /* Constant.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
-		5B7CCEC9202808E000C99139 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC8202808E000C99139 /* ViewController.swift */; };
-		5B7CCECC202808E000C99139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECA202808E000C99139 /* Main.storyboard */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
-		5B7CCED1202808E000C99139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECF202808E000C99139 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B50E1BC20284EDC00B365C8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B7CCEC8202808E000C99139 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5B7CCECB202808E000C99139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5B7CCED0202808E000C99139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5B7CCED2202808E000C99139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +32,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Home（首页）";
+			sourceTree = "<group>";
+		};
+		5B495FF0202839CE00CC4B91 /* Order（抢单） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Order（抢单）";
+			sourceTree = "<group>";
+		};
+		5B495FF1202839E900CC4B91 /* Chat（聊天） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Chat（聊天）";
+			sourceTree = "<group>";
+		};
+		5B495FF2202839F700CC4B91 /* Mine（我的） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Mine（我的）";
+			sourceTree = "<group>";
+		};
+		5B495FF320283A5600CC4B91 /* Login（登录） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login（登录）";
+			sourceTree = "<group>";
+		};
 		5B7CCEBA202808E000C99139 = {
 			isa = PBXGroup;
 			children = (
@@ -54,14 +86,26 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
+				5B495FEE202839B800CC4B91 /* Home（首页） */,
+				5B495FF0202839CE00CC4B91 /* Order（抢单） */,
+				5B495FF1202839E900CC4B91 /* Chat（聊天） */,
+				5B495FF2202839F700CC4B91 /* Mine（我的） */,
+				5B495FF320283A5600CC4B91 /* Login（登录） */,
+				5B9FDF0C202855FA00F306E9 /* Supporting File */,
 				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
-				5B7CCEC8202808E000C99139 /* ViewController.swift */,
-				5B7CCECA202808E000C99139 /* Main.storyboard */,
+				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
 				5B7CCECD202808E000C99139 /* Assets.xcassets */,
-				5B7CCECF202808E000C99139 /* LaunchScreen.storyboard */,
-				5B7CCED2202808E000C99139 /* Info.plist */,
 			);
 			path = XiaoBie;
+			sourceTree = "<group>";
+		};
+		5B9FDF0C202855FA00F306E9 /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
+				5B9FDF0E202855FA00F306E9 /* Info.plist */,
+			);
+			path = "Supporting File";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,9 +167,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B7CCED1202808E000C99139 /* LaunchScreen.storyboard in Resources */,
 				5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */,
-				5B7CCECC202808E000C99139 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,31 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B7CCEC9202808E000C99139 /* ViewController.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
+				5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		5B7CCECA202808E000C99139 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B7CCECB202808E000C99139 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		5B7CCECF202808E000C99139 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B7CCED0202808E000C99139 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5B7CCED3202808E000C99139 /* Debug */ = {
@@ -274,14 +297,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PV4N84CEHZ;
-				INFOPLIST_FILE = XiaoBie/Info.plist;
+				DEVELOPMENT_TEAM = MPXR757EXU;
+				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenwenwenwu.XiaoBie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -289,14 +317,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PV4N84CEHZ;
-				INFOPLIST_FILE = XiaoBie/Info.plist;
+				DEVELOPMENT_TEAM = MPXR757EXU;
+				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wenwenwenwu.XiaoBie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

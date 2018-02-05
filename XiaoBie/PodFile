@@ -1,0 +1,17 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+use_frameworks!
+
+target 'XiaoBie' do
+#Swift必装
+pod 'SnapKit'
+pod 'Alamofire'
+pod 'Kingfisher'
+#Objective-C必装
+pod 'YYModel'
+pod 'MJRefresh'
+pod 'MBProgressHUD'
+#custom
+pod 'IQKeyboardManagerSwift'
+
+end
