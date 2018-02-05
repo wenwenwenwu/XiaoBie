@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import YYModel
 
 class ViewController: UIViewController {
 
