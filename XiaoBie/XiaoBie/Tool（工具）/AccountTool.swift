@@ -9,18 +9,13 @@
 import Foundation
 import YYModel
 
-//单例
-let accountManager = AccountTool.instanceManager
 class AccountTool {
-    //创建单例
-    static let instanceManager : AccountTool = AccountTool()
-    private init() { }
     
     //路径
-    let userInfoPath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/userInfo.data"
+    static let userInfoPath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/userInfo.data"
     
     //获得
-    func userInfo() -> UserInfoModel {
+    class func userInfo() -> UserInfoModel {
         if let userInfoModel = NSKeyedUnarchiver.unarchiveObject(withFile: userInfoPath) as? UserInfoModel {
             return userInfoModel
         }else {
@@ -29,30 +24,21 @@ class AccountTool {
     }
     
     //登录(账户信息存本地)
-    func signIn(with userInfoModel:UserInfoModel) {
+    class func signIn(with userInfoModel:UserInfoModel) {
         NSKeyedArchiver.archiveRootObject(userInfoModel, toFile: userInfoPath)
 
     }
     
     //登出(删除账户信息)
-    func signOut() {
+    class func signOut() {
         let fileManager = FileManager()
         try?fileManager.removeItem(atPath: userInfoPath)
         
     }
     
-    //判断登录
-    func isSignIn() -> Bool {
-        if accountManager.userInfo().userId != "0" {
-            return true
-        }else {
-            return false
-        }
-    }
-    
-    //判断绑定
-    func isBinding() -> Bool {
-        if accountManager.userInfo().wechatId != "" {
+    //是否登录
+    class func isSignIn() -> Bool {
+        if !AccountTool.userInfo().id.isEmpty {
             return true
         }else {
             return false
@@ -62,39 +48,26 @@ class AccountTool {
 
 class UserInfoModel: NSObject, NSCoding,YYModel {
     
-    @objc var userId = "0"
-    @objc var name = ""
-    @objc var nickName = ""
-    @objc var telephone = ""
-    @objc var account = ""
-    @objc var parentId = ""
-    @objc var gold = ""
-    @objc var money = ""
-    @objc var headpath = ""
-    @objc var birthday = ""
-    @objc var sex = ""
-    @objc var myInvitation = ""
-    @objc var isOnline = ""
-    @objc var create_date = ""
-    @objc var job = ""
-    @objc var educational = ""
-    @objc var last_visit_date = ""
-    @objc var code = ""
-    @objc var push_time_1 = ""
-    @objc var push_time_2 = ""
-    @objc var push_time_3 = ""
-    @objc var push_time_4 = ""
-    @objc var wechatId = ""
-    @objc var password = ""
-    @objc var is_first_login = ""
+        @objc var agent_id = ""
+        @objc var business_type = ""
+        @objc var create_time = ""
+        @objc var id = ""
+        @objc var name = ""
+        @objc var password = ""
+        @objc var phone = ""
+        @objc var role = ""
+        @objc var role_level = ""
+        @objc var update_time = ""
 
     override init() {
         super.init()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init()
         self.yy_modelInit(with: aDecoder)
     }
+    
     func encode(with aCoder: NSCoder) {
         self.yy_modelEncode(with: aCoder)
     }

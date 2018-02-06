@@ -29,6 +29,7 @@
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
+		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 		5B495FF320283A5600CC4B91 /* Login（登录） */ = {
 			isa = PBXGroup;
 			children = (
+				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
 			);
 			path = "Login（登录）";
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B51FAD720293942001AB946 /* HateResponseModel.swift in Sources */,
+				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
 				5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
