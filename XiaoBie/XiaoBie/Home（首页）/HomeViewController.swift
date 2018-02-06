@@ -10,26 +10,23 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.red
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        testRequest()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - Request
+    func testRequest() {
+        WebTool.post(uri: "staff_login", para: ["password" : "123455","telephone": "18510337301"], success: { (dict) in
+            print(dict)
+        }) { (error) in
+            print(error)
+        }
     }
-    */
+    
+    
 
+    
 }

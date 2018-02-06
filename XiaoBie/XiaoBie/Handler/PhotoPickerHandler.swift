@@ -54,10 +54,10 @@ class PhotoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavigatio
             if model.result == "success" {
                 self.completeClosure(model.data.images,localURL.absoluteString)
             } else{
-                hudManager.showInfo(string: model.msg)
+                HudTool.showInfo(string: model.msg)
             }
         }, failture: { (error) in
-            hudManager.showNetErrorInfo()
+            HudTool.showInfo(string: error)
         })
     }
     

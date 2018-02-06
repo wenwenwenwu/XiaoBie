@@ -17,13 +17,13 @@ class WebTool {
     static let verifyCodeURL = ""
 
     //POST
-    class func post(isShowHud: Bool = true, uri: String ,para : [String:String],success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : Error)->()){
+    class func post(isShowHud: Bool = true, uri: String ,para : [String:String],success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
         if isShowHud {
-            hudManager.show()
+            HudTool.show()
         }
         Alamofire.request(baseURL+uri, method: HTTPMethod.post, parameters: para).responseJSON { (response) in
             if isShowHud {
-                hudManager.dismiss()
+                HudTool.dismiss()
             }
             switch response.result {
             case .success:
@@ -31,28 +31,26 @@ class WebTool {
                     do{
                         let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
                         success(dict as! NSDictionary)
-                    }
-                    catch let error  {
-                        failture(error)
+                    }catch {
+                        failture("数据错误")
                     }
                 }else{
-                    let error = NSError(domain: "数据错误", code: 100, userInfo: nil)
-                    failture(error)
+                    failture("数据错误")
                 }
             case .failure:
-                let error = NSError(domain: "网络错误", code: 100, userInfo: nil)
-                failture(error)
+                failture("网络错误")
             }
         }
     }
+    
     //GET
-    class func get(isShowHud: Bool = true, uri:String, para : [String:String],success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : Error)->()){
+    class func get(isShowHud: Bool = true, uri:String, para : [String:String],success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
         if isShowHud {
-            hudManager.show()
+            HudTool.show()
         }
         Alamofire.request(baseURL+uri, method: HTTPMethod.get, parameters: para).responseJSON { (response) in
             if isShowHud {
-                hudManager.dismiss()
+                HudTool.dismiss()
             }
             switch response.result {
             case .success:
@@ -60,49 +58,42 @@ class WebTool {
                     do{
                         let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
                         success(dict as! NSDictionary)
-                    }
-                    catch let error  {
-                        failture(error)
+                    }catch {
+                        failture("数据错误")
                     }
                 }else{
-                    let error = NSError(domain: "数据错误", code: 100, userInfo: nil)
-                    failture(error)
+                    failture("数据错误")
                 }
             case .failure:
-                let error = NSError(domain: "网络错误", code: 100, userInfo: nil)
-                failture(error)
+                failture("网络错误")
             }
-            
         }
     }
     //发送验证码
-    class func getVerifyCode(phoneUri:String, para : [String:String],success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : Error)->()){
-        hudManager.show()
+    class func getVerifyCode(phoneUri:String, para : [String:String],success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
+        HudTool.show()
         Alamofire.request(verifyCodeURL+phoneUri, method: HTTPMethod.get, parameters: para).responseJSON { (response) in
-            hudManager.dismiss()
+            HudTool.dismiss()
             switch response.result {
             case .success:
                 if let jsonData = response.data{
                     do{
                         let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
                         success(dict as! NSDictionary)
-                    }
-                    catch let error  {
-                        failture(error)                        
+                    }catch{
+                        failture("数据错误")
                     }
                 }else{
-                    let error = NSError(domain: "数据错误", code: 100, userInfo: nil)
-                    failture(error)
+                    failture("数据错误")
                 }                
             case .failure:
-                let error = NSError(domain: "网络错误", code: 100, userInfo: nil)
-                failture(error)
+                failture("网络错误")
             }
         }
     }
     //单张图片上传
-    class func upLoadImage(imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : Error)->()){
-        hudManager.show()
+    class func upLoadImage(imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
+        HudTool.show()
         Alamofire.upload(
             //Closure参数
             multipartFormData: { multipartFormData in
@@ -117,31 +108,28 @@ class WebTool {
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON { response in
-                    hudManager.dismiss()
+                    HudTool.dismiss()
                     
                     if let jsonData = response.data{
                         do{
                             let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
                             success(dict as! NSDictionary)
-                        }
-                        catch let error  {
-                            failture(error)                            
+                        }catch {
+                            failture("数据错误")
                         }
                     }else{
-                        let error = NSError(domain: "数据错误", code: 100, userInfo: nil)
-                        failture(error)
+                        failture("数据错误")
                     }
                 }
             case .failure:
-                let error = NSError(domain: "网络错误", code: 100, userInfo: nil)
-                failture(error)
+                failture("网络错误")
             }
         })
         
       }
     //多张图片上传
-    class func upLoadImages(imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : Error)->()){
-        hudManager.show()
+    class func upLoadImages(imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
+        HudTool.show()
         
         Alamofire.upload(
             //Closure参数
@@ -156,24 +144,21 @@ class WebTool {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        hudManager.dismiss()
+                        HudTool.dismiss()
                         
                         if let jsonData = response.data{
                             do{
                                 let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
                                 success(dict as! NSDictionary)
-                            }
-                            catch let error  {
-                                failture(error)
+                            }catch {
+                                failture("数据错误")
                             }
                         }else{
-                            let error = NSError(domain: "数据错误", code: 100, userInfo: nil)
-                            failture(error)
+                            failture("数据错误")
                         }
                     }
                 case .failure:
-                    let error = NSError(domain: "网络错误", code: 100, userInfo: nil)
-                    failture(error)
+                    failture("网络错误")
                 }
         })
         
