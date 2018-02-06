@@ -22,15 +22,13 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         let orderNav = NavigationController.init(rootViewController: OrderViewController())
         let chatNav = NavigationController.init(rootViewController: ChatViewController())
         let mineNav = NavigationController.init(rootViewController: MineViewController())
-        
         viewControllers = [homeNav,orderNav,chatNav,mineNav]
         
         //title
         homeNav.tabBarItem.title = "首页"
         orderNav.tabBarItem.title = "抢单"
         chatNav.tabBarItem.title = "聊天"
-        mineNav.tabBarItem.title = "我的"
-        
+        mineNav.tabBarItem.title = "我的"        
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : gray_A3A5A8, NSAttributedStringKey.font : font10Medium], for: .normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : blue_3296FA, NSAttributedStringKey.font : font10Medium], for: .selected)
         

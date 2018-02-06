@@ -20,7 +20,6 @@ class PhotoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavigatio
         handler.ownerViewController = ownerViewController
         handler.completeClosure = completeClosure
         return handler
-        
     }
     
     //MARK: - Private Method
@@ -33,8 +32,7 @@ class PhotoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavigatio
         picker.delegate = self 
         picker.allowsEditing = false//设置可编辑
         picker.sourceType = sourceType
-        ownerViewController.present(picker, animated: true, completion: nil)//进入照相界面
-        
+        ownerViewController.present(picker, animated: true, completion: nil)//进入照相界面        
     }
     
     func openAlbum(){
@@ -51,7 +49,7 @@ class PhotoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavigatio
     
     //MARK: - Request
     func uploadImage(localURL: URL) {
-        webManager.upLoadImages( imageURLs: [localURL], success: { (dict) in
+        WebTool.upLoadImages( imageURLs: [localURL], success: { (dict) in
             let model = PicturesResponseModel.parse(dict: dict)
             if model.result == "success" {
                 self.completeClosure(model.data.images,localURL.absoluteString)
@@ -63,7 +61,7 @@ class PhotoPickerHandler: NSObject, UIImagePickerControllerDelegate, UINavigatio
         })
     }
     
-    //UIImagePickerControllerDelegate
+    //MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         //获取选择的原图
         let pickedImage = info[UIImagePickerControllerOriginalImage] as! UIImage

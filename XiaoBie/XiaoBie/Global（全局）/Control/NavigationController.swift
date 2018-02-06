@@ -21,14 +21,14 @@ class NavigationController: UINavigationController,UINavigationBarDelegate {
         //标题字体
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:black_333333,NSAttributedStringKey.font: font18Medium]
         //背景色
-        navigationBar.setBackgroundImage(ColorImageTool.imageWithColor(color: white_FFFFFF), for: UIBarMetrics.default)
+        navigationBar.setBackgroundImage(white_FFFFFF.colorImage(), for: UIBarMetrics.default)
         //分割线颜色
-        navigationBar.shadowImage = ColorImageTool.imageWithColor(color: gray_F0F0F0)
+        navigationBar.shadowImage = gray_F0F0F0.colorImage()
     }
     
     //MARK: - Action
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        //返回按钮（为了适配iOS10.3.3系统bug）
+        //返回按钮
         viewController.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "icon_return").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonAction(animated:)))
         //隐藏tabbar
         if viewControllers.count > 0 {
