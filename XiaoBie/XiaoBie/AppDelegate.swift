@@ -13,9 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        setupWindow()
         return true
     }
 
@@ -44,3 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//MARK: - window相关
+extension AppDelegate {
+    
+    func setupWindow() {
+        window = UIWindow.init(frame: screenBounds)
+        window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        window?.rootViewController = TabBarController()
+        window?.makeKeyAndVisible()
+    }
+}

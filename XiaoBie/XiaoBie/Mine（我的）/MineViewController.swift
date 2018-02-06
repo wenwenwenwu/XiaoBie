@@ -1,20 +1,19 @@
 //
-//  ViewController.swift
+//  MineViewController.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/2/5.
+//  Created by wuwenwen on 2018/2/6.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
-import YYModel
 
-class ViewController: UIViewController {
+class MineViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+
+        view.backgroundColor = UIColor.blue
     }
 
     override func didReceiveMemoryWarning() {

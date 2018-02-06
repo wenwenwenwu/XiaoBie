@@ -9,7 +9,24 @@
 /* Begin PBXBuildFile section */
 		59F360022B39CFB0D519410A /* Pods_XiaoBie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */; };
 		5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50E1BC20284EDC00B365C8 /* Constant.swift */; };
-		5B75DE2F202869F400D4EC44 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75DE2E202869F300D4EC44 /* ViewController.swift */; };
+		5B51FAD720293942001AB946 /* HateResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAD620293942001AB946 /* HateResponseModel.swift */; };
+		5B51FADB20293D4B001AB946 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADA20293D4B001AB946 /* TabBarController.swift */; };
+		5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADC20293E5B001AB946 /* MineViewController.swift */; };
+		5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADE20293E65001AB946 /* ChatViewController.swift */; };
+		5B51FAE120293E73001AB946 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE020293E73001AB946 /* OrderViewController.swift */; };
+		5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE220293EA6001AB946 /* HomeViewController.swift */; };
+		5B51FAE520294441001AB946 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE420294441001AB946 /* NavigationController.swift */; };
+		5B51FAE8202944FE001AB946 /* MiniTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE7202944FE001AB946 /* MiniTools.swift */; };
+		5B51FAEE202947E2001AB946 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEA202947E2001AB946 /* ViewController.swift */; };
+		5B51FAEF202947E2001AB946 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEB202947E2001AB946 /* View.swift */; };
+		5B51FAF0202947E2001AB946 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEC202947E2001AB946 /* String.swift */; };
+		5B51FAF1202947E2001AB946 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAED202947E2001AB946 /* Button.swift */; };
+		5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */; };
+		5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF3202948AA001AB946 /* HudTool.swift */; };
+		5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF5202948AA001AB946 /* WebTool.swift */; };
+		5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF6202948AA001AB946 /* AccountTool.swift */; };
+		5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFC20294A1D001AB946 /* CacheTool.swift */; };
+		5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFD20294A1D001AB946 /* ValidateTool.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -17,7 +34,24 @@
 /* Begin PBXFileReference section */
 		25AF6A062379FF2A666E12F7 /* Pods-XiaoBie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.debug.xcconfig"; sourceTree = "<group>"; };
 		5B50E1BC20284EDC00B365C8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		5B75DE2E202869F300D4EC44 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B51FAD620293942001AB946 /* HateResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HateResponseModel.swift; sourceTree = "<group>"; };
+		5B51FADA20293D4B001AB946 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5B51FADC20293E5B001AB946 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
+		5B51FADE20293E65001AB946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5B51FAE020293E73001AB946 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		5B51FAE220293EA6001AB946 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		5B51FAE420294441001AB946 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		5B51FAE7202944FE001AB946 /* MiniTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniTools.swift; sourceTree = "<group>"; };
+		5B51FAEA202947E2001AB946 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5B51FAEB202947E2001AB946 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		5B51FAEC202947E2001AB946 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		5B51FAED202947E2001AB946 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerHandler.swift; sourceTree = "<group>"; };
+		5B51FAF3202948AA001AB946 /* HudTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudTool.swift; sourceTree = "<group>"; };
+		5B51FAF5202948AA001AB946 /* WebTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTool.swift; sourceTree = "<group>"; };
+		5B51FAF6202948AA001AB946 /* AccountTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTool.swift; sourceTree = "<group>"; };
+		5B51FAFC20294A1D001AB946 /* CacheTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTool.swift; sourceTree = "<group>"; };
+		5B51FAFD20294A1D001AB946 /* ValidateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateTool.swift; sourceTree = "<group>"; };
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,7 +76,8 @@
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B75DE2E202869F300D4EC44 /* ViewController.swift */,
+				5B51FAD620293942001AB946 /* HateResponseModel.swift */,
+				5B51FAE220293EA6001AB946 /* HomeViewController.swift */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -50,6 +85,7 @@
 		5B495FF0202839CE00CC4B91 /* Order（抢单） */ = {
 			isa = PBXGroup;
 			children = (
+				5B51FAE020293E73001AB946 /* OrderViewController.swift */,
 			);
 			path = "Order（抢单）";
 			sourceTree = "<group>";
@@ -57,6 +93,7 @@
 		5B495FF1202839E900CC4B91 /* Chat（聊天） */ = {
 			isa = PBXGroup;
 			children = (
+				5B51FADE20293E65001AB946 /* ChatViewController.swift */,
 			);
 			path = "Chat（聊天）";
 			sourceTree = "<group>";
@@ -64,6 +101,7 @@
 		5B495FF2202839F700CC4B91 /* Mine（我的） */ = {
 			isa = PBXGroup;
 			children = (
+				5B51FADC20293E5B001AB946 /* MineViewController.swift */,
 			);
 			path = "Mine（我的）";
 			sourceTree = "<group>";
@@ -73,6 +111,56 @@
 			children = (
 			);
 			path = "Login（登录）";
+			sourceTree = "<group>";
+		};
+		5B51FAD820293D0E001AB946 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAD920293D23001AB946 /* Control */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		5B51FAD920293D23001AB946 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FADA20293D4B001AB946 /* TabBarController.swift */,
+				5B51FAE420294441001AB946 /* NavigationController.swift */,
+			);
+			path = Control;
+			sourceTree = "<group>";
+		};
+		5B51FAE6202944E4001AB946 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAFC20294A1D001AB946 /* CacheTool.swift */,
+				5B51FAFD20294A1D001AB946 /* ValidateTool.swift */,
+				5B51FAF6202948AA001AB946 /* AccountTool.swift */,
+				5B51FAF3202948AA001AB946 /* HudTool.swift */,
+				5B51FAF5202948AA001AB946 /* WebTool.swift */,
+				5B51FAE7202944FE001AB946 /* MiniTools.swift */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		5B51FAE9202947E2001AB946 /* Extension（扩展） */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAEA202947E2001AB946 /* ViewController.swift */,
+				5B51FAEB202947E2001AB946 /* View.swift */,
+				5B51FAEC202947E2001AB946 /* String.swift */,
+				5B51FAED202947E2001AB946 /* Button.swift */,
+			);
+			name = "Extension（扩展）";
+			path = "XiaoBie/Extension（扩展）";
+			sourceTree = SOURCE_ROOT;
+		};
+		5B51FB0020297768001AB946 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */,
+			);
+			path = Handler;
 			sourceTree = "<group>";
 		};
 		5B7CCEBA202808E000C99139 = {
@@ -96,6 +184,10 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
+				5B51FB0020297768001AB946 /* Handler */,
+				5B51FAE6202944E4001AB946 /* Tool */,
+				5B51FAE9202947E2001AB946 /* Extension（扩展） */,
+				5B51FAD820293D0E001AB946 /* Global */,
 				5B495FEE202839B800CC4B91 /* Home（首页） */,
 				5B495FF0202839CE00CC4B91 /* Order（抢单） */,
 				5B495FF1202839E900CC4B91 /* Chat（聊天） */,
@@ -256,9 +348,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B75DE2F202869F400D4EC44 /* ViewController.swift in Sources */,
+				5B51FAD720293942001AB946 /* HateResponseModel.swift in Sources */,
+				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
+				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
+				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
+				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
+				5B51FAEE202947E2001AB946 /* ViewController.swift in Sources */,
+				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
+				5B51FAE520294441001AB946 /* NavigationController.swift in Sources */,
+				5B51FAF1202947E2001AB946 /* Button.swift in Sources */,
+				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
+				5B51FAE8202944FE001AB946 /* MiniTools.swift in Sources */,
+				5B51FADB20293D4B001AB946 /* TabBarController.swift in Sources */,
+				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
+				5B51FAEF202947E2001AB946 /* View.swift in Sources */,
 				5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */,
+				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,
+				5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */,
+				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
+				5B51FAE120293E73001AB946 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +490,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/wuwenwen/Documents/XiaoBie/XiaoBie/XiaoBie/Supporting File/BridgingHeader.h";
 				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -402,6 +513,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "/Users/wuwenwen/Documents/XiaoBie/XiaoBie/XiaoBie/Supporting File/BridgingHeader.h";
 				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
