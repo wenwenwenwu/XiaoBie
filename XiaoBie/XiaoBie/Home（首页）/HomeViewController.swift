@@ -10,18 +10,22 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    let infoViewHeight: CGFloat = 117
+    
+    
     lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
     
     lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
-    lazy var infoView = HomeInfoView()
+    lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: infoViewHeight))
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(infoView)
+
         setupNavigationBar()
         infoRequest()
     }
