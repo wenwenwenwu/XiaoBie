@@ -9,5 +9,7 @@
 #ifndef BridgingHeader_h
 #define BridgingHeader_h
 
+#import <AMapFoundationKit/AMapFoundationKit.h>
+#import <AMapLocationKit/AMapLocationKit.h>
 
 #endif /* BridgingHeader_h */

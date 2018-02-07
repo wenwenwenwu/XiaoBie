@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		59F360022B39CFB0D519410A /* Pods_XiaoBie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */; };
+		5B0B7EC2202B009C004CCCB8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0B7EC1202B009C004CCCB8 /* CoreLocation.framework */; };
+		5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */; };
 		5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50E1BC20284EDC00B365C8 /* Constant.swift */; };
-		5B51FAD720293942001AB946 /* HateResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAD620293942001AB946 /* HateResponseModel.swift */; };
+		5B51FAD720293942001AB946 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAD620293942001AB946 /* HomeModel.swift */; };
 		5B51FADB20293D4B001AB946 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADA20293D4B001AB946 /* TabBarController.swift */; };
 		5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADC20293E5B001AB946 /* MineViewController.swift */; };
 		5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADE20293E65001AB946 /* ChatViewController.swift */; };
@@ -28,6 +30,7 @@
 		5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFD20294A1D001AB946 /* ValidateTool.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
+		5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* ClockinViewHandler.swift */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */; };
@@ -35,8 +38,10 @@
 
 /* Begin PBXFileReference section */
 		25AF6A062379FF2A666E12F7 /* Pods-XiaoBie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.debug.xcconfig"; sourceTree = "<group>"; };
+		5B0B7EC1202B009C004CCCB8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTool.swift; sourceTree = "<group>"; };
 		5B50E1BC20284EDC00B365C8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		5B51FAD620293942001AB946 /* HateResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HateResponseModel.swift; sourceTree = "<group>"; };
+		5B51FAD620293942001AB946 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		5B51FADA20293D4B001AB946 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5B51FADC20293E5B001AB946 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
 		5B51FADE20293E65001AB946 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +61,7 @@
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B997822202AC9450005357A /* ClockinViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockinViewHandler.swift; sourceTree = "<group>"; };
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -70,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0B7EC2202B009C004CCCB8 /* CoreLocation.framework in Frameworks */,
 				59F360022B39CFB0D519410A /* Pods_XiaoBie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,9 +87,10 @@
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B51FAD620293942001AB946 /* HateResponseModel.swift */,
+				5B51FAD620293942001AB946 /* HomeModel.swift */,
 				5B51FAE220293EA6001AB946 /* HomeViewController.swift */,
 				5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */,
+				5B997822202AC9450005357A /* ClockinViewHandler.swift */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				5B51FAFC20294A1D001AB946 /* CacheTool.swift */,
+				5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */,
 				5B51FAFD20294A1D001AB946 /* ValidateTool.swift */,
 				5B51FAF6202948AA001AB946 /* AccountTool.swift */,
 				5B51FAF3202948AA001AB946 /* HudTool.swift */,
@@ -228,6 +237,7 @@
 		F5EB2AEA65FA28B7BF35117C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B0B7EC1202B009C004CCCB8 /* CoreLocation.framework */,
 				D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */,
 			);
 			name = Frameworks;
@@ -354,7 +364,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B51FAD720293942001AB946 /* HateResponseModel.swift in Sources */,
+				5B51FAD720293942001AB946 /* HomeModel.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
 				5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */,
@@ -362,9 +372,11 @@
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
+				5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */,
 				5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */,
 				5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */,
 				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
+				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5B51FAE520294441001AB946 /* NavigationController.swift in Sources */,
 				5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */,
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,

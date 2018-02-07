@@ -81,4 +81,3 @@ extension CacheTool {
         return fileName
     }
 }
-

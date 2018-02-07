@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TabBarController: UITabBarController,UITabBarControllerDelegate {
+class TabBarController: UITabBarController,UITabBarControllerDelegate,AMapLocationManagerDelegate {
+    let locationManager = AMapLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
+        setupMapkit()
     }
     
     //MARK: Setup
@@ -50,6 +52,31 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         backView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         tabBar.insertSubview(backView, at: 0)
         tabBar.isOpaque = true
+    }
+    
+    func setupMapkit() {
+        //定位
+        AMapServices.shared().enableHTTPS = true
+        AMapServices.shared().apiKey = gaodeAPIKey
+        //搜索
+        AMapServices.shared().apiKey = gaodeAPIKey
+        //属性设置
+        locationManager.delegate = self as AMapLocationManagerDelegate
+        self.locationManager.distanceFilter = 100
+        //开始持续定位
+        if UIDevice.current.systemVersion._bridgeToObjectiveC().doubleValue >= 9.0 {
+            locationManager.pausesLocationUpdatesAutomatically = true
+        }
+        locationManager.startUpdatingLocation()
+    }
+    
+    //MARK: AMapLocationManagerDelegate
+    func amapLocationManager(_ manager: AMapLocationManager!, didUpdate location: CLLocation!, reGeocode: AMapLocationReGeocode?) {
+        LocationTool.saveLocation(lng: location.coordinate.longitude, lat: location.coordinate.latitude)
+        
+        if let reGeocode = reGeocode {
+            NSLog("reGeocode:%@", reGeocode)
+        }
     }
 }
 

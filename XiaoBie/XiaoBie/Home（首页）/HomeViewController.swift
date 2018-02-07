@@ -9,17 +9,20 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    
-    let infoViewHeight: CGFloat = 117
-    
-    
+        
     lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
     
     lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
-    lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: infoViewHeight))
+    lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
+    
+    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self, clockinButtonClosure: {
+        print("上班打卡")
+    }) {
+        print("下班打卡")
+    }
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -28,6 +31,11 @@ class HomeViewController: UIViewController {
 
         setupNavigationBar()
         infoRequest()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        clockinHandler.isShow = false
     }
     
     //MARK: - Setup
@@ -53,8 +61,9 @@ class HomeViewController: UIViewController {
     
     //MARK: - Event Response
     @objc func clockinButtonAction() {
-        print("打卡")
+        clockinHandler.isShow = !clockinHandler.isShow
     }
+   
     @objc func addButtonAction() {
         print("加单")
     }
