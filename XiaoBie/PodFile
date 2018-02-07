@@ -13,5 +13,6 @@ pod 'MJRefresh'
 pod 'MBProgressHUD'
 #custom
 pod 'IQKeyboardManagerSwift'
+pod 'AMapLocation'
 
 end
