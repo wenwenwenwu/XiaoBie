@@ -13,7 +13,7 @@ import UIKit
     let screenWidth = UIScreen.main.bounds.size.width
     let screenHeight: CGFloat = UIScreen.main.bounds.size.height
     let navigationBarHeight: CGFloat = (screenHeight == 812) ? 88 : 64
-    let statusBarHeight: CGFloat = (screenHeight == 812) ? 20 : 20
+    let statusBarHeight: CGFloat = (screenHeight == 812) ? 44 : 20
     let tabbarHeight: CGFloat = (screenHeight == 812) ? 83 : 49
     let toolBarHeight: CGFloat = 44
 

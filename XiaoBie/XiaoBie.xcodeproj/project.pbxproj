@@ -131,9 +131,7 @@
 		5B495FF320283A5600CC4B91 /* Login（登录） */ = {
 			isa = PBXGroup;
 			children = (
-				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
-				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
-				5BDB502D202C1D570055C21E /* LoginView.swift */,
+				5BDB5033202C521A0055C21E /* 主页面 */,
 			);
 			path = "Login（登录）";
 			sourceTree = "<group>";
@@ -246,6 +244,16 @@
 				5B9FDF0E202855FA00F306E9 /* Info.plist */,
 			);
 			path = "Supporting File";
+			sourceTree = "<group>";
+		};
+		5BDB5033202C521A0055C21E /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
+				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
+				5BDB502D202C1D570055C21E /* LoginView.swift */,
+			);
+			path = "主页面";
 			sourceTree = "<group>";
 		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
