@@ -41,5 +41,5 @@ import UIKit
 
     //第三方
     let JPushAppKey = "5a7e0489b11594cb421bccc4"
-    let gaodeAPIKey = "48e58a2c4993ec61a961ab3aa0653999"
+    let gaodeAPIKey = "a42b22414915ccbdb3593b945829cfbe"
 

@@ -28,6 +28,7 @@
 		5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF6202948AA001AB946 /* AccountTool.swift */; };
 		5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFC20294A1D001AB946 /* CacheTool.swift */; };
 		5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFD20294A1D001AB946 /* ValidateTool.swift */; };
+		5B6F3F97202BE7C70070818C /* ClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* ClockinView.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 		5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* ClockinViewHandler.swift */; };
@@ -58,6 +59,7 @@
 		5B51FAF6202948AA001AB946 /* AccountTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTool.swift; sourceTree = "<group>"; };
 		5B51FAFC20294A1D001AB946 /* CacheTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTool.swift; sourceTree = "<group>"; };
 		5B51FAFD20294A1D001AB946 /* ValidateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateTool.swift; sourceTree = "<group>"; };
+		5B6F3F96202BE7C70070818C /* ClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockinView.swift; sourceTree = "<group>"; };
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,10 +89,7 @@
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B51FAD620293942001AB946 /* HomeModel.swift */,
-				5B51FAE220293EA6001AB946 /* HomeViewController.swift */,
-				5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */,
-				5B997822202AC9450005357A /* ClockinViewHandler.swift */,
+				5B6F3F98202C16D00070818C /* 主页面 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -176,6 +175,18 @@
 				5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */,
 			);
 			path = Handler;
+			sourceTree = "<group>";
+		};
+		5B6F3F98202C16D00070818C /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAE220293EA6001AB946 /* HomeViewController.swift */,
+				5B51FAD620293942001AB946 /* HomeModel.swift */,
+				5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */,
+				5B6F3F96202BE7C70070818C /* ClockinView.swift */,
+				5B997822202AC9450005357A /* ClockinViewHandler.swift */,
+			);
+			path = "主页面";
 			sourceTree = "<group>";
 		};
 		5B7CCEBA202808E000C99139 = {
@@ -364,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B6F3F97202BE7C70070818C /* ClockinView.swift in Sources */,
 				5B51FAD720293942001AB946 /* HomeModel.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,

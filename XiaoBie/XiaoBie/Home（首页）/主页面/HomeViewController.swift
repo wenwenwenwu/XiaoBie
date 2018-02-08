@@ -18,11 +18,7 @@ class HomeViewController: UIViewController {
     
     lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
     
-    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self, clockinButtonClosure: {
-        print("上班打卡")
-    }) {
-        print("下班打卡")
-    }
+    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self)
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -35,7 +31,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        clockinHandler.isShow = false
+        clockinHandler.handle(forceDismiss: true)
     }
     
     //MARK: - Setup
@@ -61,7 +57,7 @@ class HomeViewController: UIViewController {
     
     //MARK: - Event Response
     @objc func clockinButtonAction() {
-        clockinHandler.isShow = !clockinHandler.isShow
+        clockinHandler.handle(forceDismiss: false)
     }
    
     @objc func addButtonAction() {

@@ -9,6 +9,20 @@
 import UIKit
 import YYModel
 
+//MARK: - HomeClockinModel
+class HomeClockinResponseModel: NSObject,YYModel {
+    
+    @objc var code = ""
+    @objc var msg = ""
+    @objc var result = ""
+    
+    class func parse(dict : Any ) -> HomeClockinResponseModel{
+        let model = HomeClockinResponseModel.yy_model(withJSON: dict)
+        return model!
+    }    
+}
+
+//MARK: - HomeInfoModel
 class HomeInfoResponseModel: NSObject,YYModel {
     
     @objc var code = ""
