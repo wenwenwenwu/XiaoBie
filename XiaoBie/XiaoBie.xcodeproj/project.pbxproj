@@ -37,6 +37,8 @@
 		5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
+		5BDB5030202C3B490055C21E /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502F202C3B490055C21E /* MineCell.swift */; };
+		5BDB5032202C45F80055C21E /* MyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5031202C45F80055C21E /* MyHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoView.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5BDB502F202C3B490055C21E /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
+		5BDB5031202C45F80055C21E /* MyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeader.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				5B51FADC20293E5B001AB946 /* MineViewController.swift */,
+				5BDB502F202C3B490055C21E /* MineCell.swift */,
+				5BDB5031202C45F80055C21E /* MyHeader.swift */,
 			);
 			path = "Mine（我的）";
 			sourceTree = "<group>";
@@ -391,9 +397,11 @@
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
+				5BDB5030202C3B490055C21E /* MineCell.swift in Sources */,
 				5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */,
 				5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */,
 				5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */,
+				5BDB5032202C45F80055C21E /* MyHeader.swift in Sources */,
 				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
 				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5B51FAE520294441001AB946 /* NavigationController.swift in Sources */,
