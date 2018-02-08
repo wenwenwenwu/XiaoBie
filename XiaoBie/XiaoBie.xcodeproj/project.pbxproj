@@ -35,6 +35,8 @@
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */; };
+		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
+		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoView.swift; sourceTree = "<group>"; };
+		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -122,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
+				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
+				5BDB502D202C1D570055C21E /* LoginView.swift */,
 			);
 			path = "Login（登录）";
 			sourceTree = "<group>";
@@ -383,6 +389,7 @@
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
+				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
 				5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */,
 				5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */,
@@ -399,6 +406,7 @@
 				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,
 				5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
+				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5B51FAE120293E73001AB946 /* OrderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

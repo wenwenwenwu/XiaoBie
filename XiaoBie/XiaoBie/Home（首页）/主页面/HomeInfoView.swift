@@ -10,24 +10,6 @@ import UIKit
 
 class HomeInfoCell: UIView {
     
-    lazy var imageView = UIImageView()
-    
-    lazy var keyLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = font12
-        label.textColor = gray_666666
-        return label
-    }()
-    
-    lazy var valueLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = font14
-        label.textColor = black_303133
-        return label
-    }()
-    
     //MARK: - FactoryMethod
     class func cellWith(image: UIImage, key: String) -> HomeInfoCell{
         let view = HomeInfoCell.init(frame: CGRect.zero)
@@ -69,6 +51,26 @@ class HomeInfoCell: UIView {
             make.height.equalTo(11)
         }
     }
+    
+    //MARK: - Lazyload
+    lazy var imageView = UIImageView()
+    
+    lazy var keyLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = font12
+        label.textColor = gray_666666
+        return label
+    }()
+    
+    lazy var valueLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = font14
+        label.textColor = black_303133
+        return label
+    }()
+    
 }
 
 
@@ -82,17 +84,6 @@ class HomeInfoView: UIView {
             self.cell4.valueLabel.text = "¥\(model.pay_money_total)"
         }
     }
-    
-    lazy var cell1 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_kqd"), key: "可抢单")
-    lazy var cell2 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_wwc"), key: "未完成单")
-    lazy var cell3 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_rjs"), key: "日结算")
-    lazy var cell4 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_zjs"), key: "总结算")
-    
-    lazy var grayView: UIView = {
-        let view = UIView()
-        view.backgroundColor = gray_F5F5F5
-        return view
-    }()
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -129,5 +120,16 @@ class HomeInfoView: UIView {
             make.height.equalTo(11)
         }
     }
-
+    
+    //MARK: - Lazyload
+    lazy var cell1 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_kqd"), key: "可抢单")
+    lazy var cell2 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_wwc"), key: "未完成单")
+    lazy var cell3 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_rjs"), key: "日结算")
+    lazy var cell4 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_zjs"), key: "总结算")
+    
+    lazy var grayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_F5F5F5
+        return view
+    }()
 }

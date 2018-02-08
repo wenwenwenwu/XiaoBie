@@ -24,20 +24,20 @@ class AccountTool {
     }
     
     //登录(账户信息存本地)
-    class func signIn(with userInfoModel:UserInfoModel) {
+    class func login(with userInfoModel:UserInfoModel) {
         NSKeyedArchiver.archiveRootObject(userInfoModel, toFile: userInfoPath)
 
     }
     
     //登出(删除账户信息)
-    class func signOut() {
+    class func logout() {
         let fileManager = FileManager()
         try?fileManager.removeItem(atPath: userInfoPath)
         
     }
     
     //是否登录
-    class func isSignIn() -> Bool {
+    class func isLogin() -> Bool {
         if !AccountTool.userInfo().id.isEmpty {
             return true
         }else {

@@ -98,7 +98,6 @@ class ClockinView: UIView {
         button.setTitle("上班打卡", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(clockinButtonAction), for: .touchUpInside)
@@ -112,7 +111,6 @@ class ClockinView: UIView {
         button.setTitle("下班打卡", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(clockoutButtonAction), for: .touchUpInside)

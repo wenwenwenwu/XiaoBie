@@ -53,6 +53,12 @@ extension AppDelegate {
         window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         window?.rootViewController = TabBarController()
         window?.makeKeyAndVisible()
+        
+        if AccountTool.isLogin() == false {
+            let loginVC = LoginViewController()            
+            let loginNC = NavigationController.init(rootViewController: loginVC)
+            window?.rootViewController?.present(loginNC, animated: false, completion: nil)
+        }
     }
     
     func setuGaoDe() {
