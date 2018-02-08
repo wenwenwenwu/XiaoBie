@@ -39,6 +39,8 @@
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
 		5BDB5030202C3B490055C21E /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502F202C3B490055C21E /* MineCell.swift */; };
 		5BDB5032202C45F80055C21E /* MyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5031202C45F80055C21E /* MyHeader.swift */; };
+		5BDB5036202C52B90055C21E /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5035202C52B90055C21E /* SetupViewController.swift */; };
+		5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5037202C52DA0055C21E /* SetupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,8 @@
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5BDB502F202C3B490055C21E /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
 		5BDB5031202C45F80055C21E /* MyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeader.swift; sourceTree = "<group>"; };
+		5BDB5035202C52B90055C21E /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
+		5BDB5037202C52DA0055C21E /* SetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +135,7 @@
 		5B495FF320283A5600CC4B91 /* Login（登录） */ = {
 			isa = PBXGroup;
 			children = (
+				5BDB5034202C52A60055C21E /* 设置 */,
 				5BDB5033202C521A0055C21E /* 主页面 */,
 			);
 			path = "Login（登录）";
@@ -254,6 +259,15 @@
 				5BDB502D202C1D570055C21E /* LoginView.swift */,
 			);
 			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5BDB5034202C52A60055C21E /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				5BDB5035202C52B90055C21E /* SetupViewController.swift */,
+				5BDB5037202C52DA0055C21E /* SetupCell.swift */,
+			);
+			path = "设置";
 			sourceTree = "<group>";
 		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
@@ -399,8 +413,10 @@
 				5B51FAD720293942001AB946 /* HomeModel.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
+				5BDB5036202C52B90055C21E /* SetupViewController.swift in Sources */,
 				5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
+				5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */,
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,

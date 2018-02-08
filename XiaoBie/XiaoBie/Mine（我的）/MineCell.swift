@@ -95,18 +95,18 @@ class MineCell: UITableViewCell {
     lazy var iconView = UIImageView()
     
     lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.sizeToFit()
-        titleLabel.font = font16
-        titleLabel.textColor = black_333333
-        return titleLabel
+        let label = UILabel()
+        label.sizeToFit()
+        label.font = font16
+        label.textColor = black_333333
+        return label
     }()
     
     lazy var arrowView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
     
     lazy var lineView: UIView = {
-        let lineView = UIView()
-        lineView.backgroundColor = gray_F0F0F0
-        return lineView
+        let view = UIView()
+        view.backgroundColor = gray_F0F0F0
+        return view
     }()
 }
