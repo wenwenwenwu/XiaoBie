@@ -17,6 +17,9 @@ import UIKit
     let tabbarHeight: CGFloat = (screenHeight == 812) ? 83 : 49
     let toolBarHeight: CGFloat = 44
 
+    //MARK: - 视图
+    let tabbarController = UIApplication.shared.keyWindow?.rootViewController as! TabBarController
+
     //颜色
     let black_20 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
     let blue_3296FA = #colorLiteral(red: 0.1960784314, green: 0.5882352941, blue: 0.9803921569, alpha: 1)
@@ -36,6 +39,7 @@ import UIKit
         view.backgroundColor = gray_e5e5e5
         return view
     }()
+
 
     //字体
     let font12 = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)

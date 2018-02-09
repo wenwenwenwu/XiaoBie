@@ -50,7 +50,14 @@ class SetupViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func logoutCellAction() {
-        LoginHandler.logoutSucess(viewController: self)
+        //删除用户信息
+        AccountTool.logout()
+        //弹出登录界面
+        let loginNC = NavigationController.init(rootViewController: LoginViewController())
+        tabbarController.present(loginNC, animated: false, completion: nil)
+        //设置下次登录显示页面
+        tabbarController.selectedIndex = 0
+        navigationController?.popViewController(animated: false)
     }
 
     //MARK: - UITableViewDataSource

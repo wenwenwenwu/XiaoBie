@@ -13,7 +13,6 @@
 		5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA0202D3D9F009D44F1 /* Alert.swift */; };
 		5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */; };
 		5B4CFDA6202D3D9F009D44F1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA3202D3D9F009D44F1 /* TabBarController.swift */; };
-		5B4CFDA8202D3FB3009D44F1 /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA7202D3FB3009D44F1 /* LoginHandler.swift */; };
 		5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B50E1BC20284EDC00B365C8 /* Constant.swift */; };
 		5B51FAD720293942001AB946 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAD620293942001AB946 /* HomeModel.swift */; };
 		5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADC20293E5B001AB946 /* MineViewController.swift */; };
@@ -52,7 +51,6 @@
 		5B4CFDA0202D3D9F009D44F1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5B4CFDA3202D3D9F009D44F1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		5B4CFDA7202D3FB3009D44F1 /* LoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHandler.swift; sourceTree = "<group>"; };
 		5B50E1BC20284EDC00B365C8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5B51FAD620293942001AB946 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		5B51FADC20293E5B001AB946 /* MineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineViewController.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
-				5B4CFDA7202D3FB3009D44F1 /* LoginHandler.swift */,
 				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
 				5BDB502D202C1D570055C21E /* LoginView.swift */,
 			);
@@ -443,7 +440,6 @@
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
-				5B4CFDA8202D3FB3009D44F1 /* LoginHandler.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
 				5BDB5030202C3B490055C21E /* MineCell.swift in Sources */,
 				5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */,

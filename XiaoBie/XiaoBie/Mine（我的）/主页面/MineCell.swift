@@ -13,7 +13,8 @@ enum MineCellType {
     case query
     case upload
     case money
-    case setup
+    case setting
+    case inStore
 }
 
 class MineCell: UITableViewCell {
@@ -30,8 +31,11 @@ class MineCell: UITableViewCell {
             case .money:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_je"), title: "我的税前酬金")
                 lineView.isHidden = true
-            default:
+            case .setting:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_sz"), title: "设置")
+                lineView.isHidden = true
+            default:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_phone"), title: "手机入库")
                 lineView.isHidden = true
             }
         }

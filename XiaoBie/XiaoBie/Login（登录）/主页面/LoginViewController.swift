@@ -88,8 +88,10 @@ class LoginViewController: UIViewController {
         WebTool.post(uri: "staff_login", para: ["password" : password, "telephone" : telephone], success: { (dict) in
             let model = LoginResponseModel.parse(dict: dict)
             if model.code == "0" {
-                self.resignKeyBoardInView(view: self.view)
-                LoginHandler.loginSucess(viewController: self, userInfoModel: model.data[0])
+                //保存用户信息
+                AccountTool.login(with: model.data[0])
+                //退出登录模块
+                self.navigationController?.dismiss(animated: true, completion: nil)
             }else{
                 HudTool.showInfo(string: model.msg)
             }

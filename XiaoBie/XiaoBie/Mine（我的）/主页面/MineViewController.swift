@@ -22,6 +22,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationController?.isNavigationBarHidden = true
         //刷新数据
         headView.model = AccountTool.userInfo()
+        tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,41 +47,88 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print("我的睡前酬金")
     }
     
-    func setupCellAction() {
+    func inStoreCellAction() {
+        print("手机入库")
+    }
+    
+    func settingCellAction() {
         navigationController?.pushViewController(SetupViewController(), animated: true)
     }
     
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        let role = AccountTool.userInfo().role
+        switch role {
+        //司机
+        case "0":
+            return 2
+        //做单员
+        case "1":
+            return 1
+        //管理员
+        default:
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 4
-        default:
+        let role = AccountTool.userInfo().role
+        switch role {
+        //司机
+        case "0":
+            switch section {
+            case 0:
+                return 4
+            default:
+                return 1
+            }
+        //做单员
+        case "1":
             return 1
+        //管理员
+        default:
+            switch section {
+            case 0:
+                return 1
+            default:
+                return 1
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = MineCell.cellWith(tableView: tableView)
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
+        let role = AccountTool.userInfo().role
+        switch role {
+        //司机
+        case "0":
+            switch indexPath.section {
             case 0:
-                cell.type = .phone
-            case 1:
-                cell.type = .query
-            case 3:
-                cell.type = .upload
+                switch indexPath.row {
+                case 0:
+                    cell.type = .phone
+                case 1:
+                    cell.type = .query
+                case 3:
+                    cell.type = .upload
+                default:
+                    cell.type = .money
+                }
             default:
-                cell.type = .money
+                cell.type = .setting
             }
+        //做单员
+        case "1":
+            cell.type = .setting
+        //管理员
         default:
-            cell.type = .setup
-        }
+            switch indexPath.section {
+            case 0:
+                cell.type = .inStore
+            default:
+                cell.type = .setting
+            }
+        }        
         return cell
     }
     
@@ -97,8 +145,10 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 uploadCellAction()
             case .money:
                 monyCellAction()
-            default:
-                setupCellAction()
+            case .inStore:
+                inStoreCellAction()
+            case .setting:
+                settingCellAction()
         }
     }
     

@@ -23,7 +23,6 @@ class MyHeader: UIView {
         }
     }
     
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 130))
@@ -99,6 +98,4 @@ class MyHeader: UIView {
     }()
     
     lazy var arrowView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
-    
-
 }

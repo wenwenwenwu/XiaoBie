@@ -55,7 +55,9 @@ extension AppDelegate {
         window?.makeKeyAndVisible()
         
         if AccountTool.isLogin() == false {
-            LoginHandler.presentLoginVC()
+            //弹出登录界面
+            let loginNC = NavigationController.init(rootViewController: LoginViewController())
+            tabbarController.present(loginNC, animated: false, completion: nil)
         }
     }
     
