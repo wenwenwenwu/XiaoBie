@@ -12,7 +12,7 @@ class ClockinView: UIView {
     
     var isShow = false
     
-    let animationDuration = 0.3
+    let animationDuration = 0.2
     
     var clockinButtonClosure: ()->Void = {}
     var clockoutButtonClosure: ()->Void = {}
