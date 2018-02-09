@@ -24,20 +24,21 @@ class SetupCell: UITableViewCell {
             switch type {
             case .clear:
                 titleLabel.text = "清除缓存"
-                infoLabel.isHidden = false
                 infoLabel.text = "\(CacheTool.fileSizeOfCache())M"
             case .rank:
                 titleLabel.text = "给龙网评分"
                 infoLabel.isHidden = true
-            case .suggest:
-                titleLabel.text = "建议与反馈"
-                infoLabel.isHidden = true
             case .privacy:
                 titleLabel.text = "隐私协议"
                 infoLabel.isHidden = true
+            case .suggest:
+                titleLabel.text = "建议与反馈"
+                infoLabel.isHidden = true
+                lineView.isHidden = true
             default:
                 titleLabel.text = "关于我们"
                 infoLabel.isHidden = true
+                lineView.isHidden = true
             }
         }
     }
@@ -75,7 +76,7 @@ class SetupCell: UITableViewCell {
         }
         
         infoLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(arrowView.snp.left).offset(10)
+            make.right.equalTo(arrowView.snp.left).offset(-10)
             make.centerY.equalToSuperview()
         }
         
@@ -151,8 +152,7 @@ class LogoutCell: UITableViewCell {
     //MARK: - Setup
     func setupFrame() {
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
-            make.centerY.equalToSuperview()
+            make.center.equalToSuperview()
         }
     }
     

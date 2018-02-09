@@ -15,12 +15,18 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
-        setupNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+        //刷新数据
+        headView.model = AccountTool.userInfo()
     }
 
-    //MARK: - Setup
-    func setupNavigationBar() {
-        navigationController?.isNavigationBarHidden = true
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Event Response
@@ -41,7 +47,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func setupCellAction() {
-        print("设置")
+        navigationController?.pushViewController(SetupViewController(), animated: true)
     }
     
     //MARK: - UITableViewDataSource

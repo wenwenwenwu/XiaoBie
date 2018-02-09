@@ -10,6 +10,19 @@ import UIKit
 
 class MyHeader: UIView {
 
+    var model = UserInfoModel() {
+        didSet {
+            //nameLabel
+            nameLabel.text = AccountTool.userInfo().name
+            //roundLabel
+            let name = AccountTool.userInfo().name
+            let rangeFirst = name.startIndex ... name.startIndex
+            roundLabel.text = String(name[rangeFirst])
+            //phoneLabel
+            phoneLabel.text = AccountTool.userInfo().phone            
+        }
+    }
+    
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -61,7 +74,6 @@ class MyHeader: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
-        label.text = AccountTool.userInfo().name
         label.font = font18Medium
         label.textColor = black_333333
         return label
@@ -70,11 +82,6 @@ class MyHeader: UIView {
     lazy var roundLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        //text
-        let name = AccountTool.userInfo().name
-        let rangeFirst = name.startIndex ... name.startIndex
-        label.text = String(name[rangeFirst])
-        
         label.font = font14
         label.textColor = white_FFFFFF
         label.backgroundColor = blue_3296FA
@@ -86,7 +93,6 @@ class MyHeader: UIView {
     lazy var phoneLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
-        label.text = AccountTool.userInfo().phone
         label.font = font14
         label.textColor = black_333333
         return label

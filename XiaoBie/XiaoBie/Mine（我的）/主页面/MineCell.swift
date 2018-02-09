@@ -29,8 +29,10 @@ class MineCell: UITableViewCell {
                 setupData(icon: #imageLiteral(resourceName: "icon_my_pj"), title: "上传凭证")
             case .money:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_je"), title: "我的税前酬金")
+                lineView.isHidden = true
             default:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_sz"), title: "设置")
+                lineView.isHidden = true
             }
         }
     }
