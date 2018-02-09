@@ -127,7 +127,7 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Lazyload
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: screenBounds, style: .grouped)
+        let tableView = UITableView.init(frame: screenBounds, style: .plain)
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 0
