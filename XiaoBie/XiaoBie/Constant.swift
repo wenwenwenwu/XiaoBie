@@ -40,18 +40,21 @@ import UIKit
         return view
     }()
 
-
+    
     //字体
+    let font10 = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)
     let font12 = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)
     let font14 = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
     let font16 = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
     let font10Medium = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.medium)
+    let font16Medium = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
     let font18Medium = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
     let font26Medium = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.medium)
 
 //    let font40Bold = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight.bold)
 
-    
+    let pageSize = "10"
+
 
     //第三方
     let JPushAppKey = "5a7e0489b11594cb421bccc4"

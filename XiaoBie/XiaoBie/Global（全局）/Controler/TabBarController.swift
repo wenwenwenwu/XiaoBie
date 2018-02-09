@@ -19,7 +19,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
     func setupTabBar() {
         //viewControllers
         let homeNav = NavigationController.init(rootViewController: HomeViewController())
-        let orderNav = NavigationController.init(rootViewController: OrderViewController())
+        let orderNav = NavigationController.init(rootViewController: GrabViewController())
         let chatNav = NavigationController.init(rootViewController: ChatViewController())
         let mineNav = NavigationController.init(rootViewController: MineViewController())
         viewControllers = [homeNav,orderNav,chatNav,mineNav]

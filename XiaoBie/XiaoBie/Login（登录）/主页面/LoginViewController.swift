@@ -90,6 +90,8 @@ class LoginViewController: UIViewController {
             if model.code == "0" {
                 //保存用户信息
                 AccountTool.login(with: model.data[0])
+                //退出当前键盘
+                self.resignKeyBoardInView(view: self.view)
                 //退出登录模块
                 self.navigationController?.dismiss(animated: true, completion: nil)
             }else{
