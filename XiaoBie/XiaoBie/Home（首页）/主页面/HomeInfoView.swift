@@ -88,6 +88,7 @@ class HomeInfoView: UIView {
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = white_FFFFFF
         addSubview(cell1)
         addSubview(cell2)
         addSubview(cell3)

@@ -45,6 +45,7 @@ class SelectView: UIView {
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = white_FFFFFF
         addSubview(stackView)
         addSubview(slideView)
     }

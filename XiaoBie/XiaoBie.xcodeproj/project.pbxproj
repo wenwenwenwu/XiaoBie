@@ -40,6 +40,8 @@
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */; };
 		5BB90CF92030345300F6CD9E /* MyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */; };
+		5BB90CFC203042F800F6CD9E /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* HomeListViewController.swift */; };
+		5BB90CFE2030430F00F6CD9E /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* HomeListCell.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
 		5BDB5030202C3B490055C21E /* MineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502F202C3B490055C21E /* MineCell.swift */; };
@@ -88,6 +90,8 @@
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* HomeInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInfoView.swift; sourceTree = "<group>"; };
 		5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhoneViewController.swift; sourceTree = "<group>"; };
+		5BB90CFB203042F800F6CD9E /* HomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
+		5BB90CFD2030430F00F6CD9E /* HomeListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5BDB502F202C3B490055C21E /* MineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineCell.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
+				5BB90CFA203042D900F6CD9E /* 列表 */,
 				5B6F3F98202C16D00070818C /* 主页面 */,
 			);
 			path = "Home（首页）";
@@ -306,6 +311,15 @@
 			path = "Phone（领手机）";
 			sourceTree = "<group>";
 		};
+		5BB90CFA203042D900F6CD9E /* 列表 */ = {
+			isa = PBXGroup;
+			children = (
+				5BB90CFB203042F800F6CD9E /* HomeListViewController.swift */,
+				5BB90CFD2030430F00F6CD9E /* HomeListCell.swift */,
+			);
+			path = "列表";
+			sourceTree = "<group>";
+		};
 		5BDB5033202C521A0055C21E /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +506,7 @@
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
 				5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */,
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
+				5BB90CFC203042F800F6CD9E /* HomeListViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
@@ -514,6 +529,7 @@
 				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,
 				5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
+				5BB90CFE2030430F00F6CD9E /* HomeListCell.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B51FAE120293E73001AB946 /* GrabListViewController.swift in Sources */,

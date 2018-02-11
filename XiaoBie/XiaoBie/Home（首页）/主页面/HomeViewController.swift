@@ -18,12 +18,40 @@ class HomeViewController: UIViewController {
     
     lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
     
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待预约", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+        self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
+    }
+    
+    //pageView
+    lazy var pinkVC: UIViewController = {
+        let VC = UIViewController()
+        VC.view.backgroundColor = #colorLiteral(red: 1, green: 0.9545792937, blue: 0.9687885642, alpha: 1)
+        return VC
+    }()
+    
+    lazy var blueVC: UIViewController = {
+        let VC = UIViewController()
+        VC.view.backgroundColor = #colorLiteral(red: 0.9275814891, green: 0.9614334702, blue: 1, alpha: 1)
+        return VC
+    }()
+    
+    lazy var allVC = GrabListViewController.controllerWith(listType: .all)
+    lazy var phoneVC = GrabListViewController.controllerWith(listType: .phone)
+    lazy var webVC = GrabListViewController.controllerWith(listType: .web)
+    
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-tabbarHeight), VCArray: [allVC, phoneVC, webVC, pinkVC, blueVC]) { [weak self] (currentIndex) in
+        self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
+    }
+    
     lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self)
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = gray_F5F5F5
         view.addSubview(infoView)
+        view.addSubview(selectView)
+        view.addSubview(pageView)
 
         setupNavigationBar()
         infoRequest()
@@ -62,6 +90,15 @@ class HomeViewController: UIViewController {
    
     @objc func addButtonAction() {
         print("加单")
+    }
+    
+    //MARK: - Private Method
+    func selectViewChangeCurrentIndex(currentIndex: Int) {
+        pageView.currentIndex = currentIndex
+    }
+    
+    func pageViewChangeCurrentIndex(currentIndex: Int) {
+        selectView.currentIndex = currentIndex
     }
     
     

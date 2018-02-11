@@ -53,13 +53,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
         locationTool.startUpdatingLocation()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Setup
@@ -147,6 +141,10 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.mj_footer.endRefreshing()
     }
     
+    func grabRequest(indexPath: IndexPath) {
+        print(indexPath.row)
+    }
+    
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -155,6 +153,9 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = GrabListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
+        cell.grabButtonClosure = {
+            self.grabRequest(indexPath: indexPath)
+        }
         return cell
     }
     

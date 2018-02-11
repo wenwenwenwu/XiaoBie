@@ -21,6 +21,7 @@ import UIKit
     let tabbarController = UIApplication.shared.keyWindow?.rootViewController as! TabBarController
 
     //颜色
+    let red_DC152C = #colorLiteral(red: 0.862745098, green: 0.08235294118, blue: 0.1725490196, alpha: 1)
     let black_20 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
     let blue_3296FA = #colorLiteral(red: 0.1960784314, green: 0.5882352941, blue: 0.9803921569, alpha: 1)
     let black_333333 = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
@@ -46,6 +47,7 @@ import UIKit
     let animationTime = 0.2
     //字体
     let font10 = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)
+    let font11 = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.regular)
     let font12 = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)
     let font14 = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
     let font16 = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
