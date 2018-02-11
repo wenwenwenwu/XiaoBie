@@ -47,7 +47,7 @@
 		5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5037202C52DA0055C21E /* SetupCell.swift */; };
 		5BF8F3F9202FD8650031D9D4 /* GrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
-		5BF8F40720300B4D0031D9D4 /* GrabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* GrabView.swift */; };
+		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +94,7 @@
 		5BDB5037202C52DA0055C21E /* SetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
 		5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
-		5BF8F40620300B4D0031D9D4 /* GrabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabView.swift; sourceTree = "<group>"; };
+		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +157,7 @@
 		5B4CFD9F202D3D9F009D44F1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5BF8F40620300B4D0031D9D4 /* PageView.swift */,
 				5BF8F404202FDF7F0031D9D4 /* SelectView.swift */,
 				5B28CFF2202D7F8100E2DA2F /* BlankView.swift */,
 				5B4CFDA0202D3D9F009D44F1 /* Alert.swift */,
@@ -318,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */,
-				5BF8F40620300B4D0031D9D4 /* GrabView.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -498,7 +498,7 @@
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B51FAE120293E73001AB946 /* GrabListViewController.swift in Sources */,
-				5BF8F40720300B4D0031D9D4 /* GrabView.swift in Sources */,
+				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
 				5B28CFEC202D7C1C00E2DA2F /* GrabModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

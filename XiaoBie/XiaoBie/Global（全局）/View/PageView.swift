@@ -15,7 +15,9 @@ class PageView: UIView, UIScrollViewDelegate {
             scrollView.contentOffset = CGPoint.init(x: Int(screenWidth) * currentIndex, y: 0)
         }
     }
-        
+    
+    var closure: (Int)->Void = {_ in }
+
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView.init(frame: self.bounds)
         scrollView.backgroundColor = gray_F5F5F5
@@ -25,7 +27,7 @@ class PageView: UIView, UIScrollViewDelegate {
         return scrollView
     }()
     
-    class func viewWith(ownerVC: UIViewController, frame: CGRect, VCArray: [UIViewController]) -> PageView {
+    class func viewWith(ownerVC: UIViewController, frame: CGRect, VCArray: [UIViewController], closure: @escaping (Int)->Void) -> PageView {
         let view = PageView.init(frame: frame)
         
         view.scrollView.contentSize = CGSize.init(width: view.width * CGFloat(VCArray.count), height: view.height)
@@ -36,6 +38,8 @@ class PageView: UIView, UIScrollViewDelegate {
             view.scrollView.addSubview(VC.view)
             VC.view.frame = CGRect.init(x: screenWidth * CGFloat(item), y: 0, width: screenWidth, height: view.height)
         }
+        
+        view.closure = closure
         return view
     }
     
@@ -50,5 +54,8 @@ class PageView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - UIScrollViewDelegate
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentIndex = scrollView.contentOffset.x/scrollView.frame.size.width
+        closure(Int(currentIndex))
+    }
 }

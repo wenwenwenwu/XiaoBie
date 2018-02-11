@@ -48,7 +48,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         view.addSubview(blankView)
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
-        setupFrame()
+        setupFrame()//frame并不是screenBounds
     }
     
     override func viewWillAppear(_ animated: Bool) {

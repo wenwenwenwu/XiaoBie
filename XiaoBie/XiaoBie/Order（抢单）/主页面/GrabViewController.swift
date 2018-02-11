@@ -9,6 +9,39 @@
 import UIKit
 
 class GrabViewController: UIViewController, UIScrollViewDelegate {
+
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(searchButton)
+        view.addSubview(selectView)
+        view.addSubview(pageView)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    //MARK: - Private Method
+    func selectViewChangeCurrentIndex(currentIndex: Int) {
+        pageView.currentIndex = currentIndex
+    }
+    
+    func pageViewChangeCurrentIndex(currentIndex: Int) {
+        selectView.currentIndex = currentIndex
+    }
+
+    
+    //MARK: - Event Response
+    @objc func searchButtonAction() {
+        print("搜索")
+    }
     
     //MARK: - Lazyload
     lazy var searchButton: UIButton = {
@@ -28,43 +61,19 @@ class GrabViewController: UIViewController, UIScrollViewDelegate {
         button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
         return button
     }()
-
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 60, y: searchButton.bottom, width: screenWidth-60*2, height: 44), titleArray:  ["全部", "送手机", "送宽带"], sliderWidth: 35) { (currentIndex) in
-            self.pageView.currentIndex = currentIndex
+    
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 60, y: searchButton.bottom, width: screenWidth-60*2, height: 44), titleArray:  ["全部", "送手机", "送宽带"], sliderWidth: 35) { [weak self] (currentIndex) in
+        self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
     lazy var allVC = GrabListViewController.controllerWith(listType: .all)
     lazy var phoneVC = GrabListViewController.controllerWith(listType: .phone)
     lazy var webVC = GrabListViewController.controllerWith(listType: .web)
     
-    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: 107, width: screenWidth, height: screenHeight-107-tabbarHeight), VCArray: [allVC, phoneVC, webVC])
-    
-    //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(searchButton)
-        view.addSubview(selectView)
-        view.addSubview(pageView)
-
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-tabbarHeight), VCArray: [allVC, phoneVC, webVC]) { [weak self] (currentIndex) in
+        self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
-    }
-    
-    //MARK: - Setup
-
-    
-    //MARK: - Event Response
-    @objc func searchButtonAction() {
-        print("搜索")
-    }
 
     
 }

@@ -9,7 +9,14 @@
 import UIKit
 
 class SelectView: UIView {
-        
+    
+    var currentIndex = 0 {
+        didSet {
+            let button = stackView.arrangedSubviews[currentIndex] as! UIButton
+            button.sendActions(for: UIControlEvents.touchUpInside)
+        }
+    }
+    
     var buttonClosure: (Int)->Void = {_ in }
     
     var sliderWidth: CGFloat = 0
