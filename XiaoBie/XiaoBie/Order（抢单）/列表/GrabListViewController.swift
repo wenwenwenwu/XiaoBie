@@ -75,9 +75,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
-    
-    //MARK: - Event Response
-    
+        
     //MARK: - Request
     func loadRequest() {
         let staffId = AccountTool.userInfo().id

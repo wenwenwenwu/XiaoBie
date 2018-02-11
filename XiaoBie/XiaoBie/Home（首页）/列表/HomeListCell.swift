@@ -12,6 +12,8 @@ class HomeListCell: UITableViewCell {
     
     var model = GrabModel() {
         didSet {
+            //timeLabel
+            timeLabel.text = ""
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
             //nameLabel
