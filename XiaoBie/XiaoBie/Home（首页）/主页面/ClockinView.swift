@@ -11,9 +11,7 @@ import UIKit
 class ClockinView: UIView {
     
     var isShow = false
-    
-    let animationDuration = 0.2
-    
+        
     var clockinButtonClosure: ()->Void = {}
     var clockoutButtonClosure: ()->Void = {}
     var ownerController: UIViewController?
@@ -56,7 +54,7 @@ class ClockinView: UIView {
     //MARK: - Private Method
     func show() {
         //动画
-        UIView.animate(withDuration: animationDuration) {
+        UIView.animate(withDuration: animationTime) {
             self.backView.alpha = 1
             self.frontView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: self.frontView.height)
         }
@@ -68,7 +66,7 @@ class ClockinView: UIView {
     
     func dismiss() {
         //动画
-        UIView.animate(withDuration: animationDuration, animations: {
+        UIView.animate(withDuration: animationTime, animations: {
             self.backView.alpha = 0
             self.frontView.frame = CGRect.init(x: 0, y: -self.frontView.height, width: screenWidth, height: self.frontView.height)
         }) { (finished) in

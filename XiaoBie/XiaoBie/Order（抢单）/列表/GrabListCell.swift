@@ -1,5 +1,5 @@
 //
-//  GrabCell.swift
+//  GrabListCell.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GrabCell: UITableViewCell {
+class GrabListCell: UITableViewCell {
     
     var model = GrabModel() {
         didSet {
@@ -36,13 +36,13 @@ class GrabCell: UITableViewCell {
     var grabButtonClosure: ()->Void = {}
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> GrabCell{
+    class func cellWith(tableView : UITableView) -> GrabListCell{
         let reuseIdentifier = "grabCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = GrabCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = GrabListCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! GrabCell
+        return cell as! GrabListCell
     }
     
     //MARK: - Init

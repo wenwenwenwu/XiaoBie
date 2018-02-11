@@ -1,5 +1,5 @@
 //
-//  GrabViewController.swift
+//  GrabListViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/6.
@@ -9,17 +9,46 @@
 import UIKit
 import MJRefresh
 
-class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+enum GrabListType {
+    case all
+    case phone
+    case web
+}
 
+class GrabListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    var projectType = ""
+    var listType: GrabListType = .all {
+        didSet{
+            switch listType {
+            case .phone:
+                projectType = "0"
+            case .web:
+                projectType = "1"
+            case .all:
+                projectType = "2"
+            }
+        }
+    }
+    
     var dataArray: [GrabModel] = []
     var pageCount = 0
     
     var location: CLLocation = CLLocation()
     
+    class func controllerWith(listType: GrabListType) -> GrabListViewController {
+        let viewController = GrabListViewController()
+        viewController.listType = listType
+        return viewController
+    }
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(blankView)
         view.addSubview(tableView)
+        self.setupBlankView(isBlank: true, blankViewType: nil)
+        setupFrame()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +63,15 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - Setup
+    func setupFrame() {
+        blankView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
     func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
         tableView.isHidden = isBlank
         blankView.viewType = blankViewType
@@ -52,7 +90,7 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -115,7 +153,7 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = GrabCell.cellWith(tableView: tableView)
+        let cell = GrabListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -127,7 +165,7 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Lazyload
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: screenBounds, style: .plain)
+        let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 0
@@ -145,7 +183,7 @@ class GrabViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
     
     lazy var blankView: BlankView = {
-        let blankView = BlankView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight-navigationBarHeight))
+        let blankView = BlankView()
         return blankView
     }()
     
