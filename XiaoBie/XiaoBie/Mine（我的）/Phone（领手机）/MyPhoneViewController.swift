@@ -1,5 +1,5 @@
 //
-//  PhoneViewController.swift
+//  MyPhoneViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhoneViewController: UIViewController, UIScrollViewDelegate {
+class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -64,8 +64,4 @@ class PhoneViewController: UIViewController, UIScrollViewDelegate {
     }
     
     lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_rl").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(calendarButtonAction))
-
-    
-    
-    
 }

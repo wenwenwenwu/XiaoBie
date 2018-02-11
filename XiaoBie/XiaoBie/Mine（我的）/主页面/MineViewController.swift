@@ -32,7 +32,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Event Response
     func phoneCellAction() {
-        navigationController?.pushViewController(PhoneViewController(), animated: true)
+        navigationController?.pushViewController(MyPhoneViewController(), animated: true)
     }
     
     func queryCellAction() {
