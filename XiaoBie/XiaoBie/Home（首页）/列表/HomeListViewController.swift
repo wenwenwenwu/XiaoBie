@@ -48,6 +48,10 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     var pageCount = 0
     
     var location: CLLocation = CLLocation()
+    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
+        self?.location = location
+        self?.loadRequest()
+    }
     
     class func controllerWith(listType: HomeListType) -> HomeListViewController {
         let viewController = HomeListViewController()
@@ -198,9 +202,4 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let blankView = BlankView()
         return blankView
     }()
-    
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.location = location
-        self?.loadRequest()
-    }
 }
