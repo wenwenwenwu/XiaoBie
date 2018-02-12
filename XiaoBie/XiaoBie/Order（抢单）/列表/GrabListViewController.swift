@@ -36,6 +36,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var location: CLLocation = CLLocation()
     
+    //MARK: - Factory Method
     class func controllerWith(listType: GrabListType) -> GrabListViewController {
         let viewController = GrabListViewController()
         viewController.listType = listType
@@ -82,7 +83,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -117,7 +118,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {

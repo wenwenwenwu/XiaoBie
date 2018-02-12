@@ -10,6 +10,8 @@ import UIKit
 
 class GrabViewController: UIViewController, UIScrollViewDelegate {
 
+    var location: CLLocation = CLLocation()
+
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,7 @@ class GrabViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        locationTool.startUpdatingLocation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +69,7 @@ class GrabViewController: UIViewController, UIScrollViewDelegate {
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
+    //pageView
     lazy var allVC = GrabListViewController.controllerWith(listType: .all)
     lazy var phoneVC = GrabListViewController.controllerWith(listType: .phone)
     lazy var webVC = GrabListViewController.controllerWith(listType: .web)
@@ -74,6 +78,8 @@ class GrabViewController: UIViewController, UIScrollViewDelegate {
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-
+    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
+        self?.location = location
+    }
     
 }

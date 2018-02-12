@@ -10,51 +10,47 @@ import UIKit
 import MJRefresh
 
 enum HomeListType {
-    case check
-    case order
-    case testify
+    /*
+     0-待查单
+     1-待预约
+     2-待验单
+     3-已完成
+     4-二次验证
+     */
+    case toCheck
+    case toOrder
+    case toTestify
     case complete
-    case twice
-}
-
-enum HomeStatusType {
-    case check
-    case querying
-    case order
-    case testify
-    case cancel
-    case complete
-    case twice
+    case toTestify2
 }
 
 class HomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var queryType = ""
-    var listType: HomeListType = .check {
+    var listType: HomeListType = .toCheck {
         didSet{
             switch listType {
-            case .check:
+            case .toCheck:
                 queryType = "0"
-            case .order:
+            case .toOrder:
                 queryType = "1"
-            case .testify:
+            case .toTestify:
                 queryType = "2"
             case .complete:
                 queryType = "3"
-            case .twice:
+            case .toTestify2:
                 queryType = "4"
+            }
         }
     }
         
-    
-    
     var dataArray: [GrabModel] = []
     var pageCount = 0
     
     var location: CLLocation = CLLocation()
     
-    class func controllerWith(listType: GrabListType) -> GrabListViewController {
-        let viewController = GrabListViewController()
+    class func controllerWith(listType: HomeListType) -> HomeListViewController {
+        let viewController = HomeListViewController()
         viewController.listType = listType
         return viewController
     }
@@ -99,7 +95,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(uri:"get_order_list_for_delivery", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":"1", "query_type":queryType, "latitude":latitude, "longitude":longitude, "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -134,7 +130,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(uri:"get_order_list_for_delivery", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "page_num":"1", "latitude":latitude, "longitude":longitude, "page_size": pageSize], success: { (dict) in
             
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -156,7 +152,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         self.tableView.mj_footer.endRefreshing()
     }
     
-    func grabRequest(indexPath: IndexPath) {
+    func cancelRequest(indexPath: IndexPath) {
         print(indexPath.row)
     }
     
@@ -164,19 +160,19 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = GrabListCell.cellWith(tableView: tableView)
+        let cell = HomeListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
-        cell.grabButtonClosure = {
-            self.grabRequest(indexPath: indexPath)
+        cell.cancelButtonClosure = {
+            self.cancelRequest(indexPath: indexPath)
         }
         return cell
     }
-    
+
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 168
     }
     
     //MARK: - Lazyload

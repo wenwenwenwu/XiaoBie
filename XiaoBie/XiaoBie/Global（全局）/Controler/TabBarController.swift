@@ -10,6 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
@@ -51,6 +52,7 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         tabBar.insertSubview(backView, at: 0)
         tabBar.isOpaque = true
     }
+    
 }
 
 

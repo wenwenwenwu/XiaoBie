@@ -13,7 +13,7 @@ class HomeListCell: UITableViewCell {
     var model = GrabModel() {
         didSet {
             //timeLabel
-            timeLabel.text = ""
+            timeLabel.text = DateTool.strDateToStr月日时分(strDate: "2018-02-01 16:00:01")
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
             //nameLabel
@@ -31,7 +31,39 @@ class HomeListCell: UITableViewCell {
                 let strDistanceKM = String(format: "%.2f", distanceKM)
                 distanceLabel.text = "距离：\(strDistanceKM)km"
             }
-            
+            //statusLabel
+            var statusStr = ""
+            switch model.statusType {
+                case .toCheck:
+                    statusStr = "待查单"
+                case .querying:
+                    statusStr = "查询中"
+                case .toOrder:
+                    statusStr = "待预约"
+                case .toTestify:
+                    statusStr = "待验单"
+                case .cancel:
+                    statusStr = "客户取消"
+                case .contact:
+                    statusStr = "联系中"
+                case .accept:
+                    statusStr = "正在验单"
+                case .access:
+                    statusStr = "通过验证"
+                case .empty:
+                    statusStr = "无此活动"
+                case .toOrder2:
+                    statusStr = "待预约二次验证"
+                case .toTestify2:
+                    statusStr = "二次验证中"
+                case .busy:
+                    statusStr = "正在忙"
+                case .uploaded:
+                    statusStr = "凭证已上传"
+                default:
+                    statusStr = "完成"
+            }
+            statusLabel.text = statusStr
         }
     }
     
@@ -196,6 +228,8 @@ class HomeListCell: UITableViewCell {
         button.titleLabel?.font = font11
         button.setTitle("客户取消", for: .normal)
         button.setTitleColor(blue_3296FA, for: .normal)
+        button.layer.borderColor = blue_3296FA.cgColor
+        button.layer.borderWidth = 1
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
