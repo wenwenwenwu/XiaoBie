@@ -18,7 +18,6 @@ class ClockinViewHandler: NSObject, AMapLocationManagerDelegate {
     var currentType: ClockinType = .clockin
     
     lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        print(location)
         self?.clockinRequest(location: location)
     }
 

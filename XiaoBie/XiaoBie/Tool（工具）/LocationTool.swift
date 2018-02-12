@@ -48,25 +48,3 @@ class LocationTool: NSObject, AMapLocationManagerDelegate {
     }
     
 }
-
-//MARK: - 位置缓存
-extension LocationTool {
-    
-    //路径
-    static let locationPath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])/location.data"
-    
-    //获得
-    class func location() -> CLLocation {
-        if let location = NSKeyedUnarchiver.unarchiveObject(withFile: locationPath) as? CLLocation {
-            return location
-        }else {
-            return CLLocation()
-        }
-    }
-    
-    //保存
-    class func saveLocation(location: CLLocation) {
-        NSKeyedArchiver.archiveRootObject(location, toFile: locationPath)
-
-    }
-}

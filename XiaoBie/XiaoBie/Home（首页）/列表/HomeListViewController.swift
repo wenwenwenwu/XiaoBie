@@ -95,7 +95,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":"1", "query_type":queryType, "latitude":latitude, "longitude":longitude, "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "latitude":latitude, "longitude":longitude, "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = GrabResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
