@@ -21,6 +21,20 @@ class SelectView: UIView {
     
     var sliderWidth: CGFloat = 0
     
+    
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = white_FFFFFF
+        addSubview(stackView)
+        addSubview(lineView)
+        addSubview(slideView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - Factory Method
     class func viewWith(frame: CGRect, titleArray: [String], sliderWidth: CGFloat, buttonClosure: @escaping (Int)->Void) -> SelectView {
         let chanelView = SelectView.init(frame: frame)
@@ -42,18 +56,6 @@ class SelectView: UIView {
         return chanelView
     }
     
-    //MARK: - Init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        backgroundColor = white_FFFFFF
-        addSubview(stackView)
-        addSubview(slideView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //MARK: - Setup
     func setupFrame() {
         stackView.snp.makeConstraints { (make) in
@@ -66,6 +68,12 @@ class SelectView: UIView {
             make.bottom.equalToSuperview()
             make.width.equalTo(self.sliderWidth)
             make.height.equalTo(2)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.centerX.bottom.equalToSuperview()
+            make.width.equalTo(screenWidth)
+            make.height.equalTo(1)
         }
     }
     
@@ -107,5 +115,9 @@ class SelectView: UIView {
         return view
     }()
     
-
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_F5F5F5
+        return view
+    }()
 }

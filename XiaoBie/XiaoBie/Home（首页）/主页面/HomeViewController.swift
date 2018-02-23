@@ -10,35 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    //navBar
-    lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
-    
-    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
-    
-    lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
-    
-    //infoView
-    lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
-    
-    //selectView
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待预约", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
-        self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
-    }
-    
-    //pageView
-    lazy var toCheckVC = HomeListViewController.controllerWith(listType: .toCheck)
-    lazy var toOrderVC = HomeListViewController.controllerWith(listType: .toOrder)
-    lazy var toTestifyVC = HomeListViewController.controllerWith(listType: .toTestify)
-    lazy var toTestify2VC = HomeListViewController.controllerWith(listType: .toTestify2)
-    lazy var completeVC = HomeListViewController.controllerWith(listType: .complete)
-
-    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-tabbarHeight), VCArray: [toCheckVC, toOrderVC, toTestifyVC, toTestify2VC, completeVC]) { [weak self] (currentIndex) in
-        self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
-    }
-    
-    //clockinHandler
-    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self)
-    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +66,28 @@ class HomeViewController: UIViewController {
         selectView.currentIndex = currentIndex
     }
     
+    //MARK: - Lazyload
     
+    //navBar
+    lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
+    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
+    lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
+    
+    lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
 
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待预约", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+        self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
+    }
     
+    //pageView
+    lazy var toCheckVC = HomeListViewController.controllerWith(listType: .toCheck)
+    lazy var toOrderVC = HomeListViewController.controllerWith(listType: .toOrder)
+    lazy var toTestifyVC = HomeListViewController.controllerWith(listType: .toTestify)
+    lazy var toTestify2VC = HomeListViewController.controllerWith(listType: .toTestify2)
+    lazy var completeVC = HomeListViewController.controllerWith(listType: .complete)
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-tabbarHeight), VCArray: [toCheckVC, toOrderVC, toTestifyVC, toTestify2VC, completeVC]) { [weak self] (currentIndex) in
+        self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
+    }
+    
+    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self)    
 }

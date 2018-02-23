@@ -17,16 +17,18 @@ class PageView: UIView, UIScrollViewDelegate {
     }
     
     var closure: (Int)->Void = {_ in }
-
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView.init(frame: self.bounds)
-        scrollView.backgroundColor = gray_F5F5F5
-        scrollView.isPagingEnabled = true
-        scrollView.bounces = false
-        scrollView.delegate = self
-        return scrollView
-    }()
     
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(scrollView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Factory Method
     class func viewWith(ownerVC: UIViewController, frame: CGRect, VCArray: [UIViewController], closure: @escaping (Int)->Void) -> PageView {
         let view = PageView.init(frame: frame)
         
@@ -43,19 +45,19 @@ class PageView: UIView, UIScrollViewDelegate {
         return view
     }
     
-    //MARK: - Init
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(scrollView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     //MARK: - UIScrollViewDelegate
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentIndex = scrollView.contentOffset.x/scrollView.frame.size.width
         closure(Int(currentIndex))
     }
+    
+    //MARK: - Lazyload
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView.init(frame: self.bounds)
+        scrollView.backgroundColor = gray_F5F5F5
+        scrollView.isPagingEnabled = true
+        scrollView.bounces = false
+        scrollView.delegate = self
+        return scrollView
+    }()
 }

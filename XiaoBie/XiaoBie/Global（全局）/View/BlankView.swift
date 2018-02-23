@@ -21,10 +21,10 @@ class BlankView: UIView {
         didSet{
             switch viewType {
             case .noData?:
-                self.imageView.image = #imageLiteral(resourceName: "meishuju")
-                self.button.setTitle("暂时没有数据", for: .normal)
+                self.imageView.image = #imageLiteral(resourceName: "pic_nothing")
+                self.button.setTitle("抱歉，暂时没有数据...", for: .normal)
             case .noWeb?:
-                self.imageView.image = #imageLiteral(resourceName: "meishuju")
+                self.imageView.image = #imageLiteral(resourceName: "pic_nowifi")
                 self.button.setTitle("没有网络点击刷新", for: .normal)
             default:
                 self.imageView.image = nil
@@ -60,12 +60,12 @@ class BlankView: UIView {
     //MARK: - Setup
     func setupFrame() {
         imageView.snp.makeConstraints { (make) in
-            make.top.equalTo(75)
+            make.top.equalTo(80)
             make.centerX.equalToSuperview()
         }
         
         button.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.bottom).offset(15)
+            make.top.equalTo(imageView.snp.bottom).offset(-10)
             make.height.equalTo(50)
             make.centerX.equalToSuperview()
         }

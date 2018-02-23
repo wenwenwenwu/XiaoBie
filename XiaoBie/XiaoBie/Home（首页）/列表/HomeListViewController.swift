@@ -45,18 +45,13 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
         
     var dataArray: [GrabModel] = []
+    
     var pageCount = 0
     
     var location: CLLocation = CLLocation()
     lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
         self?.location = location
         self?.loadRequest()
-    }
-    
-    class func controllerWith(listType: HomeListType) -> HomeListViewController {
-        let viewController = HomeListViewController()
-        viewController.listType = listType
-        return viewController
     }
     
     //MARK: - LifeCycle
@@ -71,6 +66,13 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTool.startUpdatingLocation()
+    }
+    
+    //MARK: - Factory Method
+    class func controllerWith(listType: HomeListType) -> HomeListViewController {
+        let viewController = HomeListViewController()
+        viewController.listType = listType
+        return viewController
     }
     
     //MARK: - Setup

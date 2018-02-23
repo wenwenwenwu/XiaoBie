@@ -70,7 +70,6 @@ class GrabViewController: UIViewController, UIScrollViewDelegate {
     lazy var allVC = GrabListViewController.controllerWith(listType: .all)
     lazy var phoneVC = GrabListViewController.controllerWith(listType: .phone)
     lazy var webVC = GrabListViewController.controllerWith(listType: .web)
-    
     lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-tabbarHeight), VCArray: [allVC, phoneVC, webVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
