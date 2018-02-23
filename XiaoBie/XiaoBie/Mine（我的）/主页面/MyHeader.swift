@@ -10,19 +10,6 @@ import UIKit
 
 class MyHeader: UIView {
 
-    var model = UserInfoModel() {
-        didSet {
-            //nameLabel
-            nameLabel.text = AccountTool.userInfo().name
-            //roundLabel
-            let name = AccountTool.userInfo().name
-            let rangeFirst = name.startIndex ... name.startIndex
-            roundLabel.text = String(name[rangeFirst])
-            //phoneLabel
-            phoneLabel.text = AccountTool.userInfo().phone            
-        }
-    }
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 130))
@@ -67,7 +54,7 @@ class MyHeader: UIView {
         }
     }
     
-    //MARK: - Init
+    //MARK: - Properties
     lazy var shadowView = UIImageView.init(image: #imageLiteral(resourceName: "pic_di"))
     
     lazy var nameLabel: UILabel = {
@@ -98,4 +85,17 @@ class MyHeader: UIView {
     }()
     
     lazy var arrowView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
+    
+    var model = UserInfoModel() {
+        didSet {
+            //nameLabel
+            nameLabel.text = AccountTool.userInfo().name
+            //roundLabel
+            let name = AccountTool.userInfo().name
+            let rangeFirst = name.startIndex ... name.startIndex
+            roundLabel.text = String(name[rangeFirst])
+            //phoneLabel
+            phoneLabel.text = AccountTool.userInfo().phone
+        }
+    }
 }

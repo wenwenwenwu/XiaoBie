@@ -14,14 +14,6 @@ enum ClockinType {
 }
 
 class ClockinViewHandler: NSObject, AMapLocationManagerDelegate {
-
-    var currentType: ClockinType = .clockin
-    
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.clockinRequest(location: location)
-    }
-
-    lazy var clockinView = ClockinView()
     
     //MARK: - Factory Method
     class func handlerWith(ownerController: UIViewController) -> ClockinViewHandler {
@@ -65,6 +57,15 @@ class ClockinViewHandler: NSObject, AMapLocationManagerDelegate {
             HudTool.showInfo(string: error)
         }
     }
+    
+    //MARK: - Properties
+    var currentType: ClockinType = .clockin
+    
+    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
+        self?.clockinRequest(location: location)
+    }
+    
+    lazy var clockinView = ClockinView()
 }
 
 

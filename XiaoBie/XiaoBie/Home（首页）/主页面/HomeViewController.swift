@@ -66,11 +66,11 @@ class HomeViewController: UIViewController {
         selectView.currentIndex = currentIndex
     }
     
-    //MARK: - Lazyload
-    
-    //navBar
+    //MARK: - Properties
     lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
+    
     lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
+    
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
     lazy var infoView = HomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
@@ -79,7 +79,6 @@ class HomeViewController: UIViewController {
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    //pageView
     lazy var toCheckVC = HomeListViewController.controllerWith(listType: .toCheck)
     lazy var toOrderVC = HomeListViewController.controllerWith(listType: .toOrder)
     lazy var toTestifyVC = HomeListViewController.controllerWith(listType: .toTestify)

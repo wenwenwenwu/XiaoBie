@@ -19,38 +19,6 @@ enum MineCellType {
 
 class MineCell: UITableViewCell {
     
-    var type: MineCellType = .phone {
-        didSet {
-            switch type {
-            case .phone:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_phone"), title: "领手机")
-            case .query:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_yx"), title: "营销查询")
-            case .upload:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_pj"), title: "上传凭证")
-            case .money:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_je"), title: "我的税前酬金")
-                lineView.isHidden = true
-            case .setting:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_sz"), title: "设置")
-                lineView.isHidden = true
-            default:
-                setupData(icon: #imageLiteral(resourceName: "icon_my_phone"), title: "手机入库")
-                lineView.isHidden = true
-            }
-        }
-    }
-    
-    //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MineCell{
-        let reuseIdentifier = "mineCell";
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-        if (cell == nil) {
-            cell = MineCell(style: .default, reuseIdentifier: reuseIdentifier)
-        }
-        return cell as! MineCell
-    }
-    
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -64,6 +32,16 @@ class MineCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> MineCell{
+        let reuseIdentifier = "mineCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = MineCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! MineCell
     }
     
     //MARK: - Setup
@@ -97,7 +75,7 @@ class MineCell: UITableViewCell {
         titleLabel.text = title
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var iconView = UIImageView()
     
     lazy var titleLabel: UILabel = {
@@ -115,4 +93,26 @@ class MineCell: UITableViewCell {
         view.backgroundColor = gray_F0F0F0
         return view
     }()
+    
+    var type: MineCellType = .phone {
+        didSet {
+            switch type {
+            case .phone:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_phone"), title: "领手机")
+            case .query:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_yx"), title: "营销查询")
+            case .upload:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_pj"), title: "上传凭证")
+            case .money:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_je"), title: "我的税前酬金")
+                lineView.isHidden = true
+            case .setting:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_sz"), title: "设置")
+                lineView.isHidden = true
+            default:
+                setupData(icon: #imageLiteral(resourceName: "icon_my_phone"), title: "手机入库")
+                lineView.isHidden = true
+            }
+        }
+    }
 }

@@ -10,14 +10,6 @@ import UIKit
 
 class HomeInfoCell: UIView {
     
-    //MARK: - FactoryMethod
-    class func cellWith(image: UIImage, key: String) -> HomeInfoCell{
-        let view = HomeInfoCell.init(frame: CGRect.zero)
-        view.imageView.image = image
-        view.keyLabel.text = key
-        return view
-    }
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +21,14 @@ class HomeInfoCell: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(image: UIImage, key: String) -> HomeInfoCell{
+        let view = HomeInfoCell.init(frame: CGRect.zero)
+        view.imageView.image = image
+        view.keyLabel.text = key
+        return view
     }
     
     //MARK: - Setup
@@ -52,7 +52,7 @@ class HomeInfoCell: UIView {
         }
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var imageView = UIImageView()
     
     lazy var keyLabel: UILabel = {
@@ -75,15 +75,6 @@ class HomeInfoCell: UIView {
 
 
 class HomeInfoView: UIView {
-    
-    var model = HomeInfoModel() {
-        didSet{
-            self.cell1.valueLabel.text = model.original_order_count
-            self.cell2.valueLabel.text = model.undone_order_count
-            self.cell3.valueLabel.text = "¥\(model.pay_money_today)"
-            self.cell4.valueLabel.text = "¥\(model.pay_money_total)"
-        }
-    }
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -122,7 +113,7 @@ class HomeInfoView: UIView {
         }
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var cell1 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_kqd"), key: "可抢单")
     lazy var cell2 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_wwc"), key: "未完成单")
     lazy var cell3 = HomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_rjs"), key: "日结算")
@@ -133,4 +124,13 @@ class HomeInfoView: UIView {
         view.backgroundColor = gray_F5F5F5
         return view
     }()
+    
+    var model = HomeInfoModel() {
+        didSet{
+            self.cell1.valueLabel.text = model.original_order_count
+            self.cell2.valueLabel.text = model.undone_order_count
+            self.cell3.valueLabel.text = "¥\(model.pay_money_today)"
+            self.cell4.valueLabel.text = "¥\(model.pay_money_total)"
+        }
+    }
 }

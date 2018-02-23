@@ -26,32 +26,11 @@ enum HomeListType {
 
 class HomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var queryType = ""
-    var listType: HomeListType = .toCheck {
-        didSet{
-            switch listType {
-            case .toCheck:
-                queryType = "0"
-            case .toOrder:
-                queryType = "1"
-            case .toTestify:
-                queryType = "2"
-            case .complete:
-                queryType = "3"
-            case .toTestify2:
-                queryType = "4"
-            }
-        }
-    }
-        
-    var dataArray: [GrabItemModel] = []
-    
-    var pageCount = 0
-    
-    var location: CLLocation = CLLocation()
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.location = location
-        self?.loadRequest()
+    //MARK: - Factory Method
+    class func controllerWith(listType: HomeListType) -> HomeListViewController {
+        let viewController = HomeListViewController()
+        viewController.listType = listType
+        return viewController
     }
     
     //MARK: - LifeCycle
@@ -66,13 +45,6 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTool.startUpdatingLocation()
-    }
-    
-    //MARK: - Factory Method
-    class func controllerWith(listType: HomeListType) -> HomeListViewController {
-        let viewController = HomeListViewController()
-        viewController.listType = listType
-        return viewController
     }
     
     //MARK: - Setup
@@ -159,7 +131,19 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func cancelRequest(indexPath: IndexPath) {
-        print(indexPath.row)
+        print(indexPath.row, dataArray.count)
+        let orderId = dataArray[indexPath.row].id
+        
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":orderId], success: { (dict) in
+            let model = BasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.dataArray.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -181,7 +165,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         return 168
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
         tableView.backgroundColor = gray_F5F5F5
@@ -204,4 +188,32 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let blankView = BlankView()
         return blankView
     }()
+    
+    var queryType = ""
+    var listType: HomeListType = .toCheck {
+        didSet{
+            switch listType {
+            case .toCheck:
+                queryType = "0"
+            case .toOrder:
+                queryType = "1"
+            case .toTestify:
+                queryType = "2"
+            case .complete:
+                queryType = "3"
+            case .toTestify2:
+                queryType = "4"
+            }
+        }
+    }
+    
+    var dataArray: [GrabItemModel] = []
+    
+    var pageCount = 0
+    
+    var location: CLLocation = CLLocation()
+    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
+        self?.location = location
+        self?.loadRequest()
+    }
 }

@@ -127,8 +127,12 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         let orderId = dataArray[indexPath.row].id
         
         WebTool.post(isShowHud: false, uri:"grab_order", para:["staff_id":staffId, "order_id":orderId], success: { (dict) in
-            let model = GrabResponseModel.parse(dict: dict)
+            let model = BasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.dataArray.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
         }) { (error) in
             HudTool.showInfo(string: error)
         }

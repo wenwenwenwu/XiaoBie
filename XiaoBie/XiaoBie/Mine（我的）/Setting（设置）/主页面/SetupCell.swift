@@ -19,40 +19,6 @@ enum SetupCellType {
 
 class SetupCell: UITableViewCell {
     
-    var type: SetupCellType = .clear {
-        didSet {
-            switch type {
-            case .clear:
-                titleLabel.text = "清除缓存"
-                infoLabel.text = "\(CacheTool.fileSizeOfCache())M"
-            case .rank:
-                titleLabel.text = "给龙网评分"
-                infoLabel.isHidden = true
-            case .privacy:
-                titleLabel.text = "隐私协议"
-                infoLabel.isHidden = true
-            case .suggest:
-                titleLabel.text = "建议与反馈"
-                infoLabel.isHidden = true
-                lineView.isHidden = true
-            default:
-                titleLabel.text = "关于我们"
-                infoLabel.isHidden = true
-                lineView.isHidden = true
-            }
-        }
-    }
-    
-    //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> SetupCell{
-        let reuseIdentifier = "setupCell";
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-        if (cell == nil) {
-            cell = SetupCell(style: .default, reuseIdentifier: reuseIdentifier)
-        }
-        return cell as! SetupCell
-    }
-    
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -66,6 +32,16 @@ class SetupCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> SetupCell{
+        let reuseIdentifier = "setupCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = SetupCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! SetupCell
     }
     
     //MARK: - Setup
@@ -94,11 +70,7 @@ class SetupCell: UITableViewCell {
         
     }
     
-    func setupData(title: String) {
-        titleLabel.text = title
-    }
-    
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
@@ -122,20 +94,35 @@ class SetupCell: UITableViewCell {
         view.backgroundColor = gray_F0F0F0
         return view
     }()
+    
+    var type: SetupCellType = .clear {
+        didSet {
+            switch type {
+            case .clear:
+                titleLabel.text = "清除缓存"
+                infoLabel.text = "\(CacheTool.fileSizeOfCache())M"
+            case .rank:
+                titleLabel.text = "给龙网评分"
+                infoLabel.isHidden = true
+            case .privacy:
+                titleLabel.text = "隐私协议"
+                infoLabel.isHidden = true
+            case .suggest:
+                titleLabel.text = "建议与反馈"
+                infoLabel.isHidden = true
+                lineView.isHidden = true
+            default:
+                titleLabel.text = "关于我们"
+                infoLabel.isHidden = true
+                lineView.isHidden = true
+            }
+        }
+    }
+    
 }
 
 //MARK: - LogoutCell
 class LogoutCell: UITableViewCell {
-    
-    //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> LogoutCell{
-        let reuseIdentifier = "logoutCell";
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-        if (cell == nil) {
-            cell = LogoutCell(style: .default, reuseIdentifier: reuseIdentifier)
-        }
-        return cell as! LogoutCell
-    }
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -147,6 +134,16 @@ class LogoutCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> LogoutCell{
+        let reuseIdentifier = "logoutCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = LogoutCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! LogoutCell
     }
     
     //MARK: - Setup

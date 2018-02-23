@@ -132,14 +132,14 @@ class GrabItemModel: NSObject {
     @objc var user_name = ""
 }
 
-class GrabResponseModel: NSObject,YYModel {
+class BasicResponseModel: NSObject,YYModel {
 
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
 
-    class func parse(dict : Any ) -> GrabResponseModel{
-        let model = GrabResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> BasicResponseModel{
+        let model = BasicResponseModel.yy_model(withJSON: dict)
         return model!
     }
 }

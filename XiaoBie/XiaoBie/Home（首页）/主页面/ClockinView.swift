@@ -10,21 +10,6 @@ import UIKit
 
 class ClockinView: UIView {
     
-    var isShow = false
-        
-    var clockinButtonClosure: ()->Void = {}
-    var clockoutButtonClosure: ()->Void = {}
-    var ownerController: UIViewController?
-    
-    //MARK: - Factory Method
-    class func viewWith(ownerController: UIViewController, clockinButtonClosure: @escaping ()->Void, clockoutButtonClosure: @escaping ()->Void) -> ClockinView {
-        let view = ClockinView()
-        view.ownerController = ownerController
-        view.clockinButtonClosure = clockinButtonClosure
-        view.clockoutButtonClosure = clockoutButtonClosure
-        return view
-    }
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: screenBounds)
@@ -36,6 +21,15 @@ class ClockinView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Factory Method
+    class func viewWith(ownerController: UIViewController, clockinButtonClosure: @escaping ()->Void, clockoutButtonClosure: @escaping ()->Void) -> ClockinView {
+        let view = ClockinView()
+        view.ownerController = ownerController
+        view.clockinButtonClosure = clockinButtonClosure
+        view.clockoutButtonClosure = clockoutButtonClosure
+        return view
     }
     
     //MARK: - Event Response
@@ -76,7 +70,7 @@ class ClockinView: UIView {
         isShow = false
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var backView: UIView = {
         let view = UIView.init(frame: screenBounds)
         view.backgroundColor = black_20
@@ -114,5 +108,11 @@ class ClockinView: UIView {
         button.addTarget(self, action: #selector(clockoutButtonAction), for: .touchUpInside)
         return button
     }()
+    
+    var isShow = false
+    
+    var clockinButtonClosure: ()->Void = {}
+    var clockoutButtonClosure: ()->Void = {}
+    var ownerController: UIViewController?
 }
 

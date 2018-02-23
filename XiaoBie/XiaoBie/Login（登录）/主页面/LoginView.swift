@@ -15,37 +15,6 @@ enum LoginnCellType {
 
 class LoginCell: UIView, UITextFieldDelegate {
     
-    var type: LoginnCellType = .phone {
-        didSet{
-            switch type {
-            case .phone:
-                //textField
-                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
-                textField.keyboardType = .phonePad
-                //eyeButton
-                eyeButton.isHidden = true
-                //clearButton
-                clearButton.isHidden = true
-            default:
-                //textField
-                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
-                textField.keyboardType = .asciiCapable
-                textField.isSecureTextEntry = true
-                //eyeButton
-                eyeButton.isHidden = false
-                //clearButton
-                clearButton.isHidden = true
-            }
-        }
-    }
-    
-    //MARK: - Factory Method
-    class func cellWith(type: LoginnCellType) -> LoginCell {
-        let cell = LoginCell()
-        cell.type = type
-        return cell
-    }
-        
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -58,6 +27,13 @@ class LoginCell: UIView, UITextFieldDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Factory Method
+    class func cellWith(type: LoginnCellType) -> LoginCell {
+        let cell = LoginCell()
+        cell.type = type
+        return cell
     }
     
     //MARK: - Setup
@@ -108,7 +84,7 @@ class LoginCell: UIView, UITextFieldDelegate {
         }
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var textField: UITextField = {
         let textField = UITextField()
         textField.font = font16
@@ -139,4 +115,29 @@ class LoginCell: UIView, UITextFieldDelegate {
         button.addTarget(self, action: #selector(eyeButtonAction), for: .touchUpInside)
         return button
     }()
+    
+    var type: LoginnCellType = .phone {
+        didSet{
+            switch type {
+            case .phone:
+                //textField
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
+                textField.keyboardType = .phonePad
+                //eyeButton
+                eyeButton.isHidden = true
+                //clearButton
+                clearButton.isHidden = true
+            default:
+                //textField
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
+                textField.keyboardType = .asciiCapable
+                textField.isSecureTextEntry = true
+                //eyeButton
+                eyeButton.isHidden = false
+                //clearButton
+                clearButton.isHidden = true
+            }
+        }
+    }
+    
 }
