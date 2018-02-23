@@ -22,7 +22,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "领手机"
-        navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.rightBarButtonItem = calendarButtonItem
         navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
 
     }
@@ -30,10 +30,21 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Private Method
     func selectViewChangeCurrentIndex(currentIndex: Int) {
         pageView.currentIndex = currentIndex
+        switchBarButtonItem(currentIndex: currentIndex)
     }
     
     func pageViewChangeCurrentIndex(currentIndex: Int) {
         selectView.currentIndex = currentIndex
+        switchBarButtonItem(currentIndex: currentIndex)
+    }
+    
+    func switchBarButtonItem(currentIndex: Int) {
+        switch currentIndex {
+        case 0:
+            navigationItem.rightBarButtonItem = calendarButtonItem
+        default:
+            navigationItem.rightBarButtonItem = scanButtonItem
+        }
     }
     
     
@@ -42,7 +53,11 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         print("日历")
     }
     
-    //MARK: - Lazyload
+    @objc func scanButtonAction() {
+        print("扫描")
+    }
+    
+    //MARK: - Properties
     lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 40), titleArray:  ["库存", "历史记录"], sliderWidth: 28) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
@@ -63,5 +78,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_rl").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(calendarButtonAction))
+    lazy var calendarButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_rl").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(calendarButtonAction))
+    
+    lazy var scanButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_lsj_sys").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(scanButtonAction))
 }
