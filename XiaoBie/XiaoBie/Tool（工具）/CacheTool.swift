@@ -10,9 +10,6 @@ import UIKit
 
 class CacheTool {
     
-    //iPhone的cachesDirectory（Kingfisher的图片也默认缓存在此）
-    static let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
-
     //统计缓存大小
     class func fileSizeOfCache()-> Int {
         //取出文件夹下所有文件数组
@@ -52,6 +49,10 @@ class CacheTool {
             }
         }
     }
+    
+    //MARK: - Properties
+    static let cachePath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]//Kingfisher的图片也默认缓存在此
+
 }
 
 //MARK: - 图片缓存

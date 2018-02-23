@@ -15,35 +15,6 @@ enum ViewType {
 
 class BlankView: UIView {
     
-    var buttonClosure: ()->Void = {}
-    
-    var viewType: ViewType? {
-        didSet{
-            switch viewType {
-            case .noData?:
-                self.imageView.image = #imageLiteral(resourceName: "pic_nothing")
-                self.button.setTitle("抱歉，暂时没有数据...", for: .normal)
-            case .noWeb?:
-                self.imageView.image = #imageLiteral(resourceName: "pic_nowifi")
-                self.button.setTitle("没有网络点击刷新", for: .normal)
-            default:
-                self.imageView.image = nil
-            }
-        }
-    }
-    
-    lazy var imageView = UIImageView()
-    
-    lazy var button: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.adjustsImageWhenHighlighted = false
-        button.titleLabel?.font = font14
-        button.setTitleColor(gray_999999, for: .normal)
-        button.contentVerticalAlignment = .top
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        return button
-    }()
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -71,8 +42,38 @@ class BlankView: UIView {
         }
     }
     
-    //MARK: - Action
+    //MARK: - Event Response
     @objc func buttonAction() {
         buttonClosure()
+    }
+    
+    //MARK: - Properties
+    lazy var imageView = UIImageView()
+    
+    lazy var button: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.adjustsImageWhenHighlighted = false
+        button.titleLabel?.font = font14
+        button.setTitleColor(gray_999999, for: .normal)
+        button.contentVerticalAlignment = .top
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        return button
+    }()
+    
+    var buttonClosure: ()->Void = {}
+    
+    var viewType: ViewType? {
+        didSet{
+            switch viewType {
+            case .noData?:
+                self.imageView.image = #imageLiteral(resourceName: "pic_nothing")
+                self.button.setTitle("抱歉，暂时没有数据...", for: .normal)
+            case .noWeb?:
+                self.imageView.image = #imageLiteral(resourceName: "pic_nowifi")
+                self.button.setTitle("没有网络点击刷新", for: .normal)
+            default:
+                self.imageView.image = nil
+            }
+        }
     }
 }

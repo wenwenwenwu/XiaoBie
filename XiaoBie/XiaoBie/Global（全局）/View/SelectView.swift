@@ -10,18 +10,6 @@ import UIKit
 
 class SelectView: UIView {
     
-    var currentIndex = 0 {
-        didSet {
-            let button = stackView.arrangedSubviews[currentIndex] as! UIButton
-            button.sendActions(for: UIControlEvents.touchUpInside)
-        }
-    }
-    
-    var buttonClosure: (Int)->Void = {_ in }
-    
-    var sliderWidth: CGFloat = 0
-    
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -100,7 +88,7 @@ class SelectView: UIView {
         buttonClosure(sender.tag)
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
@@ -120,4 +108,15 @@ class SelectView: UIView {
         view.backgroundColor = gray_F5F5F5
         return view
     }()
+    
+    var currentIndex = 0 {
+        didSet {
+            let button = stackView.arrangedSubviews[currentIndex] as! UIButton
+            button.sendActions(for: UIControlEvents.touchUpInside)
+        }
+    }
+    
+    var buttonClosure: (Int)->Void = {_ in }
+    
+    var sliderWidth: CGFloat = 0
 }

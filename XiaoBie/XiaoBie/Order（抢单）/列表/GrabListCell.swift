@@ -10,41 +10,6 @@ import UIKit
 
 class GrabListCell: UITableViewCell {
     
-    var model = GrabModel() {
-        didSet {
-            //iconImageView
-            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //nameLabel
-            nameLabel.text = model.user_name
-            //addressLabel
-            addressLabel.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                let distanceKM = Float(model.distance)!/1000
-                let strDistanceKM = String(format: "%.2f", distanceKM)
-                distanceLabel.text = "距离：\(strDistanceKM)km"
-            }
-            
-        }
-    }
-    
-    var grabButtonClosure: ()->Void = {}
-    
-    //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> GrabListCell{
-        let reuseIdentifier = "grabCell";
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-        if (cell == nil) {
-            cell = GrabListCell(style: .default, reuseIdentifier: reuseIdentifier)
-        }
-        return cell as! GrabListCell
-    }
-    
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
@@ -62,6 +27,16 @@ class GrabListCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> GrabListCell{
+        let reuseIdentifier = "grabCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = GrabListCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! GrabListCell
     }
     
     //MARK: - Setup
@@ -113,7 +88,7 @@ class GrabListCell: UITableViewCell {
         grabButtonClosure()
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = white_FFFFFF
@@ -160,4 +135,29 @@ class GrabListCell: UITableViewCell {
         button.addTarget(self, action: #selector(grabButtonAction), for: .touchUpInside)
         return button
     }()
+    
+    var model = GrabItemModel() {
+        didSet {
+            //iconImageView
+            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
+            //nameLabel
+            nameLabel.text = model.user_name
+            //addressLabel
+            addressLabel.text = model.address
+            //distanceLabel
+            if model.distance == "-1" { //和后台约好返回的无法解析地址
+                distanceImageView.isHidden = true
+                distanceLabel.isHidden = true
+            } else {
+                distanceImageView.isHidden = false
+                distanceLabel.isHidden = false
+                let distanceKM = Float(model.distance)!/1000
+                let strDistanceKM = String(format: "%.2f", distanceKM)
+                distanceLabel.text = "距离：\(strDistanceKM)km"
+            }
+            
+        }
+    }
+    
+    var grabButtonClosure: ()->Void = {}
 }

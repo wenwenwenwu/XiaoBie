@@ -9,20 +9,20 @@
 import UIKit
 import YYModel
 
-class GrabResponseModel: NSObject,YYModel {
+class GrabItemResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var message = ""
     @objc var result = ""
-    @objc var data: [GrabModel] = []
+    @objc var data: [GrabItemModel] = []
     
-    class func parse(dict : Any ) -> GrabResponseModel{
-        let model = GrabResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> GrabItemResponseModel{
+        let model = GrabItemResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":GrabModel.self]
+        return ["data":GrabItemModel.self]
     }
 }
 
@@ -59,7 +59,7 @@ enum HomeStatusType {
     case complete
 }
 
-class GrabModel: NSObject {
+class GrabItemModel: NSObject {
    
     @objc var address = ""
     @objc var agent_dept = ""
@@ -130,5 +130,17 @@ class GrabModel: NSObject {
     @objc var unique_id = ""
     @objc var update_time = ""
     @objc var user_name = ""
+}
+
+class GrabResponseModel: NSObject,YYModel {
+
+    @objc var code = ""
+    @objc var msg = ""
+    @objc var result = ""
+
+    class func parse(dict : Any ) -> GrabResponseModel{
+        let model = GrabResponseModel.yy_model(withJSON: dict)
+        return model!
+    }
 }
 

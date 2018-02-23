@@ -10,12 +10,6 @@ import UIKit
 
 class DateTool {
     
-    static let formatterFull:DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return formatter
-    }()
-    
     //MARK: - strToStr
     class func strDateToStr月日时分(strDate: String)-> String {
         guard !strDate.isEmpty else { return "" }
@@ -35,6 +29,12 @@ class DateTool {
         return finalTime
     }
     
+    //MARK: - Properties
+    static let formatterFull:DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return formatter
+    }()    
 }
 
 

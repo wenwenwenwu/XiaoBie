@@ -17,25 +17,6 @@ enum GrabListType {
 
 class GrabListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var projectType = ""
-    var listType: GrabListType = .all {
-        didSet{
-            switch listType {
-            case .phone:
-                projectType = "0"
-            case .web:
-                projectType = "1"
-            case .all:
-                projectType = "2"
-            }
-        }
-    }
-    
-    var dataArray: [GrabModel] = []
-    var pageCount = 0
-    
-    var location: CLLocation = CLLocation()
-    
     //MARK: - Factory Method
     class func controllerWith(listType: GrabListType) -> GrabListViewController {
         let viewController = GrabListViewController()
@@ -49,7 +30,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         view.addSubview(blankView)
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
-        setupFrame()//frame并不是screenBounds
+        setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +48,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
             make.edges.equalToSuperview()
         }
     }
+    
     func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
         tableView.isHidden = isBlank
         blankView.viewType = blankViewType
@@ -84,7 +66,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         let longitude = String(location.coordinate.longitude)
         
         WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
-            let model = GrabResponseModel.parse(dict: dict)
+            let model = GrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -120,7 +102,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
             
-            let model = GrabResponseModel.parse(dict: dict)
+            let model = GrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -141,7 +123,15 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func grabRequest(indexPath: IndexPath) {
-        print(indexPath.row)
+        let staffId = AccountTool.userInfo().id
+        let orderId = dataArray[indexPath.row].id
+        
+        WebTool.post(isShowHud: false, uri:"grab_order", para:["staff_id":staffId, "order_id":orderId], success: { (dict) in
+            let model = GrabResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -163,7 +153,7 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         return 160
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
         tableView.backgroundColor = gray_F5F5F5
@@ -191,5 +181,24 @@ class GrabListViewController: UIViewController, UITableViewDataSource, UITableVi
         self?.location = location
         self?.loadRequest()
     }
+    
+    var projectType = ""
+    var listType: GrabListType = .all {
+        didSet{
+            switch listType {
+            case .phone:
+                projectType = "0"
+            case .web:
+                projectType = "1"
+            case .all:
+                projectType = "2"
+            }
+        }
+    }
+    
+    var dataArray: [GrabItemModel] = []
+    var pageCount = 0
+    
+    var location: CLLocation = CLLocation()
 }
 

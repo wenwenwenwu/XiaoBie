@@ -10,7 +10,7 @@ import UIKit
 
 class HomeListCell: UITableViewCell {
     
-    var model = GrabModel() {
+    var model = GrabItemModel() {
         didSet {
             //timeLabel
             timeLabel.text = DateTool.strDateToStr月日时分(strDate: "2018-02-01 16:00:01")

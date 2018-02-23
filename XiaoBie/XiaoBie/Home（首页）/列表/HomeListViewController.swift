@@ -44,7 +44,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
         
-    var dataArray: [GrabModel] = []
+    var dataArray: [GrabItemModel] = []
     
     var pageCount = 0
     
@@ -102,7 +102,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         let longitude = String(location.coordinate.longitude)
         
         WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "latitude":latitude, "longitude":longitude, "page_num":"1", "page_size": pageSize], success: { (dict) in
-            let model = GrabResponseModel.parse(dict: dict)
+            let model = GrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -138,7 +138,7 @@ class HomeListViewController: UIViewController, UITableViewDataSource, UITableVi
         
         WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "page_num":"1", "latitude":latitude, "longitude":longitude, "page_size": pageSize], success: { (dict) in
             
-            let model = GrabResponseModel.parse(dict: dict)
+            let model = GrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示

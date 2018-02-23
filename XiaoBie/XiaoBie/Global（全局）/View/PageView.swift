@@ -10,14 +10,6 @@ import UIKit
 
 class PageView: UIView, UIScrollViewDelegate {
     
-    var currentIndex = 0 {
-        didSet{
-            scrollView.contentOffset = CGPoint.init(x: Int(screenWidth) * currentIndex, y: 0)
-        }
-    }
-    
-    var closure: (Int)->Void = {_ in }
-    
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,7 +43,7 @@ class PageView: UIView, UIScrollViewDelegate {
         closure(Int(currentIndex))
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView.init(frame: self.bounds)
         scrollView.backgroundColor = gray_F5F5F5
@@ -60,4 +52,12 @@ class PageView: UIView, UIScrollViewDelegate {
         scrollView.delegate = self
         return scrollView
     }()
+    
+    var currentIndex = 0 {
+        didSet{
+            scrollView.contentOffset = CGPoint.init(x: Int(screenWidth) * currentIndex, y: 0)
+        }
+    }
+    
+    var closure: (Int)->Void = {_ in }
 }
