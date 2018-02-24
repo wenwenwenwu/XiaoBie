@@ -22,7 +22,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "领手机"
-        navigationItem.rightBarButtonItem = calendarButtonItem
+        navigationItem.rightBarButtonItem = scanButtonItem
         navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
 
     }
@@ -41,9 +41,9 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     func switchBarButtonItem(currentIndex: Int) {
         switch currentIndex {
         case 0:
-            navigationItem.rightBarButtonItem = calendarButtonItem
-        default:
             navigationItem.rightBarButtonItem = scanButtonItem
+        default:
+            navigationItem.rightBarButtonItem = calendarButtonItem
         }
     }
     
@@ -54,7 +54,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func scanButtonAction() {
-        print("扫描")
+        navigationController?.pushViewController(ScanViewController(), animated: true)
     }
     
     //MARK: - Properties
@@ -62,19 +62,11 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var pinkVC: UIViewController = {
-        let VC = UIViewController()
-        VC.view.backgroundColor = #colorLiteral(red: 1, green: 0.9545792937, blue: 0.9687885642, alpha: 1)
-        return VC
-    }()
+    lazy var storeVC: UIViewController = StoreViewController()
     
-    lazy var blueVC: UIViewController = {
-        let VC = UIViewController()
-        VC.view.backgroundColor = #colorLiteral(red: 0.9275814891, green: 0.9614334702, blue: 1, alpha: 1)
-        return VC
-    }()
+    lazy var historyVC: UIViewController = HistoryViewController()
     
-    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom), VCArray: [pinkVC, blueVC]) { [weak self] (currentIndex) in
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-navigationBarHeight), VCArray: [storeVC, historyVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     

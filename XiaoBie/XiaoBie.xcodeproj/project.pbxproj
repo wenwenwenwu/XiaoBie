@@ -49,6 +49,11 @@
 		5BDB5032202C45F80055C21E /* MyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5031202C45F80055C21E /* MyHeader.swift */; };
 		5BDB5036202C52B90055C21E /* SetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5035202C52B90055C21E /* SetupViewController.swift */; };
 		5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5037202C52DA0055C21E /* SetupCell.swift */; };
+		5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */; };
+		5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */; };
+		5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */; };
+		5BF045402040020B003F8CE5 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* HistoryCell.swift */; };
+		5BF0454320401085003F8CE5 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* ScanViewController.swift */; };
 		5BF8F3F9202FD8650031D9D4 /* GrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
@@ -100,6 +105,11 @@
 		5BDB5031202C45F80055C21E /* MyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHeader.swift; sourceTree = "<group>"; };
 		5BDB5035202C52B90055C21E /* SetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupViewController.swift; sourceTree = "<group>"; };
 		5BDB5037202C52DA0055C21E /* SetupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupCell.swift; sourceTree = "<group>"; };
+		5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		5BF0453F2040020B003F8CE5 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		5BF0454220401085003F8CE5 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -309,7 +319,10 @@
 		5BB90CF72030342500F6CD9E /* Phone（领手机） */ = {
 			isa = PBXGroup;
 			children = (
-				5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */,
+				5BF0454120401085003F8CE5 /* scan（扫描） */,
+				5BF04536203FFCEE003F8CE5 /* 主页面 */,
+				5BF0453A203FFD44003F8CE5 /* History（历史） */,
+				5BF04537203FFCFB003F8CE5 /* Store（库存） */,
 			);
 			path = "Phone（领手机）";
 			sourceTree = "<group>";
@@ -339,6 +352,40 @@
 				5BB90CF62030341300F6CD9E /* 主页面 */,
 			);
 			path = "Setting（设置）";
+			sourceTree = "<group>";
+		};
+		5BF04536203FFCEE003F8CE5 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5BF04537203FFCFB003F8CE5 /* Store（库存） */ = {
+			isa = PBXGroup;
+			children = (
+				5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */,
+			);
+			path = "Store（库存）";
+			sourceTree = "<group>";
+		};
+		5BF0453A203FFD44003F8CE5 /* History（历史） */ = {
+			isa = PBXGroup;
+			children = (
+				5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */,
+				5BF0453F2040020B003F8CE5 /* HistoryCell.swift */,
+				5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */,
+			);
+			path = "History（历史）";
+			sourceTree = "<group>";
+		};
+		5BF0454120401085003F8CE5 /* scan（扫描） */ = {
+			isa = PBXGroup;
+			children = (
+				5BF0454220401085003F8CE5 /* ScanViewController.swift */,
+			);
+			path = "scan（扫描）";
 			sourceTree = "<group>";
 		};
 		5BF8F402202FDF070031D9D4 /* 列表 */ = {
@@ -509,6 +556,7 @@
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
 				5BDB5038202C52DA0055C21E /* SetupCell.swift in Sources */,
 				5B51FADF20293E65001AB946 /* ChatViewController.swift in Sources */,
+				5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */,
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
 				5BB90CFC203042F800F6CD9E /* HomeListViewController.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
@@ -519,12 +567,14 @@
 				5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */,
 				5BB2AAF02029AA1B00AEC5A8 /* HomeInfoView.swift in Sources */,
 				5BDB5032202C45F80055C21E /* MyHeader.swift in Sources */,
+				5BF0454320401085003F8CE5 /* ScanViewController.swift in Sources */,
 				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
 				5B28CFEA202D750B00E2DA2F /* GrabListCell.swift in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
 				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */,
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
+				5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */,
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
 				5BF8F3F9202FD8650031D9D4 /* GrabViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
@@ -533,6 +583,8 @@
 				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,
 				5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
+				5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */,
+				5BF045402040020B003F8CE5 /* HistoryCell.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* HomeListCell.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
@@ -594,12 +646,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -645,10 +698,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

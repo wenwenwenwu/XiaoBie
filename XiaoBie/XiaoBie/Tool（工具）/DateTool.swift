@@ -23,6 +23,17 @@ class DateTool {
         return str月日时分
     }
     
+    class func strDateToStr年月日(strDate: String)-> String {
+        guard !strDate.isEmpty else { return "" }
+        let date = formatterFull.date(from: strDate)
+        let calendar = Calendar.current
+        let year = calendar.component(Calendar.Component.year, from: date!)
+        let month = calendar.component(Calendar.Component.month, from: date!)
+        let day = calendar.component(Calendar.Component.day, from: date!)
+        let str年月日 = "\(year)-\(processTime(time: month))-\(processTime(time: day))"
+        return str年月日
+    }
+    
     //把"2018-02-01 16:00:01"中的"0"改为"00"
     private class func processTime(time: Int) -> String {
         let finalTime = String.init(format: "%02d",time) //不足两位用0补

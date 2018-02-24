@@ -20,10 +20,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>可以么</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>是否允许程序一直使用定位</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许程序使用期间使用定位</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>可以么</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
