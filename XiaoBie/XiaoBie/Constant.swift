@@ -23,6 +23,8 @@ import UIKit
     //颜色
     let red_DC152C = #colorLiteral(red: 0.862745098, green: 0.08235294118, blue: 0.1725490196, alpha: 1)
     let black_20 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
+    let black_40 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3694884418)
+
     let blue_3296FA = #colorLiteral(red: 0.1960784314, green: 0.5882352941, blue: 0.9803921569, alpha: 1)
     let black_333333 = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     let black_303133 = #colorLiteral(red: 0.1882352941, green: 0.1921568627, blue: 0.2, alpha: 1)

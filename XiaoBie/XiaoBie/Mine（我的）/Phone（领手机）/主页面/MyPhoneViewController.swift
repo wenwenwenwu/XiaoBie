@@ -54,7 +54,11 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     }
     
     @objc func scanButtonAction() {
-        navigationController?.pushViewController(ScanViewController(), animated: true)
+        let scanVC = ScanViewController()
+        scanVC.scanedClosure = { serialNumber in
+            self.storeVC.loadRequest()
+        }
+        navigationController?.pushViewController(scanVC, animated: true)
     }
     
     //MARK: - Properties
@@ -62,9 +66,9 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var storeVC: UIViewController = StoreViewController()
+    lazy var storeVC = StoreViewController()
     
-    lazy var historyVC: UIViewController = HistoryViewController()
+    lazy var historyVC = HistoryViewController()
     
     lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-navigationBarHeight), VCArray: [storeVC, historyVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
