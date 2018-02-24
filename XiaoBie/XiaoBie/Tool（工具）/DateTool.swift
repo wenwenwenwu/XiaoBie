@@ -34,6 +34,25 @@ class DateTool {
         return str年月日
     }
     
+    class func strToday() -> String {
+        let now = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(Calendar.Component.year, from: now)
+        let month = calendar.component(Calendar.Component.month, from: now)
+        let day = calendar.component(Calendar.Component.day, from: now)
+        let strToday = "\(year)-\(processTime(time: month))-\(processTime(time: day))"
+        return strToday
+    }
+    
+    class func str本月一号() -> String {
+        let now = Date()
+        let calendar = Calendar.current
+        let year = calendar.component(Calendar.Component.year, from: now)
+        let month = calendar.component(Calendar.Component.month, from: now)
+        let str本月一号 = "\(year)-\(processTime(time: month))-\(processTime(time: 1))"
+        return str本月一号
+    }
+    
     //把"2018-02-01 16:00:01"中的"0"改为"00"
     private class func processTime(time: Int) -> String {
         let finalTime = String.init(format: "%02d",time) //不足两位用0补

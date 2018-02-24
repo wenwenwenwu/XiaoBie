@@ -32,6 +32,10 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
         navigationController?.isNavigationBarHidden = false
     }
     
+    deinit {
+        print("🐱")
+    }
+    
     //MARK：Setup
     func setupCamera() {
         do{
@@ -104,12 +108,14 @@ class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelega
                 self.scanedClosure(serialNumber)
                 self.navigationController?.popViewController(animated: true)
             } else {
-                HudTool.showInfo(string: model.msg)
-                self.session.startRunning()
+                HudTool.showInfo(string: model.msg, closure: {
+                    self.session.startRunning()
+                })
             }
         }) { (error) in
-            HudTool.showInfo(string: error)
-            self.session.startRunning()
+            HudTool.showInfo(string: error, closure: {
+                self.session.startRunning()
+            })
         }
     }
     

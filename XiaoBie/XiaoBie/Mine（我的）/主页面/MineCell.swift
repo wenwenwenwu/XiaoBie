@@ -103,9 +103,9 @@ class MineCell: UITableViewCell {
                 setupData(icon: #imageLiteral(resourceName: "icon_my_yx"), title: "营销查询")
             case .upload:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_pj"), title: "上传凭证")
+                lineView.isHidden = true
             case .money:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_je"), title: "我的税前酬金")
-                lineView.isHidden = true
             case .setting:
                 setupData(icon: #imageLiteral(resourceName: "icon_my_sz"), title: "设置")
                 lineView.isHidden = true

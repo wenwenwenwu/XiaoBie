@@ -34,6 +34,8 @@
 		5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFD20294A1D001AB946 /* ValidateTool.swift */; };
 		5B6325EA203130C100659725 /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6325E9203130C100659725 /* DateTool.swift */; };
 		5B6F3F97202BE7C70070818C /* ClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* ClockinView.swift */; };
+		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
+		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 		5B997823202AC9450005357A /* ClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* ClockinViewHandler.swift */; };
@@ -87,6 +89,8 @@
 		5B51FAFD20294A1D001AB946 /* ValidateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateTool.swift; sourceTree = "<group>"; };
 		5B6325E9203130C100659725 /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		5B6F3F96202BE7C70070818C /* ClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockinView.swift; sourceTree = "<group>"; };
+		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		5B702F402041392100DB4978 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -260,6 +264,15 @@
 			path = "主页面";
 			sourceTree = "<group>";
 		};
+		5B702F3D20412FD000DB4978 /* calendar（日历） */ = {
+			isa = PBXGroup;
+			children = (
+				5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */,
+				5B702F402041392100DB4978 /* CalendarView.swift */,
+			);
+			path = "calendar（日历）";
+			sourceTree = "<group>";
+		};
 		5B7CCEBA202808E000C99139 = {
 			isa = PBXGroup;
 			children = (
@@ -319,10 +332,11 @@
 		5BB90CF72030342500F6CD9E /* Phone（领手机） */ = {
 			isa = PBXGroup;
 			children = (
-				5BF0454120401085003F8CE5 /* scan（扫描） */,
 				5BF04536203FFCEE003F8CE5 /* 主页面 */,
-				5BF0453A203FFD44003F8CE5 /* History（历史） */,
+				5BF0454120401085003F8CE5 /* scan（扫描） */,
+				5B702F3D20412FD000DB4978 /* calendar（日历） */,
 				5BF04537203FFCFB003F8CE5 /* Store（库存） */,
+				5BF0453A203FFD44003F8CE5 /* History（历史） */,
 			);
 			path = "Phone（领手机）";
 			sourceTree = "<group>";
@@ -545,6 +559,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */,
 				5B6F3F97202BE7C70070818C /* ClockinView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* TabBarController.swift in Sources */,
 				5B51FAD720293942001AB946 /* HomeModel.swift in Sources */,
@@ -587,6 +602,7 @@
 				5BF045402040020B003F8CE5 /* HistoryCell.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* HomeListCell.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
+				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B51FAE120293E73001AB946 /* GrabListViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* MyPhoneViewController.swift in Sources */,

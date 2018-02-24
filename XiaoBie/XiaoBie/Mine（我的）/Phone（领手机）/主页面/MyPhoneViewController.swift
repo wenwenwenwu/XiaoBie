@@ -19,11 +19,20 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         setupNavigationBar()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.shadowImage = gray_F0F0F0.colorImage()
+    }
+    
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "领手机"
         navigationItem.rightBarButtonItem = scanButtonItem
-        navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
 
     }
     
@@ -50,10 +59,14 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - Event Response
     @objc func calendarButtonAction() {
-        print("日历")
+        //弹出
+        let calendarVC = CalendarViewController()
+        let calendarNC = NavigationController.init(rootViewController: calendarVC)
+        self.present(calendarNC, animated: true, completion: nil)
     }
     
     @objc func scanButtonAction() {
+        //推出
         let scanVC = ScanViewController()
         scanVC.scanedClosure = { serialNumber in
             self.storeVC.loadRequest()
