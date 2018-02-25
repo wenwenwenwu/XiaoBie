@@ -34,23 +34,26 @@ class DateTool {
         return str年月日
     }
     
-    class func strToday() -> String {
+    class func 今天() -> (str年月日: String, str年月日时分秒: String, year: String, month: String, day: String) {
         let now = Date()
         let calendar = Calendar.current
         let year = calendar.component(Calendar.Component.year, from: now)
         let month = calendar.component(Calendar.Component.month, from: now)
         let day = calendar.component(Calendar.Component.day, from: now)
-        let strToday = "\(year)-\(processTime(time: month))-\(processTime(time: day))"
-        return strToday
+        
+        let str年月日 = "\(year)-\(processTime(time: month))-\(processTime(time: day))"
+        let str年月日时分秒 = "\(year)-\(processTime(time: month))-\(processTime(time: day)) 23:59:59"
+        return (str年月日, str年月日时分秒,"\(year)", "\(month)" ,"\(day)")
     }
     
-    class func str本月一号() -> String {
+    class func 本月一号() -> (str年月日: String, str年月日时分秒: String, year: String, month: String, day: String) {
         let now = Date()
         let calendar = Calendar.current
         let year = calendar.component(Calendar.Component.year, from: now)
         let month = calendar.component(Calendar.Component.month, from: now)
-        let str本月一号 = "\(year)-\(processTime(time: month))-\(processTime(time: 1))"
-        return str本月一号
+        let str年月日 = "\(year)-\(processTime(time: month))-\(processTime(time: 1))"
+        let str年月日时分秒 = "\(year)-\(processTime(time: month))-\(processTime(time: 1)) 00:00:01"
+        return (str年月日, str年月日时分秒, "\(year)", "\(month)" ,"\(1)")
     }
     
     //把"2018-02-01 16:00:01"中的"0"改为"00"

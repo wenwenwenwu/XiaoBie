@@ -64,7 +64,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @objc func doneButtonAction() {
-        print("完成")
+        print(fromDatePara, toDatePara)
     }
     
     @objc func dateChangedAction(_ sender: UIDatePicker) {
@@ -147,15 +147,29 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return label
     }()
     
-    lazy var fromDateButton = DateView.viewWith(isSelected: true, date: DateTool.str本月一号()) { [weak self] isSelected in
+    lazy var fromDateButton = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日) { [weak self] isSelected in
 //        self?.toDateButton.isSelected = isSelected
     }
-    lazy var toDateButton = DateView.viewWith(isSelected: false, date: DateTool.strToday()) {[weak self] isSelected in
+    lazy var toDateButton = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日) {[weak self] isSelected in
         self?.fromDateButton.isSelected = false
         
     }
     
-    lazy var dayArray: [String] = {
+    lazy var datePickerView: UIPickerView = {
+        let pickerView = UIPickerView()
+        pickerView.frame = CGRect.init(x: 0, y: 130, width: screenWidth, height: 150)
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        let date = DateTool.本月一号()
+        pickerView.selectRow(yearArray.index(of: date.year)!, inComponent: 0, animated: false)
+        pickerView.selectRow(monthArray.index(of: date.month)!, inComponent: 1, animated: false)
+        pickerView.selectRow(dayArray.index(of: date.day)!, inComponent: 2, animated: false)
+        
+        return pickerView
+    }()
+    
+    var dayArray: [String] = {
         var array: [String] = []
         for item in 1...31 {
             array.append(String(item))
@@ -163,7 +177,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return array
     }()
     
-    lazy var monthArray: [String] = {
+    var monthArray: [String] = {
         var array: [String] = []
         for item in 1...12 {
             array.append(String(item))
@@ -171,7 +185,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return array
     }()
     
-    lazy var yearArray: [String] = {
+    var yearArray: [String] = {
         var array: [String] = []
         for item in 1900...2200 {
             array.append(String(item))
@@ -179,20 +193,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return array
     }()
     
-    lazy var datePickerView: UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.frame = CGRect.init(x: 0, y: 130, width: screenWidth, height: 130)
-        pickerView.dataSource = self
-        pickerView.delegate = self
-        
-        pickerView.selectRow(yearArray.index(of: "2018")!, inComponent: 0, animated: false)
-        pickerView.selectRow(monthArray.index(of: "2")!, inComponent: 1, animated: false)
-        pickerView.selectRow(dayArray.index(of: "24")!, inComponent: 2, animated: false)
-
-        return pickerView
-    }()
-    
     var selectedItem = ""
     var year = "", month = "", day = ""
-
+    var fromDatePara = DateTool.本月一号().str年月日时分秒, toDatePara = DateTool.今天().str年月日时分秒
 }
