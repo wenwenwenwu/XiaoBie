@@ -14,9 +14,10 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
-        view.addSubview(startTimeButton)
+        view.addSubview(startTimeView)
         view.addSubview(至label)
-        view.addSubview(endTimeButton)
+        view.addSubview(endTimeView)
+        
         view.addSubview(datePickerView)
         setupNavigationBar()
         setupFrame()
@@ -37,7 +38,13 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func setupFrame() {
-        startTimeButton.snp.makeConstraints { (make) in
+        startTimeView.dateButtonClosure = {
+            self.endTimeView.isSelected = false
+        }
+        endTimeView.dateButtonClosure = {
+            self.startTimeView.isSelected = false
+        }
+        startTimeView.snp.makeConstraints { (make) in
             make.left.equalTo(13)
             make.right.equalTo(至label.snp.left).offset(-18)
             make.height.equalTo(30)
@@ -50,7 +57,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
             make.width.height.equalTo(12)
         }
         
-        endTimeButton.snp.makeConstraints { (make) in
+        endTimeView.snp.makeConstraints { (make) in
             make.left.equalTo(至label.snp.right).offset(18)
             make.right.equalTo(-13)
             make.height.equalTo(30)
@@ -64,6 +71,11 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @objc func doneButtonAction() {
+        guard endTime > startTime else {
+            HudTool.showInfo(string: "结束时间要晚于起始时间")
+            return
+        }
+        
         doneClosure(startTime, endTime)
         navigationController?.dismiss(animated: true, completion: nil)
     }
@@ -109,8 +121,17 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         default:
             day = dayArray[row]
         }
-        selectedItem = "\(year)-\(month)-\(day)"
-        print(selectedItem)
+        selectedItem = "\(DateTool.processTime(time: Int(year)!))-\(DateTool.processTime(time: Int(month)!))-\(DateTool.processTime(time: Int(day)!))"
+        
+        if startTimeView.isSelected {
+            startTimeView.date = selectedItem
+            startTime = "\(selectedItem) 00:00:01"
+        }
+        
+        if endTimeView.isSelected {
+            endTimeView.date = selectedItem
+            endTime = "\(selectedItem) 23:59:59"
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -148,13 +169,8 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return label
     }()
     
-    lazy var startTimeButton = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日) { [weak self] isSelected in
-//        self?.toDateButton.isSelected = isSelected
-    }
-    lazy var endTimeButton = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日) {[weak self] isSelected in
-        self?.startTimeButton.isSelected = false
-        
-    }
+    lazy var startTimeView = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日)
+    lazy var endTimeView = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日)
     
     lazy var datePickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -195,7 +211,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }()
     
     var selectedItem = ""
-    var year = "", month = "", day = ""
+    var year = DateTool.本月一号().year, month = DateTool.本月一号().month, day = DateTool.本月一号().day
     var startTime = DateTool.本月一号().str年月日时分秒, endTime = DateTool.今天().str年月日时分秒
     
     var doneClosure: (String, String)->Void = {_,_  in }

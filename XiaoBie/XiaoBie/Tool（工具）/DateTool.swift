@@ -57,7 +57,7 @@ class DateTool {
     }
     
     //把"2018-02-01 16:00:01"中的"0"改为"00"
-    private class func processTime(time: Int) -> String {
+    class func processTime(time: Int) -> String {
         let finalTime = String.init(format: "%02d",time) //不足两位用0补
         return finalTime
     }

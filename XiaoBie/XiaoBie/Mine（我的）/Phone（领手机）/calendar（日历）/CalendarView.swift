@@ -9,7 +9,6 @@
 import UIKit
 
 class DateView: UIView {
-
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -24,11 +23,10 @@ class DateView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(isSelected: Bool, date: String, closure: @escaping (Bool)->Void) -> DateView {
+    class func viewWith(isSelected: Bool, date: String) -> DateView {
         let view = DateView()
         view.isSelected = isSelected
         view.date = date
-        view.dateButtonClosure = closure
         return view
     }
     
@@ -47,6 +45,7 @@ class DateView: UIView {
     @objc func tapAction() {
         if isSelected == false {
             isSelected = true
+            dateButtonClosure()
         }
     }
     
@@ -66,7 +65,7 @@ class DateView: UIView {
         return view
     }()
         
-    var dateButtonClosure: (Bool)->Void = {_ in }
+    var dateButtonClosure: ()->Void = { }
     
     var date  = "" {
         didSet{
@@ -83,10 +82,6 @@ class DateView: UIView {
                 dateLabel.textColor = black_333333
                 lineView.backgroundColor = gray_CCCCCC
             }
-            dateButtonClosure(isSelected)
         }
-        
-        
     }
-    
 }
