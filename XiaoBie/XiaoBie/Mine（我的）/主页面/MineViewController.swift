@@ -44,7 +44,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func monyCellAction() {
-        print("我的睡前酬金")
+        navigationController?.pushViewController(MyMoneyViewController(), animated: true)
     }
     
     func inStoreCellAction() {

@@ -36,7 +36,8 @@ class HomeViewController: UIViewController {
     
     //MARK: - Request
     func infoRequest() {
-        WebTool.post(uri: "get_profile", para: ["staff_id" : "1"], success: { (dict) in
+        let staffId = AccountTool.userInfo().id        
+        WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
             let model = HomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.infoView.model = model.data

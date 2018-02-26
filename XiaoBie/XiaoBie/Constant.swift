@@ -26,6 +26,8 @@ import UIKit
     let black_40 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3694884418)
 
     let blue_3296FA = #colorLiteral(red: 0.1960784314, green: 0.5882352941, blue: 0.9803921569, alpha: 1)
+    let blue_3899F7 = #colorLiteral(red: 0.2196078431, green: 0.6, blue: 0.968627451, alpha: 1)
+
     let black_333333 = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     let black_303133 = #colorLiteral(red: 0.1882352941, green: 0.1921568627, blue: 0.2, alpha: 1)
     let gray_666666 = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
@@ -61,7 +63,6 @@ import UIKit
 //    let font40Bold = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight.bold)
 
     let pageSize = "10"
-
 
     //第三方
     let JPushAppKey = "5a7e0489b11594cb421bccc4"

@@ -1,47 +1,38 @@
 //
-//  HistoryViewController.swift
+//  MyMoneyViewController.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/2/23.
+//  Created by wuwenwen on 2018/2/26.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 import MJRefresh
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = white_FFFFFF
+        view.addSubview(infoView)
         view.addSubview(blankView)
-        view.addSubview(dateView)
         view.addSubview(tableView)
-        self.setupBlankView(isBlank: true, blankViewType: nil)
-        setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
-        loadRequest()
+        setupNavigationBar()
+        setupBlankView(isBlank: true, blankViewType: nil)
+        infoRequest()
+
     }
     
     //MARK: - Setup
-    func setupFrame() {
-        blankView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        dateView.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.height.equalTo(40)
-        }
-        
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(dateView.snp.bottom)
-            make.left.bottom.right.equalToSuperview()
-        }
+    func setupNavigationBar() {
+        navigationItem.title = "我的税前酬金"
+        navigationItem.rightBarButtonItem = cashButtonItem
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3899F7], for: .normal)
     }
     
     func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
         tableView.isHidden = isBlank
-        dateView.isHidden = isBlank
         blankView.viewType = blankViewType
         blankView.buttonClosure = { [weak self] in
             if self?.blankView.viewType == .noWeb {
@@ -51,6 +42,19 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     //MARK: - Request
+    func infoRequest() {
+        WebTool.post(uri: "reward_profile", para: ["staff_id" : "1"], success: { (dict) in
+            let model = MyMoneyInfoResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.infoView.model = model.data
+            }else{
+                
+            }
+        }) { (error) in
+            
+        }
+    }
+    
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
         
@@ -86,7 +90,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
-
+        
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = HistoryResponseModel.parse(dict: dict)
@@ -109,6 +113,30 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.mj_footer.endRefreshing()
     }
     
+    //MARK: - Event Response
+    @objc func cashButtonAction() {
+        print("提现")
+    }
+    
+    func popupCalendar() {
+        //弹出
+        let calendarVC = CalendarViewController()
+        calendarVC.startDate = startDate
+        calendarVC.endDate = endDate
+        
+        calendarVC.doneClosure = { startDate, endDate in
+//            self.historyVC.startDate = startDate
+//            self.historyVC.endDate = endDate
+//            self.historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
+//            self.historyVC.loadRequest()
+//            
+//            self.startDate = startDate
+//            self.endDate = endDate
+        }
+        let calendarNC = NavigationController.init(rootViewController: calendarVC)
+        self.present(calendarNC, animated: true, completion: nil)
+    }
+    
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -122,12 +150,31 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 66
+        return 130
     }
     
+
     //MARK: - Properties
+    lazy var cashButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem.init(title: "提现", style: .plain, target: self, action: #selector(cashButtonAction))
+        return buttonItem
+    }()
+    
+    lazy var infoView: MyMoneyInfoView = {
+        let view = MyMoneyInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 145))
+        view.calendarButtonClosure = {
+            self.popupCalendar()
+        }
+        return view
+    }()
+    
+    lazy var blankView: BlankView = {
+        let blankView = BlankView.init(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: screenHeight-infoView.height-navigationBarHeight))
+        return blankView
+    }()
+    
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
+        let tableView = UITableView.init(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: screenHeight-infoView.height-navigationBarHeight), style: .plain)
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 0
@@ -144,22 +191,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
-    lazy var blankView: BlankView = {
-        let blankView = BlankView()
-        return blankView
-    }()
-    
-    lazy var dateView: HistoryDateView = {
-        let view = HistoryDateView()
-        view.setupDate(startDate: startDate, endDate: endDate)
-        return view
-    }()
-    
     var dataArray: [HistoryModel] = []
     var pageCount = 0
     
     //startTime
-    var startDate = "" {
+    var startDate = DateTool.str本月一号() {
         didSet{
             startTime = "\(startDate) 00:00:01"
         }
@@ -167,11 +203,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var startTime = ""
     
     //endTime
-    var endDate = "" {
+    var endDate = DateTool.str今天() {
         didSet{
             endTime = "\(endDate) 23:59:59"
         }
     }
     var endTime = ""
-    
 }

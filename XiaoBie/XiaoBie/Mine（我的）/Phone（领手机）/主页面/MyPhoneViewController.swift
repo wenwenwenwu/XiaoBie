@@ -110,6 +110,4 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     var startDate = DateTool.str本月一号()
     var endDate = DateTool.str今天()
-    
-    
 }
