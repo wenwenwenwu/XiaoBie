@@ -61,6 +61,11 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     @objc func calendarButtonAction() {
         //弹出
         let calendarVC = CalendarViewController()
+        calendarVC.doneClosure = { startTime, endTime in
+            self.historyVC.startTime = startTime
+            self.historyVC.endTime = endTime
+            self.historyVC.loadRequest()
+        }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
         self.present(calendarNC, animated: true, completion: nil)
     }

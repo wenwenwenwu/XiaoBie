@@ -14,9 +14,9 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
-        view.addSubview(fromDateButton)
+        view.addSubview(startTimeButton)
         view.addSubview(至label)
-        view.addSubview(toDateButton)
+        view.addSubview(endTimeButton)
         view.addSubview(datePickerView)
         setupNavigationBar()
         setupFrame()
@@ -37,7 +37,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func setupFrame() {
-        fromDateButton.snp.makeConstraints { (make) in
+        startTimeButton.snp.makeConstraints { (make) in
             make.left.equalTo(13)
             make.right.equalTo(至label.snp.left).offset(-18)
             make.height.equalTo(30)
@@ -50,7 +50,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
             make.width.height.equalTo(12)
         }
         
-        toDateButton.snp.makeConstraints { (make) in
+        endTimeButton.snp.makeConstraints { (make) in
             make.left.equalTo(至label.snp.right).offset(18)
             make.right.equalTo(-13)
             make.height.equalTo(30)
@@ -64,7 +64,8 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @objc func doneButtonAction() {
-        print(fromDatePara, toDatePara)
+        doneClosure(startTime, endTime)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func dateChangedAction(_ sender: UIDatePicker) {
@@ -147,11 +148,11 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return label
     }()
     
-    lazy var fromDateButton = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日) { [weak self] isSelected in
+    lazy var startTimeButton = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日) { [weak self] isSelected in
 //        self?.toDateButton.isSelected = isSelected
     }
-    lazy var toDateButton = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日) {[weak self] isSelected in
-        self?.fromDateButton.isSelected = false
+    lazy var endTimeButton = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日) {[weak self] isSelected in
+        self?.startTimeButton.isSelected = false
         
     }
     
@@ -195,5 +196,8 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var selectedItem = ""
     var year = "", month = "", day = ""
-    var fromDatePara = DateTool.本月一号().str年月日时分秒, toDatePara = DateTool.今天().str年月日时分秒
+    var startTime = DateTool.本月一号().str年月日时分秒, endTime = DateTool.今天().str年月日时分秒
+    
+    var doneClosure: (String, String)->Void = {_,_  in }
+    
 }

@@ -99,3 +99,38 @@ class HistoryCell: UITableViewCell {
         }
     }    
 }
+
+class HistoryDateView: UIView {
+    
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = gray_F5F5F5
+        addSubview(dateLabel)
+        setupFrame()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Setup
+    func setupFrame() {
+        dateLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(13)
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    func setUpDate(fromDate: String, toDate: String) {
+        dateLabel.text = "\(fromDate) 至 \(toDate)"
+    }
+    
+    //MARK: - Properties
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = black_333333
+        label.font = font14
+        return label
+    }()
+}

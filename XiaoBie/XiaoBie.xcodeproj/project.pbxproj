@@ -54,7 +54,7 @@
 		5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */; };
 		5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */; };
 		5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */; };
-		5BF045402040020B003F8CE5 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* HistoryCell.swift */; };
+		5BF045402040020B003F8CE5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* HistoryView.swift */; };
 		5BF0454320401085003F8CE5 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* ScanViewController.swift */; };
 		5BF8F3F9202FD8650031D9D4 /* GrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
@@ -112,7 +112,7 @@
 		5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
-		5BF0453F2040020B003F8CE5 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		5BF0453F2040020B003F8CE5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		5BF0454220401085003F8CE5 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		5BF8F3F8202FD8650031D9D4 /* GrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
@@ -388,7 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */,
-				5BF0453F2040020B003F8CE5 /* HistoryCell.swift */,
+				5BF0453F2040020B003F8CE5 /* HistoryView.swift */,
 				5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */,
 			);
 			path = "History（历史）";
@@ -599,7 +599,7 @@
 				5B51FADD20293E5B001AB946 /* MineViewController.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */,
-				5BF045402040020B003F8CE5 /* HistoryCell.swift in Sources */,
+				5BF045402040020B003F8CE5 /* HistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* HomeListCell.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,

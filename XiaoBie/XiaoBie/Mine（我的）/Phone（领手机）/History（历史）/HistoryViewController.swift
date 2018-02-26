@@ -15,9 +15,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(blankView)
+        view.addSubview(dateView)
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
         setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
+        loadRequest()
     }
     
     //MARK: - Setup
@@ -26,13 +28,20 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             make.edges.equalToSuperview()
         }
         
+        dateView.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(40)
+        }
+        
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalTo(dateView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
         }
     }
     
     func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
         tableView.isHidden = isBlank
+        dateView.isHidden = isBlank
         blankView.viewType = blankViewType
         blankView.buttonClosure = { [weak self] in
             if self?.blankView.viewType == .noWeb {
@@ -44,8 +53,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - Request
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"undone_phone_list", para:["staff_id":staffId, "page_num":"1", "page_size":pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = HistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -77,8 +85,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"undone_phone_list", para:["staff_id":staffId, "page_num":String(pageCount), "page_size":pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = HistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -140,7 +147,16 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return blankView
     }()
     
+    lazy var dateView: HistoryDateView = {
+        let view = HistoryDateView()
+        view.setUpDate(fromDate: DateTool.本月一号().str年月日, toDate: DateTool.今天().str年月日)
+        return view
+    }()
+    
     var dataArray: [HistoryModel] = []
     var pageCount = 0
+    
+    var startTime = DateTool.本月一号().str年月日时分秒
+    var endTime = DateTool.今天().str年月日时分秒
     
 }
