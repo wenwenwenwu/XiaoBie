@@ -122,7 +122,7 @@ class HistoryDateView: UIView {
         }
     }
     
-    func setUpDate(fromDate: String, toDate: String) {
+    func setupDate(fromDate: String, toDate: String) {
         dateLabel.text = "\(fromDate) 至 \(toDate)"
     }
     

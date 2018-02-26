@@ -17,9 +17,9 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         view.addSubview(startTimeView)
         view.addSubview(至label)
         view.addSubview(endTimeView)
-        
         view.addSubview(datePickerView)
         setupNavigationBar()
+        setupDateView()
         setupFrame()
 
     }
@@ -38,12 +38,6 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func setupFrame() {
-        startTimeView.dateButtonClosure = {
-            self.endTimeView.isSelected = false
-        }
-        endTimeView.dateButtonClosure = {
-            self.startTimeView.isSelected = false
-        }
         startTimeView.snp.makeConstraints { (make) in
             make.left.equalTo(13)
             make.right.equalTo(至label.snp.left).offset(-18)
@@ -62,6 +56,16 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
             make.right.equalTo(-13)
             make.height.equalTo(30)
             make.centerY.equalTo(至label)
+        }
+    }
+    
+    func setupDateView() {
+        //dateView的闭包之间循环引用，无法在lazy var中初始化
+        startTimeView.dateButtonSelectedClosure = {
+            self.endTimeView.isSelected = false
+        }
+        endTimeView.dateButtonSelectedClosure = {
+            self.startTimeView.isSelected = false
         }
     }
     

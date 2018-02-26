@@ -125,7 +125,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: - Properties
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
+        let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 0
@@ -149,7 +149,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     lazy var dateView: HistoryDateView = {
         let view = HistoryDateView()
-        view.setUpDate(fromDate: DateTool.本月一号().str年月日, toDate: DateTool.今天().str年月日)
+        view.setupDate(fromDate: DateTool.本月一号().str年月日, toDate: DateTool.今天().str年月日)
         return view
     }()
     

@@ -45,7 +45,7 @@ class DateView: UIView {
     @objc func tapAction() {
         if isSelected == false {
             isSelected = true
-            dateButtonClosure()
+            dateButtonSelectedClosure()
         }
     }
     
@@ -65,7 +65,7 @@ class DateView: UIView {
         return view
     }()
         
-    var dateButtonClosure: ()->Void = { }
+    var dateButtonSelectedClosure: ()->Void = { }
     
     var date  = "" {
         didSet{

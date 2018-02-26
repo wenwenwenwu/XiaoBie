@@ -64,7 +64,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         calendarVC.doneClosure = { startTime, endTime in
             self.historyVC.startTime = startTime
             self.historyVC.endTime = endTime
-            print(startTime,endTime)
+            self.historyVC.dateView.setupDate(fromDate: startTime, toDate: endTime)
             self.historyVC.loadRequest()
         }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
