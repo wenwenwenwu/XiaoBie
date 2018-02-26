@@ -20,6 +20,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         view.addSubview(datePickerView)
         setupNavigationBar()
         setupDateView()
+        setupPickerView(strDate: startDate)
         setupFrame()
 
     }
@@ -61,12 +62,26 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func setupDateView() {
         //dateView的闭包之间循环引用，无法在lazy var中初始化
-        startTimeView.dateButtonSelectedClosure = {
-            self.endTimeView.isSelected = false
+        startTimeView.dateButtonSelectedClosure = { [weak self] in
+            self?.endTimeView.isSelected = false
+            self?.setupPickerView(strDate: (self?.startTimeView.date)!)
         }
-        endTimeView.dateButtonSelectedClosure = {
-            self.startTimeView.isSelected = false
+        endTimeView.dateButtonSelectedClosure = { [weak self] in
+            self?.startTimeView.isSelected = false
+            self?.setupPickerView(strDate: (self?.endTimeView.date)!)
         }
+    }
+    
+    func setupPickerView(strDate: String) {
+        let dateArray = strDate.components(separatedBy: "-")
+        //带0数字转化成正常数字方便pickerView显示
+         year = handle(text: dateArray[0])
+         month = handle(text: dateArray[1])
+         day = handle(text: dateArray[2])
+    
+        datePickerView.selectRow(yearArray.index(of: year)!, inComponent: 0, animated: true)
+        datePickerView.selectRow(monthArray.index(of: month)!, inComponent: 1, animated: true)
+        datePickerView.selectRow(dayArray.index(of: day)!, inComponent: 2, animated: true)
     }
     
     //MARK: - Event Response
@@ -192,11 +207,6 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         pickerView.frame = CGRect.init(x: 0, y: 130, width: screenWidth, height: 150)
         pickerView.dataSource = self
         pickerView.delegate = self
-        
-        pickerView.selectRow(yearArray.index(of: year)!, inComponent: 0, animated: false)
-        pickerView.selectRow(monthArray.index(of: month)!, inComponent: 1, animated: false)
-        pickerView.selectRow(dayArray.index(of: day)!, inComponent: 2, animated: false)
-        
         return pickerView
     }()
     
@@ -224,17 +234,11 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return array
     }()
     
-    var startDate = "" {
-        didSet{
-            let dateArray = startDate.components(separatedBy: "-")
-            //带0数字转化成正常数字方便pickerView初次显示
-            year = handle(text: dateArray[0])
-            month = handle(text: dateArray[1])
-            day = handle(text: dateArray[2])
-        }
-    }
-    var year = "", month = "", day = ""
+    var year = ""
+    var month = ""
+    var day = ""
     
+    var startDate = ""
     var endDate = ""
     
     var doneClosure: (String, String)->Void = {_,_  in }
