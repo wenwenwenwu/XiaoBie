@@ -61,11 +61,17 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     @objc func calendarButtonAction() {
         //弹出
         let calendarVC = CalendarViewController()
+        calendarVC.startDate = startDate
+        calendarVC.endDate = endDate
+
         calendarVC.doneClosure = { startDate, endDate in
             self.historyVC.startDate = startDate
             self.historyVC.endDate = endDate
             self.historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
             self.historyVC.loadRequest()
+            
+            self.startDate = startDate
+            self.endDate = endDate
         }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
         self.present(calendarNC, animated: true, completion: nil)
@@ -89,8 +95,8 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     lazy var historyVC: HistoryViewController = {
         let VC = HistoryViewController()
-        VC.startDate = DateTool.本月一号().strDate
-        VC.endDate = DateTool.今天().strDate
+        VC.startDate = startDate
+        VC.endDate = endDate
         return VC
     }()
     
@@ -101,4 +107,9 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     lazy var calendarButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_rl").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(calendarButtonAction))
     
     lazy var scanButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_lsj_sys").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(scanButtonAction))
+    
+    var startDate = DateTool.str本月一号()
+    var endDate = DateTool.str今天()
+    
+    
 }

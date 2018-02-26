@@ -75,17 +75,27 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @objc func doneButtonAction() {
-        guard endTime > startTime else {
+        guard endDate > startDate else {
             HudTool.showInfo(string: "结束时间要晚于起始时间")
             return
         }
         
-        doneClosure(startTime, endTime)
+        doneClosure(startDate, endDate)
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @objc func dateChangedAction(_ sender: UIDatePicker) {
         print(sender.date)
+    }
+    
+    //MARK: - Private Method
+    func handle(text: String) -> String {
+        if text[text.startIndex] == "0" {
+            let newStartIndex = text.index(after: text.startIndex)
+            return String(text[newStartIndex...])
+        }
+        return text
+        
     }
     
     //MARK: UIPickerViewDataSource
@@ -105,17 +115,6 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     //MARK: UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch component {
-        case 0:
-            return "\(yearArray[row])年"
-        case 1:
-            return "\(monthArray[row])月"
-        default:
-            return "\(dayArray[row])日"
-        }
-    }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch component {
         case 0:
@@ -125,16 +124,28 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         default:
             day = dayArray[row]
         }
-        selectedItem = "\(DateTool.processTime(time: Int(year)!))-\(DateTool.processTime(time: Int(month)!))-\(DateTool.processTime(time: Int(day)!))"
+        //正常数字转换为带0的数字方便输出
+        let selectedItem = "\(DateTool.processTime(time: Int(year)!))-\(DateTool.processTime(time: Int(month)!))-\(DateTool.processTime(time: Int(day)!))"
         
         if startTimeView.isSelected {
             startTimeView.date = selectedItem
-            startTime = selectedItem
+            startDate = selectedItem
         }
         
         if endTimeView.isSelected {
             endTimeView.date = selectedItem
-            endTime = selectedItem
+            endDate = selectedItem
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch component {
+        case 0:
+            return "\(yearArray[row])年"
+        case 1:
+            return "\(monthArray[row])月"
+        default:
+            return "\(dayArray[row])日"
         }
     }
     
@@ -173,8 +184,8 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return label
     }()
     
-    lazy var startTimeView = DateView.viewWith(isSelected: true, date: DateTool.本月一号().strDate)
-    lazy var endTimeView = DateView.viewWith(isSelected: false, date: DateTool.今天().strDate)
+    lazy var startTimeView = DateView.viewWith(isSelected: true, date: startDate )
+    lazy var endTimeView = DateView.viewWith(isSelected: false, date: endDate)
     
     lazy var datePickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -182,10 +193,9 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        let date = DateTool.本月一号()
-        pickerView.selectRow(yearArray.index(of: date.year)!, inComponent: 0, animated: false)
-        pickerView.selectRow(monthArray.index(of: date.month)!, inComponent: 1, animated: false)
-        pickerView.selectRow(dayArray.index(of: date.day)!, inComponent: 2, animated: false)
+        pickerView.selectRow(yearArray.index(of: year)!, inComponent: 0, animated: false)
+        pickerView.selectRow(monthArray.index(of: month)!, inComponent: 1, animated: false)
+        pickerView.selectRow(dayArray.index(of: day)!, inComponent: 2, animated: false)
         
         return pickerView
     }()
@@ -214,9 +224,18 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return array
     }()
     
-    var selectedItem = ""
-    var year = DateTool.本月一号().year, month = DateTool.本月一号().month, day = DateTool.本月一号().day
-    var startTime = DateTool.本月一号().strDate, endTime = DateTool.今天().strDate
+    var startDate = "" {
+        didSet{
+            let dateArray = startDate.components(separatedBy: "-")
+            //带0数字转化成正常数字方便pickerView初次显示
+            year = handle(text: dateArray[0])
+            month = handle(text: dateArray[1])
+            day = handle(text: dateArray[2])
+        }
+    }
+    var year = "", month = "", day = ""
+    
+    var endDate = ""
     
     var doneClosure: (String, String)->Void = {_,_  in }
     
