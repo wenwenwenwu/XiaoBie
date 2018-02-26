@@ -122,8 +122,8 @@ class HistoryDateView: UIView {
         }
     }
     
-    func setupDate(fromDate: String, toDate: String) {
-        dateLabel.text = "\(fromDate) 至 \(toDate)"
+    func setupDate(startDate: String, endDate: String) {
+        dateLabel.text = "\(startDate)  至  \(endDate)"
     }
     
     //MARK: - Properties

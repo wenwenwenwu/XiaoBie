@@ -53,6 +53,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - Request
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
+        
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = HistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -85,6 +86,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
+
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = HistoryResponseModel.parse(dict: dict)
@@ -149,14 +151,27 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     lazy var dateView: HistoryDateView = {
         let view = HistoryDateView()
-        view.setupDate(fromDate: DateTool.本月一号().str年月日, toDate: DateTool.今天().str年月日)
+        view.setupDate(startDate: startDate, endDate: endDate)
         return view
     }()
     
     var dataArray: [HistoryModel] = []
     var pageCount = 0
     
-    var startTime = DateTool.本月一号().str年月日时分秒
-    var endTime = DateTool.今天().str年月日时分秒
+    //startTimePara
+    var startDate = "" {
+        didSet{
+            startTime = "\(startDate) 00:00:01"
+        }
+    }
+    var startTime = ""
+    
+    //endTimePara
+    var endDate = "" {
+        didSet{
+            endTime = "\(endDate) 23:59:59"
+        }
+    }
+    var endTime = ""
     
 }

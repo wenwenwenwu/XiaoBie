@@ -129,12 +129,12 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         if startTimeView.isSelected {
             startTimeView.date = selectedItem
-            startTime = "\(selectedItem) 00:00:01"
+            startTime = selectedItem
         }
         
         if endTimeView.isSelected {
             endTimeView.date = selectedItem
-            endTime = "\(selectedItem) 23:59:59"
+            endTime = selectedItem
         }
     }
     
@@ -173,8 +173,8 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return label
     }()
     
-    lazy var startTimeView = DateView.viewWith(isSelected: true, date: DateTool.本月一号().str年月日)
-    lazy var endTimeView = DateView.viewWith(isSelected: false, date: DateTool.今天().str年月日)
+    lazy var startTimeView = DateView.viewWith(isSelected: true, date: DateTool.本月一号().strDate)
+    lazy var endTimeView = DateView.viewWith(isSelected: false, date: DateTool.今天().strDate)
     
     lazy var datePickerView: UIPickerView = {
         let pickerView = UIPickerView()
@@ -216,7 +216,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     var selectedItem = ""
     var year = DateTool.本月一号().year, month = DateTool.本月一号().month, day = DateTool.本月一号().day
-    var startTime = DateTool.本月一号().str年月日时分秒, endTime = DateTool.今天().str年月日时分秒
+    var startTime = DateTool.本月一号().strDate, endTime = DateTool.今天().strDate
     
     var doneClosure: (String, String)->Void = {_,_  in }
     

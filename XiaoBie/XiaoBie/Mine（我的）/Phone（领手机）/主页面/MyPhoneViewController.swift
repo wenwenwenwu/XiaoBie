@@ -61,10 +61,10 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     @objc func calendarButtonAction() {
         //弹出
         let calendarVC = CalendarViewController()
-        calendarVC.doneClosure = { startTime, endTime in
-            self.historyVC.startTime = startTime
-            self.historyVC.endTime = endTime
-            self.historyVC.dateView.setupDate(fromDate: startTime, toDate: endTime)
+        calendarVC.doneClosure = { startDate, endDate in
+            self.historyVC.startDate = startDate
+            self.historyVC.endDate = endDate
+            self.historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
             self.historyVC.loadRequest()
         }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
@@ -87,7 +87,12 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     lazy var storeVC = StoreViewController()
     
-    lazy var historyVC = HistoryViewController()
+    lazy var historyVC: HistoryViewController = {
+        let VC = HistoryViewController()
+        VC.startDate = DateTool.本月一号().strDate
+        VC.endDate = DateTool.今天().strDate
+        return VC
+    }()
     
     lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-selectView.bottom-navigationBarHeight), VCArray: [storeVC, historyVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
