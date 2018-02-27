@@ -69,7 +69,7 @@ class WebTool {
         }
     }
 
-    //多张图片上传
+    //图片上传
     class func upLoadImages(para: String, imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
         HudTool.show()
         
