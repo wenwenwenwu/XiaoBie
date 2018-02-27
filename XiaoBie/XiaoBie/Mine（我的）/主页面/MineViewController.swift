@@ -40,7 +40,8 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func uploadCellAction() {
-        print("上传凭证")
+        
+        navigationController?.pushViewController(AlibiViewController(), animated: true)
     }
     
     func monyCellAction() {

@@ -16,6 +16,9 @@
 		5B3519A7204408BE00CE92E4 /* MyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* MyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* MyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* MyMoneyView.swift */; };
 		5B3519AB20440F2600CE92E4 /* MyMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519AA20440F2600CE92E4 /* MyMoneyModel.swift */; };
+		5B498E9B2044FEEF0071406C /* AlibiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9A2044FEEF0071406C /* AlibiViewController.swift */; };
+		5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9C204501440071406C /* PhotoPickerTool.swift */; };
+		5B498E9F204503DD0071406C /* AlibiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9E204503DD0071406C /* AlibiView.swift */; };
 		5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA0202D3D9F009D44F1 /* Alert.swift */; };
 		5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */; };
 		5B4CFDA6202D3D9F009D44F1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA3202D3D9F009D44F1 /* TabBarController.swift */; };
@@ -74,6 +77,9 @@
 		5B3519A6204408BE00CE92E4 /* MyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* MyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyView.swift; sourceTree = "<group>"; };
 		5B3519AA20440F2600CE92E4 /* MyMoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyModel.swift; sourceTree = "<group>"; };
+		5B498E9A2044FEEF0071406C /* AlibiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlibiViewController.swift; sourceTree = "<group>"; };
+		5B498E9C204501440071406C /* PhotoPickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerTool.swift; sourceTree = "<group>"; };
+		5B498E9E204503DD0071406C /* AlibiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlibiView.swift; sourceTree = "<group>"; };
 		5B4CFDA0202D3D9F009D44F1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5B4CFDA3202D3D9F009D44F1 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 				5B4CFDA9202D47EB009D44F1 /* 主页面 */,
 				5BB90CF72030342500F6CD9E /* Phone（领手机） */,
 				5B3519A5204408A100CE92E4 /* Money（酬金） */,
+				5B498E992044FE890071406C /* Alibi（凭证） */,
 				5BDB5034202C52A60055C21E /* Setting（设置） */,
 			);
 			path = "Mine（我的）";
@@ -193,6 +200,15 @@
 				5BDB5033202C521A0055C21E /* 主页面 */,
 			);
 			path = "Login（登录）";
+			sourceTree = "<group>";
+		};
+		5B498E992044FE890071406C /* Alibi（凭证） */ = {
+			isa = PBXGroup;
+			children = (
+				5B498E9A2044FEEF0071406C /* AlibiViewController.swift */,
+				5B498E9E204503DD0071406C /* AlibiView.swift */,
+			);
+			path = "Alibi（凭证）";
 			sourceTree = "<group>";
 		};
 		5B4CFD9F202D3D9F009D44F1 /* View */ = {
@@ -238,6 +254,7 @@
 		5B51FAE6202944E4001AB946 /* Tool（工具） */ = {
 			isa = PBXGroup;
 			children = (
+				5B498E9C204501440071406C /* PhotoPickerTool.swift */,
 				5B6325E9203130C100659725 /* DateTool.swift */,
 				5B51FAFC20294A1D001AB946 /* CacheTool.swift */,
 				5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */,
@@ -592,6 +609,7 @@
 				5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */,
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
 				5BB90CFC203042F800F6CD9E /* HomeListViewController.swift in Sources */,
+				5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */,
 				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
@@ -619,11 +637,13 @@
 				5B3519AB20440F2600CE92E4 /* MyMoneyModel.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */,
+				5B498E9F204503DD0071406C /* AlibiView.swift in Sources */,
 				5BF045402040020B003F8CE5 /* HistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* HomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
+				5B498E9B2044FEEF0071406C /* AlibiViewController.swift in Sources */,
 				5B51FAE120293E73001AB946 /* GrabListViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* MyPhoneViewController.swift in Sources */,
 				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
