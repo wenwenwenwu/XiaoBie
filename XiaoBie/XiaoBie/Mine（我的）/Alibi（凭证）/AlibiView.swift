@@ -60,7 +60,7 @@ class PhotoButtonView: UIView {
         return imageView
     }()
     
-    lazy var photoPickerTool = PhotoPickerTool.photoPickerWith(ownerViewController: ownVC) { (url, localURL) in
+    lazy var photoPickerTool = PhotoPickerTool.photoPickerWith(uploadPara: "upload_daily_evidence", ownerViewController: ownVC) { (url, localURL) in
         self.url = url
         self.photoView.kf.setImage(with: URL.init(string: localURL))
         self.uploadCompleteClosure()

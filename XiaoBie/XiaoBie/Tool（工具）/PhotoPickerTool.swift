@@ -10,12 +10,10 @@ import UIKit
 
 class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    var completeClosure:(String,String)->Void = { URL,localURL in }
-    var ownerViewController = UIViewController()
-    
     //MARK: - FactoryMethod
-    class func photoPickerWith(ownerViewController: UIViewController, completeClosure: @escaping (String,String)->Void) -> PhotoPickerTool {
+    class func photoPickerWith(uploadPara: String, ownerViewController: UIViewController, completeClosure: @escaping (String,String)->Void) -> PhotoPickerTool {
         let photoPickerTool = PhotoPickerTool()
+        photoPickerTool.uploadPara = uploadPara
         photoPickerTool.ownerViewController = ownerViewController
         photoPickerTool.completeClosure = completeClosure
         return photoPickerTool
@@ -54,7 +52,7 @@ class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         //缓存图片并获取url
         let localURL = CacheTool.imageUrl(image: pickedImage)
         //传图片
-        WebTool.upLoadImages( para: "upload_daily_evidence", imageURLs: [localURL], success: { (dict) in
+        WebTool.upLoadImages( para: uploadPara, imageURLs: [localURL], success: { (dict) in
             let model = PicturesResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.completeClosure(model.data[0],localURL.absoluteString)
@@ -66,8 +64,13 @@ class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         })
         //图片控制器退出
         picker.dismiss(animated: true, completion: nil)
-        
     }
+    
+    //MARK: - Properties
+    var completeClosure:(String,String)->Void = { URL,localURL in }
+    var ownerViewController = UIViewController()
+    var uploadPara = ""
+    
 }
 
 //MARK: - PicturesModel
