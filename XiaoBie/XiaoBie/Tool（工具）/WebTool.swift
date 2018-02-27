@@ -12,7 +12,8 @@ import Alamofire
 class WebTool {
     
     static let baseURL = "http://116.62.206.174:8080/longwang/general/"
-    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/upload_sign_img"
+//    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/upload_sign_img"
+    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
 
     //POST
     class func post(isShowHud: Bool = true, uri: String ,para : [String:String],success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
@@ -69,7 +70,7 @@ class WebTool {
     }
 
     //多张图片上传
-    class func upLoadImages(imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
+    class func upLoadImages(para: String, imageURLs : [URL], success : @escaping (_ response : NSDictionary)->(), failture : @escaping (_ error : String)->()){
         HudTool.show()
         
         Alamofire.upload(
@@ -79,7 +80,7 @@ class WebTool {
                     multipartFormData.append(imageURLs[i], withName: "UPLOAD_IMAGES[]", fileName: "\(i).jpg", mimeType: "image/png")
                 }
             //String参数
-        }, to: imagesUploadURL
+        }, to: imagesUploadURL+para
             //Closure参数
             , encodingCompletion: { encodingResult in
                 switch encodingResult {

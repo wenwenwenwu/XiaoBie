@@ -32,7 +32,6 @@
 		5B51FAEF202947E2001AB946 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEB202947E2001AB946 /* UIView.swift */; };
 		5B51FAF0202947E2001AB946 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEC202947E2001AB946 /* String.swift */; };
 		5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAED202947E2001AB946 /* UIButton.swift */; };
-		5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */; };
 		5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF3202948AA001AB946 /* HudTool.swift */; };
 		5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF5202948AA001AB946 /* WebTool.swift */; };
 		5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF6202948AA001AB946 /* AccountTool.swift */; };
@@ -93,7 +92,6 @@
 		5B51FAEB202947E2001AB946 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5B51FAEC202947E2001AB946 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		5B51FAED202947E2001AB946 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
-		5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerHandler.swift; sourceTree = "<group>"; };
 		5B51FAF3202948AA001AB946 /* HudTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudTool.swift; sourceTree = "<group>"; };
 		5B51FAF5202948AA001AB946 /* WebTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTool.swift; sourceTree = "<group>"; };
 		5B51FAF6202948AA001AB946 /* AccountTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTool.swift; sourceTree = "<group>"; };
@@ -282,7 +280,6 @@
 		5B51FB0020297768001AB946 /* Handler */ = {
 			isa = PBXGroup;
 			children = (
-				5B51FAF2202948AA001AB946 /* PhotoPickerHandler.swift */,
 			);
 			path = Handler;
 			sourceTree = "<group>";
@@ -610,7 +607,6 @@
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
 				5BB90CFC203042F800F6CD9E /* HomeListViewController.swift in Sources */,
 				5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */,
-				5B51FAF7202948AA001AB946 /* PhotoPickerHandler.swift in Sources */,
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* HomeViewController.swift in Sources */,
 				5BDB5030202C3B490055C21E /* MineCell.swift in Sources */,

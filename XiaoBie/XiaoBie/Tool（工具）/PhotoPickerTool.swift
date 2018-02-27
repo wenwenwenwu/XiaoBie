@@ -54,10 +54,10 @@ class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         //缓存图片并获取url
         let localURL = CacheTool.imageUrl(image: pickedImage)
         //传图片
-        WebTool.upLoadImages( imageURLs: [localURL], success: { (dict) in
+        WebTool.upLoadImages( para: "upload_daily_evidence", imageURLs: [localURL], success: { (dict) in
             let model = PicturesResponseModel.parse(dict: dict)
-            if model.result == "success" {
-                self.completeClosure(model.data.images,localURL.absoluteString)
+            if model.code == "0" {
+                self.completeClosure(model.data[0],localURL.absoluteString)
             } else{
                 HudTool.showInfo(string: model.msg)
             }
@@ -68,5 +68,18 @@ class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationCo
         picker.dismiss(animated: true, completion: nil)
         
     }
+}
 
+//MARK: - PicturesModel
+class PicturesResponseModel: NSObject {
+    
+    @objc var msg = ""
+    @objc var result = ""
+    @objc var code = ""
+    @objc var data: [String] = []
+    
+    class func parse(dict : Any ) -> PicturesResponseModel{
+        let model = PicturesResponseModel.yy_model(withJSON: dict)
+        return model!
+    }
 }
