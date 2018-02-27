@@ -10,65 +10,6 @@ import UIKit
 
 class HomeListCell: UITableViewCell {
     
-    var model = GrabItemModel() {
-        didSet {
-            //timeLabel
-            timeLabel.text = DateTool.strDateToStr月日时分(strDate: "2018-02-01 16:00:01")
-            //iconImageView
-            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //nameLabel
-            nameLabel.text = model.user_name
-            //addressLabel
-            addressLabel.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                let distanceKM = Float(model.distance)!/1000
-                let strDistanceKM = String(format: "%.2f", distanceKM)
-                distanceLabel.text = "距离：\(strDistanceKM)km"
-            }
-            //statusLabel
-            var statusStr = ""
-            switch model.statusType {
-                case .toCheck:
-                    statusStr = "待查单"
-                case .querying:
-                    statusStr = "查询中"
-                case .toOrder:
-                    statusStr = "待预约"
-                case .toTestify:
-                    statusStr = "待验单"
-                case .cancel:
-                    statusStr = "客户取消"
-                case .contact:
-                    statusStr = "联系中"
-                case .accept:
-                    statusStr = "正在验单"
-                case .access:
-                    statusStr = "通过验证"
-                case .empty:
-                    statusStr = "无此活动"
-                case .toOrder2:
-                    statusStr = "待预约二次验证"
-                case .toTestify2:
-                    statusStr = "二次验证中"
-                case .busy:
-                    statusStr = "正在忙"
-                case .uploaded:
-                    statusStr = "凭证已上传"
-                default:
-                    statusStr = "完成"
-            }
-            statusLabel.text = statusStr
-        }
-    }
-    
-    var cancelButtonClosure: ()->Void = {}
-    
     //MARK: - FactoryMethod
     class func cellWith(tableView : UITableView) -> HomeListCell{
         let reuseIdentifier = "homeListCell";
@@ -167,7 +108,7 @@ class HomeListCell: UITableViewCell {
         cancelButtonClosure()
     }
     
-    //MARK: - Lazyload
+    //MARK: - Properties
     lazy var whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = white_FFFFFF
@@ -235,4 +176,63 @@ class HomeListCell: UITableViewCell {
         button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
         return button
     }()
+    
+    var model = GrabItemModel() {
+        didSet {
+            //timeLabel
+            timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.create_time)
+            //iconImageView
+            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
+            //nameLabel
+            nameLabel.text = model.user_name
+            //addressLabel
+            addressLabel.text = model.address
+            //distanceLabel
+            if model.distance == "-1" { //和后台约好返回的无法解析地址
+                distanceImageView.isHidden = true
+                distanceLabel.isHidden = true
+            } else {
+                distanceImageView.isHidden = false
+                distanceLabel.isHidden = false
+                let distanceKM = Float(model.distance)!/1000
+                let strDistanceKM = String(format: "%.2f", distanceKM)
+                distanceLabel.text = "距离：\(strDistanceKM)km"
+            }
+            //statusLabel
+            var statusStr = ""
+            switch model.statusType {
+            case .toCheck:
+                statusStr = "待查单"
+            case .querying:
+                statusStr = "查询中"
+            case .toOrder:
+                statusStr = "待预约"
+            case .toTestify:
+                statusStr = "待验单"
+            case .cancel:
+                statusStr = "客户取消"
+            case .contact:
+                statusStr = "联系中"
+            case .accept:
+                statusStr = "正在验单"
+            case .access:
+                statusStr = "通过验证"
+            case .empty:
+                statusStr = "无此活动"
+            case .toOrder2:
+                statusStr = "待预约二次验证"
+            case .toTestify2:
+                statusStr = "二次验证中"
+            case .busy:
+                statusStr = "正在忙"
+            case .uploaded:
+                statusStr = "凭证已上传"
+            default:
+                statusStr = "完成"
+            }
+            statusLabel.text = statusStr
+        }
+    }
+    
+    var cancelButtonClosure: ()->Void = {}
 }

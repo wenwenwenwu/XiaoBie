@@ -21,6 +21,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         setupNavigationBar()
         setupBlankView(isBlank: true, blankViewType: nil)
         infoRequest()
+        loadRequest()
 
     }
     
@@ -28,7 +29,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     func setupNavigationBar() {
         navigationItem.title = "我的税前酬金"
         navigationItem.rightBarButtonItem = cashButtonItem
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3899F7], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
     }
     
     func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
@@ -43,7 +44,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //MARK: - Request
     func infoRequest() {
-        WebTool.post(uri: "reward_profile", para: ["staff_id" : "1"], success: { (dict) in
+        WebTool.post(uri: "reward_profile", para: ["staff_id" : AccountTool.userInfo().id], success: { (dict) in
             let model = MyMoneyInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.infoView.model = model.data
@@ -56,10 +57,8 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func loadRequest() {
-        let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
-            let model = HistoryResponseModel.parse(dict: dict)
+        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
+            let model = MyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -89,11 +88,9 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func loadMoreRequest() {
-        let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
-            let model = HistoryResponseModel.parse(dict: dict)
+            let model = MyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -113,9 +110,20 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         self.tableView.mj_footer.endRefreshing()
     }
     
+    func cashRequest() {
+        WebTool.post(uri: "request_withdraw", para: ["staff_id" : AccountTool.userInfo().id], success: { (dict) in
+            let model = BasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - Event Response
     @objc func cashButtonAction() {
-        print("提现")
+        Alert.showAlertWith(style: .alert, controller: self, title: "确认申请提现(清零总结算)？", message: nil, buttons: ["确定"]) { _ in
+            self.cashRequest()
+        }
     }
     
     func popupCalendar() {
@@ -125,13 +133,9 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         calendarVC.endDate = endDate
         
         calendarVC.doneClosure = { startDate, endDate in
-//            self.historyVC.startDate = startDate
-//            self.historyVC.endDate = endDate
-//            self.historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
-//            self.historyVC.loadRequest()
-//            
-//            self.startDate = startDate
-//            self.endDate = endDate
+            self.startDate = startDate
+            self.endDate = endDate
+            self.loadRequest()
         }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
         self.present(calendarNC, animated: true, completion: nil)
@@ -143,7 +147,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = HistoryCell.cellWith(tableView: tableView)
+        let cell = MyMoneyCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -191,7 +195,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
-    var dataArray: [HistoryModel] = []
+    var dataArray: [MyMoneyItemModel] = []
     var pageCount = 0
     
     //startTime
