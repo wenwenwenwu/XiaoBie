@@ -59,13 +59,24 @@ class AlibiViewController: UIViewController {
         }
     }
     
+    //MARK: - Request
+    func uploadRequest(imageNames: String) {
+        WebTool.post(uri: "upload_daily_evidence", para: ["staff_id" : AccountTool.userInfo().id, "image_names": imageNames], success: { (dict) in
+            let model = BasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - Event Response
     @objc func uploadButtonAction() {
         guard !photoButtonView1.url.isEmpty && !photoButtonView2.url.isEmpty && !photoButtonView3.url.isEmpty else {
             HudTool.showInfo(string: "必须上传3张图片")
             return
         }
-        print(photoButtonView1.url, photoButtonView2.url, photoButtonView3.url)
+        let imageNames = "\(photoButtonView1.url),\(photoButtonView2.url),\(photoButtonView3.url)"
+        uploadRequest(imageNames: imageNames)
     }
 
 
