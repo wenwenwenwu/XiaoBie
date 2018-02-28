@@ -56,88 +56,41 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationController?.pushViewController(moneyVC, animated: true)
     }
     
-    func inStoreCellAction() {
-        print("手机入库")
-    }
-    
     func settingCellAction() {
         navigationController?.pushViewController(DSetupViewController(), animated: true)
     }
     
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        let role = AccountTool.userInfo().role
-        switch role {
-        //司机
-        case "0":
-            return 2
-        //做单员
-        case "1":
-            return 1
-        //管理员
-        default:
-            return 2
-        }
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let role = AccountTool.userInfo().role
-        switch role {
-        //司机
-        case "0":
-            switch section {
-            case 0:
-                return 4
-            default:
-                return 1
-            }
-        //做单员
-        case "1":
-            return 1
-        //管理员
+        switch section {
+        case 0:
+            return 4
         default:
-            switch section {
-            case 0:
-                return 1
-            default:
-                return 1
-            }
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DMineCell.cellWith(tableView: tableView)
-        let role = AccountTool.userInfo().role
-        switch role {
-        //司机
-        case "0":
-            switch indexPath.section {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
             case 0:
-                switch indexPath.row {
-                case 0:
-                    cell.type = .phone
-                case 1:
-                    cell.type = .query
-                case 3:
-                    cell.type = .upload
-                default:
-                    cell.type = .money
-                }
+                cell.type = .phone
+            case 1:
+                cell.type = .query
+            case 3:
+                cell.type = .upload
             default:
-                cell.type = .setting
+                cell.type = .money
             }
-        //做单员
-        case "1":
-            cell.type = .setting
-        //管理员
         default:
-            switch indexPath.section {
-            case 0:
-                cell.type = .inStore
-            default:
-                cell.type = .setting
-            }
-        }        
+            cell.type = .setting
+        }
         return cell
     }
     
@@ -154,9 +107,7 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
                 uploadCellAction()
             case .money:
                 monyCellAction()
-            case .inStore:
-                inStoreCellAction()
-            case .setting:
+            default:
                 settingCellAction()
         }
     }

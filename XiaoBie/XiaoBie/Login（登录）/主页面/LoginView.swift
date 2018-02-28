@@ -39,10 +39,9 @@ class LoginCell: UIView, UITextFieldDelegate {
     //MARK: - Setup
     func setupFrame() {
         textField.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
+            make.left.equalToSuperview()
             make.top.bottom.equalToSuperview()
             make.width.equalTo(100)
-            make.height.equalTo(15)
         }
         
         lineView.snp.makeConstraints { (make) in
