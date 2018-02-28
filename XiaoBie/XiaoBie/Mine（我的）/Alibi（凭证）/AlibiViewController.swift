@@ -121,7 +121,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadRequest() {
-        WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = MyAlibiResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -152,7 +152,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadMoreRequest() {
-        WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = MyAlibiResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -291,19 +291,6 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     var dataArray: [MyAlibiModel] = []
     var pageCount = 0
     
-    //startTime
-    var startDate = "" {
-        didSet{
-            startTime = "\(startDate) 00:00:01"
-        }
-    }
-    var startTime = ""
-    
-    //endTime
-    var endDate = "" {
-        didSet{
-            endTime = "\(endDate) 23:59:59"
-        }
-    }
-    var endTime = ""
+    var startDate = ""
+    var endDate = ""
 }

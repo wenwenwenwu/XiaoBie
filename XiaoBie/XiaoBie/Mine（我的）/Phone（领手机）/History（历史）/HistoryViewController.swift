@@ -54,7 +54,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
         
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = HistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -87,7 +87,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
 
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = HistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -158,20 +158,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     var dataArray: [HistoryModel] = []
     var pageCount = 0
     
-    //startTime
-    var startDate = "" {
-        didSet{
-            startTime = "\(startDate) 00:00:01"
-        }
-    }
-    var startTime = ""
-    
-    //endTime
-    var endDate = "" {
-        didSet{
-            endTime = "\(endDate) 23:59:59"
-        }
-    }
-    var endTime = ""
-    
+    var startDate = ""
+    var endDate = ""
 }

@@ -144,14 +144,7 @@ class PhotoButtonView: UIView {
     
     //MARK: - Event Response
     @objc func tapAction() {
-        Alert.showAlertWith(style: .actionSheet, controller: ownVC, title: nil, message: nil, buttons: ["相机拍照","照片图库"]) { (button) in
-            if button == "相机拍照" {
-                self.photoPickerTool.openCamera()
-            }
-            if button == "照片图库" {
-                self.photoPickerTool.openAlbum()
-            }
-        }
+        self.photoPickerTool.openCamera()
     }
     
     //MARK: - Properties

@@ -57,7 +57,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func loadRequest() {
-        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": "1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = MyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -88,7 +88,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func loadMoreRequest() {
-        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startTime, "end_time": endTime, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = MyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -198,19 +198,6 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     var dataArray: [MyMoneyItemModel] = []
     var pageCount = 0
     
-    //startTime
-    var startDate = "" {
-        didSet{
-            startTime = "\(startDate) 00:00:01"
-        }
-    }
-    var startTime = ""
-    
-    //endTime
-    var endDate = "" {
-        didSet{
-            endTime = "\(endDate) 23:59:59"
-        }
-    }
-    var endTime = ""
+    var startDate = ""
+    var endDate = ""
 }
