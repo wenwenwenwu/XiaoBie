@@ -26,7 +26,7 @@ class DGrabItemResponseModel: NSObject,YYModel {
     }
 }
 
-enum HomeStatusType {
+enum DHomeStatusType {
     /*
      1-待查单;
      2-查询中（做单员端显示待验单）;
@@ -126,7 +126,7 @@ class DGrabItemModel: NSObject {
             }
         }
     }
-    var statusType: HomeStatusType = .toCheck    //自定义
+    var statusType: DHomeStatusType = .toCheck    //自定义
     @objc var unique_id = ""
     @objc var update_time = ""
     @objc var user_name = ""

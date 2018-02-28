@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-enum GrabListType {
+enum DGrabListType {
     case all
     case phone
     case web
@@ -18,7 +18,7 @@ enum GrabListType {
 class DGrabListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - Factory Method
-    class func controllerWith(listType: GrabListType) -> DGrabListViewController {
+    class func controllerWith(listType: DGrabListType) -> DGrabListViewController {
         let viewController = DGrabListViewController()
         viewController.listType = listType
         return viewController
@@ -187,7 +187,7 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     var projectType = ""
-    var listType: GrabListType = .all {
+    var listType: DGrabListType = .all {
         didSet{
             switch listType {
             case .phone:
