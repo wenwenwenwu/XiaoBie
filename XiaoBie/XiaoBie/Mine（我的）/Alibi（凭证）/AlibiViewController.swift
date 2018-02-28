@@ -213,7 +213,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 124
     }
 
 

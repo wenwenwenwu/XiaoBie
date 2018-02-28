@@ -30,7 +30,9 @@ import UIKit
     let black_333333 = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     let black_303133 = #colorLiteral(red: 0.1882352941, green: 0.1921568627, blue: 0.2, alpha: 1)
     let gray_666666 = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+    let gray_808080 = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
     let gray_999999 = #colorLiteral(red: 0.6, green: 0.6, blue: 0.6, alpha: 1)
+
     let gray_A3A5A8 = #colorLiteral(red: 0.6392156863, green: 0.6470588235, blue: 0.6588235294, alpha: 1)
     let gray_B3B3B3 = #colorLiteral(red: 0.7019607843, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
     let gray_CCCCCC = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)

@@ -25,7 +25,7 @@ class MyAlibiCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        contentView.backgroundColor = gray_F5F5F5
+        contentView.backgroundColor = white_FFFFFF
         contentView.addSubview(imageView1)
         contentView.addSubview(imageView2)
         contentView.addSubview(imageView3)
@@ -58,10 +58,10 @@ class MyAlibiCell: UITableViewCell {
             make.width.height.equalTo(75)
         }
         
-//        dateLabel.snp.makeConstraints { (make) in
-//            make.left.equalTo(13)
-//            make.left.equalTo(imageView3.snp.bottom).offset(15)
-//        }
+        dateLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(13)
+            make.top.equalTo(imageView3.snp.bottom).offset(10)
+        }
         
         lineView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
@@ -93,8 +93,8 @@ class MyAlibiCell: UITableViewCell {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.font = font14
-        label.textColor = black_333333
+        label.font = font11
+        label.textColor = gray_808080
         return label
     }()
     
@@ -109,7 +109,7 @@ class MyAlibiCell: UITableViewCell {
             imageView1.kf.setImage(with: URL.init(string: model.imageArray[0]))
             imageView2.kf.setImage(with: URL.init(string: model.imageArray[1]))
             imageView3.kf.setImage(with: URL.init(string: model.imageArray[2]))
-            dateLabel.text = DateTool.strDateToStr月日时分(strDate: model.create_time)
+            dateLabel.text = DateTool.strDateToStr年月日(strDate: model.create_time)
         }
     }    
 }
