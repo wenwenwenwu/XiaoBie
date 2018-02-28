@@ -18,7 +18,10 @@ import UIKit
     let toolBarHeight: CGFloat = 44
 
     //MARK: - 视图
-    let tabbarController = UIApplication.shared.keyWindow?.rootViewController as! TabBarController
+    let mainVC = MainViewController()
+    let dTabBarVC = DTabBarController()
+    let cTabBarVC = CTabBarController()
+    let mTabBarVC = MTabBarController()
 
     //颜色
     let red_DC152C = #colorLiteral(red: 0.862745098, green: 0.08235294118, blue: 0.1725490196, alpha: 1)
@@ -48,8 +51,11 @@ import UIKit
         return view
     }()
 
+    let placeHolderImg = gray_F5F5F5.colorImage()
+
     //MARK: - 动画
     let animationTime = 0.2
+
     //字体
     let font10 = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)
     let font11 = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.regular)
@@ -61,11 +67,10 @@ import UIKit
     let font18Medium = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
     let font26Medium = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.medium)
 
-//    let font40Bold = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight.bold)
 
+
+    //网络
     let pageSize = "10"
-
-    //URL
     let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
     let baseURL = "http://116.62.206.174:8080/longwang/general/"

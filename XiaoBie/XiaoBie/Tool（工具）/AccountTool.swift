@@ -55,9 +55,23 @@ class UserInfoModel: NSObject, NSCoding,YYModel {
         @objc var name = ""
         @objc var password = ""
         @objc var phone = ""
-        @objc var role = ""
         @objc var role_level = ""
+        @objc var role = "" {
+            didSet {
+                switch role {
+                case "0":
+                    roleName = .driver
+                case "1":
+                    roleName = .clerk
+                default:
+                    roleName = .manager
+                }
+            }
+        }
         @objc var update_time = ""
+        //自定义
+        var roleName: Role?
+    
 
     override init() {
         super.init()
@@ -71,5 +85,11 @@ class UserInfoModel: NSObject, NSCoding,YYModel {
     func encode(with aCoder: NSCoder) {
         self.yy_modelEncode(with: aCoder)
     }
+}
+
+enum Role {
+    case driver
+    case clerk
+    case manager
 }
 

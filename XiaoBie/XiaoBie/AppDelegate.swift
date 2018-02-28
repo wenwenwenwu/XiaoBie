@@ -51,13 +51,16 @@ extension AppDelegate {
     func setupWindow() {
         window = UIWindow.init(frame: screenBounds)
         window?.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        window?.rootViewController = TabBarController()
+        window?.rootViewController = mainVC
         window?.makeKeyAndVisible()
         
         if AccountTool.isLogin() == false {
             //弹出登录界面
             let loginNC = NavigationController.init(rootViewController: LoginViewController())
-            tabbarController.present(loginNC, animated: false, completion: nil)
+            mainVC.present(loginNC, animated: false, completion: nil)
+        } else {
+            let roleName = AccountTool.userInfo().roleName!
+            mainVC.roleName = roleName
         }
     }
     

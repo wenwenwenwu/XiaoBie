@@ -90,6 +90,9 @@ class LoginViewController: UIViewController {
             if model.code == "0" {
                 //保存用户信息
                 AccountTool.login(with: model.data[0])
+                //根据角色设置显示页面
+                let roleName = AccountTool.userInfo().roleName!
+                mainVC.roleName = roleName
                 //退出当前键盘
                 self.resignKeyBoardInView(view: self.view)
                 //退出登录模块
