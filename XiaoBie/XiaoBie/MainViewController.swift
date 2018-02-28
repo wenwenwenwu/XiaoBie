@@ -20,12 +20,15 @@ class MainViewController: UIViewController {
         didSet {
             switch roleName {
             case .driver:
+                let dTabBarVC = DTabBarController()
                 self.addChildViewController(dTabBarVC)
                 view.addSubview(dTabBarVC.view)
             case .clerk:
+                let cTabBarVC = CTabBarController()
                 self.addChildViewController(cTabBarVC)
                 view.addSubview(cTabBarVC.view)
             case .manager:
+                let mTabBarVC = MTabBarController()
                 self.addChildViewController(mTabBarVC)
                 view.addSubview(mTabBarVC.view)
             }

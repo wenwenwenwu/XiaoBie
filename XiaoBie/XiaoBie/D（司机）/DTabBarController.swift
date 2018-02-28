@@ -16,10 +16,6 @@ class DTabBarController: UITabBarController,UITabBarControllerDelegate {
         setupTabBar()
     }
     
-    deinit {
-        print("🐱")
-    }
-    
     //MARK: Setup
     func setupTabBar() {
         //viewControllers

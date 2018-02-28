@@ -19,9 +19,6 @@ import UIKit
 
     //MARK: - 视图
     let mainVC = MainViewController()
-    let dTabBarVC = DTabBarController()
-    let cTabBarVC = CTabBarController()
-    let mTabBarVC = MTabBarController()
 
     //颜色
     let red_DC152C = #colorLiteral(red: 0.862745098, green: 0.08235294118, blue: 0.1725490196, alpha: 1)
