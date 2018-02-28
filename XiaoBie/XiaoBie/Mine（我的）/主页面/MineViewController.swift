@@ -32,7 +32,10 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Event Response
     func phoneCellAction() {
-        navigationController?.pushViewController(MyPhoneViewController(), animated: true)
+        let myPhoneVC = MyPhoneViewController()
+        myPhoneVC.startDate = startDate
+        myPhoneVC.endDate = endDate
+        navigationController?.pushViewController(myPhoneVC, animated: true)
     }
     
     func queryCellAction() {
@@ -40,12 +43,17 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func uploadCellAction() {
-        
-        navigationController?.pushViewController(AlibiViewController(), animated: true)
+        let alibiVC = AlibiViewController()
+        alibiVC.startDate = startDate
+        alibiVC.endDate = endDate
+        navigationController?.pushViewController(alibiVC, animated: true)
     }
     
     func monyCellAction() {
-        navigationController?.pushViewController(MyMoneyViewController(), animated: true)
+        let moneyVC = MyMoneyViewController()
+        moneyVC.startDate = startDate
+        moneyVC.endDate = endDate
+        navigationController?.pushViewController(moneyVC, animated: true)
     }
     
     func inStoreCellAction() {
@@ -169,4 +177,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }()
     
     lazy var headView = MyHeader()
+    
+    var startDate = DateTool.str本月一号()
+    var endDate = DateTool.str今天()
 }

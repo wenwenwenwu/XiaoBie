@@ -16,6 +16,7 @@
 		5B3519A7204408BE00CE92E4 /* MyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* MyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* MyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* MyMoneyView.swift */; };
 		5B3519AB20440F2600CE92E4 /* MyMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519AA20440F2600CE92E4 /* MyMoneyModel.swift */; };
+		5B48A7F020464C6700CA563A /* AlibiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A7EF20464C6700CA563A /* AlibiModel.swift */; };
 		5B498E9B2044FEEF0071406C /* AlibiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9A2044FEEF0071406C /* AlibiViewController.swift */; };
 		5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9C204501440071406C /* PhotoPickerTool.swift */; };
 		5B498E9F204503DD0071406C /* AlibiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9E204503DD0071406C /* AlibiView.swift */; };
@@ -76,6 +77,7 @@
 		5B3519A6204408BE00CE92E4 /* MyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* MyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyView.swift; sourceTree = "<group>"; };
 		5B3519AA20440F2600CE92E4 /* MyMoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMoneyModel.swift; sourceTree = "<group>"; };
+		5B48A7EF20464C6700CA563A /* AlibiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlibiModel.swift; sourceTree = "<group>"; };
 		5B498E9A2044FEEF0071406C /* AlibiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlibiViewController.swift; sourceTree = "<group>"; };
 		5B498E9C204501440071406C /* PhotoPickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerTool.swift; sourceTree = "<group>"; };
 		5B498E9E204503DD0071406C /* AlibiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlibiView.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				5B498E9A2044FEEF0071406C /* AlibiViewController.swift */,
 				5B498E9E204503DD0071406C /* AlibiView.swift */,
+				5B48A7EF20464C6700CA563A /* AlibiModel.swift */,
 			);
 			path = "Alibi（凭证）";
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
 				5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */,
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
+				5B48A7F020464C6700CA563A /* AlibiModel.swift in Sources */,
 				5BF8F3F9202FD8650031D9D4 /* GrabViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
 				5B51FAEF202947E2001AB946 /* UIView.swift in Sources */,

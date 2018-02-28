@@ -199,7 +199,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     var pageCount = 0
     
     //startTime
-    var startDate = DateTool.str本月一号() {
+    var startDate = "" {
         didSet{
             startTime = "\(startDate) 00:00:01"
         }
@@ -207,7 +207,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     var startTime = ""
     
     //endTime
-    var endDate = DateTool.str今天() {
+    var endDate = "" {
         didSet{
             endTime = "\(endDate) 23:59:59"
         }

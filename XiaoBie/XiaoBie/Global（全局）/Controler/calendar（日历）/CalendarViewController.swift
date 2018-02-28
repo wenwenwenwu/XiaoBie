@@ -90,7 +90,7 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     @objc func doneButtonAction() {
-        guard endDate > startDate else {
+        guard endDate >= startDate else {
             HudTool.showInfo(string: "结束时间要晚于起始时间")
             return
         }

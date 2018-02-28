@@ -109,6 +109,6 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     lazy var scanButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_lsj_sys").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(scanButtonAction))
     
     //记录calendarVC的日期信息,赋值给historyVC的初始日期信息
-    var startDate = DateTool.str本月一号()
-    var endDate = DateTool.str今天()
+    var startDate = ""
+    var endDate = ""
 }

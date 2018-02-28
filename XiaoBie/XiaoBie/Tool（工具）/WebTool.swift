@@ -11,9 +11,9 @@ import Alamofire
 
 class WebTool {
     
-    static let baseURL = "http://116.62.206.174:8080/longwang/general/"
+//    static let baseURL = "http://116.62.206.174:8080/longwang/general/"
 //    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/upload_sign_img"
-    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
+//    static let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
 
     //POST
     class func post(isShowHud: Bool = true, uri: String ,para : [String:String],success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
