@@ -9,25 +9,25 @@
 import UIKit
 import YYModel
 
-//MARK: - MyMoneyItemModel
-class MyAlibiResponseModel: NSObject,YYModel {
+//MARK: - DAlibiModel
+class DAlibiResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data: [MyAlibiModel] = []
+    @objc var data: [DAlibiModel] = []
     
-    class func parse(dict : Any ) -> MyAlibiResponseModel{
-        let model = MyAlibiResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DAlibiResponseModel{
+        let model = DAlibiResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":MyAlibiModel.self]
+        return ["data":DAlibiModel.self]
     }
 }
 
-class MyAlibiModel: NSObject {
+class DAlibiModel: NSObject {
     @objc var id = ""
     @objc var staff_id = ""
     @objc var image_names = "" {

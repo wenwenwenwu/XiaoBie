@@ -1,5 +1,5 @@
 //
-//  MyHeader.swift
+//  DMyHeader.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyHeader: UIView {
+class DMyHeader: UIView {
 
     //MARK: - Init
     override init(frame: CGRect) {

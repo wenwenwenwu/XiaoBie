@@ -9,25 +9,25 @@
 import UIKit
 import YYModel
 
-//MARK: - MyMoneyInfoModel
-class MyMoneyInfoResponseModel: NSObject,YYModel {
+//MARK: - DMyMoneyInfoModel
+class DMyMoneyInfoResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data = MyMoneyInfoModel()
+    @objc var data = DMyMoneyInfoModel()
     
-    class func parse(dict : Any ) -> MyMoneyInfoResponseModel{
-        let model = MyMoneyInfoResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DMyMoneyInfoResponseModel{
+        let model = DMyMoneyInfoResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":MyMoneyInfoModel.self]
+        return ["data":DMyMoneyInfoModel.self]
     }
 }
 
-class MyMoneyInfoModel: NSObject {
+class DMyMoneyInfoModel: NSObject {
     
     @objc var total_pay_count = ""
     @objc var total_pay_money = ""
@@ -36,25 +36,25 @@ class MyMoneyInfoModel: NSObject {
     @objc var punish_money = ""
 }
 
-//MARK: - MyMoneyItemModel
-class MyMoneyItemResponseModel: NSObject,YYModel {
+//MARK: - DMyMoneyItemModel
+class DMyMoneyItemResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data: [MyMoneyItemModel] = []
+    @objc var data: [DMyMoneyItemModel] = []
     
-    class func parse(dict : Any ) -> MyMoneyItemResponseModel{
-        let model = MyMoneyItemResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DMyMoneyItemResponseModel{
+        let model = DMyMoneyItemResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":MyMoneyItemModel.self]
+        return ["data":DMyMoneyItemModel.self]
     }
 }
 
-class MyMoneyItemModel: NSObject {
+class DMyMoneyItemModel: NSObject {
     
     @objc var project_type = ""
     @objc var user_name = ""

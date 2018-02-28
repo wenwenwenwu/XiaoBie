@@ -1,5 +1,5 @@
 //
-//  MineCell.swift
+//  DMineCell.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum MineCellType {
+enum DMineCellType {
     case phone
     case query
     case upload
@@ -17,7 +17,7 @@ enum MineCellType {
     case inStore
 }
 
-class MineCell: UITableViewCell {
+class DMineCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,13 +35,13 @@ class MineCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MineCell{
+    class func cellWith(tableView : UITableView) -> DMineCell{
         let reuseIdentifier = "mineCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MineCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DMineCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MineCell
+        return cell as! DMineCell
     }
     
     //MARK: - Setup
@@ -94,7 +94,7 @@ class MineCell: UITableViewCell {
         return view
     }()
     
-    var type: MineCellType = .phone {
+    var type: DMineCellType = .phone {
         didSet {
             switch type {
             case .phone:

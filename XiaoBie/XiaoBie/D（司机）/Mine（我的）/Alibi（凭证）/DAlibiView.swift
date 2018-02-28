@@ -9,16 +9,16 @@
 import UIKit
 import Kingfisher
 
-class MyAlibiCell: UITableViewCell {
+class DAlibiCell: UITableViewCell {
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MyAlibiCell{
-        let reuseIdentifier = "myAlibiCell";
+    class func cellWith(tableView : UITableView) -> DAlibiCell{
+        let reuseIdentifier = "alibiCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MyAlibiCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DAlibiCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MyAlibiCell
+        return cell as! DAlibiCell
     }
     
     //MARK: - Init
@@ -104,7 +104,7 @@ class MyAlibiCell: UITableViewCell {
         return view
     }()
     
-    var model = MyAlibiModel() {
+    var model = DAlibiModel() {
         didSet {
             imageView1.kf.setImage(with: URL.init(string: model.imageArray[0]), placeholder: placeHolderImg, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
             imageView2.kf.setImage(with: URL.init(string: model.imageArray[1]), placeholder: placeHolderImg, options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
@@ -114,7 +114,7 @@ class MyAlibiCell: UITableViewCell {
     }    
 }
 
-class PhotoButtonView: UIView {
+class DPhotoButtonView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -128,8 +128,8 @@ class PhotoButtonView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(ownVC: UIViewController, uploadCompleteClosure: @escaping ()->Void) -> PhotoButtonView {
-        let view = PhotoButtonView()
+    class func viewWith(ownVC: UIViewController, uploadCompleteClosure: @escaping ()->Void) -> DPhotoButtonView {
+        let view = DPhotoButtonView()
         view.ownVC = ownVC
         view.uploadCompleteClosure = uploadCompleteClosure
         return view

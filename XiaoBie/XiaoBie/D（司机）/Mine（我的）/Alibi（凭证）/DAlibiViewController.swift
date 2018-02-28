@@ -1,5 +1,5 @@
 //
-//  AlibiViewController.swift
+//  DAlibiViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/27.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DAlibiViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -122,7 +122,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func loadRequest() {
         WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
-            let model = MyAlibiResponseModel.parse(dict: dict)
+            let model = DAlibiResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -154,7 +154,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     func loadMoreRequest() {
         WebTool.post(uri:"get_daily_evidence_list", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
-            let model = MyAlibiResponseModel.parse(dict: dict)
+            let model = DAlibiResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -206,7 +206,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = MyAlibiCell.cellWith(tableView: tableView)
+        let cell = DAlibiCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -218,15 +218,15 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
 
 
     //MARK: - Properties
-    lazy var photoButtonView1 = PhotoButtonView.viewWith(ownVC: self) { [weak self] in
+    lazy var photoButtonView1 = DPhotoButtonView.viewWith(ownVC: self) { [weak self] in
         self?.photoButtonView2.isHidden = false
     }
 
-    lazy var photoButtonView2 = PhotoButtonView.viewWith(ownVC: self) { [weak self] in
+    lazy var photoButtonView2 = DPhotoButtonView.viewWith(ownVC: self) { [weak self] in
         self?.photoButtonView3.isHidden = false
     }
 
-    lazy var photoButtonView3 = PhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView3 = DPhotoButtonView.viewWith(ownVC: self) {
 
     }
     
@@ -288,7 +288,7 @@ class AlibiViewController: UIViewController, UITableViewDataSource, UITableViewD
         return tableView
     }()
     
-    var dataArray: [MyAlibiModel] = []
+    var dataArray: [DAlibiModel] = []
     var pageCount = 0
     
     var startDate = ""

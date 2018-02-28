@@ -8,16 +8,16 @@
 
 import UIKit
 
-class MyMoneyCell: UITableViewCell {
+class DMyMoneyCell: UITableViewCell {
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MyMoneyCell{
+    class func cellWith(tableView : UITableView) -> DMyMoneyCell{
         let reuseIdentifier = "myMoneyCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MyMoneyCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DMyMoneyCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MyMoneyCell
+        return cell as! DMyMoneyCell
     }
     
     //MARK: - Init
@@ -128,7 +128,7 @@ class MyMoneyCell: UITableViewCell {
         return label
     }()
     
-    var model = MyMoneyItemModel() {
+    var model = DMyMoneyItemModel() {
         didSet {
             timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.create_time)
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
@@ -139,7 +139,7 @@ class MyMoneyCell: UITableViewCell {
     }
 }
 
-class MyMoneyInfoView: UIView {
+class DMyMoneyInfoView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -220,7 +220,7 @@ class MyMoneyInfoView: UIView {
         return button
     }()
     
-    var model = MyMoneyInfoModel() {
+    var model = DMyMoneyInfoModel() {
         didSet{
             self.cell1.valueLabel.text = "¥\(model.today_pay_money)"
             self.cell2.valueLabel.text = "¥\(model.total_pay_money)"

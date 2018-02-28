@@ -1,5 +1,5 @@
 //
-//  SetupViewController.swift
+//  DSetupViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DSetupViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -80,7 +80,7 @@ class SetupViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = SetupCell.cellWith(tableView: tableView)
+            let cell = DSetupCell.cellWith(tableView: tableView)
             switch indexPath.row {
             case 0:
                 cell.type = .clear
@@ -93,11 +93,11 @@ class SetupViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
             return cell
         case 1:
-            let cell = SetupCell.cellWith(tableView: tableView)
+            let cell = DSetupCell.cellWith(tableView: tableView)
             cell.type = .about
             return cell
         default:
-            let cell = LogoutCell.cellWith(tableView: tableView)
+            let cell = DLogoutCell.cellWith(tableView: tableView)
             return cell
         }
     }
@@ -106,8 +106,8 @@ class SetupViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        if cell!.isKind(of: SetupCell.self) {
-            let setupCell = cell as! SetupCell
+        if cell!.isKind(of: DSetupCell.self) {
+            let setupCell = cell as! DSetupCell
             switch setupCell.type {
             case .clear:
                 clearCellAction()

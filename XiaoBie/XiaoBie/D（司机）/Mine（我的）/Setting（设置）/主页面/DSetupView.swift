@@ -1,5 +1,5 @@
 //
-//  SetupCell.swift
+//  DSetupCell.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/8.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-//MARK: - SetupCell
-enum SetupCellType {
+//MARK: - DSetupCell
+enum DSetupCellType {
     case clear
     case rank
     case suggest
@@ -17,7 +17,7 @@ enum SetupCellType {
     case about
 }
 
-class SetupCell: UITableViewCell {
+class DSetupCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,13 +35,13 @@ class SetupCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> SetupCell{
+    class func cellWith(tableView : UITableView) -> DSetupCell{
         let reuseIdentifier = "setupCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = SetupCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DSetupCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! SetupCell
+        return cell as! DSetupCell
     }
     
     //MARK: - Setup
@@ -95,7 +95,7 @@ class SetupCell: UITableViewCell {
         return view
     }()
     
-    var type: SetupCellType = .clear {
+    var type: DSetupCellType = .clear {
         didSet {
             switch type {
             case .clear:
@@ -121,8 +121,8 @@ class SetupCell: UITableViewCell {
     
 }
 
-//MARK: - LogoutCell
-class LogoutCell: UITableViewCell {
+//MARK: - DLogoutCell
+class DLogoutCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -137,13 +137,13 @@ class LogoutCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> LogoutCell{
+    class func cellWith(tableView : UITableView) -> DLogoutCell{
         let reuseIdentifier = "logoutCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = LogoutCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DLogoutCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! LogoutCell
+        return cell as! DLogoutCell
     }
     
     //MARK: - Setup

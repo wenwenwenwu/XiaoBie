@@ -1,5 +1,5 @@
 //
-//  MineViewController.swift
+//  DMineViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/6.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DMineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -43,14 +43,14 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func uploadCellAction() {
-        let alibiVC = AlibiViewController()
+        let alibiVC = DAlibiViewController()
         alibiVC.startDate = startDate
         alibiVC.endDate = endDate
         navigationController?.pushViewController(alibiVC, animated: true)
     }
     
     func monyCellAction() {
-        let moneyVC = MyMoneyViewController()
+        let moneyVC = DMyMoneyViewController()
         moneyVC.startDate = startDate
         moneyVC.endDate = endDate
         navigationController?.pushViewController(moneyVC, animated: true)
@@ -61,7 +61,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func settingCellAction() {
-        navigationController?.pushViewController(SetupViewController(), animated: true)
+        navigationController?.pushViewController(DSetupViewController(), animated: true)
     }
     
     //MARK: - UITableViewDataSource
@@ -106,7 +106,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = MineCell.cellWith(tableView: tableView)
+        let cell = DMineCell.cellWith(tableView: tableView)
         let role = AccountTool.userInfo().role
         switch role {
         //司机
@@ -144,7 +144,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! MineCell
+        let cell = tableView.cellForRow(at: indexPath) as! DMineCell
         switch cell.type {
             case .phone:
                 phoneCellAction()
@@ -176,7 +176,7 @@ class MineViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return tableView
     }()
     
-    lazy var headView = MyHeader()
+    lazy var headView = DMyHeader()
     
     var startDate = DateTool.str本月一号()
     var endDate = DateTool.str今天()

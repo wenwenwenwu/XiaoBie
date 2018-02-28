@@ -1,5 +1,5 @@
 //
-//  MyMoneyViewController.swift
+//  DMyMoneyViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/26.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DMyMoneyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     //MARK: - Request
     func infoRequest() {
         WebTool.post(uri: "reward_profile", para: ["staff_id" : AccountTool.userInfo().id], success: { (dict) in
-            let model = MyMoneyInfoResponseModel.parse(dict: dict)
+            let model = DMyMoneyInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.infoView.model = model.data
             }else{
@@ -58,7 +58,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func loadRequest() {
         WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
-            let model = MyMoneyItemResponseModel.parse(dict: dict)
+            let model = DMyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -90,7 +90,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     func loadMoreRequest() {
         WebTool.post(uri:"get_earning_list", para:["delivery_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
-            let model = MyMoneyItemResponseModel.parse(dict: dict)
+            let model = DMyMoneyItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -147,7 +147,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = MyMoneyCell.cellWith(tableView: tableView)
+        let cell = DMyMoneyCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -164,8 +164,8 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         return buttonItem
     }()
     
-    lazy var infoView: MyMoneyInfoView = {
-        let view = MyMoneyInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 145))
+    lazy var infoView: DMyMoneyInfoView = {
+        let view = DMyMoneyInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 145))
         view.calendarButtonClosure = {
             self.popupCalendar()
         }
@@ -195,7 +195,7 @@ class MyMoneyViewController: UIViewController, UITableViewDataSource, UITableVie
         return tableView
     }()
     
-    var dataArray: [MyMoneyItemModel] = []
+    var dataArray: [DMyMoneyItemModel] = []
     var pageCount = 0
     
     var startDate = ""
