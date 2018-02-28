@@ -41,7 +41,7 @@ class LoginCell: UIView, UITextFieldDelegate {
         textField.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.top.bottom.equalToSuperview()
-            make.width.equalTo(100)
+            make.width.equalTo(screenWidth/2)
         }
         
         lineView.snp.makeConstraints { (make) in
