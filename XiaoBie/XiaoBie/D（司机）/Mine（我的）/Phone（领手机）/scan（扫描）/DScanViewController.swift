@@ -1,5 +1,5 @@
 //
-//  ScanViewController.swift
+//  DScanViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/02/23.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate{
+class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate{
     
     //MARK: - LifeCycle
     override func viewDidLoad() {

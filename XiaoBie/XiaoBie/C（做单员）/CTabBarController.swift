@@ -19,15 +19,13 @@ class CTabBarController: UITabBarController,UITabBarControllerDelegate {
     //MARK: Setup
     func setupTabBar() {
         //viewControllers
-        let homeNav = NavigationController.init(rootViewController: DHomeViewController())
-        let orderNav = NavigationController.init(rootViewController: DGrabViewController())
-        let chatNav = NavigationController.init(rootViewController: DChatViewController())
-        let mineNav = NavigationController.init(rootViewController: DMineViewController())
-        viewControllers = [homeNav,orderNav,chatNav,mineNav]
+        let homeNav = NavigationController.init(rootViewController: CHomeViewController())
+        let chatNav = NavigationController.init(rootViewController: CChatViewController())
+        let mineNav = NavigationController.init(rootViewController: CMineViewController())
+        viewControllers = [homeNav,chatNav,mineNav]
         
         //title
         homeNav.tabBarItem.title = "首页"
-        orderNav.tabBarItem.title = "抢单"
         chatNav.tabBarItem.title = "聊天"
         mineNav.tabBarItem.title = "我的"
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : gray_A3A5A8, NSAttributedStringKey.font : font10Medium], for: .normal)
@@ -36,9 +34,6 @@ class CTabBarController: UITabBarController,UITabBarControllerDelegate {
         //icon
         homeNav.tabBarItem.image = #imageLiteral(resourceName: "icon_home_default").withRenderingMode(.alwaysOriginal)
         homeNav.tabBarItem.selectedImage = #imageLiteral(resourceName: "icon_home_selected").withRenderingMode(.alwaysOriginal)
-        
-        orderNav.tabBarItem.image = #imageLiteral(resourceName: "icon_qd_default").withRenderingMode(.alwaysOriginal)
-        orderNav.tabBarItem.selectedImage = #imageLiteral(resourceName: "icon_qd_selected").withRenderingMode(.alwaysOriginal)
         
         chatNav.tabBarItem.image = #imageLiteral(resourceName: "icon_lt_default").withRenderingMode(.alwaysOriginal)
         chatNav.tabBarItem.selectedImage = #imageLiteral(resourceName: "icon_lt_selected").withRenderingMode(.alwaysOriginal)

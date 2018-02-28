@@ -1,5 +1,5 @@
 //
-//  HistoryModel.swift
+//  DHistoryModel.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/23.
@@ -9,24 +9,24 @@
 import UIKit
 import YYModel
 
-class HistoryResponseModel: NSObject,YYModel {
+class DHistoryResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data: [HistoryModel] = []
+    @objc var data: [DHistoryModel] = []
     
-    class func parse(dict : Any ) -> HistoryResponseModel{
-        let model = HistoryResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DHistoryResponseModel{
+        let model = DHistoryResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":HistoryModel.self]
+        return ["data":DHistoryModel.self]
     }
 }
 
-class HistoryModel: NSObject,YYModel {
+class DHistoryModel: NSObject,YYModel {
     
     @objc var agent_id = ""
     @objc var create_time = ""

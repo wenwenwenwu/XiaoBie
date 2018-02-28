@@ -20,6 +20,12 @@
 		5B48A81C2046814000CA563A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81B2046814000CA563A /* MainViewController.swift */; };
 		5B48A8202046927900CA563A /* CTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81F2046927900CA563A /* CTabBarController.swift */; };
 		5B48A823204692D200CA563A /* MTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A822204692D200CA563A /* MTabBarController.swift */; };
+		5B48A82D2046A02C00CA563A /* MHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A82C2046A02C00CA563A /* MHomeViewController.swift */; };
+		5B48A82F2046A04800CA563A /* MChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A82E2046A04800CA563A /* MChatViewController.swift */; };
+		5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A8302046A08100CA563A /* MMineViewController.swift */; };
+		5B48A8332046A23200CA563A /* CHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A8322046A23200CA563A /* CHomeViewController.swift */; };
+		5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A8342046A24200CA563A /* CChatViewController.swift */; };
+		5B48A8372046A24B00CA563A /* CMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A8362046A24B00CA563A /* CMineViewController.swift */; };
 		5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9A2044FEEF0071406C /* DAlibiViewController.swift */; };
 		5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9C204501440071406C /* PhotoPickerTool.swift */; };
 		5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9E204503DD0071406C /* DAlibiView.swift */; };
@@ -51,7 +57,7 @@
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */; };
-		5BB90CF92030345300F6CD9E /* MyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */; };
+		5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */; };
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
@@ -60,11 +66,11 @@
 		5BDB5032202C45F80055C21E /* DMyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5031202C45F80055C21E /* DMyHeader.swift */; };
 		5BDB5036202C52B90055C21E /* DSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5035202C52B90055C21E /* DSetupViewController.swift */; };
 		5BDB5038202C52DA0055C21E /* DSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB5037202C52DA0055C21E /* DSetupView.swift */; };
-		5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */; };
-		5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */; };
-		5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */; };
-		5BF045402040020B003F8CE5 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* HistoryView.swift */; };
-		5BF0454320401085003F8CE5 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* ScanViewController.swift */; };
+		5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF04538203FFD3C003F8CE5 /* DStoreViewController.swift */; };
+		5BF0453C203FFD56003F8CE5 /* DHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453B203FFD56003F8CE5 /* DHistoryViewController.swift */; };
+		5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */; };
+		5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* DHistoryView.swift */; };
+		5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* DScanViewController.swift */; };
 		5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
@@ -84,6 +90,12 @@
 		5B48A81B2046814000CA563A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
 		5B48A81F2046927900CA563A /* CTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabBarController.swift; sourceTree = "<group>"; };
 		5B48A822204692D200CA563A /* MTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTabBarController.swift; sourceTree = "<group>"; };
+		5B48A82C2046A02C00CA563A /* MHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHomeViewController.swift; sourceTree = "<group>"; };
+		5B48A82E2046A04800CA563A /* MChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChatViewController.swift; sourceTree = "<group>"; };
+		5B48A8302046A08100CA563A /* MMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMineViewController.swift; sourceTree = "<group>"; };
+		5B48A8322046A23200CA563A /* CHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeViewController.swift; sourceTree = "<group>"; };
+		5B48A8342046A24200CA563A /* CChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CChatViewController.swift; sourceTree = "<group>"; };
+		5B48A8362046A24B00CA563A /* CMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMineViewController.swift; sourceTree = "<group>"; };
 		5B498E9A2044FEEF0071406C /* DAlibiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiViewController.swift; sourceTree = "<group>"; };
 		5B498E9C204501440071406C /* PhotoPickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerTool.swift; sourceTree = "<group>"; };
 		5B498E9E204503DD0071406C /* DAlibiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiView.swift; sourceTree = "<group>"; };
@@ -118,7 +130,7 @@
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeView.swift; sourceTree = "<group>"; };
-		5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPhoneViewController.swift; sourceTree = "<group>"; };
+		5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyPhoneViewController.swift; sourceTree = "<group>"; };
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -127,11 +139,11 @@
 		5BDB5031202C45F80055C21E /* DMyHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyHeader.swift; sourceTree = "<group>"; };
 		5BDB5035202C52B90055C21E /* DSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSetupViewController.swift; sourceTree = "<group>"; };
 		5BDB5037202C52DA0055C21E /* DSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSetupView.swift; sourceTree = "<group>"; };
-		5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
-		5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
-		5BF0453F2040020B003F8CE5 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		5BF0454220401085003F8CE5 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		5BF04538203FFD3C003F8CE5 /* DStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DStoreViewController.swift; sourceTree = "<group>"; };
+		5BF0453B203FFD56003F8CE5 /* DHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryViewController.swift; sourceTree = "<group>"; };
+		5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryModel.swift; sourceTree = "<group>"; };
+		5BF0453F2040020B003F8CE5 /* DHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryView.swift; sourceTree = "<group>"; };
+		5BF0454220401085003F8CE5 /* DScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DScanViewController.swift; sourceTree = "<group>"; };
 		5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -178,6 +190,9 @@
 			isa = PBXGroup;
 			children = (
 				5B48A81F2046927900CA563A /* CTabBarController.swift */,
+				5B48A82A2046A00700CA563A /* Home（首页） */,
+				5B48A8292046A00700CA563A /* Chat（聊天） */,
+				5B48A82B2046A00700CA563A /* Mine（我的） */,
 			);
 			path = "C（做单员）";
 			sourceTree = "<group>";
@@ -186,8 +201,59 @@
 			isa = PBXGroup;
 			children = (
 				5B48A822204692D200CA563A /* MTabBarController.swift */,
+				5B48A82620469F9600CA563A /* Home（首页） */,
+				5B48A82720469FA300CA563A /* Chat（聊天） */,
+				5B48A82820469FB100CA563A /* Mine（我的） */,
 			);
 			path = "M（管理员）";
+			sourceTree = "<group>";
+		};
+		5B48A82620469F9600CA563A /* Home（首页） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
+			);
+			path = "Home（首页）";
+			sourceTree = "<group>";
+		};
+		5B48A82720469FA300CA563A /* Chat（聊天） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A82E2046A04800CA563A /* MChatViewController.swift */,
+			);
+			path = "Chat（聊天）";
+			sourceTree = "<group>";
+		};
+		5B48A82820469FB100CA563A /* Mine（我的） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8302046A08100CA563A /* MMineViewController.swift */,
+			);
+			path = "Mine（我的）";
+			sourceTree = "<group>";
+		};
+		5B48A8292046A00700CA563A /* Chat（聊天） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8342046A24200CA563A /* CChatViewController.swift */,
+			);
+			path = "Chat（聊天）";
+			sourceTree = "<group>";
+		};
+		5B48A82A2046A00700CA563A /* Home（首页） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8322046A23200CA563A /* CHomeViewController.swift */,
+			);
+			path = "Home（首页）";
+			sourceTree = "<group>";
+		};
+		5B48A82B2046A00700CA563A /* Mine（我的） */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8362046A24B00CA563A /* CMineViewController.swift */,
+			);
+			path = "Mine（我的）";
 			sourceTree = "<group>";
 		};
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
@@ -356,9 +422,9 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
+				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A821204692A600CA563A /* M（管理员） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
-				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B495FF320283A5600CC4B91 /* Login（登录） */,
 				5B51FAE6202944E4001AB946 /* Tool（工具） */,
 				5B51FAE9202947E2001AB946 /* Extension（扩展） */,
@@ -430,7 +496,7 @@
 		5BF04536203FFCEE003F8CE5 /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
-				5BB90CF82030345300F6CD9E /* MyPhoneViewController.swift */,
+				5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -438,7 +504,7 @@
 		5BF04537203FFCFB003F8CE5 /* Store（库存） */ = {
 			isa = PBXGroup;
 			children = (
-				5BF04538203FFD3C003F8CE5 /* StoreViewController.swift */,
+				5BF04538203FFD3C003F8CE5 /* DStoreViewController.swift */,
 			);
 			path = "Store（库存）";
 			sourceTree = "<group>";
@@ -446,9 +512,9 @@
 		5BF0453A203FFD44003F8CE5 /* History（历史） */ = {
 			isa = PBXGroup;
 			children = (
-				5BF0453B203FFD56003F8CE5 /* HistoryViewController.swift */,
-				5BF0453F2040020B003F8CE5 /* HistoryView.swift */,
-				5BF0453D203FFF3A003F8CE5 /* HistoryModel.swift */,
+				5BF0453B203FFD56003F8CE5 /* DHistoryViewController.swift */,
+				5BF0453F2040020B003F8CE5 /* DHistoryView.swift */,
+				5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */,
 			);
 			path = "History（历史）";
 			sourceTree = "<group>";
@@ -456,7 +522,7 @@
 		5BF0454120401085003F8CE5 /* scan（扫描） */ = {
 			isa = PBXGroup;
 			children = (
-				5BF0454220401085003F8CE5 /* ScanViewController.swift */,
+				5BF0454220401085003F8CE5 /* DScanViewController.swift */,
 			);
 			path = "scan（扫描）";
 			sourceTree = "<group>";
@@ -618,6 +684,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B48A82F2046A04800CA563A /* MChatViewController.swift in Sources */,
 				5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */,
 				5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */,
@@ -626,13 +693,15 @@
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
 				5BDB5036202C52B90055C21E /* DSetupViewController.swift in Sources */,
 				5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */,
+				5B48A8332046A23200CA563A /* CHomeViewController.swift in Sources */,
 				5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */,
 				5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
 				5BDB5038202C52DA0055C21E /* DSetupView.swift in Sources */,
 				5B48A81C2046814000CA563A /* MainViewController.swift in Sources */,
 				5B51FADF20293E65001AB946 /* DChatViewController.swift in Sources */,
-				5BF0453E203FFF3A003F8CE5 /* HistoryModel.swift in Sources */,
+				5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */,
+				5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */,
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
 				5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */,
 				5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */,
@@ -644,7 +713,8 @@
 				5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */,
 				5B48A8202046927900CA563A /* CTabBarController.swift in Sources */,
 				5BDB5032202C45F80055C21E /* DMyHeader.swift in Sources */,
-				5BF0454320401085003F8CE5 /* ScanViewController.swift in Sources */,
+				5B48A82D2046A02C00CA563A /* MHomeViewController.swift in Sources */,
+				5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */,
 				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
 				5B28CFEA202D750B00E2DA2F /* DGrabListView.swift in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
@@ -652,7 +722,7 @@
 				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */,
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
-				5BF0453C203FFD56003F8CE5 /* HistoryViewController.swift in Sources */,
+				5BF0453C203FFD56003F8CE5 /* DHistoryViewController.swift in Sources */,
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
 				5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */,
 				5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */,
@@ -664,18 +734,20 @@
 				5B51FADD20293E5B001AB946 /* DMineViewController.swift in Sources */,
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
-				5BF04539203FFD3C003F8CE5 /* StoreViewController.swift in Sources */,
+				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
+				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
-				5BF045402040020B003F8CE5 /* HistoryView.swift in Sources */,
+				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
 				5B51FAE120293E73001AB946 /* DGrabListViewController.swift in Sources */,
-				5BB90CF92030345300F6CD9E /* MyPhoneViewController.swift in Sources */,
+				5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */,
 				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
 				5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */,
+				5B48A8372046A24B00CA563A /* CMineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

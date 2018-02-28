@@ -1,5 +1,5 @@
 //
-//  StoreViewController.swift
+//  DStoreViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/23.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class StoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DStoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -48,7 +48,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         let staffId = AccountTool.userInfo().id
         
         WebTool.post(uri:"undone_phone_list", para:["staff_id":staffId, "page_num":"1", "page_size":pageSize], success: { (dict) in
-            let model = HistoryResponseModel.parse(dict: dict)
+            let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -82,7 +82,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         WebTool.post(uri:"undone_phone_list", para:["staff_id":staffId, "page_num":String(pageCount), "page_size":pageSize], success: { (dict) in
             
-            let model = HistoryResponseModel.parse(dict: dict)
+            let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -108,7 +108,7 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = HistoryCell.cellWith(tableView: tableView)
+        let cell = DHistoryCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -142,6 +142,6 @@ class StoreViewController: UIViewController, UITableViewDataSource, UITableViewD
         return blankView
     }()
     
-    var dataArray: [HistoryModel] = []
+    var dataArray: [DHistoryModel] = []
     var pageCount = 0
 }

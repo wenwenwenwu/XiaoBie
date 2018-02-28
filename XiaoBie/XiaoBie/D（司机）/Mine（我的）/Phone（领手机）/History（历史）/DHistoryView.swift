@@ -1,5 +1,5 @@
 //
-//  HistoryCell.swift
+//  DHistoryCell.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/23.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryCell: UITableViewCell {
+class DHistoryCell: UITableViewCell {
 
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -26,13 +26,13 @@ class HistoryCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> HistoryCell{
+    class func cellWith(tableView : UITableView) -> DHistoryCell{
         let reuseIdentifier = "historyCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = HistoryCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DHistoryCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! HistoryCell
+        return cell as! DHistoryCell
     }
     
     //MARK: - Setup
@@ -90,7 +90,7 @@ class HistoryCell: UITableViewCell {
         return view
     }()
     
-    var model = HistoryModel() {
+    var model = DHistoryModel() {
         didSet {
             //dateLabel
             dateLabel.text = DateTool.strDateToStr年月日(strDate: model.update_time)
@@ -100,7 +100,7 @@ class HistoryCell: UITableViewCell {
     }    
 }
 
-class HistoryDateView: UIView {
+class DHistoryDateView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {

@@ -1,5 +1,5 @@
 //
-//  HistoryViewController.swift
+//  DHistoryViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/23.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -55,7 +55,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let staffId = AccountTool.userInfo().id
         
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
-            let model = HistoryResponseModel.parse(dict: dict)
+            let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
                 //数据展示
@@ -89,7 +89,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
 
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
-            let model = HistoryResponseModel.parse(dict: dict)
+            let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
                 //数据展示
@@ -115,7 +115,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = HistoryCell.cellWith(tableView: tableView)
+        let cell = DHistoryCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -149,13 +149,13 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         return blankView
     }()
     
-    lazy var dateView: HistoryDateView = {
-        let view = HistoryDateView()
+    lazy var dateView: DHistoryDateView = {
+        let view = DHistoryDateView()
         view.setupDate(startDate: startDate, endDate: endDate)
         return view
     }()
     
-    var dataArray: [HistoryModel] = []
+    var dataArray: [DHistoryModel] = []
     var pageCount = 0
     
     var startDate = ""

@@ -1,5 +1,5 @@
 //
-//  MyPhoneViewController.swift
+//  DMyPhoneViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
+class DMyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -79,7 +79,7 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func scanButtonAction() {
         //推出
-        let scanVC = ScanViewController()
+        let scanVC = DScanViewController()
         scanVC.scanedClosure = { serialNumber in
             self.storeVC.loadRequest()
         }
@@ -91,10 +91,10 @@ class MyPhoneViewController: UIViewController, UIScrollViewDelegate {
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var storeVC = StoreViewController()
+    lazy var storeVC = DStoreViewController()
     
-    lazy var historyVC: HistoryViewController = {
-        let VC = HistoryViewController()
+    lazy var historyVC: DHistoryViewController = {
+        let VC = DHistoryViewController()
         VC.startDate = startDate
         VC.endDate = endDate
         return VC

@@ -32,7 +32,7 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - Event Response
     func phoneCellAction() {
-        let myPhoneVC = MyPhoneViewController()
+        let myPhoneVC = DMyPhoneViewController()
         myPhoneVC.startDate = startDate
         myPhoneVC.endDate = endDate
         navigationController?.pushViewController(myPhoneVC, animated: true)
