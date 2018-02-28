@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-enum HomeListType {
+enum DHomeListType {
     /*
      0-待查单
      1-待预约
@@ -27,7 +27,7 @@ enum HomeListType {
 class DHomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - Factory Method
-    class func controllerWith(listType: HomeListType) -> DHomeListViewController {
+    class func controllerWith(listType: DHomeListType) -> DHomeListViewController {
         let viewController = DHomeListViewController()
         viewController.listType = listType
         return viewController
@@ -190,7 +190,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }()
     
     var queryType = ""
-    var listType: HomeListType = .toCheck {
+    var listType: DHomeListType = .toCheck {
         didSet{
             switch listType {
             case .toCheck:

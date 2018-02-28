@@ -10,37 +10,37 @@ import UIKit
 import YYModel
 
 //MARK: - HomeClockinModel
-class HomeClockinResponseModel: NSObject,YYModel {
+class DHomeClockinResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
     
-    class func parse(dict : Any ) -> HomeClockinResponseModel{
-        let model = HomeClockinResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DHomeClockinResponseModel{
+        let model = DHomeClockinResponseModel.yy_model(withJSON: dict)
         return model!
     }    
 }
 
-//MARK: - HomeInfoModel
-class HomeInfoResponseModel: NSObject,YYModel {
+//MARK: - DHomeInfoModel
+class DHomeInfoResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data = HomeInfoModel()
+    @objc var data = DHomeInfoModel()
 
-    class func parse(dict : Any ) -> HomeInfoResponseModel{
-        let model = HomeInfoResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DHomeInfoResponseModel{
+        let model = DHomeInfoResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":HomeInfoModel.self]
+        return ["data":DHomeInfoModel.self]
     }
 }
 
-class HomeInfoModel: NSObject {
+class DHomeInfoModel: NSObject {
     
     @objc var complete_count = ""
     @objc var need_appoint_count = ""

@@ -38,7 +38,7 @@ class DHomeViewController: UIViewController {
     func infoRequest() {
         let staffId = AccountTool.userInfo().id        
         WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
-            let model = HomeInfoResponseModel.parse(dict: dict)
+            let model = DHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.infoView.model = model.data
             }else{
@@ -89,5 +89,5 @@ class DHomeViewController: UIViewController {
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var clockinHandler = ClockinViewHandler.handlerWith(ownerController: self)    
+    lazy var clockinHandler = DClockinViewHandler.handlerWith(ownerController: self)    
 }

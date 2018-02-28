@@ -125,7 +125,7 @@ class DHomeInfoView: UIView {
         return view
     }()
     
-    var model = HomeInfoModel() {
+    var model = DHomeInfoModel() {
         didSet{
             self.cell1.valueLabel.text = model.original_order_count
             self.cell2.valueLabel.text = model.undone_order_count

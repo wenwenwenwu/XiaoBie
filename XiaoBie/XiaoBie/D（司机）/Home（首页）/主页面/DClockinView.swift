@@ -1,5 +1,5 @@
 //
-//  ClockinView.swift
+//  DClockinView.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/8.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClockinView: UIView {
+class DClockinView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -24,8 +24,8 @@ class ClockinView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(ownerController: UIViewController, clockinButtonClosure: @escaping ()->Void, clockoutButtonClosure: @escaping ()->Void) -> ClockinView {
-        let view = ClockinView()
+    class func viewWith(ownerController: UIViewController, clockinButtonClosure: @escaping ()->Void, clockoutButtonClosure: @escaping ()->Void) -> DClockinView {
+        let view = DClockinView()
         view.ownerController = ownerController
         view.clockinButtonClosure = clockinButtonClosure
         view.clockoutButtonClosure = clockoutButtonClosure
