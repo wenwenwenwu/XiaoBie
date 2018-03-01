@@ -11,7 +11,7 @@ import UIKit
 class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //MARK: - FactoryMethod
-    class func photoPickerWith(uploadPara: String, ownerViewController: UIViewController, completeClosure: @escaping (String,String)->Void) -> PhotoPickerTool {
+    class func toolWith(uploadPara: String, ownerViewController: UIViewController, completeClosure: @escaping (String,String)->Void) -> PhotoPickerTool {
         let photoPickerTool = PhotoPickerTool()
         photoPickerTool.uploadPara = uploadPara
         photoPickerTool.ownerViewController = ownerViewController
@@ -67,7 +67,7 @@ class PhotoPickerTool: NSObject, UIImagePickerControllerDelegate, UINavigationCo
     }
     
     //MARK: - Properties
-    var completeClosure:(String,String)->Void = { URL,localURL in }
+    var completeClosure:(String,String)->Void = { imageName,localURL in }
     var ownerViewController = UIViewController()
     var uploadPara = ""
     

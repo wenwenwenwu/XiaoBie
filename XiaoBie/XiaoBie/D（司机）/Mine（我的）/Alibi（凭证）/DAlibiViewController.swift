@@ -176,11 +176,11 @@ class DAlibiViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: - Event Response
     @objc func uploadButtonAction() {
-        guard !photoButtonView1.url.isEmpty && !photoButtonView2.url.isEmpty && !photoButtonView3.url.isEmpty else {
+        guard !photoButtonView1.imageName.isEmpty && !photoButtonView2.imageName.isEmpty && !photoButtonView3.imageName.isEmpty else {
             HudTool.showInfo(string: "必须上传3张图片")
             return
         }
-        let imageNames = "\(photoButtonView1.url),\(photoButtonView2.url),\(photoButtonView3.url)"
+        let imageNames = "\(photoButtonView1.imageName),\(photoButtonView2.imageName),\(photoButtonView3.imageName)"
         uploadRequest(imageNames: imageNames)
     }
     

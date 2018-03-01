@@ -18,12 +18,13 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
     //MARK: - Factory Method
     class func handlerWith(ownerController: UIViewController) -> DClockinViewHandler {
         let handler = DClockinViewHandler()
+        handler.ownerController = ownerController
         handler.clockinView = DClockinView.viewWith(ownerController: ownerController, clockinButtonClosure: {
             handler.currentType = .clockin
-            handler.locationTool.startUpdatingLocation()
+            handler.photoPickerTool.openCamera()
         }, clockoutButtonClosure: {
             handler.currentType = .clockout
-            handler.locationTool.startUpdatingLocation()
+            handler.photoPickerTool.openCamera()
         })
         return handler
     }
@@ -50,7 +51,7 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
         let longitude = String(location.coordinate.longitude)
         let signupType = (currentType == .clockin) ? "0" : "1"
         
-        WebTool.post(uri: "staff_sign", para: ["telephone" : telephone, "sign_up_type" : signupType, "latitude" : latitude, "longitude": longitude ], success: { (dict) in
+        WebTool.post(uri: "staff_sign", para: ["img_name" : imageName, "telephone" : telephone, "sign_up_type" : signupType, "latitude" : latitude, "longitude": longitude ], success: { (dict) in
             let model = DHomeClockinResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
         }) { (error) in
@@ -59,13 +60,20 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
     }
     
     //MARK: - Properties
-    var currentType: DClockinType = .clockin
+    lazy var ownerController = UIViewController()
     
+    lazy var clockinView = DClockinView()
+    
+    lazy var photoPickerTool = PhotoPickerTool.toolWith(uploadPara: "upload_sign_img", ownerViewController: ownerController) { (imageName, localUrl) in
+        self.imageName = imageName
+        self.locationTool.startUpdatingLocation()
+    }
     lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
         self?.clockinRequest(location: location)
     }
     
-    lazy var clockinView = DClockinView()
+    var currentType: DClockinType = .clockin    
+    var imageName = ""
 }
 
 

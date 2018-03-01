@@ -166,6 +166,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B1F891920479C600024B00B /* DClockinView */ = {
+			isa = PBXGroup;
+			children = (
+				5B6F3F96202BE7C70070818C /* DClockinView.swift */,
+				5B997822202AC9450005357A /* DClockinViewHandler.swift */,
+			);
+			path = DClockinView;
+			sourceTree = "<group>";
+		};
 		5B3519A5204408A100CE92E4 /* Money（酬金） */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,8 +398,7 @@
 				5B51FAE220293EA6001AB946 /* DHomeViewController.swift */,
 				5B51FAD620293942001AB946 /* DHomeModel.swift */,
 				5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */,
-				5B6F3F96202BE7C70070818C /* DClockinView.swift */,
-				5B997822202AC9450005357A /* DClockinViewHandler.swift */,
+				5B1F891920479C600024B00B /* DClockinView */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
