@@ -19,6 +19,10 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         setupNavigationBar()
         setupFrame()
     }
+    
+    deinit {
+        print("🐱")
+    }
 
     //MARK: - Setup
     func setupNavigationBar() {
@@ -50,7 +54,17 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Request
     func clerkListRequest(serialNumber: String) {
-        <#function body#>
+        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
+            let model = DToCheckClerkResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.clerkListArray = model.data
+                self.tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -63,7 +77,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         case 0:
             return 1
         default:
-            return 3
+            return clerkListArray.count
         }
     }
     
@@ -72,22 +86,15 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         case 0:
             let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
             scanCell.ownerController = self
-            scanCell.scanedClosure = { serialNumber in
-                print(serialNumber)
+            scanCell.scanedClosure = {[weak self] serialNumber in
+               self?.clerkListRequest(serialNumber: serialNumber)
             }
             return scanCell
         default:
             let clerkCell = DToCheckClerkCell.cellWith(tableView: tableView)
-            switch indexPath.row {
-            case 0:
+            clerkCell.model = clerkListArray[indexPath.row]
+            if indexPath.row == 0 {
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-                clerkCell.clerk = "做单人员1"
-            case 1:
-                clerkCell.clerk = "做单人员2"
-
-            default:
-                clerkCell.clerk = "做单人员3"
-
             }
             return clerkCell
         }
@@ -141,4 +148,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         return button
     }()
 
+    var clerkListArray: [DToCheckClerkModel] = []
+    var model = DGrabItemModel()
+    
 }

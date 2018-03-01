@@ -173,6 +173,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         switch cell.model.statusType {
         case .toCheck:
             let toCheckVC = DToCheckViewController()
+            toCheckVC.model = cell.model
             navigationController?.pushViewController(toCheckVC, animated: true)
         default:
             print("🐱")

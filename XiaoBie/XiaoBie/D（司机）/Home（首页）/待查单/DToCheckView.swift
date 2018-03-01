@@ -240,14 +240,14 @@ class DToCheckScanCell: UITableViewCell {
     
     lazy var scanVC: DScanViewController = {
         let scanVC = DScanViewController()
-        scanVC.scanedClosure = { serialNumber in
-            self.valueLabel.text = serialNumber
-            self.scanedClosure(serialNumber)
+        scanVC.scanedClosure = { [weak self] serialNumber in
+            self?.valueLabel.text = serialNumber
+            self?.scanedClosure(serialNumber)
         }
         return scanVC
     }()
     
-    var ownerController: UIViewController?
+    weak var ownerController: UIViewController?
     
     var scanedClosure: (String)->Void = { _ in }
     
@@ -341,9 +341,9 @@ class DToCheckClerkCell: UITableViewCell {
         return view
     }()
     
-    var clerk = "" {
+    var model = DToCheckClerkModel() {
         didSet {
-            clerkLabel.text = clerk
+            clerkLabel.text = model.name
         }
     }
     

@@ -54,6 +54,7 @@
 		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
+		5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7D3A922047E618004CC761 /* DToCheckModel.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewHandler.swift */; };
@@ -128,6 +129,7 @@
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B7D3A922047E618004CC761 /* DToCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckModel.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewHandler.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 			children = (
 				5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */,
 				5B9854C62047A90D00C449C3 /* DToCheckView.swift */,
+				5B7D3A922047E618004CC761 /* DToCheckModel.swift */,
 			);
 			path = "待查单";
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
+				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
