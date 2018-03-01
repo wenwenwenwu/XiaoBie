@@ -72,7 +72,12 @@ class DGrabItemModel: NSObject {
     @objc var call_status = ""
     @objc var create_time = ""
     @objc var data_source = ""
-    @objc var distance = ""
+    @objc var distance = "" {
+        didSet {
+            let FloatDistanceKM = Float(distance)!/1000
+            distanceKM = String(format: "%.2f", FloatDistanceKM)
+        }
+    }
     @objc var gtcdw = ""
     @objc var id = ""
     @objc var id_number = ""
@@ -126,10 +131,12 @@ class DGrabItemModel: NSObject {
             }
         }
     }
-    var statusType: DHomeStatusType = .toCheck    //自定义
     @objc var unique_id = ""
     @objc var update_time = ""
     @objc var user_name = ""
+    //自定义
+    var statusType: DHomeStatusType = .toCheck
+    var distanceKM = ""
 }
 
 class DBasicResponseModel: NSObject,YYModel {

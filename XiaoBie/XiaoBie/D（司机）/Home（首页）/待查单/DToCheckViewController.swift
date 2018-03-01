@@ -50,7 +50,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func remindButtonAction() {
-        print("提醒查单")
+        remindRequest()
     }
     
     //MARK: - Request
@@ -62,7 +62,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.remindButton.isEnabled = true
                 //展示做单员列表
                 self.clerkListArray = model.data
-                self.tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
+                self.tableView.reloadSections(IndexSet.init(integer: 2), with: .fade)
             } else {
                 HudTool.showInfo(string: model.msg)
             }
@@ -71,23 +71,36 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func remindRequest() {
+        WebTool.get(uri:"notify_query_order", para:["order_id": model.id,  "dealer_id":currentClerk.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            return 1
-        default:
+        case 2:
             return clerkListArray.count
+        default:
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
+            let infoCell = DToCheckInfoCell.cellWith(tableView: tableView)
+            infoCell.model = model
+            return infoCell
+        case 1:
             let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
             scanCell.ownerController = self
             scanCell.scanedClosure = {[weak self] serialNumber in
@@ -105,8 +118,9 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 46
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //记录当前做单员
+        currentClerk = clerkListArray[indexPath.row]
     }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -154,5 +168,6 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
 
     var model = DGrabItemModel()
     var clerkListArray: [DToCheckClerkModel] = []
+    var currentClerk = DToCheckClerkModel()
     
 }

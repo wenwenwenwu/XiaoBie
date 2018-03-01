@@ -14,14 +14,20 @@ class DToCheckInfoCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        contentView.backgroundColor = gray_F5F5F5
-        contentView.addSubview(whiteView)
-        whiteView.addSubview(iconImageView)
-        whiteView.addSubview(nameLabel)
-        whiteView.addSubview(addressLabel)
-        whiteView.addSubview(distanceImageView)
-        whiteView.addSubview(distanceLabel)
-        whiteView.addSubview(grabButton)
+        contentView.backgroundColor = white_FFFFFF
+        contentView.addSubview(nameKeyLabel)
+        contentView.addSubview(nameValueLabel)
+        contentView.addSubview(timeKeyLabel)
+        contentView.addSubview(timeValueLabel)
+        contentView.addSubview(phoneKeyLabel)
+        contentView.addSubview(phoneValueLabel)
+        contentView.addSubview(setKeyLabel)
+        contentView.addSubview(setValueLabel)
+        contentView.addSubview(addressKeyLabel)
+        contentView.addSubview(addressValueLabel)
+        contentView.addSubview(distanceImageView)
+        contentView.addSubview(distanceLabel)
+        contentView.addSubview(editButton)
         setupFrame()
     }
     
@@ -41,76 +47,164 @@ class DToCheckInfoCell: UITableViewCell {
     
     //MARK: - Setup
     func setupFrame() {
-        whiteView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(13, 13, 0, 13))
+        //key
+        nameKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(17)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
         }
         
-        iconImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(11)
-            make.top.equalTo(10)
-            make.width.equalTo(60)
-            make.height.equalTo(61)
+        timeKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameKeyLabel.snp.bottom).offset(12)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
         }
         
-        nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.top.equalTo(11)
+        phoneKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(timeKeyLabel.snp.bottom).offset(12)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
+        }
+        
+        setKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(phoneKeyLabel.snp.bottom).offset(12)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
+        }
+        
+        addressKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(setKeyLabel.snp.bottom).offset(12)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
+        }
+        //value
+        nameValueLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(16)
+            make.left.equalTo(nameKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
         }
         
-        addressLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.right.equalTo(-15)
-            make.top.equalTo(nameLabel.snp.bottom).offset(7)
+        timeValueLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(nameValueLabel.snp.bottom).offset(12)
+            make.left.equalTo(timeKeyLabel.snp.right).offset(16)
+            make.height.equalTo(15)
         }
         
+        phoneValueLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(timeValueLabel.snp.bottom).offset(12)
+            make.left.equalTo(phoneKeyLabel.snp.right).offset(16)
+            make.height.equalTo(15)
+        }
+        
+        setValueLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(phoneValueLabel.snp.bottom).offset(12)
+            make.left.equalTo(setKeyLabel.snp.right).offset(16)
+            make.height.equalTo(15)
+        }
+        
+        addressValueLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(setValueLabel.snp.bottom).offset(8)
+            make.left.equalTo(83)
+            make.right.equalTo(-67)
+            make.bottom.equalTo(-32)
+        }
+        
+        //distance
         distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(13)
-            make.centerY.equalTo(distanceLabel)
+            make.left.equalTo(85)
+            make.bottom.equalTo(-14)
         }
         
         distanceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.top.equalTo(addressLabel.snp.bottom).offset(10)
-            make.height.equalTo(10)
+            make.centerY.equalTo(distanceImageView)
         }
         
-        grabButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-10)
-            make.bottom.equalTo(-16)
-            make.width.equalTo(76)
-            make.height.equalTo(31)
+        editButton.snp.makeConstraints { (make) in
+            make.right.equalTo(-13)
+            make.top.equalTo(addressKeyLabel)
         }
     }
     
     //MARK: - Event Response
-    @objc func grabButtonAction() {
-        grabButtonClosure()
+    @objc func editButtonAction() {
+        editButtonClosure()
     }
     
     //MARK: - Properties
-    lazy var whiteView: UIView = {
-        let view = UIView()
-        view.backgroundColor = white_FFFFFF
-        view.layer.cornerRadius = 4
-        view.clipsToBounds = true
-        return view
+    lazy var nameKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "客户姓名"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
     }()
     
-    lazy var iconImageView = UIImageView()
-    
-    lazy var nameLabel: UILabel = {
+    lazy var nameValueLabel: UILabel = {
         let label = UILabel()
-        label.font = font16Medium
+        label.font = font16
         label.textColor = black_333333
         return label
     }()
     
-    lazy var addressLabel: UILabel = {
+    lazy var timeKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "订单时间"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var timeValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var phoneKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "联系方式"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var phoneValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var setKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "套餐档位"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var setValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var addressKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "联系地址"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var addressValueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = font14
-        label.textColor = gray_666666
+        label.font = font16
+        label.textColor = black_333333
         return label
     }()
     
@@ -123,27 +217,21 @@ class DToCheckInfoCell: UITableViewCell {
         return label
     }()
     
-    lazy var grabButton: UIButton = {
+    lazy var editButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.adjustsImageWhenHighlighted = false
-        button.titleLabel?.font = font12
-        button.setTitle("立即抢单", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(grabButtonAction), for: .touchUpInside)
+        button.setImage(#imageLiteral(resourceName: "icon_bj"), for: .normal)
+        button.addTarget(self, action: #selector(editButtonAction), for: .touchUpInside)
         return button
     }()
     
     var model = DGrabItemModel() {
         didSet {
-            //iconImageView
-            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //nameLabel
-            nameLabel.text = model.user_name
-            //addressLabel
-            addressLabel.text = model.address
+            nameValueLabel.text = model.user_name
+            timeValueLabel.text = model.update_time
+            phoneValueLabel.text = model.phone1
+            setValueLabel.text = model.gtcdw
+            addressValueLabel.text = model.address
             //distanceLabel
             if model.distance == "-1" { //和后台约好返回的无法解析地址
                 distanceImageView.isHidden = true
@@ -151,15 +239,13 @@ class DToCheckInfoCell: UITableViewCell {
             } else {
                 distanceImageView.isHidden = false
                 distanceLabel.isHidden = false
-                let distanceKM = Float(model.distance)!/1000
-                let strDistanceKM = String(format: "%.2f", distanceKM)
-                distanceLabel.text = "距离：\(strDistanceKM)km"
+                distanceLabel.text = "距离：\(model.distanceKM)km"
             }
             
         }
     }
     
-    var grabButtonClosure: ()->Void = {}
+    var editButtonClosure: ()->Void = {}
 }
 
 class DToCheckScanCell: UITableViewCell {
@@ -193,7 +279,8 @@ class DToCheckScanCell: UITableViewCell {
     func setupFrame() {
         keyLabel.snp.makeConstraints { (make) in
             make.left.equalTo(14)
-            make.centerY.equalToSuperview()
+            make.top.height.equalTo(15)
+            make.bottom.equalTo(-15)
         }
         
         valueLabel.snp.makeConstraints { (make) in
@@ -291,7 +378,9 @@ class DToCheckClerkCell: UITableViewCell {
     func setupFrame() {
         clerkLabel.snp.makeConstraints { (make) in
             make.left.equalTo(14)
-            make.centerY.equalToSuperview()
+            make.top.height.equalTo(15)
+            make.bottom.equalTo(-15)
+
         }
         
 //        statusLabel.snp.makeConstraints { (make) in

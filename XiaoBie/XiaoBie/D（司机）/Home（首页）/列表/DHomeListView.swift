@@ -194,9 +194,7 @@ class DHomeListCell: UITableViewCell {
             } else {
                 distanceImageView.isHidden = false
                 distanceLabel.isHidden = false
-                let distanceKM = Float(model.distance)!/1000
-                let strDistanceKM = String(format: "%.2f", distanceKM)
-                distanceLabel.text = "距离：\(strDistanceKM)km"
+                distanceLabel.text = "距离：\(model.distanceKM)km"
             }
             //statusLabel
             var statusStr = ""
