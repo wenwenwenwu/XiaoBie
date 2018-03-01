@@ -168,6 +168,17 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }
 
     //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
+        switch cell.model.statusType {
+        case .toCheck:
+            let toCheckVC = DToCheckViewController()
+            navigationController?.pushViewController(toCheckVC, animated: true)
+        default:
+            print("🐱")
+        }
+        
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 168
     }

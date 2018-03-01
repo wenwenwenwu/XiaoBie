@@ -54,6 +54,8 @@
 		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
+		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
+		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewHandler.swift */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
@@ -126,6 +128,8 @@
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
+		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewHandler.swift; sourceTree = "<group>"; };
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
@@ -270,8 +274,9 @@
 		5B495FEE202839B800CC4B91 /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5BB90CFA203042D900F6CD9E /* 列表 */,
 				5B6F3F98202C16D00070818C /* 主页面 */,
+				5BB90CFA203042D900F6CD9E /* 列表 */,
+				5B9854C32047A69600C449C3 /* 待查单 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 		5B4CFDA1202D3D9F009D44F1 /* Controler */ = {
 			isa = PBXGroup;
 			children = (
+				5BF0454120401085003F8CE5 /* scan（扫描） */,
 				5B702F3D20412FD000DB4978 /* calendar（日历） */,
 				5B48A81B2046814000CA563A /* MainViewController.swift */,
 				5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */,
@@ -448,6 +454,15 @@
 			path = XiaoBie;
 			sourceTree = "<group>";
 		};
+		5B9854C32047A69600C449C3 /* 待查单 */ = {
+			isa = PBXGroup;
+			children = (
+				5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */,
+				5B9854C62047A90D00C449C3 /* DToCheckView.swift */,
+			);
+			path = "待查单";
+			sourceTree = "<group>";
+		};
 		5B9FDF0C202855FA00F306E9 /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,7 +485,6 @@
 			isa = PBXGroup;
 			children = (
 				5BF04536203FFCEE003F8CE5 /* 主页面 */,
-				5BF0454120401085003F8CE5 /* scan（扫描） */,
 				5BF04537203FFCFB003F8CE5 /* Store（库存） */,
 				5BF0453A203FFD44003F8CE5 /* History（历史） */,
 			);
@@ -710,6 +724,7 @@
 				5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */,
 				5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */,
 				5BDB5038202C52DA0055C21E /* DSetupView.swift in Sources */,
+				5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */,
 				5B48A81C2046814000CA563A /* MainViewController.swift in Sources */,
 				5B51FADF20293E65001AB946 /* DChatViewController.swift in Sources */,
 				5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */,
@@ -739,6 +754,7 @@
 				5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */,
 				5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
+				5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */,
 				5B51FAEF202947E2001AB946 /* UIView.swift in Sources */,
 				5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */,
 				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,

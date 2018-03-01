@@ -81,10 +81,28 @@ class DMyPhoneViewController: UIViewController, UIScrollViewDelegate {
         //推出
         let scanVC = DScanViewController()
         scanVC.scanedClosure = { serialNumber in
-            self.storeVC.loadRequest()
+            self.claimPhoneRequest(serialNumber: serialNumber)
         }
         navigationController?.pushViewController(scanVC, animated: true)
     }
+    
+    //MARK: - Request
+    func claimPhoneRequest(serialNumber: String) {
+        let staffId = AccountTool.userInfo().id
+        
+        WebTool.post(uri: "claim_phone_delivery", para: ["staff_id" : staffId, "serial_no" : serialNumber], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.storeVC.loadRequest()
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    
     
     //MARK: - Properties
     lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 40), titleArray:  ["库存", "历史记录"], sliderWidth: 28) { [weak self] (currentIndex) in

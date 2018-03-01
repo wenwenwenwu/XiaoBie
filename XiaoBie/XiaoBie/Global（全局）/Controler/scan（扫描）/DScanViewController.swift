@@ -98,27 +98,6 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
         }
     }
     
-    //MARK: - Request
-    func claimPhoneRequest(serialNumber: String) {
-        let staffId = AccountTool.userInfo().id
-
-        WebTool.post(uri: "claim_phone_delivery", para: ["staff_id" : staffId, "serial_no" : serialNumber], success: { (dict) in
-            let model = DBasicResponseModel.parse(dict: dict)
-            if model.code == "0" {
-                self.scanedClosure(serialNumber)
-                self.navigationController?.popViewController(animated: true)
-            } else {
-                HudTool.showInfo(string: model.msg, closure: {
-                    self.session.startRunning()
-                })
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error, closure: {
-                self.session.startRunning()
-            })
-        }
-    }
-    
     //MARK: - Event Response
     @objc func backButtonAction()  {
         navigationController?.popViewController(animated: true)
@@ -137,8 +116,9 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
             }
         }
         self.session.stopRunning()
-        //录入序列号
-        claimPhoneRequest(serialNumber: serialNumber!)
+        //输出序列号
+        scanedClosure(serialNumber!)
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Properties
