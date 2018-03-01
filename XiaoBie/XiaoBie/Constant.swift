@@ -36,15 +36,15 @@ import UIKit
     let gray_A3A5A8 = #colorLiteral(red: 0.6392156863, green: 0.6470588235, blue: 0.6588235294, alpha: 1)
     let gray_B3B3B3 = #colorLiteral(red: 0.7019607843, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
     let gray_CCCCCC = #colorLiteral(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-    let gray_e5e5e5 = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
-
+    let gray_E5E5E5 = #colorLiteral(red: 0.8980392157, green: 0.8980392157, blue: 0.8980392157, alpha: 1)
+    let gray_EBEBEB = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
     let gray_F0F0F0 = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
     let gray_F5F5F5 = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
     let white_FFFFFF = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
     let selectedCellView: UIView = {
         let view = UIView()
-        view.backgroundColor = gray_e5e5e5
+        view.backgroundColor = gray_E5E5E5
         return view
     }()
 

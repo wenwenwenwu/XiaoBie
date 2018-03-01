@@ -136,7 +136,6 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func cancelRequest(indexPath: IndexPath) {
-        print(indexPath.row, dataArray.count)
         let orderId = dataArray[indexPath.row].id
         
         WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":orderId], success: { (dict) in
