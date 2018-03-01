@@ -15,6 +15,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
+        remindButton.isEnabled = false
         view.addSubview(remindButton)
         setupNavigationBar()
         setupFrame()
@@ -57,6 +58,9 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)
             if model.code == "0" {
+                //设置提醒按钮
+                self.remindButton.isEnabled = true
+                //展示做单员列表
                 self.clerkListArray = model.data
                 self.tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
             } else {
@@ -148,7 +152,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         return button
     }()
 
-    var clerkListArray: [DToCheckClerkModel] = []
     var model = DGrabItemModel()
+    var clerkListArray: [DToCheckClerkModel] = []
     
 }
