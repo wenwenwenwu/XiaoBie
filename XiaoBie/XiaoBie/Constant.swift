@@ -68,9 +68,9 @@ import UIKit
 
     //网络
     let pageSize = "10"
+    let baseURL = "http://116.62.206.174:8080/longwang/general/"
     let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
-    let baseURL = "http://116.62.206.174:8080/longwang/general/"
 
     //第三方
     let JPushAppKey = "5a7e0489b11594cb421bccc4"
