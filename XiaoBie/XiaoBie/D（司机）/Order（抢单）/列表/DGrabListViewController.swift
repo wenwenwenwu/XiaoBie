@@ -58,6 +58,11 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
             }
         }
     }
+    
+    //MARK: - Event Response
+    func grabButtonAction(indexPath: IndexPath) {
+        grabRequest(indexPath: indexPath)
+    }
         
     //MARK: - Request
     func loadRequest() {
@@ -131,7 +136,9 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
                 self.dataArray.remove(at: indexPath.row)
+                self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
             }
         }) { (error) in
             HudTool.showInfo(string: error)
@@ -146,8 +153,9 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DGrabListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
-        cell.grabButtonClosure = {
-            self.grabRequest(indexPath: indexPath)
+        cell.grabButtonClosure = { [weak self] in
+            let corretIndexPath = tableView.indexPath(for: cell)// 获取真实 indexPath
+            self?.grabButtonAction(indexPath: corretIndexPath!)
         }
         return cell
     }

@@ -67,6 +67,11 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
+    //MARK: - Event Response
+    func cancelButtonAction(indexPath: IndexPath) {
+        cancelRequest(indexPath: indexPath)
+    }
+    
     //MARK: - Request
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
@@ -139,7 +144,9 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
                 self.dataArray.remove(at: indexPath.row)
+                self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                self.tableView.endUpdates()
             }
         }) { (error) in
             HudTool.showInfo(string: error)
@@ -154,8 +161,9 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DHomeListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
-        cell.cancelButtonClosure = {
-            self.cancelRequest(indexPath: indexPath)
+        cell.cancelButtonClosure = { [weak self] in
+            let corretIndexPath = tableView.indexPath(for: cell)// 获取真实 indexPath 
+            self?.cancelButtonAction(indexPath: corretIndexPath!)
         }
         return cell
     }
