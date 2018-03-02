@@ -57,7 +57,9 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Request
     func updateAddressRequest() {
-        WebTool.post(uri:"update_order_info", para:["address": addressTextView.text, "gtcdw": model.gtcdw, "order_id": model.id, "latitude": location.latitude,"longitude": location.longitude], success: { (dict) in
+        let address = addressTextView.text.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        WebTool.post(uri:"update_order_info", para:["address": address, "gtcdw": model.gtcdw, "order_id": model.id, "latitude": location.latitude,"longitude": location.longitude], success: { (dict) in
             let model = DToCheckUpdateAdressResponseModel.parse(dict: dict)
             self.addressTextView.resignFirstResponder()
             self.addressTextView.isEditable = false
@@ -145,11 +147,11 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
             make.top.equalTo(setValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)
             make.right.equalTo(-67)
-            make.bottom.equalTo(-32)
+            make.bottom.equalTo(-22)
         }
         //distance
         distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(85)
+            make.left.equalTo(90)
             make.bottom.equalTo(-14)
         }
         
