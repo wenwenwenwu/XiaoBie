@@ -18,8 +18,18 @@ class DSetlistViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.reloadData()
     }
     
-    deinit {
-        print("🐱")
+    //MARK: - Request
+    func updateSetRequest() {
+        WebTool.post(uri:"update_order_info", para:["address": model.address, "gtcdw": setItemModel.plan_name, "order_id": model.id], success: { (dict) in
+            let model = DToCheckUpdateAdressResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.updatedSetClosure(self.setItemModel)
+                self.navigationController!.popViewController(animated: true)
+            } 
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -31,8 +41,8 @@ class DSetlistViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = DSetCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         cell.selectedClosure = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-            self?.selectedClosure(cell.model)
+            self?.setItemModel = cell.model
+            self?.updateSetRequest()
         }
         return cell
     }
@@ -57,7 +67,13 @@ class DSetlistViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.tableFooterView = UIView()
         return tableView
     }()
+    
     var dataArray: [DSetItemModel] = []
-    var selectedClosure: (DSetItemModel)->Void = { _ in }
+    
+    var updatedSetClosure: (DSetItemModel)->Void = { _ in }
+    
+    var setItemModel = DSetItemModel()
+    
+    var model = DGrabItemModel()
     
 }

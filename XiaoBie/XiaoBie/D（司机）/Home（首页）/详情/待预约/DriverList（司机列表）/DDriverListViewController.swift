@@ -21,10 +21,6 @@ class DDriverListViewController: UIViewController, UITableViewDataSource, UITabl
         tableView.reloadData()
     }
     
-    deinit {
-        print("🐱")
-    }
-    
     //MARK: - Event Response
     @objc func transferButtonAction() {
         transferRequest()
@@ -36,8 +32,10 @@ class DDriverListViewController: UIViewController, UITableViewDataSource, UITabl
             let model = DDriverListResponseModel.parse(dict: dict)
             if model.code == "0" {
                 let homeVC = self.navigationController?.viewControllers[0] as! DHomeViewController
+                //待预约页面更新
                 let toOrderVC = homeVC.toOrderVC
                 toOrderVC.loadRequest()
+                //跳转回首页主页面
                 self.navigationController?.popToViewController(homeVC, animated: true)
             } else {
                 HudTool.showInfo(string: model.msg)

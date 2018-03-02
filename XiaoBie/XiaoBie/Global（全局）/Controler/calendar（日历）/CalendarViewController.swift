@@ -25,10 +25,6 @@ class CalendarViewController: UIViewController, UIPickerViewDataSource, UIPicker
 
     }
     
-    deinit {
-        print("🐱")
-    }
-
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = cancelButtonItem

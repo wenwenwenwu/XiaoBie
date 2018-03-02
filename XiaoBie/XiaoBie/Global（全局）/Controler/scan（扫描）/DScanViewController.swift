@@ -32,10 +32,6 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
         navigationController?.isNavigationBarHidden = false
     }
     
-    deinit {
-        print("🐱")
-    }
-    
     //MARK：Setup
     func setupCamera() {
         do{

@@ -45,8 +45,22 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Request
     func cancelRequest() {
-        
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                let homeVC = self.navigationController?.viewControllers[0] as! DHomeViewController
+                //待预约页面更新
+                let toOrderVC = homeVC.toOrderVC
+                toOrderVC.loadRequest()
+                //跳转回首页主页面
+                self.navigationController?.popToViewController(homeVC, animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
+    
     
     func setListRequest() {
         WebTool.get(uri:"query_plan_type", para:["business_type": model.project_type], success: { (dict) in
@@ -54,9 +68,10 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
             if model.code == "0" {
                 let setListVC = DSetlistViewController()
                 setListVC.dataArray = model.data
-                setListVC.selectedClosure = { setItemModel in
-                    //保存套餐model
-                    self.setItemModel = setItemModel
+                setListVC.model = self.model
+                setListVC.updatedSetClosure = { setItemModel in
+                    //保存套餐
+                    self.model.gtcdw = setItemModel.plan_name
                     //套餐名称显示
                     let setPickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DToOrderSetPickCell
                     setPickerCell.setName = setItemModel.plan_name
@@ -120,6 +135,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
             return infoCell
         default:
             let setPickCell = DToOrderSetPickCell.cellWith(tableView: tableView)
+            setPickCell.setName = model.gtcdw
             return setPickCell
         }
     }
@@ -216,7 +232,6 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     }()
     
     var model = DGrabItemModel()
-    var setItemModel = DSetItemModel()
     
     var updatedAdressClosure: (DGrabItemModel)->Void = { _ in }
 

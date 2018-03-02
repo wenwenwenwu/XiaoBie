@@ -74,8 +74,7 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
             HudTool.showInfo(string: error)
         }
     }
-    
-    
+        
     //MARK: - UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {//回车
