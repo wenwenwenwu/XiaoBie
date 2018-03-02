@@ -27,8 +27,8 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Event Response
-    @objc func changeButtonAction() {
-        print("转单")
+    @objc func transferButtonAction() {
+        driverListRequest()
     }
     
     func setPickCellAction() {
@@ -62,6 +62,22 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
                     setPickerCell.setName = setItemModel.plan_name
                 }
                 self.navigationController?.pushViewController(setListVC, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    func driverListRequest() {
+        WebTool.post(uri:"get_peer_staff_list", para:["staff_id": AccountTool.userInfo().id], success: { (dict) in
+            let model = DDriverListResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let driverListVC = DDriverListViewController()
+                driverListVC.dataArray = model.data
+                driverListVC.model = self.model
+                self.navigationController?.pushViewController(driverListVC, animated: true)
             } else {
                 HudTool.showInfo(string: model.msg)
             }
@@ -163,7 +179,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Properties
-    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_zd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(changeButtonAction))
+    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_zd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(transferButtonAction))
     
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)

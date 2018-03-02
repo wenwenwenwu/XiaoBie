@@ -95,6 +95,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         default:
             let clerkCell = DToCheckClerkCell.cellWith(tableView: tableView)
             clerkCell.model = clerkListArray[indexPath.row]
+            //首个选中
             if indexPath.row == 0 {
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
             }
