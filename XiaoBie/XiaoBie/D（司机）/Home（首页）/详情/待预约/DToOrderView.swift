@@ -1,14 +1,14 @@
 //
-//  DToCheckView.swift
+//  DToOrderView.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/3/1.
+//  Created by wuwenwen on 2018/3/2.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 
-class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
+class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -21,8 +21,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
         contentView.addSubview(timeValueLabel)
         contentView.addSubview(phoneKeyLabel)
         contentView.addSubview(phoneValueLabel)
-        contentView.addSubview(setKeyLabel)
-        contentView.addSubview(setValueLabel)
         contentView.addSubview(addressKeyLabel)
         addressTextView.isEditable = false
         contentView.addSubview(addressTextView)
@@ -37,13 +35,13 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToCheckInfoCell{
+    class func cellWith(tableView : UITableView) -> DToOrderInfoCell{
         let reuseIdentifier = "infoCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DToCheckInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DToOrderInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DToCheckInfoCell
+        return cell as! DToOrderInfoCell
     }
     
     //MARK: - Event Response
@@ -87,14 +85,8 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
             make.height.equalTo(14)
         }
         
-        setKeyLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(setValueLabel)
-            make.left.equalTo(14)
-            make.height.equalTo(14)
-        }
-        
         addressKeyLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(setKeyLabel.snp.bottom).offset(12)
+            make.top.equalTo(phoneKeyLabel.snp.bottom).offset(12)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
@@ -115,16 +107,10 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
             make.top.equalTo(timeValueLabel.snp.bottom).offset(12)
             make.left.equalTo(phoneKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
-        }
-        
-        setValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneValueLabel.snp.bottom).offset(12)
-            make.left.equalTo(setKeyLabel.snp.right).offset(16)
-            make.height.equalTo(15)
-        }
+        }        
         //addressTextView
         addressTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(setValueLabel.snp.bottom).offset(2)
+            make.top.equalTo(phoneValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)
             make.right.equalTo(-67)
             make.bottom.equalTo(-32)
@@ -192,21 +178,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
         return label
     }()
     
-    lazy var setKeyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "套餐档位"
-        label.font = font14
-        label.textColor = gray_999999
-        return label
-    }()
-    
-    lazy var setValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
     lazy var addressKeyLabel: UILabel = {
         let label = UILabel()
         label.text = "联系地址"
@@ -244,17 +215,10 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     
     var model = DGrabItemModel() {
         didSet {
-            nameValueLabel.text = "邬文文"
-            timeValueLabel.text = "2018-03-01 18:00:01"
-            phoneValueLabel.text = "18158188052"
-            setValueLabel.text = "28"
+            nameValueLabel.text = model.user_name
+            timeValueLabel.text = model.update_time
+            phoneValueLabel.text = model.phone1
             addressTextView.text = model.address
-//            nameValueLabel.text = model.user_name
-//            timeValueLabel.text = model.update_time
-//            phoneValueLabel.text = model.phone1
-//            setValueLabel.text = model.gtcdw
-//            addressValueLabel.text = model.address
-            
             //distanceLabel
             if model.distance == "-1" { //和后台约好返回的无法解析地址
                 distanceImageView.isHidden = true
@@ -271,16 +235,16 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     var finishEditClosure: (String)->Void = { _ in }
 }
 
-class DToCheckScanCell: UITableViewCell {
+class DToOrderSetPickCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         contentView.backgroundColor = white_FFFFFF
-        contentView.addSubview(keyLabel)
-        contentView.addSubview(valueLabel)
-        contentView.addSubview(scanButton)
+        contentView.addSubview(infoLabel)
+        contentView.addSubview(pickLabel)
+        contentView.addSubview(arrowImageView)
         setupFrame()
     }
     
@@ -289,174 +253,50 @@ class DToCheckScanCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToCheckScanCell{
-        let reuseIdentifier = "scanCell";
+    class func cellWith(tableView : UITableView) -> DToOrderSetPickCell{
+        let reuseIdentifier = "setPickCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
             cell = DToCheckScanCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DToCheckScanCell
-    }
-    
-    //MARK: - Event Response
-    @objc func scanButtonAction() {
-        ownerController!.navigationController!.pushViewController(scanVC, animated: true)
+        return cell as! DToOrderSetPickCell
     }
     
     //MARK: - Setup
     func setupFrame() {
-        keyLabel.snp.makeConstraints { (make) in
+        infoLabel.snp.makeConstraints { (make) in
             make.left.equalTo(14)
             make.top.height.equalTo(15)
             make.bottom.equalTo(-15)
         }
         
-        valueLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(keyLabel.snp.right).offset(15)
+        pickLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(arrowImageView.snp.left).offset(-5)
             make.centerY.equalToSuperview()
         }
         
-        scanButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
+        arrowImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(-13)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(18)
         }
     }
     
     //MARK: - Properties
-    lazy var keyLabel: UILabel = {
+    lazy var infoLabel: UILabel = {
         let label = UILabel()
-        label.text = "手机串号"
+        label.text = "套餐档位"
         label.font = font16
         label.textColor = black_333333
         return label
     }()
     
-    lazy var valueLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
-    lazy var scanButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.adjustsImageWhenHighlighted = false
-        button.setImage(#imageLiteral(resourceName: "icon_sys"), for: .normal)
-        button.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var scanVC: DScanViewController = {
-        let scanVC = DScanViewController()
-        scanVC.scanedClosure = { [weak self] serialNumber in
-            self?.valueLabel.text = serialNumber
-            self?.scanedClosure(serialNumber)
-        }
-        return scanVC
-    }()
-    
-    weak var ownerController: UIViewController?
-    
-    var scanedClosure: (String)->Void = { _ in }
-    
-    
-}
-
-class DToCheckClerkCell: UITableViewCell {
-    
-    //MARK: - Init
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = .none
-        contentView.backgroundColor = white_FFFFFF
-        contentView.addSubview(clerkLabel)
-        contentView.addSubview(statusLabel)
-        contentView.addSubview(selectButton)
-        contentView.addSubview(lineView)
-        setupFrame()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToCheckClerkCell{
-        let reuseIdentifier = "clerkCell";
-        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
-        if (cell == nil) {
-            cell = DToCheckClerkCell(style: .default, reuseIdentifier: reuseIdentifier)
-        }
-        return cell as! DToCheckClerkCell
-    }
-    
-    //MARK: - Setup
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)        
-        selectButton.isSelected = selected
-    }
-    
-    func setupFrame() {
-        clerkLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(14)
-            make.top.height.equalTo(15)
-            make.bottom.equalTo(-15)
-
-        }
-        
-//        statusLabel.snp.makeConstraints { (make) in
-//            make.left.equalTo(keyLabel.snp.right).offset(15)
-//            make.centerY.equalToSuperview()
-//        }
-        
-        selectButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(18)
-        }
-        
-        lineView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
-            make.height.equalTo(1)
-        }
-    }
-    
-    //MARK: - Properties
-    lazy var clerkLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
-    lazy var statusLabel: UILabel = {
+    lazy var pickLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = font16
-        label.textColor = black_333333
+        label.textColor = gray_999999
         return label
     }()
     
-    lazy var selectButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.isUserInteractionEnabled = false
-        button.setImage(#imageLiteral(resourceName: "icon_g_selected"), for: .selected)
-        button.setImage(#imageLiteral(resourceName: "icon_g_default"), for: .normal)
-        return button
-    }()
-    
-    lazy var lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = gray_F5F5F5
-        return view
-    }()
-    
-    var model = DToCheckClerkModel() {
-        didSet {
-            clerkLabel.text = model.name
-        }
-    }
-    
+    lazy var arrowImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
 }

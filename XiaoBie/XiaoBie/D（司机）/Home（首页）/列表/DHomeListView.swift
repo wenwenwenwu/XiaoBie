@@ -180,7 +180,7 @@ class DHomeListCell: UITableViewCell {
     var model = DGrabItemModel() {
         didSet {
             //timeLabel
-            timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.create_time)
+            timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.update_time)
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
             //nameLabel

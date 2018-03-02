@@ -45,10 +45,10 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
     }
     
     //MARK: - Request
-    func clockinRequest(location: CLLocation) {
+    func clockinRequest() {
         let telephone = AccountTool.userInfo().phone
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
+        let latitude = location.latitude
+        let longitude = location.longitude
         let signupType = (currentType == .clockin) ? "0" : "1"
         
         WebTool.post(uri: "staff_sign", para: ["img_name" : imageName, "telephone" : telephone, "sign_up_type" : signupType, "latitude" : latitude, "longitude": longitude ], success: { (dict) in
@@ -68,8 +68,11 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
         self.imageName = imageName
         self.locationTool.startUpdatingLocation()
     }
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.clockinRequest(location: location)
+    
+    var location: (latitude: String, longitude: String) = ("", "")
+    lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in
+        self.location = (latitude, longitude)
+        self.clockinRequest()
     }
     
     var currentType: DClockinType = .clockin    

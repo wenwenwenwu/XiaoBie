@@ -75,6 +75,9 @@
 		5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */; };
 		5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* DHistoryView.swift */; };
 		5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* DScanViewController.swift */; };
+		5BF2FC372048E7E5001755C8 /* DFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */; };
+		5BF2FC3B2048E9FD001755C8 /* DToOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */; };
+		5BF2FC3D2048EA19001755C8 /* DToOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */; };
 		5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
@@ -152,6 +155,9 @@
 		5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryModel.swift; sourceTree = "<group>"; };
 		5BF0453F2040020B003F8CE5 /* DHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryView.swift; sourceTree = "<group>"; };
 		5BF0454220401085003F8CE5 /* DScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DScanViewController.swift; sourceTree = "<group>"; };
+		5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFinishViewController.swift; sourceTree = "<group>"; };
+		5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderViewController.swift; sourceTree = "<group>"; };
+		5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderView.swift; sourceTree = "<group>"; };
 		5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
@@ -278,7 +284,7 @@
 			children = (
 				5B6F3F98202C16D00070818C /* 主页面 */,
 				5BB90CFA203042D900F6CD9E /* 列表 */,
-				5B9854C32047A69600C449C3 /* 待查单 */,
+				5BF2FC382048E8FD001755C8 /* 详情 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -555,6 +561,33 @@
 			path = "scan（扫描）";
 			sourceTree = "<group>";
 		};
+		5BF2FC352048E7C6001755C8 /* 已完成 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */,
+			);
+			path = "已完成";
+			sourceTree = "<group>";
+		};
+		5BF2FC382048E8FD001755C8 /* 详情 */ = {
+			isa = PBXGroup;
+			children = (
+				5B9854C32047A69600C449C3 /* 待查单 */,
+				5BF2FC392048E9E5001755C8 /* 待预约 */,
+				5BF2FC352048E7C6001755C8 /* 已完成 */,
+			);
+			path = "详情";
+			sourceTree = "<group>";
+		};
+		5BF2FC392048E9E5001755C8 /* 待预约 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */,
+				5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */,
+			);
+			path = "待预约";
+			sourceTree = "<group>";
+		};
 		5BF8F402202FDF070031D9D4 /* 列表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +763,7 @@
 				5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */,
 				5B48A81C2046814000CA563A /* MainViewController.swift in Sources */,
 				5B51FADF20293E65001AB946 /* DChatViewController.swift in Sources */,
+				5BF2FC372048E7E5001755C8 /* DFinishViewController.swift in Sources */,
 				5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */,
 				5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */,
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
@@ -767,11 +801,13 @@
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
+				5BF2FC3D2048EA19001755C8 /* DToOrderView.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
+				5BF2FC3B2048E9FD001755C8 /* DToOrderViewController.swift in Sources */,
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,

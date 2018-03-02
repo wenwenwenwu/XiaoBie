@@ -67,8 +67,8 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - Request
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
+        let latitude = location.latitude
+        let longitude = location.longitude
         
         WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = DGrabItemResponseModel.parse(dict: dict)
@@ -102,8 +102,8 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
+        let latitude = location.latitude
+        let longitude = location.longitude
         
         WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
             
@@ -189,9 +189,10 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
         return blankView
     }()
     
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.location = location
-        self?.loadRequest()
+    var location: (latitude: String, longitude: String) = ("", "")
+    lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in
+        self.location = (latitude, longitude)
+        self.loadRequest()
     }
     
     var projectType = ""
@@ -211,6 +212,5 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     var dataArray: [DGrabItemModel] = []
     var pageCount = 0
     
-    var location: CLLocation = CLLocation()
 }
 

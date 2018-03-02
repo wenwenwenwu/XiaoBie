@@ -42,3 +42,17 @@ class DToCheckClerkModel: NSObject {
     @objc var update_time = ""
     @objc var password = ""
 }
+
+//MARK: - DToCheckUpdateAdressResponseModel
+class DToCheckUpdateAdressResponseModel: NSObject,YYModel {
+    
+    @objc var code = ""
+    @objc var msg = ""
+    @objc var result = ""
+    @objc var data = DGrabItemModel()
+    
+    class func parse(dict : Any ) -> DToCheckUpdateAdressResponseModel{
+        let model = DToCheckUpdateAdressResponseModel.yy_model(withJSON: dict)
+        return model!
+    }
+}

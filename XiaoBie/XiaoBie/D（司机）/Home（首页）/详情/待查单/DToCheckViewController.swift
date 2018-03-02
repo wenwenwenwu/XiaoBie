@@ -79,9 +79,13 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         switch indexPath.section {
         case 0:
             let infoCell = DToCheckInfoCell.cellWith(tableView: tableView)
-            infoCell.finishEditClosure = { [weak self] newAddress in
-                self?.model.address = newAddress
+            infoCell.finishEditClosure = { [weak self] model in
+                //刷新当前页面
+                self?.model.address = model.address
+                self?.model.distance = model.distance
                 self?.tableView.reloadData()
+                //刷新列表页面
+                self?.updatedAdressClosure(model)
             }
             infoCell.model = model
             return infoCell
@@ -175,4 +179,5 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     var clerkListArray: [DToCheckClerkModel] = []
     var currentClerk = DToCheckClerkModel()
     
+    var updatedAdressClosure: (DGrabItemModel)->Void = { _ in }    
 }

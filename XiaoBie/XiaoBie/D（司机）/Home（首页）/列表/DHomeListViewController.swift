@@ -74,11 +74,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - Request
     func loadRequest() {
-        let staffId = AccountTool.userInfo().id
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
-        
-        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "latitude":latitude, "longitude":longitude, "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":AccountTool.userInfo().id, "query_type":queryType, "page_num": "1", "latitude":location.latitude, "longitude":location.longitude, "page_size": pageSize], success: { (dict) in
             let model = DGrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -109,11 +105,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func loadMoreRequest() {
-        let staffId = AccountTool.userInfo().id
-        let latitude = String(location.coordinate.latitude)
-        let longitude = String(location.coordinate.longitude)
-        
-        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":staffId, "query_type":queryType, "page_num":"1", "latitude":latitude, "longitude":longitude, "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"get_order_list_for_delivery", para:["staff_id":AccountTool.userInfo().id, "query_type":queryType, "page_num": String(pageCount), "latitude":location.latitude, "longitude":location.longitude, "page_size": pageSize], success: { (dict) in
             
             let model = DGrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -135,10 +127,8 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.mj_footer.endRefreshing()
     }
     
-    func cancelRequest(indexPath: IndexPath) {
-        let orderId = dataArray[indexPath.row].id
-        
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":orderId], success: { (dict) in
+    func cancelRequest(indexPath: IndexPath) {        
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":dataArray[indexPath.row].id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
@@ -174,6 +164,10 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         case .toCheck:
             let toCheckVC = DToCheckViewController()
             toCheckVC.model = cell.model
+            toCheckVC.updatedAdressClosure = { model in
+                let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
+                cell.model = model
+            }
             navigationController?.pushViewController(toCheckVC, animated: true)
         default:
             print("🐱")
@@ -230,9 +224,9 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     
     var pageCount = 0
     
-    var location: CLLocation = CLLocation()
-    lazy var locationTool = LocationTool.toolWith { [weak self] (location) in
-        self?.location = location
-        self?.loadRequest()
+    var location: (latitude: String, longitude: String) = ("", "")
+    lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in
+        self.location = (latitude, longitude)
+        self.loadRequest()
     }
 }

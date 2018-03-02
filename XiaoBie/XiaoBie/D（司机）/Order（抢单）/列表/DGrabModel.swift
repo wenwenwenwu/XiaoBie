@@ -59,8 +59,9 @@ enum DHomeStatusType {
     case complete
 }
 
+//抢单、订单列表、修改地址、修改套餐共用
 class DGrabItemModel: NSObject {
-   
+    
     @objc var address = ""
     @objc var agent_dept = ""
     @objc var agent_id = ""
@@ -134,6 +135,9 @@ class DGrabItemModel: NSObject {
     @objc var unique_id = ""
     @objc var update_time = ""
     @objc var user_name = ""
+    @objc var shipping_method = ""
+    @objc var generate_type = ""
+
     //自定义
     var statusType: DHomeStatusType = .toCheck
     var distanceKM = ""
