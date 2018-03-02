@@ -25,25 +25,6 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         print("🐱")
     }
 
-    //MARK: - Setup
-    func setupNavigationBar() {
-        navigationItem.title = "待查单"
-        navigationItem.rightBarButtonItem = rightButtonItem
-    }
-    
-    func setupFrame() {
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
-        }
-        
-        remindButton.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
-            make.right.equalTo(-13)
-            make.bottom.equalTo(-10)
-            make.height.equalTo(36)
-        }
-    }
-    
     //MARK: - Event Response
     @objc func chatButtonAction() {
         print("聊天")
@@ -98,6 +79,10 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         switch indexPath.section {
         case 0:
             let infoCell = DToCheckInfoCell.cellWith(tableView: tableView)
+            infoCell.finishEditClosure = { [weak self] newAddress in
+                self?.model.address = newAddress
+                self?.tableView.reloadData()
+            }
             infoCell.model = model
             return infoCell
         case 1:
@@ -119,8 +104,10 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //记录当前做单员
-        currentClerk = clerkListArray[indexPath.row]
+        if indexPath.row == 2 {
+            //记录当前做单员
+            currentClerk = clerkListArray[indexPath.row]
+        }
     }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -139,6 +126,24 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         return UIView()
     }
     
+    //MARK: - Setup
+    func setupNavigationBar() {
+        navigationItem.title = "待查单"
+        navigationItem.rightBarButtonItem = rightButtonItem
+    }
+    
+    func setupFrame() {
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
+        }
+        
+        remindButton.snp.makeConstraints { (make) in
+            make.left.equalTo(13)
+            make.right.equalTo(-13)
+            make.bottom.equalTo(-10)
+            make.height.equalTo(36)
+        }
+    }
     
     //MARK: - Properties
     lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_lt").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(chatButtonAction))

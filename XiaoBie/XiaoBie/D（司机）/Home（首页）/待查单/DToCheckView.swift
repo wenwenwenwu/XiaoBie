@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DToCheckInfoCell: UITableViewCell {
+class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -24,7 +24,8 @@ class DToCheckInfoCell: UITableViewCell {
         contentView.addSubview(setKeyLabel)
         contentView.addSubview(setValueLabel)
         contentView.addSubview(addressKeyLabel)
-        contentView.addSubview(addressValueLabel)
+        addressTextView.isEditable = false
+        contentView.addSubview(addressTextView)
         contentView.addSubview(distanceImageView)
         contentView.addSubview(distanceLabel)
         contentView.addSubview(editButton)
@@ -45,29 +46,49 @@ class DToCheckInfoCell: UITableViewCell {
         return cell as! DToCheckInfoCell
     }
     
+    //MARK: - Event Response
+    @objc func editButtonAction() {
+        if addressTextView.isEditable == false {
+            addressTextView.isEditable = true
+            addressTextView.isScrollEnabled = true
+            addressTextView.becomeFirstResponder()
+        }
+    }
+    
+    //MARK: - UITextViewDelegate
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {//回车
+            textView.resignFirstResponder()
+            textView.isEditable = false
+            textView.isScrollEnabled = false
+            finishEditClosure(textView.text)
+        }
+        return true
+    }
+    
     //MARK: - Setup
     func setupFrame() {
         //key
         nameKeyLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(17)
+            make.centerY.equalTo(nameValueLabel)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
         
         timeKeyLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameKeyLabel.snp.bottom).offset(12)
+            make.centerY.equalTo(timeValueLabel)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
         
         phoneKeyLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeKeyLabel.snp.bottom).offset(12)
+            make.centerY.equalTo(phoneValueLabel)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
         
         setKeyLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneKeyLabel.snp.bottom).offset(12)
+            make.centerY.equalTo(setValueLabel)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
@@ -101,14 +122,13 @@ class DToCheckInfoCell: UITableViewCell {
             make.left.equalTo(setKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
         }
-        
-        addressValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(setValueLabel.snp.bottom).offset(8)
+        //addressTextView
+        addressTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(setValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)
             make.right.equalTo(-67)
             make.bottom.equalTo(-32)
         }
-        
         //distance
         distanceImageView.snp.makeConstraints { (make) in
             make.left.equalTo(85)
@@ -119,16 +139,11 @@ class DToCheckInfoCell: UITableViewCell {
             make.left.equalTo(distanceImageView.snp.right).offset(3)
             make.centerY.equalTo(distanceImageView)
         }
-        
+        //editButton
         editButton.snp.makeConstraints { (make) in
             make.right.equalTo(-13)
             make.top.equalTo(addressKeyLabel)
         }
-    }
-    
-    //MARK: - Event Response
-    @objc func editButtonAction() {
-        editButtonClosure()
     }
     
     //MARK: - Properties
@@ -200,12 +215,14 @@ class DToCheckInfoCell: UITableViewCell {
         return label
     }()
     
-    lazy var addressValueLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = font16
-        label.textColor = black_333333
-        return label
+    lazy var addressTextView: UITextView = {
+        let textView = UITextView()
+        textView.isScrollEnabled = false
+        textView.returnKeyType = .done
+        textView.delegate = self
+        textView.font = font16
+        textView.textColor = black_333333
+        return textView
     }()
     
     lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
@@ -227,11 +244,17 @@ class DToCheckInfoCell: UITableViewCell {
     
     var model = DGrabItemModel() {
         didSet {
-            nameValueLabel.text = model.user_name
-            timeValueLabel.text = model.update_time
-            phoneValueLabel.text = model.phone1
-            setValueLabel.text = model.gtcdw
-            addressValueLabel.text = model.address
+            nameValueLabel.text = "邬文文"
+            timeValueLabel.text = "2018-03-01 18:00:01"
+            phoneValueLabel.text = "18158188052"
+            setValueLabel.text = "28"
+            addressTextView.text = model.address
+//            nameValueLabel.text = model.user_name
+//            timeValueLabel.text = model.update_time
+//            phoneValueLabel.text = model.phone1
+//            setValueLabel.text = model.gtcdw
+//            addressValueLabel.text = model.address
+            
             //distanceLabel
             if model.distance == "-1" { //和后台约好返回的无法解析地址
                 distanceImageView.isHidden = true
@@ -245,7 +268,7 @@ class DToCheckInfoCell: UITableViewCell {
         }
     }
     
-    var editButtonClosure: ()->Void = {}
+    var finishEditClosure: (String)->Void = { _ in }
 }
 
 class DToCheckScanCell: UITableViewCell {
@@ -275,6 +298,11 @@ class DToCheckScanCell: UITableViewCell {
         return cell as! DToCheckScanCell
     }
     
+    //MARK: - Event Response
+    @objc func scanButtonAction() {
+        ownerController!.navigationController!.pushViewController(scanVC, animated: true)
+    }
+    
     //MARK: - Setup
     func setupFrame() {
         keyLabel.snp.makeConstraints { (make) in
@@ -293,11 +321,6 @@ class DToCheckScanCell: UITableViewCell {
             make.centerY.equalToSuperview()
             make.width.height.equalTo(18)
         }
-    }
-    
-    //MARK: - Event Response
-    @objc func scanButtonAction() {
-        ownerController!.navigationController!.pushViewController(scanVC, animated: true)
     }
     
     //MARK: - Properties
