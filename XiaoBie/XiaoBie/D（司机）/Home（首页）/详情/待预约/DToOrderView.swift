@@ -53,13 +53,33 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
+    //MARK: - Request
+    func updateAddressRequest() {
+        let address = addressTextView.text.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        WebTool.post(uri:"update_order_info", para:["address": address, "gtcdw": model.gtcdw, "order_id": model.id, "latitude": location.latitude,"longitude": location.longitude], success: { (dict) in
+            let model = DToCheckUpdateAdressResponseModel.parse(dict: dict)
+            self.addressTextView.resignFirstResponder()
+            self.addressTextView.isEditable = false
+            self.addressTextView.isScrollEnabled = false
+            if model.code == "0" {
+                self.finishEditClosure(model.data)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            self.addressTextView.resignFirstResponder()
+            self.addressTextView.isEditable = false
+            self.addressTextView.isScrollEnabled = false
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    
     //MARK: - UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {//回车
-            textView.resignFirstResponder()
-            textView.isEditable = false
-            textView.isScrollEnabled = false
-            finishEditClosure(textView.text)
+            locationTool.startUpdatingLocation()
         }
         return true
     }
@@ -107,17 +127,18 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
             make.top.equalTo(timeValueLabel.snp.bottom).offset(12)
             make.left.equalTo(phoneKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
-        }        
+        }
+        
         //addressTextView
         addressTextView.snp.makeConstraints { (make) in
             make.top.equalTo(phoneValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)
             make.right.equalTo(-67)
-            make.bottom.equalTo(-32)
+            make.bottom.equalTo(-22)
         }
         //distance
         distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(85)
+            make.left.equalTo(90)
             make.bottom.equalTo(-14)
         }
         
@@ -213,6 +234,12 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
         return button
     }()
     
+    var location: (latitude: String, longitude: String) = ("", "")
+    lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in
+        self.location = (latitude, longitude)
+        self.updateAddressRequest()
+    }
+    
     var model = DGrabItemModel() {
         didSet {
             nameValueLabel.text = model.user_name
@@ -232,7 +259,7 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    var finishEditClosure: (String)->Void = { _ in }
+    var finishEditClosure: (DGrabItemModel)->Void = { _ in }
 }
 
 class DToOrderSetPickCell: UITableViewCell {
@@ -257,7 +284,7 @@ class DToOrderSetPickCell: UITableViewCell {
         let reuseIdentifier = "setPickCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DToCheckScanCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DToOrderSetPickCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
         return cell as! DToOrderSetPickCell
     }
@@ -268,6 +295,7 @@ class DToOrderSetPickCell: UITableViewCell {
             make.left.equalTo(14)
             make.top.height.equalTo(15)
             make.bottom.equalTo(-15)
+            make.height.equalTo(15)
         }
         
         pickLabel.snp.makeConstraints { (make) in

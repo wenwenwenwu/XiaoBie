@@ -169,6 +169,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.model = model
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
+        case .toOrder:
+            let toCheckVC = DToOrderViewController()
+            toCheckVC.model = cell.model
+            toCheckVC.updatedAdressClosure = { model in
+                let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
+                cell.model = model
+            }
+            navigationController?.pushViewController(toCheckVC, animated: true)
         default:
             print("🐱")
         }

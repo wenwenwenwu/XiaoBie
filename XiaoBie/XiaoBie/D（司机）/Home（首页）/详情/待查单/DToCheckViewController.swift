@@ -21,10 +21,6 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         setupFrame()
     }
     
-    deinit {
-        print("🐱")
-    }
-
     //MARK: - Event Response
     @objc func chatButtonAction() {
         print("聊天")
@@ -79,6 +75,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         switch indexPath.section {
         case 0:
             let infoCell = DToCheckInfoCell.cellWith(tableView: tableView)
+            infoCell.model = model
             infoCell.finishEditClosure = { [weak self] model in
                 //刷新当前页面
                 self?.model.address = model.address
@@ -87,7 +84,6 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
                 //刷新列表页面
                 self?.updatedAdressClosure(model)
             }
-            infoCell.model = model
             return infoCell
         case 1:
             let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
