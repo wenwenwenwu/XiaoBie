@@ -320,6 +320,7 @@ class DToOrderSetPickCell: UITableViewCell {
     
     lazy var pickLabel: UILabel = {
         let label = UILabel()
+        label.text = "请选择"
         label.numberOfLines = 0
         label.font = font16
         label.textColor = gray_999999
@@ -327,4 +328,11 @@ class DToOrderSetPickCell: UITableViewCell {
     }()
     
     lazy var arrowImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
+    
+    var setName = "" {
+        didSet {
+            pickLabel.text = setName
+        }
+    }
+    
 }

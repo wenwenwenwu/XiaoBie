@@ -48,6 +48,9 @@
 		5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAF6202948AA001AB946 /* AccountTool.swift */; };
 		5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFC20294A1D001AB946 /* CacheTool.swift */; };
 		5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAFD20294A1D001AB946 /* ValidateTool.swift */; };
+		5B5B8D6520492FAB002484EE /* DSetlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6420492FAB002484EE /* DSetlistViewController.swift */; };
+		5B5B8D6720492FC2002484EE /* DSetListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6620492FC2002484EE /* DSetListView.swift */; };
+		5B5B8D692049314A002484EE /* SetListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D682049314A002484EE /* SetListModel.swift */; };
 		5B6325EA203130C100659725 /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6325E9203130C100659725 /* DateTool.swift */; };
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
@@ -125,6 +128,9 @@
 		5B51FAF6202948AA001AB946 /* AccountTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTool.swift; sourceTree = "<group>"; };
 		5B51FAFC20294A1D001AB946 /* CacheTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheTool.swift; sourceTree = "<group>"; };
 		5B51FAFD20294A1D001AB946 /* ValidateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateTool.swift; sourceTree = "<group>"; };
+		5B5B8D6420492FAB002484EE /* DSetlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSetlistViewController.swift; sourceTree = "<group>"; };
+		5B5B8D6620492FC2002484EE /* DSetListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSetListView.swift; sourceTree = "<group>"; };
+		5B5B8D682049314A002484EE /* SetListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetListModel.swift; sourceTree = "<group>"; };
 		5B6325E9203130C100659725 /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -406,6 +412,25 @@
 			path = "XiaoBie/Extension（扩展）";
 			sourceTree = SOURCE_ROOT;
 		};
+		5B5B8D6220492F67002484EE /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */,
+				5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */ = {
+			isa = PBXGroup;
+			children = (
+				5B5B8D6420492FAB002484EE /* DSetlistViewController.swift */,
+				5B5B8D6620492FC2002484EE /* DSetListView.swift */,
+				5B5B8D682049314A002484EE /* SetListModel.swift */,
+			);
+			path = "SetLIst（套餐列表）";
+			sourceTree = "<group>";
+		};
 		5B6F3F98202C16D00070818C /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,8 +607,8 @@
 		5BF2FC392048E9E5001755C8 /* 待预约 */ = {
 			isa = PBXGroup;
 			children = (
-				5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */,
-				5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */,
+				5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */,
+				5B5B8D6220492F67002484EE /* 主页面 */,
 			);
 			path = "待预约";
 			sourceTree = "<group>";
@@ -748,6 +773,7 @@
 				5B48A82F2046A04800CA563A /* MChatViewController.swift in Sources */,
 				5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */,
 				5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */,
+				5B5B8D6720492FC2002484EE /* DSetListView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */,
 				5B51FAD720293942001AB946 /* DHomeModel.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
@@ -788,8 +814,10 @@
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
 				5BF0453C203FFD56003F8CE5 /* DHistoryViewController.swift in Sources */,
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
+				5B5B8D692049314A002484EE /* SetListModel.swift in Sources */,
 				5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */,
 				5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */,
+				5B5B8D6520492FAB002484EE /* DSetlistViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
 				5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */,
 				5B51FAEF202947E2001AB946 /* UIView.swift in Sources */,

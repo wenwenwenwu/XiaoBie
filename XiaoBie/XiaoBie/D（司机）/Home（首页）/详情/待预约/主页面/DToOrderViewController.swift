@@ -31,6 +31,10 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         print("转单")
     }
     
+    func setPickCellAction() {
+        setListRequest()
+    }
+    
     @objc func cancelButtonAction() {
         cancelRequest()
     }
@@ -43,21 +47,27 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     func cancelRequest() {
         
     }
+    
     func setListRequest() {
-//        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
-//            let model = DToCheckClerkResponseModel.parse(dict: dict)
-//            if model.code == "0" {
-//                //设置提醒按钮
-//                self.remindButton.isEnabled = true
-//                //展示做单员列表
-//                self.clerkListArray = model.data
-//                self.tableView.reloadSections(IndexSet.init(integer: 2), with: .fade)
-//            } else {
-//                HudTool.showInfo(string: model.msg)
-//            }
-//        }) { (error) in
-//            HudTool.showInfo(string: error)
-//        }
+        WebTool.get(uri:"query_plan_type", para:["business_type": model.project_type], success: { (dict) in
+            let model = DSetListResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let setListVC = DSetlistViewController()
+                setListVC.dataArray = model.data
+                setListVC.selectedClosure = { setItemModel in
+                    //保存套餐model
+                    self.setItemModel = setItemModel
+                    //套餐名称显示
+                    let setPickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DToOrderSetPickCell
+                    setPickerCell.setName = setItemModel.plan_name
+                }
+                self.navigationController?.pushViewController(setListVC, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     func remindRequest() {
@@ -100,8 +110,8 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            print("选择套餐")
+        if indexPath.section == 1 {
+            setPickCellAction()
         }
     }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
@@ -190,6 +200,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     }()
     
     var model = DGrabItemModel()
+    var setItemModel = DSetItemModel()
     
     var updatedAdressClosure: (DGrabItemModel)->Void = { _ in }
 
