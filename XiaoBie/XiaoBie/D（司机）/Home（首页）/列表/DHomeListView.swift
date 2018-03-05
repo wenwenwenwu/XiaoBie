@@ -30,7 +30,7 @@ class DHomeListCell: UITableViewCell {
         whiteView.addSubview(statusLabel)
         whiteView.addSubview(lineView)
         whiteView.addSubview(iconImageView)
-        whiteView.addSubview(nameLabel)
+        whiteView.addSubview(costLabel)
         whiteView.addSubview(addressLabel)
         whiteView.addSubview(distanceImageView)
         whiteView.addSubview(distanceLabel)
@@ -71,7 +71,7 @@ class DHomeListCell: UITableViewCell {
             make.height.equalTo(60)
         }
         
-        nameLabel.snp.makeConstraints { (make) in
+        costLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconImageView.snp.right).offset(11)
             make.top.equalTo(lineView.snp.bottom).offset(10)
             make.height.equalTo(15)
@@ -80,7 +80,7 @@ class DHomeListCell: UITableViewCell {
         addressLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconImageView.snp.right).offset(11)
             make.right.equalTo(-15)
-            make.top.equalTo(nameLabel.snp.bottom).offset(7)
+            make.top.equalTo(costLabel.snp.bottom).offset(7)
         }
         
         distanceImageView.snp.makeConstraints { (make) in
@@ -127,7 +127,7 @@ class DHomeListCell: UITableViewCell {
     
     lazy var iconImageView = UIImageView()
     
-    lazy var nameLabel: UILabel = {
+    lazy var costLabel: UILabel = {
         let label = UILabel()
         label.font = font16Medium
         label.textColor = black_333333
@@ -157,8 +157,8 @@ class DHomeListCell: UITableViewCell {
             timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.update_time)
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //nameLabel
-            nameLabel.text = model.user_name
+            //costLabel
+            costLabel.text = "平均消费 \(model.average_cost) 元"
             //addressLabel
             addressLabel.text = model.address
             //distanceLabel
