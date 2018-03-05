@@ -130,7 +130,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
-        case .toOrder:
+        case .checked:
             let toOrderVC = DCheckedViewController()
             toOrderVC.model = cell.model
             toOrderVC.updatedAdressClosure = { model in

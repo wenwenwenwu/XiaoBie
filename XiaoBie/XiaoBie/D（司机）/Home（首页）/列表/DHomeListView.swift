@@ -177,8 +177,8 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "待查单"
             case .querying:
                 statusStr = "查询中"
-            case .toOrder:
-                statusStr = "待预约"
+            case .checked:
+                statusStr = "已查单"
             case .toTestify:
                 statusStr = "待验单"
             case .cancel:

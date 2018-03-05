@@ -271,6 +271,7 @@ class DCheckedSetPickCell: UITableViewCell {
         contentView.addSubview(infoLabel)
         contentView.addSubview(pickLabel)
         contentView.addSubview(arrowImageView)
+        contentView.addSubview(lineView)
         setupFrame()
     }
     
@@ -306,6 +307,11 @@ class DCheckedSetPickCell: UITableViewCell {
             make.right.equalTo(-13)
             make.centerY.equalToSuperview()
         }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(1)
+        }
     }
     
     //MARK: - Properties
@@ -328,10 +334,91 @@ class DCheckedSetPickCell: UITableViewCell {
     
     lazy var arrowImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_into"))
     
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_F0F0F0
+        return view
+    }()
+    
     var setName = "" {
         didSet {
             pickLabel.text = setName
         }
     }
+    
+}
+
+class DCheckedNoteCell: UITableViewCell, UITextFieldDelegate {
+    
+    //MARK: - Init
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+        contentView.backgroundColor = white_FFFFFF
+        contentView.addSubview(infoLabel)
+        contentView.addSubview(textField)
+        setupFrame()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> DCheckedNoteCell{
+        let reuseIdentifier = "noteCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = DCheckedNoteCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! DCheckedNoteCell
+    }
+    
+    //MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        note = textField.text!
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //MARK: - Setup
+    func setupFrame() {
+        infoLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(14)
+            make.top.height.equalTo(15)
+            make.bottom.equalTo(-15)
+            make.height.equalTo(15)
+            make.width.equalTo(40)
+            
+        }
+        
+        textField.snp.makeConstraints { (make) in
+            make.left.equalTo(infoLabel.snp.right).offset(10)
+            make.right.equalTo(-14)
+            make.centerY.equalToSuperview()
+        }
+    }
+    
+    //MARK: - Properties
+    lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        label.text = "备注:"
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var textField: UITextField = {
+        let textField = UITextField()
+        textField.delegate = self
+        textField.placeholder = "写点什么吧..."
+        textField.returnKeyType = .done
+        textField.font = font16
+        textField.textColor = black_333333
+        return textField
+    }()
+    
+    var note = "" 
     
 }

@@ -16,7 +16,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
         view.addSubview(cancelButton)
-        view.addSubview(orderButton)
+        view.addSubview(appointButton)
         view.addSubview(lineView)
         setupNavigationBar()
         setupFrame()
@@ -36,13 +36,13 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func cancelButtonAction() {
-        cancelRequest()
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, buttons: ["确定"]) { _ in
+            self.cancelRequest()
+        }
     }
     
-    @objc func orderButtonAction() {
-        DNoteView.showNoteView { (note) in
-            print(note)
-        }
+    @objc func appointButtonAction() {
+       appointRequest()
     }
     
     func infoCellupdatedAddressAction(model: DGrabItemModel) {
@@ -116,13 +116,16 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func orderRequest() {
-//        WebTool.get(uri:"notify_query_order", para:["order_id": model.id,  "dealer_id":currentClerk.id], success: { (dict) in
-//            let model = DBasicResponseModel.parse(dict: dict)
-//            HudTool.showInfo(string: model.msg)
-//        }) { (error) in
-//            HudTool.showInfo(string: error)
-//        }
+    func appointRequest() {
+        let noteCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCheckedNoteCell
+        
+        WebTool.post(uri:"customer_appoint", para:["appoint_remark": noteCell.note, "order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            self.navigationController?.popViewController(animated: true)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -131,7 +134,12 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 1
+        default:
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -144,9 +152,17 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
             }
             return infoCell
         default:
-            let setPickCell = DCheckedSetPickCell.cellWith(tableView: tableView)
-            setPickCell.setName = model.gtcdw
-            return setPickCell
+            switch indexPath.row {
+            case 0:
+                let setPickCell = DCheckedSetPickCell.cellWith(tableView: tableView)
+                setPickCell.setName = model.gtcdw
+                return setPickCell
+            default:
+                let noteCell = DCheckedNoteCell.cellWith(tableView: tableView)
+                return noteCell
+                
+            }
+            
         }
     }
     
@@ -175,8 +191,10 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Setup
     func setupNavigationBar() {
-        navigationItem.title = "待预约"
+        navigationItem.title = "已查单"
         navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
     }
     
     func setupFrame() {
@@ -197,7 +215,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
             make.height.equalTo(17)
         }
         
-        orderButton.snp.makeConstraints { (make) in
+        appointButton.snp.makeConstraints { (make) in
             make.right.bottom.equalToSuperview()
             make.top.equalTo(tableView.snp.bottom)
             make.left.equalTo(lineView.snp.right)
@@ -205,7 +223,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Properties
-    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_zd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(transferButtonAction))
+    lazy var rightButtonItem = UIBarButtonItem.init(title: "转单", style: .plain, target: self, action: #selector(transferButtonAction))
     
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
@@ -226,12 +244,12 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
         return button
     }()
     
-    lazy var orderButton: UIButton = {
+    lazy var appointButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
         button.setTitle("客户预约", for: .normal)
         button.setTitleColor(blue_3296FA, for: .normal)
-        button.addTarget(self, action: #selector(orderButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(appointButtonAction), for: .touchUpInside)
         return button
     }()
     

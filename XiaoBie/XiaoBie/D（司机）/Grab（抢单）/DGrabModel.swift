@@ -45,7 +45,7 @@ enum DHomeStatusType {
      */
     case toCheck
     case querying
-    case toOrder
+    case checked
     case toTestify
     case cancel
     case contact
@@ -106,7 +106,7 @@ class DGrabItemModel: NSObject {
             case "2":
                 statusType = .querying
             case "3":
-                statusType = .toOrder
+                statusType = .checked
             case "4":
                 statusType = .toTestify
             case "5":
