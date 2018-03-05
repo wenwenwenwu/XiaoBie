@@ -1,5 +1,5 @@
 //
-//  DToOrderViewController.swift
+//  DCheckedViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/2.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DToOrderViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DCheckedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -56,7 +56,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         //保存套餐
         self.model.gtcdw = model.plan_name
         //套餐名称显示
-        let setPickerCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DToOrderSetPickCell
+        let setPickerCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DCheckedSetPickCell
         setPickerCell.setName = model.plan_name
     }
     
@@ -135,14 +135,14 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let infoCell = DToOrderInfoCell.cellWith(tableView: tableView)
+            let infoCell = DCheckedInfoCell.cellWith(tableView: tableView)
             infoCell.model = model
             infoCell.updatedAddressClosure = { [weak self] model in
                 self?.infoCellupdatedAddressAction(model: model)
             }
             return infoCell
         default:
-            let setPickCell = DToOrderSetPickCell.cellWith(tableView: tableView)
+            let setPickCell = DCheckedSetPickCell.cellWith(tableView: tableView)
             setPickCell.setName = model.gtcdw
             return setPickCell
         }

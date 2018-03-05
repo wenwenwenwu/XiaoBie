@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
+class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -35,13 +35,13 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToOrderInfoCell{
+    class func cellWith(tableView : UITableView) -> DCheckedInfoCell{
         let reuseIdentifier = "infoCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DToOrderInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DCheckedInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DToOrderInfoCell
+        return cell as! DCheckedInfoCell
     }
     
     //MARK: - Event Response
@@ -261,7 +261,7 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
     var updatedAddressClosure: (DGrabItemModel)->Void = { _ in }
 }
 
-class DToOrderSetPickCell: UITableViewCell {
+class DCheckedSetPickCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -279,13 +279,13 @@ class DToOrderSetPickCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToOrderSetPickCell{
+    class func cellWith(tableView : UITableView) -> DCheckedSetPickCell{
         let reuseIdentifier = "setPickCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DToOrderSetPickCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DCheckedSetPickCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DToOrderSetPickCell
+        return cell as! DCheckedSetPickCell
     }
     
     //MARK: - Setup

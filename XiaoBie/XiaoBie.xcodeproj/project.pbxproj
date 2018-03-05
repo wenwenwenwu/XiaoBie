@@ -82,8 +82,8 @@
 		5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* DHistoryView.swift */; };
 		5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* DScanViewController.swift */; };
 		5BF2FC372048E7E5001755C8 /* DFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */; };
-		5BF2FC3B2048E9FD001755C8 /* DToOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */; };
-		5BF2FC3D2048EA19001755C8 /* DToOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */; };
+		5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */; };
+		5BF2FC3D2048EA19001755C8 /* DCheckedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -167,8 +167,8 @@
 		5BF0453F2040020B003F8CE5 /* DHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryView.swift; sourceTree = "<group>"; };
 		5BF0454220401085003F8CE5 /* DScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DScanViewController.swift; sourceTree = "<group>"; };
 		5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFinishViewController.swift; sourceTree = "<group>"; };
-		5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderViewController.swift; sourceTree = "<group>"; };
-		5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderView.swift; sourceTree = "<group>"; };
+		5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedViewController.swift; sourceTree = "<group>"; };
+		5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedView.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 			children = (
 				5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */,
 				5B495FEE202839B800CC4B91 /* Home（首页） */,
-				5B495FF0202839CE00CC4B91 /* Order（抢单） */,
+				5B495FF0202839CE00CC4B91 /* Grab（抢单） */,
 				5B495FF1202839E900CC4B91 /* Chat（聊天） */,
 				5B495FF2202839F700CC4B91 /* Mine（我的） */,
 			);
@@ -299,14 +299,14 @@
 			path = "Home（首页）";
 			sourceTree = "<group>";
 		};
-		5B495FF0202839CE00CC4B91 /* Order（抢单） */ = {
+		5B495FF0202839CE00CC4B91 /* Grab（抢单） */ = {
 			isa = PBXGroup;
 			children = (
 				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
 				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
 				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
 			);
-			path = "Order（抢单）";
+			path = "Grab（抢单）";
 			sourceTree = "<group>";
 		};
 		5B495FF1202839E900CC4B91 /* Chat（聊天） */ = {
@@ -420,8 +420,8 @@
 		5B5B8D6220492F67002484EE /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
-				5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */,
-				5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */,
+				5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */,
+				5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -613,20 +613,20 @@
 			isa = PBXGroup;
 			children = (
 				5B9854C32047A69600C449C3 /* 待查单 */,
-				5BF2FC392048E9E5001755C8 /* 待预约 */,
+				5BF2FC392048E9E5001755C8 /* 已查单 */,
 				5BF2FC352048E7C6001755C8 /* 已完成 */,
 			);
 			path = "详情";
 			sourceTree = "<group>";
 		};
-		5BF2FC392048E9E5001755C8 /* 待预约 */ = {
+		5BF2FC392048E9E5001755C8 /* 已查单 */ = {
 			isa = PBXGroup;
 			children = (
 				5B5B8D6220492F67002484EE /* 主页面 */,
 				5B5B8D6A20493CDB002484EE /* DriverList（司机列表） */,
 				5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */,
 			);
-			path = "待预约";
+			path = "已查单";
 			sourceTree = "<group>";
 		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
@@ -829,13 +829,13 @@
 				5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
-				5BF2FC3D2048EA19001755C8 /* DToOrderView.swift in Sources */,
+				5BF2FC3D2048EA19001755C8 /* DCheckedView.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
-				5BF2FC3B2048E9FD001755C8 /* DToOrderViewController.swift in Sources */,
+				5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */,
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
