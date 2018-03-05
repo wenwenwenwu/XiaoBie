@@ -302,8 +302,9 @@
 		5B495FF0202839CE00CC4B91 /* Order（抢单） */ = {
 			isa = PBXGroup;
 			children = (
-				5BF8F403202FDF250031D9D4 /* 主页面 */,
-				5BF8F402202FDF070031D9D4 /* 列表 */,
+				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
+				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
+				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
 			);
 			path = "Order（抢单）";
 			sourceTree = "<group>";
@@ -626,23 +627,6 @@
 				5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */,
 			);
 			path = "待预约";
-			sourceTree = "<group>";
-		};
-		5BF8F402202FDF070031D9D4 /* 列表 */ = {
-			isa = PBXGroup;
-			children = (
-				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
-				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
-				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
-			);
-			path = "列表";
-			sourceTree = "<group>";
-		};
-		5BF8F403202FDF250031D9D4 /* 主页面 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "主页面";
 			sourceTree = "<group>";
 		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
