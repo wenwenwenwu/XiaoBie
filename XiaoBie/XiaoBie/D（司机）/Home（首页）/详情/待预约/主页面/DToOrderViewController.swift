@@ -40,7 +40,24 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func orderButtonAction() {
-        remindRequest()
+        orderRequest()
+    }
+    
+    func infoCellupdatedAddressAction(model: DGrabItemModel) {
+        //刷新当前页面
+        self.model.address = model.address
+        self.model.distance = model.distance
+        tableView.reloadData()
+        //刷新列表页面
+        updatedAdressClosure(model)
+    }
+    
+    func setListVCUpdatedSetAction(model: DSetItemModel) {
+        //保存套餐
+        self.model.gtcdw = model.plan_name
+        //套餐名称显示
+        let setPickerCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DToOrderSetPickCell
+        setPickerCell.setName = model.plan_name
     }
     
     //MARK: - Request
@@ -70,11 +87,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
                 setListVC.dataArray = model.data
                 setListVC.model = self.model
                 setListVC.updatedSetClosure = { setItemModel in
-                    //保存套餐
-                    self.model.gtcdw = setItemModel.plan_name
-                    //套餐名称显示
-                    let setPickerCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DToOrderSetPickCell
-                    setPickerCell.setName = setItemModel.plan_name
+                    self.setListVCUpdatedSetAction(model: setItemModel)
                 }
                 self.navigationController?.pushViewController(setListVC, animated: true)
             } else {
@@ -101,7 +114,7 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func remindRequest() {
+    func orderRequest() {
 //        WebTool.get(uri:"notify_query_order", para:["order_id": model.id,  "dealer_id":currentClerk.id], success: { (dict) in
 //            let model = DBasicResponseModel.parse(dict: dict)
 //            HudTool.showInfo(string: model.msg)
@@ -124,13 +137,8 @@ class DToOrderViewController: UIViewController, UITableViewDataSource, UITableVi
         case 0:
             let infoCell = DToOrderInfoCell.cellWith(tableView: tableView)
             infoCell.model = model
-            infoCell.finishEditClosure = { [weak self] model in
-                //刷新当前页面
-                self?.model.address = model.address
-                self?.model.distance = model.distance
-                self?.tableView.reloadData()
-                //刷新列表页面
-                self?.updatedAdressClosure(model)
+            infoCell.updatedAddressClosure = { [weak self] model in
+                self?.infoCellupdatedAddressAction(model: model)
             }
             return infoCell
         default:

@@ -63,7 +63,7 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
             self.addressTextView.isEditable = false
             self.addressTextView.isScrollEnabled = false
             if model.code == "0" {
-                self.finishEditClosure(model.data)
+                self.updatedAddressClosure(model.data)
             } else {
                 HudTool.showInfo(string: model.msg)
             }
@@ -258,7 +258,7 @@ class DToOrderInfoCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    var finishEditClosure: (DGrabItemModel)->Void = { _ in }
+    var updatedAddressClosure: (DGrabItemModel)->Void = { _ in }
 }
 
 class DToOrderSetPickCell: UITableViewCell {

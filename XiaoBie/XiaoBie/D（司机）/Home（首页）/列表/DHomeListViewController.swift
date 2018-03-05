@@ -47,29 +47,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         locationTool.startUpdatingLocation()
     }
     
-    //MARK: - Setup
-    func setupFrame() {
-        blankView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-    }
-    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
-        tableView.isHidden = isBlank
-        blankView.viewType = blankViewType
-        blankView.buttonClosure = { [weak self] in
-            if self?.blankView.viewType == .noWeb {
-                self?.loadRequest()
-            }
-        }
+    //MARK: - Event Response
+    func cellCancelButtonAction(indexPath: IndexPath) {
+        cancelRequest(indexPath: indexPath)
     }
     
-    //MARK: - Event Response
-    func cancelButtonAction(indexPath: IndexPath) {
-        cancelRequest(indexPath: indexPath)
+    func pushedVCupdatedAddressAction(indexPath: IndexPath, model: DGrabItemModel) {
+        let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
+        cell.model = model
     }
     
     //MARK: - Request
@@ -152,7 +137,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         cell.model = dataArray[indexPath.row]
         cell.cancelButtonClosure = { [weak self] in
             let corretIndexPath = tableView.indexPath(for: cell)// 获取真实 indexPath 
-            self?.cancelButtonAction(indexPath: corretIndexPath!)
+            self?.cellCancelButtonAction(indexPath: corretIndexPath!)
         }
         return cell
     }
@@ -165,18 +150,16 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let toCheckVC = DToCheckViewController()
             toCheckVC.model = cell.model
             toCheckVC.updatedAdressClosure = { model in
-                let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-                cell.model = model
+                self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
         case .toOrder:
-            let toCheckVC = DToOrderViewController()
-            toCheckVC.model = cell.model
-            toCheckVC.updatedAdressClosure = { model in
-                let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-                cell.model = model
+            let toOrderVC = DToOrderViewController()
+            toOrderVC.model = cell.model
+            toOrderVC.updatedAdressClosure = { model in
+                self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
-            navigationController?.pushViewController(toCheckVC, animated: true)
+            navigationController?.pushViewController(toOrderVC, animated: true)
         default:
             print("🐱")
         }
@@ -184,6 +167,26 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 168
+    }
+    
+    //MARK: - Setup
+    func setupFrame() {
+        blankView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
+        tableView.isHidden = isBlank
+        blankView.viewType = blankViewType
+        blankView.buttonClosure = { [weak self] in
+            if self?.blankView.viewType == .noWeb {
+                self?.loadRequest()
+            }
+        }
     }
     
     //MARK: - Properties
