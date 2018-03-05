@@ -54,6 +54,7 @@
 		5B5B8D6C20493DBC002484EE /* DDriverListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6B20493DBC002484EE /* DDriverListViewController.swift */; };
 		5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6D20493E12002484EE /* DDriverListView.swift */; };
 		5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6F20493E22002484EE /* DDriverListModel.swift */; };
+		5B61830F204D0F5100147B1A /* PhoneNumberTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */; };
 		5B6325EA203130C100659725 /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6325E9203130C100659725 /* DateTool.swift */; };
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
@@ -136,6 +137,7 @@
 		5B5B8D6B20493DBC002484EE /* DDriverListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDriverListViewController.swift; sourceTree = "<group>"; };
 		5B5B8D6D20493E12002484EE /* DDriverListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDriverListView.swift; sourceTree = "<group>"; };
 		5B5B8D6F20493E22002484EE /* DDriverListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDriverListModel.swift; sourceTree = "<group>"; };
+		5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTool.swift; sourceTree = "<group>"; };
 		5B6325E9203130C100659725 /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				5B51FAF6202948AA001AB946 /* AccountTool.swift */,
 				5B51FAF3202948AA001AB946 /* HudTool.swift */,
 				5B51FAF5202948AA001AB946 /* WebTool.swift */,
+				5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */,
 			);
 			path = "Tool（工具）";
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */,
 				5B51FADD20293E5B001AB946 /* DMineViewController.swift in Sources */,
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
+				5B61830F204D0F5100147B1A /* PhoneNumberTool.swift in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,

@@ -16,7 +16,6 @@ extension String {
         let rect = self.boundingRect(with: size, options:[.usesLineFragmentOrigin], attributes: attributes, context:nil)        
         return rect.height
     }
-
 }
 
 
