@@ -191,16 +191,14 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "通过验证"
             case .empty:
                 statusStr = "无此活动"
-            case .toOrder2:
-                statusStr = "待预约二次验证"
-            case .toTestify2:
-                statusStr = "二次验证中"
-            case .busy:
-                statusStr = "正在忙"
+            case .checked2:
+                statusStr = "已查单"
             case .uploaded:
                 statusStr = "凭证已上传"
-            default:
+            case .complete:
                 statusStr = "完成"
+            default:
+                statusStr = "添加营销案"
             }
             statusLabel.text = statusStr
         }

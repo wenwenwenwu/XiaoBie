@@ -123,14 +123,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
         switch cell.model.statusType {
-        case .toCheck:
+        case .toCheck, .querying:
             let toCheckVC = DToCheckViewController()
             toCheckVC.model = cell.model
             toCheckVC.updatedAdressClosure = { model in
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
-        case .checked:
+        case .checked, .checked2:
             let checkedVC = DCheckedViewController()
             checkedVC.model = cell.model
             checkedVC.updatedAdressClosure = { model in
@@ -138,6 +138,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             }
             navigationController?.pushViewController(checkedVC, animated: true)
         case .toTestify, .contact, .accept, .access:
+            let toTestifyVC = DToTestifyViewController()
+            toTestifyVC.model = cell.model
+            navigationController?.pushViewController(toTestifyVC, animated: true)
+        case .toAdd:
+            let toTestifyVC = DToTestifyViewController()
+            toTestifyVC.model = cell.model
+            navigationController?.pushViewController(toTestifyVC, animated: true)
+        case .complete:
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
