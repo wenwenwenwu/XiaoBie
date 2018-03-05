@@ -40,7 +40,9 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func orderButtonAction() {
-        orderRequest()
+        DNoteView.showNoteView { (note) in
+            print(note)
+        }
     }
     
     func infoCellupdatedAddressAction(model: DGrabItemModel) {

@@ -68,6 +68,7 @@
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */; };
+		5BB76165204D146C00F3A026 /* DNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76164204D146C00F3A026 /* DNoteView.swift */; };
 		5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */; };
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
@@ -84,7 +85,7 @@
 		5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* DScanViewController.swift */; };
 		5BF2FC372048E7E5001755C8 /* DFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */; };
 		5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */; };
-		5BF2FC3D2048EA19001755C8 /* DCheckedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */; };
+		5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -154,6 +155,7 @@
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeView.swift; sourceTree = "<group>"; };
+		5BB76164204D146C00F3A026 /* DNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNoteView.swift; sourceTree = "<group>"; };
 		5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyPhoneViewController.swift; sourceTree = "<group>"; };
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
@@ -170,7 +172,7 @@
 		5BF0454220401085003F8CE5 /* DScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DScanViewController.swift; sourceTree = "<group>"; };
 		5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFinishViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedViewController.swift; sourceTree = "<group>"; };
-		5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedView.swift; sourceTree = "<group>"; };
+		5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedCell.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -424,7 +426,8 @@
 			isa = PBXGroup;
 			children = (
 				5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */,
-				5BF2FC3C2048EA19001755C8 /* DCheckedView.swift */,
+				5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */,
+				5BB76164204D146C00F3A026 /* DNoteView.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -782,6 +785,7 @@
 				5BDB5036202C52B90055C21E /* DSetupViewController.swift in Sources */,
 				5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */,
 				5B48A8332046A23200CA563A /* CHomeViewController.swift in Sources */,
+				5BB76165204D146C00F3A026 /* DNoteView.swift in Sources */,
 				5B1F89142047967F0024B00B /* DChatView.swift in Sources */,
 				5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */,
 				5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */,
@@ -833,7 +837,7 @@
 				5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
-				5BF2FC3D2048EA19001755C8 /* DCheckedView.swift in Sources */,
+				5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
