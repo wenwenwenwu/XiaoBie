@@ -1,5 +1,5 @@
 //
-//  DGrabListCell.swift
+//  DGrabCell.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/9.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DGrabListCell: UITableViewCell {
+class DGrabCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -30,13 +30,13 @@ class DGrabListCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DGrabListCell{
+    class func cellWith(tableView : UITableView) -> DGrabCell{
         let reuseIdentifier = "grabCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DGrabListCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DGrabCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DGrabListCell
+        return cell as! DGrabCell
     }
     
     //MARK: - Setup

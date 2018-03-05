@@ -34,7 +34,6 @@ class DHomeListCell: UITableViewCell {
         whiteView.addSubview(addressLabel)
         whiteView.addSubview(distanceImageView)
         whiteView.addSubview(distanceLabel)
-        whiteView.addSubview(cancelButton)
         setupFrame()
     }
     
@@ -95,17 +94,6 @@ class DHomeListCell: UITableViewCell {
             make.height.equalTo(10)
         }
         
-        cancelButton.snp.makeConstraints { (make) in
-            make.right.equalTo(-13)
-            make.bottom.equalTo(-15)
-            make.width.equalTo(61)
-            make.height.equalTo(24)
-        }
-    }
-    
-    //MARK: - Event Response
-    @objc func cancelButtonAction() {
-        cancelButtonClosure()
     }
     
     //MARK: - Properties
@@ -163,20 +151,6 @@ class DHomeListCell: UITableViewCell {
         return label
     }()
     
-    lazy var cancelButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.adjustsImageWhenHighlighted = false
-        button.titleLabel?.font = font11
-        button.setTitle("客户取消", for: .normal)
-        button.setTitleColor(blue_3296FA, for: .normal)
-        button.layer.borderColor = blue_3296FA.cgColor
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
-        return button
-    }()
-    
     var model = DGrabItemModel() {
         didSet {
             //timeLabel
@@ -231,6 +205,4 @@ class DHomeListCell: UITableViewCell {
             statusLabel.text = statusStr
         }
     }
-    
-    var cancelButtonClosure: ()->Void = {}
 }

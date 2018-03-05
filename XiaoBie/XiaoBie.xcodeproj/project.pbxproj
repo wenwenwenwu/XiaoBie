@@ -11,7 +11,7 @@
 		5B0B7EC2202B009C004CCCB8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B0B7EC1202B009C004CCCB8 /* CoreLocation.framework */; };
 		5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */; };
 		5B1F89142047967F0024B00B /* DChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1F89132047967F0024B00B /* DChatView.swift */; };
-		5B28CFEA202D750B00E2DA2F /* DGrabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFE9202D750B00E2DA2F /* DGrabListView.swift */; };
+		5B28CFEA202D750B00E2DA2F /* DGrabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFE9202D750B00E2DA2F /* DGrabView.swift */; };
 		5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */; };
 		5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFF2202D7F8100E2DA2F /* BlankView.swift */; };
 		5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */; };
@@ -37,7 +37,7 @@
 		5B51FAD720293942001AB946 /* DHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAD620293942001AB946 /* DHomeModel.swift */; };
 		5B51FADD20293E5B001AB946 /* DMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADC20293E5B001AB946 /* DMineViewController.swift */; };
 		5B51FADF20293E65001AB946 /* DChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FADE20293E65001AB946 /* DChatViewController.swift */; };
-		5B51FAE120293E73001AB946 /* DGrabListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE020293E73001AB946 /* DGrabListViewController.swift */; };
+		5B51FAE120293E73001AB946 /* DGrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE020293E73001AB946 /* DGrabViewController.swift */; };
 		5B51FAE320293EA6001AB946 /* DHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAE220293EA6001AB946 /* DHomeViewController.swift */; };
 		5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEA202947E2001AB946 /* UIViewController.swift */; };
 		5B51FAEF202947E2001AB946 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51FAEB202947E2001AB946 /* UIView.swift */; };
@@ -84,7 +84,6 @@
 		5BF2FC372048E7E5001755C8 /* DFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */; };
 		5BF2FC3B2048E9FD001755C8 /* DToOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */; };
 		5BF2FC3D2048EA19001755C8 /* DToOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */; };
-		5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +93,7 @@
 		5B0B7EC1202B009C004CCCB8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTool.swift; sourceTree = "<group>"; };
 		5B1F89132047967F0024B00B /* DChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DChatView.swift; sourceTree = "<group>"; };
-		5B28CFE9202D750B00E2DA2F /* DGrabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabListView.swift; sourceTree = "<group>"; };
+		5B28CFE9202D750B00E2DA2F /* DGrabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabView.swift; sourceTree = "<group>"; };
 		5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabModel.swift; sourceTree = "<group>"; };
 		5B28CFF2202D7F8100E2DA2F /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyViewController.swift; sourceTree = "<group>"; };
@@ -120,7 +119,7 @@
 		5B51FAD620293942001AB946 /* DHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeModel.swift; sourceTree = "<group>"; };
 		5B51FADC20293E5B001AB946 /* DMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMineViewController.swift; sourceTree = "<group>"; };
 		5B51FADE20293E65001AB946 /* DChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DChatViewController.swift; sourceTree = "<group>"; };
-		5B51FAE020293E73001AB946 /* DGrabListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabListViewController.swift; sourceTree = "<group>"; };
+		5B51FAE020293E73001AB946 /* DGrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabViewController.swift; sourceTree = "<group>"; };
 		5B51FAE220293EA6001AB946 /* DHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeViewController.swift; sourceTree = "<group>"; };
 		5B51FAEA202947E2001AB946 /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		5B51FAEB202947E2001AB946 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -170,7 +169,6 @@
 		5BF2FC362048E7E5001755C8 /* DFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DFinishViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3A2048E9FD001755C8 /* DToOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3C2048EA19001755C8 /* DToOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToOrderView.swift; sourceTree = "<group>"; };
-		5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -633,8 +631,8 @@
 		5BF8F402202FDF070031D9D4 /* 列表 */ = {
 			isa = PBXGroup;
 			children = (
-				5B51FAE020293E73001AB946 /* DGrabListViewController.swift */,
-				5B28CFE9202D750B00E2DA2F /* DGrabListView.swift */,
+				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
+				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
 				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
 			);
 			path = "列表";
@@ -643,7 +641,6 @@
 		5BF8F403202FDF250031D9D4 /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
-				5BF8F3F8202FD8650031D9D4 /* DGrabViewController.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -824,7 +821,7 @@
 				5B48A82D2046A02C00CA563A /* MHomeViewController.swift in Sources */,
 				5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */,
 				5B51FAF8202948AA001AB946 /* HudTool.swift in Sources */,
-				5B28CFEA202D750B00E2DA2F /* DGrabListView.swift in Sources */,
+				5B28CFEA202D750B00E2DA2F /* DGrabView.swift in Sources */,
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
 				5B48A823204692D200CA563A /* MTabBarController.swift in Sources */,
@@ -835,7 +832,6 @@
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
 				5B5B8D692049314A002484EE /* SetListModel.swift in Sources */,
 				5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */,
-				5BF8F3F9202FD8650031D9D4 /* DGrabViewController.swift in Sources */,
 				5B5B8D6520492FAB002484EE /* DSetlistViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
 				5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */,
@@ -859,7 +855,7 @@
 				5B702F412041392100DB4978 /* CalendarView.swift in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
-				5B51FAE120293E73001AB946 /* DGrabListViewController.swift in Sources */,
+				5B51FAE120293E73001AB946 /* DGrabViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */,
 				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
 				5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */,

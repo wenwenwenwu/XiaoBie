@@ -1,5 +1,5 @@
 //
-//  DGrabListViewController.swift
+//  DGrabViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/2/6.
@@ -9,28 +9,16 @@
 import UIKit
 import MJRefresh
 
-enum DGrabListType {
-    case all
-    case phone
-    case web
-}
+class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-class DGrabListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
-    //MARK: - Factory Method
-    class func controllerWith(listType: DGrabListType) -> DGrabListViewController {
-        let viewController = DGrabListViewController()
-        viewController.listType = listType
-        return viewController
-    }
-    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(blankView)
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
-        setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
+        setupNavigationBar()
+        setupFrame()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,29 +26,8 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
         locationTool.startUpdatingLocation()
     }
     
-    //MARK: - Setup
-    func setupFrame() {
-        blankView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
-        tableView.isHidden = isBlank
-        blankView.viewType = blankViewType
-        blankView.buttonClosure = { [weak self] in
-            if self?.blankView.viewType == .noWeb {
-                self?.loadRequest()
-            }
-        }
-    }
-    
     //MARK: - Event Response
-    func grabButtonAction(indexPath: IndexPath) {
+    func cellGrabButtonAction(indexPath: IndexPath) {
         grabRequest(indexPath: indexPath)
     }
         
@@ -70,7 +37,7 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
         let latitude = location.latitude
         let longitude = location.longitude
         
-        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":projectType, "page_num":"1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"0", "page_num":"1", "page_size": pageSize], success: { (dict) in
             let model = DGrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -105,7 +72,7 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
         let latitude = location.latitude
         let longitude = location.longitude
         
-        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"2", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"list_original_order", para:["staff_id":staffId, "latitude":latitude, "longitude":longitude, "project_type":"0", "page_num":String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = DGrabItemResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -151,11 +118,11 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = DGrabListCell.cellWith(tableView: tableView)
+        let cell = DGrabCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         cell.grabButtonClosure = { [weak self] in
             let corretIndexPath = tableView.indexPath(for: cell)// 获取真实 indexPath
-            self?.grabButtonAction(indexPath: corretIndexPath!)
+            self?.cellGrabButtonAction(indexPath: corretIndexPath!)
         }
         return cell
     }
@@ -163,6 +130,31 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    //MARK: - Setup
+    func setupNavigationBar() {
+        navigationItem.title = "抢单"
+    }
+    
+    func setupFrame() {
+        blankView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
+        tableView.isHidden = isBlank
+        blankView.viewType = blankViewType
+        blankView.buttonClosure = { [weak self] in
+            if self?.blankView.viewType == .noWeb {
+                self?.loadRequest()
+            }
+        }
     }
     
     //MARK: - Properties
@@ -193,20 +185,6 @@ class DGrabListViewController: UIViewController, UITableViewDataSource, UITableV
     lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in
         self.location = (latitude, longitude)
         self.loadRequest()
-    }
-    
-    var projectType = ""
-    var listType: DGrabListType = .all {
-        didSet{
-            switch listType {
-            case .phone:
-                projectType = "0"
-            case .web:
-                projectType = "1"
-            case .all:
-                projectType = "2"
-            }
-        }
     }
     
     var dataArray: [DGrabItemModel] = []

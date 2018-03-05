@@ -48,10 +48,6 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //MARK: - Event Response
-    func cellCancelButtonAction(indexPath: IndexPath) {
-        cancelRequest(indexPath: indexPath)
-    }
-    
     func pushedVCupdatedAddressAction(indexPath: IndexPath, model: DGrabItemModel) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
         cell.model = model
@@ -112,21 +108,6 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         self.tableView.mj_footer.endRefreshing()
     }
     
-    func cancelRequest(indexPath: IndexPath) {        
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":dataArray[indexPath.row].id], success: { (dict) in
-            let model = DBasicResponseModel.parse(dict: dict)
-            HudTool.showInfo(string: model.msg)
-            if model.code == "0" {
-                self.dataArray.remove(at: indexPath.row)
-                self.tableView.beginUpdates()
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                self.tableView.endUpdates()
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
-    }
-    
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -135,10 +116,6 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DHomeListCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
-        cell.cancelButtonClosure = { [weak self] in
-            let corretIndexPath = tableView.indexPath(for: cell)// 获取真实 indexPath 
-            self?.cellCancelButtonAction(indexPath: corretIndexPath!)
-        }
         return cell
     }
 

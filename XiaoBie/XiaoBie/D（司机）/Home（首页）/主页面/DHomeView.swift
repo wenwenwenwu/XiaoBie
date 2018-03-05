@@ -83,7 +83,6 @@ class DHomeInfoView: UIView {
         addSubview(cell1)
         addSubview(cell2)
         addSubview(cell3)
-        addSubview(cell4)
         addSubview(grayView)
         setupFrame()
     }
@@ -101,7 +100,6 @@ class DHomeInfoView: UIView {
         stackView.addArrangedSubview(cell1)
         stackView.addArrangedSubview(cell2)
         stackView.addArrangedSubview(cell3)
-        stackView.addArrangedSubview(cell4)
         addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -117,7 +115,6 @@ class DHomeInfoView: UIView {
     lazy var cell1 = DHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_kqd"), key: "可抢单")
     lazy var cell2 = DHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_wwc"), key: "未完成单")
     lazy var cell3 = DHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_rjs"), key: "日结算")
-    lazy var cell4 = DHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_zjs"), key: "总结算")
     
     lazy var grayView: UIView = {
         let view = UIView()
@@ -130,7 +127,6 @@ class DHomeInfoView: UIView {
             self.cell1.valueLabel.text = model.original_order_count
             self.cell2.valueLabel.text = model.undone_order_count
             self.cell3.valueLabel.text = "¥\(model.pay_money_today)"
-            self.cell4.valueLabel.text = "¥\(model.pay_money_total)"
         }
     }
 }

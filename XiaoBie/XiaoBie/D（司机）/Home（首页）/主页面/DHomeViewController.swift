@@ -30,8 +30,14 @@ class DHomeViewController: UIViewController {
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.titleView = titleView
+        
         navigationItem.leftBarButtonItem = leftButtonItem
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        
         navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
+
     }
     
     //MARK: - Request
@@ -68,15 +74,15 @@ class DHomeViewController: UIViewController {
     }
     
     //MARK: - Properties
-    lazy var leftButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_dk").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(clockinButtonAction))
+    lazy var leftButtonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonAction))
     
-    lazy var rightButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_jd").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(addButtonAction))
+    lazy var rightButtonItem = UIBarButtonItem.init(title: "人工建单", style: .plain, target: self, action: #selector(addButtonAction))
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
     lazy var infoView = DHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
 
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待预约", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
