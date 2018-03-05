@@ -17,7 +17,6 @@ class DGrabCell: UITableViewCell {
         contentView.backgroundColor = gray_F5F5F5
         contentView.addSubview(whiteView)
         whiteView.addSubview(iconImageView)
-        whiteView.addSubview(nameLabel)
         whiteView.addSubview(addressLabel)
         whiteView.addSubview(distanceImageView)
         whiteView.addSubview(distanceLabel)
@@ -52,16 +51,10 @@ class DGrabCell: UITableViewCell {
             make.height.equalTo(61)
         }
         
-        nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.top.equalTo(11)
-            make.height.equalTo(15)
-        }
-        
         addressLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconImageView.snp.right).offset(11)
             make.right.equalTo(-15)
-            make.top.equalTo(nameLabel.snp.bottom).offset(7)
+            make.top.equalTo(9)
         }
 
         distanceImageView.snp.makeConstraints { (make) in
@@ -71,7 +64,7 @@ class DGrabCell: UITableViewCell {
 
         distanceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.top.equalTo(addressLabel.snp.bottom).offset(10)
+            make.top.equalTo(addressLabel.snp.bottom).offset(18)
             make.height.equalTo(10)
         }
         
@@ -98,13 +91,6 @@ class DGrabCell: UITableViewCell {
     }()
     
     lazy var iconImageView = UIImageView()
-    
-    lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16Medium
-        label.textColor = black_333333
-        return label
-    }()
     
     lazy var addressLabel: UILabel = {
         let label = UILabel()
@@ -139,9 +125,7 @@ class DGrabCell: UITableViewCell {
     var model = DGrabItemModel() {
         didSet {
             //iconImageView
-            iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //nameLabel
-            nameLabel.text = model.user_name
+            iconImageView.image = #imageLiteral(resourceName: "icon_phone")
             //addressLabel
             addressLabel.text = model.address
             //distanceLabel

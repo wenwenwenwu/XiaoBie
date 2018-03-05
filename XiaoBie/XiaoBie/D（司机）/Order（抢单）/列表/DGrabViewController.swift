@@ -102,6 +102,7 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
+                //列表中清空已抢单
                 self.dataArray.remove(at: indexPath.row)
                 self.tableView.beginUpdates()
                 self.tableView.deleteRows(at: [indexPath], with: .automatic)
