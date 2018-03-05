@@ -1,15 +1,15 @@
 //
-//  DToCheckViewController.swift
+//  DToTestifyViewController.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/3/1.
+//  Created by wuwenwen on 2018/3/5.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 
-class DToCheckViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class DToTestifyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +22,20 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Event Response
+    @objc func transferButtonAction() {
+        print("转单")
+    }
+    
     @objc func chatButtonAction() {
         print("聊天")
     }
     
     @objc func remindButtonAction() {
         remindRequest()
+    }
+    
+    func scanCellScanedAction(serialNumber: String) {
+        clerkListRequest(serialNumber: serialNumber)
     }
     
     //MARK: - Request
@@ -49,7 +57,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func remindRequest() {
-        WebTool.get(uri:"notify_query_order", para:["order_id": model.id,  "dealer_id":currentClerk.id], success: { (dict) in
+        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
         }) { (error) in
@@ -74,22 +82,14 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let infoCell = DToCheckInfoCell.cellWith(tableView: tableView)
+            let infoCell = DToTestifyInfoCell.cellWith(tableView: tableView)
             infoCell.model = model
-            infoCell.finishEditClosure = { [weak self] model in
-                //刷新当前页面
-                self?.model.address = model.address
-                self?.model.distance = model.distance
-                self?.tableView.reloadData()
-                //刷新列表页面
-                self?.updatedAdressClosure(model)
-            }
             return infoCell
         case 1:
             let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
             scanCell.ownerController = self
             scanCell.scanedClosure = {[weak self] serialNumber in
-               self?.clerkListRequest(serialNumber: serialNumber)
+                self?.scanCellScanedAction(serialNumber: serialNumber)
             }
             return scanCell
         default:
@@ -129,10 +129,14 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Setup
     func setupNavigationBar() {
-        navigationItem.title = "待查单"
-        navigationItem.rightBarButtonItem = rightButtonItem
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
+        navigationItem.title = "待验单"
+        //transferButtonItem
+        transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
+        transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
+        //chatButtonItem
+        chatButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
+        chatButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
+        navigationItem.rightBarButtonItems = [transferButtonItem, chatButtonItem]
     }
     
     func setupFrame() {
@@ -149,7 +153,8 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Properties
-    lazy var rightButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
+    lazy var transferButtonItem = UIBarButtonItem.init(title: "转单", style: .plain, target: self, action: #selector(transferButtonAction))
+    lazy var chatButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
     
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
@@ -164,7 +169,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     lazy var remindButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
-        button.setTitle("提醒查单", for: .normal)
+        button.setTitle("提醒验单", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
         button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
@@ -173,10 +178,10 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
         return button
     }()
-
+    
     var model = DGrabItemModel()
     var clerkListArray: [DToCheckClerkModel] = []
     var currentClerk = DToCheckClerkModel()
     
-    var updatedAdressClosure: (DGrabItemModel)->Void = { _ in }    
 }
+

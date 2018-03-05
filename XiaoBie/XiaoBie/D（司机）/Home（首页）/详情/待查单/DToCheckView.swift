@@ -323,6 +323,12 @@ class DToCheckScanCell: UITableViewCell {
         ownerController!.navigationController!.pushViewController(scanVC, animated: true)
     }
     
+    func scanVCScanedAction(serialNumber: String) {
+        valueLabel.textColor = black_333333
+        valueLabel.text = serialNumber
+        scanedClosure(serialNumber)
+    }
+    
     //MARK: - Setup
     func setupFrame() {
         keyLabel.snp.makeConstraints { (make) in
@@ -355,8 +361,9 @@ class DToCheckScanCell: UITableViewCell {
     lazy var valueLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.text = "请对准串号扫描"
         label.font = font16
-        label.textColor = black_333333
+        label.textColor = gray_999999
         return label
     }()
     
@@ -371,8 +378,7 @@ class DToCheckScanCell: UITableViewCell {
     lazy var scanVC: DScanViewController = {
         let scanVC = DScanViewController()
         scanVC.scanedClosure = { [weak self] serialNumber in
-            self?.valueLabel.text = serialNumber
-            self?.scanedClosure(serialNumber)
+            self?.scanVCScanedAction(serialNumber: serialNumber)
         }
         return scanVC
     }()
@@ -381,8 +387,6 @@ class DToCheckScanCell: UITableViewCell {
     
     var model = DGrabItemModel()
     var scanedClosure: (String)->Void = { _ in }
-    
-    
 }
 
 class DToCheckClerkCell: UITableViewCell {

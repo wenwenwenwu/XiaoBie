@@ -82,7 +82,7 @@ class DHomeViewController: UIViewController {
     
     lazy var infoView = DHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
 
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "已完成", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "添加营销案", "已完成"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     

@@ -68,6 +68,8 @@
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */; };
+		5BB76168204D327F00F3A026 /* DToTestifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76167204D327F00F3A026 /* DToTestifyViewController.swift */; };
+		5BB7616A204D35D700F3A026 /* DToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB76169204D35D700F3A026 /* DToTestifyView.swift */; };
 		5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */; };
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
@@ -154,6 +156,8 @@
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeView.swift; sourceTree = "<group>"; };
+		5BB76167204D327F00F3A026 /* DToTestifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToTestifyViewController.swift; sourceTree = "<group>"; };
+		5BB76169204D35D700F3A026 /* DToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToTestifyView.swift; sourceTree = "<group>"; };
 		5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyPhoneViewController.swift; sourceTree = "<group>"; };
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
@@ -524,6 +528,15 @@
 			path = "Supporting File";
 			sourceTree = "<group>";
 		};
+		5BB76166204D324D00F3A026 /* 待验单 */ = {
+			isa = PBXGroup;
+			children = (
+				5BB76167204D327F00F3A026 /* DToTestifyViewController.swift */,
+				5BB76169204D35D700F3A026 /* DToTestifyView.swift */,
+			);
+			path = "待验单";
+			sourceTree = "<group>";
+		};
 		5BB90CF62030341300F6CD9E /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,6 +628,7 @@
 		5BF2FC382048E8FD001755C8 /* 详情 */ = {
 			isa = PBXGroup;
 			children = (
+				5BB76166204D324D00F3A026 /* 待验单 */,
 				5B9854C32047A69600C449C3 /* 待查单 */,
 				5BF2FC392048E9E5001755C8 /* 已查单 */,
 				5BF2FC352048E7C6001755C8 /* 已完成 */,
@@ -776,6 +790,7 @@
 				5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */,
 				5B5B8D6720492FC2002484EE /* DSetListView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */,
+				5BB76168204D327F00F3A026 /* DToTestifyViewController.swift in Sources */,
 				5B51FAD720293942001AB946 /* DHomeModel.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
@@ -822,6 +837,7 @@
 				5B5B8D6520492FAB002484EE /* DSetlistViewController.swift in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
 				5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */,
+				5BB7616A204D35D700F3A026 /* DToTestifyView.swift in Sources */,
 				5B51FAEF202947E2001AB946 /* UIView.swift in Sources */,
 				5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */,
 				5B51FAFE20294A1D001AB946 /* CacheTool.swift in Sources */,

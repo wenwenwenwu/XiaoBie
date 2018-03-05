@@ -131,12 +131,16 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
         case .checked:
-            let toOrderVC = DCheckedViewController()
-            toOrderVC.model = cell.model
-            toOrderVC.updatedAdressClosure = { model in
+            let checkedVC = DCheckedViewController()
+            checkedVC.model = cell.model
+            checkedVC.updatedAdressClosure = { model in
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
-            navigationController?.pushViewController(toOrderVC, animated: true)
+            navigationController?.pushViewController(checkedVC, animated: true)
+        case .toTestify, .contact, .accept, .access:
+            let toTestifyVC = DToTestifyViewController()
+            toTestifyVC.model = cell.model
+            navigationController?.pushViewController(toTestifyVC, animated: true)
         default:
             print("🐱")
         }
