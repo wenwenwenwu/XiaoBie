@@ -32,9 +32,15 @@ class DDriverListViewController: UIViewController, UITableViewDataSource, UITabl
             let model = DDriverListResponseModel.parse(dict: dict)
             if model.code == "0" {
                 let homeVC = self.navigationController?.viewControllers[0] as! DHomeViewController
-                //待预约页面更新
-                let toOrderVC = homeVC.toOrderVC
-                toOrderVC.loadRequest()
+                //相关界面刷新
+                switch self.model.statusType {
+                case .checked, .checked2:
+                    let checkedVC = homeVC.checkedVC
+                    checkedVC.loadRequest()
+                default:
+                    let toTestifyVC = homeVC.toTestifyVC
+                    toTestifyVC.loadRequest()
+                }                
                 //跳转回首页主页面
                 self.navigationController?.popToViewController(homeVC, animated: true)
             } else {

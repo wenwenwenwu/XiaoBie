@@ -12,16 +12,16 @@ import MJRefresh
 enum DHomeListType {
     /*
      0-待查单
-     1-待预约
+     1-已查单
      2-待验单
-     3-已完成
-     4-二次验证
+     3-添加营销案
+     4-已完成
      */
     case toCheck
-    case toOrder
+    case checked
     case toTestify
+    case add
     case complete
-    case toTestify2
 }
 
 class DHomeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -208,13 +208,13 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             switch listType {
             case .toCheck:
                 queryType = "0"
-            case .toOrder:
+            case .checked:
                 queryType = "1"
             case .toTestify:
                 queryType = "2"
-            case .complete:
+            case .add:
                 queryType = "3"
-            case .toTestify2:
+            case .complete:
                 queryType = "4"
             }
         }

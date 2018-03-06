@@ -87,11 +87,11 @@ class DHomeViewController: UIViewController {
     }
     
     lazy var toCheckVC = DHomeListViewController.controllerWith(listType: .toCheck)
-    lazy var toOrderVC = DHomeListViewController.controllerWith(listType: .toOrder)
+    lazy var checkedVC = DHomeListViewController.controllerWith(listType: .checked)
     lazy var toTestifyVC = DHomeListViewController.controllerWith(listType: .toTestify)
-    lazy var toTestify2VC = DHomeListViewController.controllerWith(listType: .toTestify2)
+    lazy var addVC = DHomeListViewController.controllerWith(listType: .add)
     lazy var completeVC = DHomeListViewController.controllerWith(listType: .complete)
-    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-navigationBarHeight-selectView.bottom-tabbarHeight), VCArray: [toCheckVC, toOrderVC, toTestifyVC, toTestify2VC, completeVC]) { [weak self] (currentIndex) in
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-navigationBarHeight-selectView.bottom-tabbarHeight), VCArray: [toCheckVC, checkedVC, toTestifyVC, addVC, completeVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     

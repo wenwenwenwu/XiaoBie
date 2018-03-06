@@ -70,7 +70,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
             if model.code == "0" {
                 let homeVC = self.navigationController?.viewControllers[0] as! DHomeViewController
                 //待预约页面更新
-                let toOrderVC = homeVC.toOrderVC
+                let toOrderVC = homeVC.checkedVC
                 toOrderVC.loadRequest()
                 //跳转回首页主页面
                 self.navigationController?.popToViewController(homeVC, animated: true)

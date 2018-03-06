@@ -23,7 +23,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     //MARK: - Event Response
     @objc func transferButtonAction() {
-        print("转单")
+        driverListRequest()
     }
     
     @objc func chatButtonAction() {
@@ -39,6 +39,22 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - Request
+    func driverListRequest() {
+        WebTool.post(uri:"get_peer_staff_list", para:["staff_id": AccountTool.userInfo().id], success: { (dict) in
+            let model = DDriverListResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let driverListVC = DDriverListViewController()
+                driverListVC.dataArray = model.data
+                driverListVC.model = self.model
+                self.navigationController?.pushViewController(driverListVC, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func clerkListRequest(serialNumber: String) {
         WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)

@@ -15,7 +15,6 @@
 		5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */; };
 		5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFF2202D7F8100E2DA2F /* BlankView.swift */; };
 		5B33F004204E232E00A672CE /* DCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F003204E232E00A672CE /* DCompleteView.swift */; };
-		5B33F00A204E27B300A672CE /* DAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F009204E27B300A672CE /* DAddViewController.swift */; };
 		5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */; };
 		5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */; };
@@ -89,6 +88,7 @@
 		5BF2FC372048E7E5001755C8 /* DCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DCompleteViewController.swift */; };
 		5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */; };
 		5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */; };
+		5BF3A887204E2FBC00B76278 /* DAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3A886204E2FBB00B76278 /* DAddViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -102,7 +102,6 @@
 		5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabModel.swift; sourceTree = "<group>"; };
 		5B28CFF2202D7F8100E2DA2F /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5B33F003204E232E00A672CE /* DCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCompleteView.swift; sourceTree = "<group>"; };
-		5B33F009204E27B300A672CE /* DAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DAddViewController.swift; path = "XiaoBie/D（司机）/Home（首页）/详情/添加营销案/DAddViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyView.swift; sourceTree = "<group>"; };
 		5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyModel.swift; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		5BF2FC362048E7E5001755C8 /* DCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCompleteViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedCell.swift; sourceTree = "<group>"; };
+		5BF3A886204E2FBB00B76278 /* DAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAddViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,15 +205,6 @@
 				5B997822202AC9450005357A /* DClockinViewHandler.swift */,
 			);
 			path = DClockinView;
-			sourceTree = "<group>";
-		};
-		5B33F008204E278E00A672CE /* 添加营销案 */ = {
-			isa = PBXGroup;
-			children = (
-				5B33F009204E27B300A672CE /* DAddViewController.swift */,
-			);
-			name = "添加营销案";
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		5B3519A5204408A100CE92E4 /* Money（酬金） */ = {
@@ -645,7 +636,7 @@
 				5B9854C32047A69600C449C3 /* 待查单 */,
 				5BF2FC392048E9E5001755C8 /* 已查单 */,
 				5BB76166204D324D00F3A026 /* 待验单 */,
-				5B33F008204E278E00A672CE /* 添加营销案 */,
+				5BF3A885204E2FBB00B76278 /* 添加营销案 */,
 				5BF2FC352048E7C6001755C8 /* 已完成 */,
 			);
 			path = "详情";
@@ -659,6 +650,14 @@
 				5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */,
 			);
 			path = "已查单";
+			sourceTree = "<group>";
+		};
+		5BF3A885204E2FBB00B76278 /* 添加营销案 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF3A886204E2FBB00B76278 /* DAddViewController.swift */,
+			);
+			path = "添加营销案";
 			sourceTree = "<group>";
 		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
@@ -821,7 +820,7 @@
 				5B48A81C2046814000CA563A /* MainViewController.swift in Sources */,
 				5B51FADF20293E65001AB946 /* DChatViewController.swift in Sources */,
 				5BF2FC372048E7E5001755C8 /* DCompleteViewController.swift in Sources */,
-				5B33F00A204E27B300A672CE /* DAddViewController.swift in Sources */,
+				5BF3A887204E2FBC00B76278 /* DAddViewController.swift in Sources */,
 				5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */,
 				5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */,
 				5B5B8D6C20493DBC002484EE /* DDriverListViewController.swift in Sources */,
