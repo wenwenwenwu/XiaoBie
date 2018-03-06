@@ -63,9 +63,9 @@ import UIKit
     let font10Medium = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.medium)
     let font16Medium = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)
     let font18Medium = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
+    let font20Medium = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.medium)
     let font26Medium = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.medium)
-
-
+    let font50Medium = UIFont.systemFont(ofSize: 50, weight: UIFont.Weight.medium)
 
     //网络
     let pageSize = "10"
