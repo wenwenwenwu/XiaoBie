@@ -54,7 +54,7 @@ enum DHomeStatusType {
     case checked2
     case uploaded
     case complete
-    case toAdd
+    case add
 }
 
 //抢单、订单列表、修改地址、修改套餐共用
@@ -124,7 +124,7 @@ class DGrabItemModel: NSObject {
             case "14":
                 statusType = .complete
             default:
-                statusType = .toAdd
+                statusType = .add
             }
         }
     }

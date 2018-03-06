@@ -141,14 +141,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
-        case .toAdd:
-            let toTestifyVC = DToTestifyViewController()
-            toTestifyVC.model = cell.model
-            navigationController?.pushViewController(toTestifyVC, animated: true)
+        case .add:
+            let addVC = DAddViewController()
+            addVC.model = cell.model
+            navigationController?.pushViewController(addVC, animated: true)
         case .complete:
-            let toTestifyVC = DToTestifyViewController()
-            toTestifyVC.model = cell.model
-            navigationController?.pushViewController(toTestifyVC, animated: true)
+            let completeVC = DCompleteViewController()
+            completeVC.model = cell.model
+            navigationController?.pushViewController(completeVC, animated: true)
         default:
             print("🐱")
         }

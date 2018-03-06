@@ -158,7 +158,6 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
-        tableView.bounces = false
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.dataSource = self

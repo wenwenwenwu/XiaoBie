@@ -1,14 +1,14 @@
 //
-//  DToTestifyView.swift
+//  DFinishView.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/3/5.
+//  Created by wuwenwen on 2018/3/6.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 
-class DToTestifyInfoCell: UITableViewCell {
+class DCompleteInfoCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -37,13 +37,13 @@ class DToTestifyInfoCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DToTestifyInfoCell{
+    class func cellWith(tableView : UITableView) -> DCompleteInfoCell{
         let reuseIdentifier = "infoCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DToTestifyInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = DCompleteInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DToTestifyInfoCell
+        return cell as! DCompleteInfoCell
     }
     
     //MARK: - Setup
@@ -117,7 +117,7 @@ class DToTestifyInfoCell: UITableViewCell {
         distanceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(distanceImageView.snp.right).offset(3)
             make.centerY.equalTo(distanceImageView)
-        }        
+        }
         //note
         noteKeyLabel.snp.makeConstraints { (make) in
             make.left.equalTo(14)
@@ -130,7 +130,7 @@ class DToTestifyInfoCell: UITableViewCell {
             make.right.equalToSuperview().offset(-15)
             make.bottom.equalToSuperview().offset(-17)
         }
-
+        
     }
     
     //MARK: - Properties
@@ -151,7 +151,7 @@ class DToTestifyInfoCell: UITableViewCell {
     
     lazy var timeKeyLabel: UILabel = {
         let label = UILabel()
-        label.text = "预约时间"
+        label.text = "订单时间"
         label.font = font14
         label.textColor = gray_999999
         return label
@@ -253,7 +253,7 @@ class DToTestifyInfoCell: UITableViewCell {
                 distanceLabel.text = "距离：\(model.distanceKM)km"
             }
             setupFrame()
-
+            
         }
     }
 }
