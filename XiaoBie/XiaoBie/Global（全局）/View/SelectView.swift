@@ -91,7 +91,7 @@ class SelectView: UIView {
     //MARK: - Properties
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .fillEqually
         stackView.axis = .horizontal
         stackView.alignment = .fill
         return stackView
