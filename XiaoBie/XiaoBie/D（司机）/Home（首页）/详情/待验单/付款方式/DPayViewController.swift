@@ -34,10 +34,8 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             HudTool.showInfo(string: "金额为0时只能选择现金收款")
             return
         }
-        
+        //请求付款二维码
         print(payMoney,selectedIndex)
-        
-        
     }
     
     //MARK: - UIScrollViewDelegate
