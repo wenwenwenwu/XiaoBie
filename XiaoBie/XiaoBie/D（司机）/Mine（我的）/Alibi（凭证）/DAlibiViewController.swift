@@ -218,15 +218,15 @@ class DAlibiViewController: UIViewController, UITableViewDataSource, UITableView
 
 
     //MARK: - Properties
-    lazy var photoButtonView1 = DPhotoButtonView.viewWith(ownVC: self) { [weak self] in
+    lazy var photoButtonView1 = DPhotoButtonView.viewWith(uri: "upload_daily_evidence", ownVC: self) { [weak self] in
         self?.photoButtonView2.isHidden = false
     }
 
-    lazy var photoButtonView2 = DPhotoButtonView.viewWith(ownVC: self) { [weak self] in
+    lazy var photoButtonView2 = DPhotoButtonView.viewWith(uri: "upload_daily_evidence", ownVC: self) { [weak self] in
         self?.photoButtonView3.isHidden = false
     }
 
-    lazy var photoButtonView3 = DPhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView3 = DPhotoButtonView.viewWith(uri: "upload_daily_evidence", ownVC: self) {
 
     }
     

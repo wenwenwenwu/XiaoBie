@@ -182,22 +182,22 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    lazy var photoButtonView1 = DPhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView1 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
        self.photoButtonView2.isHidden = false
        self.infoLabel2.isHidden = false
     }
     
-    lazy var photoButtonView2 = DPhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView2 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
         self.photoButtonView3.isHidden = false
         self.infoLabel3.isHidden = false
     }
     
-    lazy var photoButtonView3 = DPhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView3 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
         self.photoButtonView4.isHidden = false
         self.infoLabel4.isHidden = false
     }
     
-    lazy var photoButtonView4 = DPhotoButtonView.viewWith(ownVC: self) {
+    lazy var photoButtonView4 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
         
     }
     

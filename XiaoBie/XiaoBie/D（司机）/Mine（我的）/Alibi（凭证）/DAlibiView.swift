@@ -128,8 +128,9 @@ class DPhotoButtonView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(ownVC: UIViewController, uploadCompleteClosure: @escaping ()->Void) -> DPhotoButtonView {
+    class func viewWith(uri: String, ownVC: UIViewController, uploadCompleteClosure: @escaping ()->Void) -> DPhotoButtonView {
         let view = DPhotoButtonView()
+        view.uri = uri
         view.ownVC = ownVC
         view.uploadCompleteClosure = uploadCompleteClosure
         return view
@@ -158,7 +159,7 @@ class DPhotoButtonView: UIView {
         return imageView
     }()
     
-    lazy var photoPickerTool = PhotoPickerTool.toolWith(uploadPara: "upload_daily_evidence", ownerViewController: ownVC) { (imageName, localURL) in
+    lazy var photoPickerTool = PhotoPickerTool.toolWith(uploadPara: uri, ownerViewController: ownVC) { (imageName, localURL) in
         self.imageName = imageName
         self.photoView.kf.setImage(with: URL.init(string: localURL))
         self.uploadCompleteClosure()
@@ -168,4 +169,6 @@ class DPhotoButtonView: UIView {
     
     var imageName = ""
     var ownVC = UIViewController()
+    var uri = ""
+    
 }
