@@ -45,9 +45,14 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK: - Event Response
-    @objc func tapeButtonAction() {
-        print("录音")
+    @objc func tapeButtonTouchDownAction() {
+        recordTool.beginRecord()
     }
+    
+    @objc func tapeButtonTouchUpAction() {
+        recordTool.stopRecord()
+    }
+    
     @objc func confirmButtonAction() {
         print(photoButtonView1.imageName,photoButtonView2.imageName,photoButtonView3.imageName,photoButtonView4.imageName)
     }
@@ -59,6 +64,13 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         } else {
             placeHolderLabel.isHidden = true
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {//回车
+            textView.resignFirstResponder()
+        }
+        return true
     }
     
     //MARK: - Setup
@@ -136,9 +148,9 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         }
         
         tapeButton.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
+            make.left.equalTo(spacing)
             make.bottom.equalTo(-17)
-            make.width.height.equalTo(75)
+            make.width.height.equalTo(76)
         }
         
         whiteView3.snp.makeConstraints { (make) in
@@ -232,6 +244,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     lazy var noteTextView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
+        textView.returnKeyType = .done
         textView.font = font14
         textView.textColor = black_333333
         return textView
@@ -249,7 +262,8 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         button.imageEdgeInsets = UIEdgeInsetsMake(-6, 25, 6, -25)
         button.titleEdgeInsets = UIEdgeInsetsMake(20, -11, -20, 11)
         button.setBackgroundImage(gray_EBEBEB.colorImage(), for: .normal)
-        button.addTarget(self, action: #selector(tapeButtonAction), for: .touchDown)
+        button.addTarget(self, action: #selector(tapeButtonTouchDownAction), for: .touchDown)
+        button.addTarget(self, action: #selector(tapeButtonTouchUpAction), for: .touchUpInside)
         return button
     }()
     
@@ -266,6 +280,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }()
     
     var model = DGrabItemModel()
+    let recordTool = RecordTool()
     
     let spacing = (screenWidth-76*4)/5
 }
