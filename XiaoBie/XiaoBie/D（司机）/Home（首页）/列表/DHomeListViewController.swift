@@ -122,7 +122,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-        cell.model.statusType = .access
+        cell.model.statusType = .accept
         switch cell.model.statusType {
         case .toCheck, .querying:
             let toCheckVC = DToCheckViewController()
@@ -138,10 +138,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(checkedVC, animated: true)
-        case .toTestify, .contact, .accept:
+        case .toTestify, .contact:
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
+        case .accept:
+            let codeVC = DCodeViewController()
+            codeVC.model = cell.model
+            navigationController?.pushViewController(codeVC, animated: true)
         case .access:
             let uploadVC = DUploadViewController()
             uploadVC.model = cell.model

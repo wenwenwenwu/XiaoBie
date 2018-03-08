@@ -66,7 +66,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
             return
         }
         confirmRequest()
-        
+
     }
     
     //MARK: - Request
@@ -77,7 +77,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
                               "customer_img": photoButtonView4.imageName,
                               "audio": recordTool.audioName]
         let fileNames = getJSONStringFromDictionary(dictionary: fileDictionary as NSDictionary)
-        
+
         WebTool.get(uri:"order_evidence_upload", para:["file_names":fileNames,
                                                        "remark":noteTextView.text!,
                                                        "order_id":model.id], success: { (dict) in
