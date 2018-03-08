@@ -15,13 +15,20 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
-        remindButton.isEnabled = false
         view.addSubview(remindButton)
         setupNavigationBar()
         setupFrame()
     }
     
+    deinit {
+        print("🐱")
+    }
+    
     //MARK: - Event Response
+    @objc func backButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     @objc func transferButtonAction() {
         driverListRequest()
     }
@@ -30,12 +37,12 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         print("聊天")
     }
     
-    @objc func remindButtonAction() {
-        remindRequest()
+    @objc func codeCellButtonAction() {
+        
     }
     
-    func scanCellScanedAction(serialNumber: String) {
-        clerkListRequest(serialNumber: serialNumber)
+    @objc func doneButtonAction() {
+        remindRequest()
     }
     
     //MARK: - Request
@@ -55,22 +62,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func clerkListRequest(serialNumber: String) {
-        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
-            let model = DToCheckClerkResponseModel.parse(dict: dict)
-            if model.code == "0" {
-                //设置提醒按钮
-                self.remindButton.isEnabled = true
-                //展示做单员列表
-                self.clerkListArray = model.data
-                self.tableView.reloadSections(IndexSet.init(integer: 2), with: .fade)
-            } else {
-                HudTool.showInfo(string: model.msg)
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
-    }
     
     func remindRequest() {
         WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
@@ -80,19 +71,15 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             HudTool.showInfo(string: error)
         }
     }
-    
+        
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 2:
-            return clerkListArray.count
-        default:
-            return 1
-        }
+        return 1
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,20 +89,15 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             infoCell.model = model
             return infoCell
         case 1:
-            let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
-            scanCell.ownerController = self
-            scanCell.scanedClosure = {[weak self] serialNumber in
-                self?.scanCellScanedAction(serialNumber: serialNumber)
-            }
+            let scanCell = DCodeScanCell.cellWith(tableView: tableView)
+            scanCell.serialNumber = serialNumber
             return scanCell
         default:
-            let clerkCell = DToCheckClerkCell.cellWith(tableView: tableView)
-            clerkCell.model = clerkListArray[indexPath.row]
-            //首个选中
-            if indexPath.row == 0 {
-                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            let codeCell = DCodeCodeCell.cellWith(tableView: tableView)
+            codeCell.codeButtonClosure = { [weak self] in
+                self?.codeCellButtonAction()
             }
-            return clerkCell
+            return codeCell
         }
     }
     
@@ -146,6 +128,8 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "待验单"
+        //backItem
+        navigationItem.leftBarButtonItem = backButtonItem
         //transferButtonItem
         transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
         transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
@@ -169,6 +153,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: - Properties
+    lazy var backButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "icon_return").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonAction))
     lazy var transferButtonItem = UIBarButtonItem.init(title: "转单", style: .plain, target: self, action: #selector(transferButtonAction))
     lazy var chatButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
     
@@ -184,18 +169,18 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     lazy var remindButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
-        button.setTitle("提醒验单", for: .normal)
+        button.setTitle("完成", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
         return button
     }()
     
     var model = DGrabItemModel()
     var clerkListArray: [DToCheckClerkModel] = []
     var currentClerk = DToCheckClerkModel()
+    var serialNumber = ""
     
 }

@@ -122,7 +122,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-        cell.model.statusType = .accept
+//        cell.model.statusType = .accept
         switch cell.model.statusType {
         case .toCheck, .querying:
             let toCheckVC = DToCheckViewController()

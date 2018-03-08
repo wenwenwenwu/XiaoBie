@@ -31,11 +31,18 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func remindButtonAction() {
-        remindRequest()
+        //输入验证码页面
+        let codeVC = DCodeViewController()
+        codeVC.model = model
+        codeVC.serialNumber = serialNumber
+        navigationController?.pushViewController(codeVC, animated: false)
+        
+//        //提醒验单
+//        remindRequest()
     }
     
-    func scanCellScanedAction(serialNumber: String) {
-        clerkListRequest(serialNumber: serialNumber)
+    func scanCellScanedAction() {
+        clerkListRequest()
     }
     
     //MARK: - Request
@@ -55,7 +62,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func clerkListRequest(serialNumber: String) {
+    func clerkListRequest() {
         WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -73,12 +80,20 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func remindRequest() {
-        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
-            let model = DBasicResponseModel.parse(dict: dict)
-            HudTool.showInfo(string: model.msg)
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
+        //跳转输入验证码
+        let dCodeVC = DCodeViewController()
+        dCodeVC.serialNumber = serialNumber
+        dCodeVC.model = model
+        navigationController?.pushViewController(dCodeVC, animated: false)
+        
+        
+//        //提醒验证
+//        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
+//            let model = DBasicResponseModel.parse(dict: dict)
+//            HudTool.showInfo(string: model.msg)
+//        }) { (error) in
+//            HudTool.showInfo(string: error)
+//        }
     }
     
     //MARK: - UITableViewDataSource
@@ -105,7 +120,8 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             let scanCell = DToCheckScanCell.cellWith(tableView: tableView)
             scanCell.ownerController = self
             scanCell.scanedClosure = {[weak self] serialNumber in
-                self?.scanCellScanedAction(serialNumber: serialNumber)
+                self?.serialNumber = serialNumber
+                self?.scanCellScanedAction()
             }
             return scanCell
         default:
@@ -197,6 +213,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     var model = DGrabItemModel()
     var clerkListArray: [DToCheckClerkModel] = []
     var currentClerk = DToCheckClerkModel()
+    var serialNumber = ""
     
 }
 

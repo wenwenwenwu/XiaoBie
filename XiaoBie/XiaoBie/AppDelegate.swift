@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
+        setupIQKeyboard()
         setuGaoDe()
         return true
     }
@@ -62,6 +64,11 @@ extension AppDelegate {
             let roleName = AccountTool.userInfo().roleName!
             mainVC.roleName = roleName
         }
+    }
+    
+    func setupIQKeyboard() {
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = "完成"
     }
     
     func setuGaoDe() {

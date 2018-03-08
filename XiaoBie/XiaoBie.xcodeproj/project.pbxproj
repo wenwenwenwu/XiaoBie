@@ -75,6 +75,7 @@
 		5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */; };
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
+		5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEFA44205122DE00CA059F /* DCodeView.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
 		5BDB5030202C3B490055C21E /* DMineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502F202C3B490055C21E /* DMineCell.swift */; };
@@ -170,6 +171,7 @@
 		5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyPhoneViewController.swift; sourceTree = "<group>"; };
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
+		5BCEFA44205122DE00CA059F /* DCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeView.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5BDB502F202C3B490055C21E /* DMineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMineCell.swift; sourceTree = "<group>"; };
@@ -686,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF3A88C204E338C00B76278 /* DCodeViewController.swift */,
+				5BCEFA44205122DE00CA059F /* DCodeView.swift */,
 			);
 			path = "输入验证码";
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
 				5BF3A893204E37DB00B76278 /* DPayView.swift in Sources */,
+				5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */,
 				5B51FAE120293E73001AB946 /* DGrabViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */,
 				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
