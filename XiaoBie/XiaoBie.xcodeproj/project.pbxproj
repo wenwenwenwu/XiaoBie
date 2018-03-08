@@ -413,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				5B498E9C204501440071406C /* PhotoPickerTool.swift */,
+				5BA24F98204E9B340068B32F /* RecordTool.swift */,
 				5B6325E9203130C100659725 /* DateTool.swift */,
 				5B51FAFC20294A1D001AB946 /* CacheTool.swift */,
 				5B0B7EC3202B03DB004CCCB8 /* LocationTool.swift */,
@@ -421,7 +422,6 @@
 				5B51FAF3202948AA001AB946 /* HudTool.swift */,
 				5B51FAF5202948AA001AB946 /* WebTool.swift */,
 				5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */,
-				5BA24F98204E9B340068B32F /* RecordTool.swift */,
 			);
 			path = "Tool（工具）";
 			sourceTree = "<group>";

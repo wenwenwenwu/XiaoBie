@@ -26,6 +26,7 @@ import UIKit
     let black_40 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3694884418)
 
     let blue_3296FA = #colorLiteral(red: 0.1960784314, green: 0.5882352941, blue: 0.9803921569, alpha: 1)
+    let blue_2f85d8 = #colorLiteral(red: 0.1843137255, green: 0.5215686275, blue: 0.8470588235, alpha: 1)
 
     let black_333333 = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
     let black_303133 = #colorLiteral(red: 0.1882352941, green: 0.1921568627, blue: 0.2, alpha: 1)
@@ -70,7 +71,7 @@ import UIKit
     //网络
     let pageSize = "10"
     let baseURL = "http://116.62.206.174:8080/longwang/general/"
-    let imagesUploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
+    let uploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
 
     //第三方

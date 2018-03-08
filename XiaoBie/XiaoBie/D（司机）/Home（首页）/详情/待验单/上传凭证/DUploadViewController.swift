@@ -34,6 +34,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         view.addSubview(whiteView2)
         whiteView2.addSubview(noteTextView)
         whiteView2.addSubview(placeHolderLabel)
+        whiteView2.addSubview(playButton)
         whiteView2.addSubview(tapeButton)
         
         view.addSubview(whiteView3)
@@ -46,15 +47,46 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - Event Response
     @objc func tapeButtonTouchDownAction() {
+        noteTextView.resignFirstResponder()
         recordTool.beginRecord()
     }
     
     @objc func tapeButtonTouchUpAction() {
         recordTool.stopRecord()
+        whiteView2.snp.updateConstraints { (make) in
+            make.height.equalTo(208)
+        }
+        playButton.snp.updateConstraints { (make) in
+            make.height.equalTo(30)
+        }
+    }
+    
+    @objc func playButtonAction() {
+        recordTool.play()
     }
     
     @objc func confirmButtonAction() {
-        print(photoButtonView1.imageName,photoButtonView2.imageName,photoButtonView3.imageName,photoButtonView4.imageName)
+        guard !photoButtonView1.imageName.isEmpty && !photoButtonView2.imageName.isEmpty && !photoButtonView3.imageName.isEmpty && !photoButtonView4.imageName.isEmpty
+            else {
+            HudTool.showInfo(string: "必须上传四张照片")
+            return
+        }
+        confirmRequest()
+        
+    }
+    
+    //MARK: - Request
+    func confirmRequest() {
+        let fileName = "\(photoButtonView1.imageName),\(photoButtonView2.imageName),\(photoButtonView3.imageName),\(photoButtonView4.imageName),\(recordTool.audioName)"
+        
+        WebTool.get(uri:"order_evidence_upload", para:["file_names":fileName,
+                                                       "remark":noteTextView.text!,
+                                                       "order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITextViewDelegate
@@ -142,9 +174,14 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         noteTextView.snp.makeConstraints { (make) in
             make.top.equalTo(placeHolderLabel).offset(-8)
             make.left.equalTo(placeHolderLabel).offset(-5)
-            make.bottom.equalTo(tapeButton.snp.top).offset(-7)
+            make.bottom.equalTo(playButton.snp.top).offset(-7)
             make.right.equalToSuperview().offset(-8)
-            
+        }
+        
+        playButton.snp.makeConstraints { (make) in
+            make.top.equalTo(68)
+            make.left.equalTo(13)
+            make.height.equalTo(0)
         }
         
         tapeButton.snp.makeConstraints { (make) in
@@ -182,23 +219,23 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         return view
     }()
     
-    lazy var photoButtonView1 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
-       self.photoButtonView2.isHidden = false
-       self.infoLabel2.isHidden = false
+    lazy var photoButtonView1 = DPhotoButtonView.viewWith(uploadPara: "upload_order_evidence", uploadType: "credit_positive", uploadOrderId: model.id, ownVC: self) {
+        self.photoButtonView2.isHidden = false
+        self.infoLabel2.isHidden = false
     }
     
-    lazy var photoButtonView2 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
+    lazy var photoButtonView2 = DPhotoButtonView.viewWith(uploadPara: "upload_order_evidence", uploadType: "credit_negative", uploadOrderId: model.id, ownVC: self) {
         self.photoButtonView3.isHidden = false
         self.infoLabel3.isHidden = false
     }
     
-    lazy var photoButtonView3 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
+    lazy var photoButtonView3 = DPhotoButtonView.viewWith(uploadPara: "upload_order_evidence", uploadType: "work_order_img", uploadOrderId: model.id, ownVC: self) {
         self.photoButtonView4.isHidden = false
         self.infoLabel4.isHidden = false
     }
     
-    lazy var photoButtonView4 = DPhotoButtonView.viewWith(uri: "upload_order_evidence", ownVC: self) {
-        
+    lazy var photoButtonView4 = DPhotoButtonView.viewWith(uploadPara: "upload_order_evidence", uploadType: "customer_img", uploadOrderId: model.id, ownVC: self) {
+    
     }
     
     lazy var infoLabel1: UILabel = {
@@ -254,16 +291,21 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font12
         button.setTitle("长按录音", for: .normal)
-        button.setTitleColor(gray_B3B3B3, for: .normal)
-        button.setImage(#imageLiteral(resourceName: "icon_tape"), for: .normal)
-        //调整之道: 先看一下初始态(UIEdgeInsets.zero)是怎样的, 然后在UIEdgeInsetsMake(上, 左, 下, 右)上调整上和左的值
-        //上移为负，下移为正, 左移为正, 右移为负,
-        //下和右的值为上和左的值取负
+        button.setTitleColor(white_FFFFFF, for: .normal)
+        button.setImage(#imageLiteral(resourceName: "icon_tape_white"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsetsMake(-6, 25, 6, -25)
         button.titleEdgeInsets = UIEdgeInsetsMake(20, -11, -20, 11)
-        button.setBackgroundImage(gray_EBEBEB.colorImage(), for: .normal)
+        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+        button.setBackgroundImage(blue_2f85d8.colorImage(), for: .highlighted)
         button.addTarget(self, action: #selector(tapeButtonTouchDownAction), for: .touchDown)
         button.addTarget(self, action: #selector(tapeButtonTouchUpAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var playButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.setBackgroundImage(#imageLiteral(resourceName: "icon_yyt"), for: .normal)
+        button.addTarget(self, action: #selector(playButtonAction), for: .touchDown)
         return button
     }()
     
@@ -280,7 +322,11 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }()
     
     var model = DGrabItemModel()
-    let recordTool = RecordTool()
+    lazy var recordTool = RecordTool.toolWith(uploadPara: "upload_order_evidence", model: model, sucessClosure: {
+        print("🐱")
+    }) {
+        print("🐸")
+    }
     
     let spacing = (screenWidth-76*4)/5
 }

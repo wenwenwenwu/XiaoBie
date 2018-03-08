@@ -144,7 +144,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             navigationController?.pushViewController(toTestifyVC, animated: true)
         case .access:
             let uploadVC = DUploadViewController()
-//            toTestifyVC.model = cell.model
+            uploadVC.model = cell.model
             navigationController?.pushViewController(uploadVC, animated: true)
         case .uploaded:
             let payVC = DPayViewController()
