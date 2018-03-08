@@ -53,12 +53,6 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     
     @objc func tapeButtonTouchUpAction() {
         recordTool.stopRecord()
-        whiteView2.snp.updateConstraints { (make) in
-            make.height.equalTo(208)
-        }
-        playButton.snp.updateConstraints { (make) in
-            make.height.equalTo(30)
-        }
     }
     
     @objc func playButtonAction() {
@@ -77,13 +71,23 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - Request
     func confirmRequest() {
-        let fileName = "\(photoButtonView1.imageName),\(photoButtonView2.imageName),\(photoButtonView3.imageName),\(photoButtonView4.imageName),\(recordTool.audioName)"
+        let fileDictionary = ["credit_positive": photoButtonView1.imageName,
+                              "credit_negative": photoButtonView2.imageName,
+                              "work_order_img": photoButtonView3.imageName,
+                              "customer_img": photoButtonView4.imageName,
+                              "audio": recordTool.audioName]
+        let fileNames = getJSONStringFromDictionary(dictionary: fileDictionary as NSDictionary)
         
-        WebTool.get(uri:"order_evidence_upload", para:["file_names":fileName,
+        WebTool.get(uri:"order_evidence_upload", para:["file_names":fileNames,
                                                        "remark":noteTextView.text!,
                                                        "order_id":model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                let payVC = DPayViewController()
+                payVC.model = self.model
+                self.navigationController?.pushViewController(payVC, animated: true)
+            }
         }) { (error) in
             HudTool.showInfo(string: error)
         }
@@ -100,9 +104,21 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {//回车
+            textView.scrollsToTop = true
             textView.resignFirstResponder()
         }
         return true
+    }
+    
+    //MARK: - Private Method
+    func getJSONStringFromDictionary(dictionary:NSDictionary) -> String {
+        if (!JSONSerialization.isValidJSONObject(dictionary)) {
+            print("无法解析出JSONString")
+            return ""
+        }
+        let data : NSData! = try? JSONSerialization.data(withJSONObject: dictionary, options: []) as NSData!
+        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+        return JSONString! as String
     }
     
     //MARK: - Setup
@@ -179,7 +195,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         }
         
         playButton.snp.makeConstraints { (make) in
-            make.top.equalTo(68)
+            make.top.equalTo(75)
             make.left.equalTo(13)
             make.height.equalTo(0)
         }
@@ -321,12 +337,16 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         return button
     }()
     
-    var model = DGrabItemModel()
-    lazy var recordTool = RecordTool.toolWith(uploadPara: "upload_order_evidence", model: model, sucessClosure: {
-        print("🐱")
-    }) {
-        print("🐸")
+    lazy var recordTool = RecordTool.toolWith(orderId: model.id) {
+        self.whiteView2.snp.updateConstraints { (make) in
+            make.height.equalTo(208)
+        }
+        self.playButton.snp.updateConstraints { (make) in
+            make.height.equalTo(30)
+        }
     }
+    
+    var model = DGrabItemModel()
     
     let spacing = (screenWidth-76*4)/5
 }
