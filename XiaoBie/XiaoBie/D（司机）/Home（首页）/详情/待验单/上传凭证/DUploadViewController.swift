@@ -101,15 +101,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
             placeHolderLabel.isHidden = true
         }
     }
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {//回车
-            textView.scrollsToTop = true
-            textView.resignFirstResponder()
-        }
-        return true
-    }
-    
+        
     //MARK: - Private Method
     func getJSONStringFromDictionary(dictionary:NSDictionary) -> String {
         if (!JSONSerialization.isValidJSONObject(dictionary)) {
