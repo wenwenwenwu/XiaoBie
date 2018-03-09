@@ -61,7 +61,10 @@ class DHomeViewController: UIViewController {
     }
    
     @objc func addButtonAction() {
-        print("加单")
+        let creatVC = DCreatViewController()
+        let creatNav = NavigationController.init(rootViewController: creatVC)
+        present(creatNav, animated: true, completion: nil)
+        
     }
     
     //MARK: - Private Method

@@ -15,6 +15,8 @@
 		5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */; };
 		5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFF2202D7F8100E2DA2F /* BlankView.swift */; };
 		5B2F7CA720524C2500C56D40 /* DCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CA620524C2500C56D40 /* DCodeModel.swift */; };
+		5B2F7CAA20525E3700C56D40 /* DCreatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CA920525E3700C56D40 /* DCreatViewController.swift */; };
+		5B2F7CAC205260FC00C56D40 /* DCreatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CAB205260FC00C56D40 /* DCreatView.swift */; };
 		5B33F004204E232E00A672CE /* DCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F003204E232E00A672CE /* DCompleteView.swift */; };
 		5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */; };
@@ -61,6 +63,9 @@
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
 		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
+		5B76B11920527AF60024E687 /* DCreatSetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11820527AF60024E687 /* DCreatSetLevelViewController.swift */; };
+		5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11A20527B060024E687 /* DCreatTypeViewController.swift */; };
+		5B76B11D205280920024E687 /* DCreatTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11C205280920024E687 /* DCreatTypeListView.swift */; };
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 		5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7D3A922047E618004CC761 /* DToCheckModel.swift */; };
@@ -109,6 +114,8 @@
 		5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabModel.swift; sourceTree = "<group>"; };
 		5B28CFF2202D7F8100E2DA2F /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5B2F7CA620524C2500C56D40 /* DCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeModel.swift; sourceTree = "<group>"; };
+		5B2F7CA920525E3700C56D40 /* DCreatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatViewController.swift; sourceTree = "<group>"; };
+		5B2F7CAB205260FC00C56D40 /* DCreatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatView.swift; sourceTree = "<group>"; };
 		5B33F003204E232E00A672CE /* DCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCompleteView.swift; sourceTree = "<group>"; };
 		5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyView.swift; sourceTree = "<group>"; };
@@ -155,6 +162,9 @@
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5B702F402041392100DB4978 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5B76B11820527AF60024E687 /* DCreatSetLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatSetLevelViewController.swift; sourceTree = "<group>"; };
+		5B76B11A20527B060024E687 /* DCreatTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatTypeViewController.swift; sourceTree = "<group>"; };
+		5B76B11C205280920024E687 /* DCreatTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatTypeListView.swift; sourceTree = "<group>"; };
 		5B7CCEC3202808E000C99139 /* XiaoBie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiaoBie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,13 +222,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B1F891920479C600024B00B /* DClockinView */ = {
+		5B1F891920479C600024B00B /* 签到 */ = {
 			isa = PBXGroup;
 			children = (
 				5B6F3F96202BE7C70070818C /* DClockinView.swift */,
 				5B997822202AC9450005357A /* DClockinViewHandler.swift */,
 			);
-			path = DClockinView;
+			path = "签到";
+			sourceTree = "<group>";
+		};
+		5B2F7CA820525E1B00C56D40 /* 人工建单 */ = {
+			isa = PBXGroup;
+			children = (
+				5B76B11520527AB90024E687 /* 主页面 */,
+				5B76B11720527AD60024E687 /* 套餐档位列表 */,
+				5B76B11620527AC60024E687 /* 套餐类型列表 */,
+			);
+			path = "人工建单";
 			sourceTree = "<group>";
 		};
 		5B3519A5204408A100CE92E4 /* Money（酬金） */ = {
@@ -317,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				5B6F3F98202C16D00070818C /* 主页面 */,
+				5B2F7CA820525E1B00C56D40 /* 人工建单 */,
+				5B1F891920479C600024B00B /* 签到 */,
 				5BB90CFA203042D900F6CD9E /* 列表 */,
 				5BF2FC382048E8FD001755C8 /* 详情 */,
 			);
@@ -452,24 +474,24 @@
 			path = "主页面";
 			sourceTree = "<group>";
 		};
-		5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */ = {
+		5B5B8D6320492F78002484EE /* 套餐列表 */ = {
 			isa = PBXGroup;
 			children = (
 				5B5B8D6420492FAB002484EE /* DSetlistViewController.swift */,
 				5B5B8D6620492FC2002484EE /* DSetListView.swift */,
 				5B5B8D682049314A002484EE /* SetListModel.swift */,
 			);
-			path = "SetLIst（套餐列表）";
+			path = "套餐列表";
 			sourceTree = "<group>";
 		};
-		5B5B8D6A20493CDB002484EE /* DriverList（司机列表） */ = {
+		5B5B8D6A20493CDB002484EE /* 司机列表 */ = {
 			isa = PBXGroup;
 			children = (
 				5B5B8D6B20493DBC002484EE /* DDriverListViewController.swift */,
 				5B5B8D6D20493E12002484EE /* DDriverListView.swift */,
 				5B5B8D6F20493E22002484EE /* DDriverListModel.swift */,
 			);
-			path = "DriverList（司机列表）";
+			path = "司机列表";
 			sourceTree = "<group>";
 		};
 		5B6F3F98202C16D00070818C /* 主页面 */ = {
@@ -478,7 +500,6 @@
 				5B51FAE220293EA6001AB946 /* DHomeViewController.swift */,
 				5B51FAD620293942001AB946 /* DHomeModel.swift */,
 				5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */,
-				5B1F891920479C600024B00B /* DClockinView */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -490,6 +511,32 @@
 				5B702F402041392100DB4978 /* CalendarView.swift */,
 			);
 			path = "calendar（日历）";
+			sourceTree = "<group>";
+		};
+		5B76B11520527AB90024E687 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B2F7CA920525E3700C56D40 /* DCreatViewController.swift */,
+				5B2F7CAB205260FC00C56D40 /* DCreatView.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5B76B11620527AC60024E687 /* 套餐类型列表 */ = {
+			isa = PBXGroup;
+			children = (
+				5B76B11A20527B060024E687 /* DCreatTypeViewController.swift */,
+				5B76B11C205280920024E687 /* DCreatTypeListView.swift */,
+			);
+			path = "套餐类型列表";
+			sourceTree = "<group>";
+		};
+		5B76B11720527AD60024E687 /* 套餐档位列表 */ = {
+			isa = PBXGroup;
+			children = (
+				5B76B11820527AF60024E687 /* DCreatSetLevelViewController.swift */,
+			);
+			path = "套餐档位列表";
 			sourceTree = "<group>";
 		};
 		5B7CCEBA202808E000C99139 = {
@@ -663,8 +710,8 @@
 			isa = PBXGroup;
 			children = (
 				5B5B8D6220492F67002484EE /* 主页面 */,
-				5B5B8D6A20493CDB002484EE /* DriverList（司机列表） */,
-				5B5B8D6320492F78002484EE /* SetLIst（套餐列表） */,
+				5B5B8D6A20493CDB002484EE /* 司机列表 */,
+				5B5B8D6320492F78002484EE /* 套餐列表 */,
 			);
 			path = "已查单";
 			sourceTree = "<group>";
@@ -876,6 +923,7 @@
 				5BF2FC372048E7E5001755C8 /* DCompleteViewController.swift in Sources */,
 				5BF3A887204E2FBC00B76278 /* DAddViewController.swift in Sources */,
 				5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */,
+				5B2F7CAC205260FC00C56D40 /* DCreatView.swift in Sources */,
 				5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */,
 				5B5B8D6C20493DBC002484EE /* DDriverListViewController.swift in Sources */,
 				5B6325EA203130C100659725 /* DateTool.swift in Sources */,
@@ -897,6 +945,7 @@
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
 				5B48A823204692D200CA563A /* MTabBarController.swift in Sources */,
+				5B76B11920527AF60024E687 /* DCreatSetLevelViewController.swift in Sources */,
 				5BF3A891204E33A500B76278 /* DPayViewController.swift in Sources */,
 				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */,
@@ -924,8 +973,10 @@
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
 				5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
+				5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,
+				5B2F7CAA20525E3700C56D40 /* DCreatViewController.swift in Sources */,
 				5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */,
 				5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */,
 				5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */,
@@ -937,6 +988,7 @@
 				5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */,
 				5B51FAE120293E73001AB946 /* DGrabViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */,
+				5B76B11D205280920024E687 /* DCreatTypeListView.swift in Sources */,
 				5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */,
 				5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */,
 				5B48A8372046A24B00CA563A /* CMineViewController.swift in Sources */,

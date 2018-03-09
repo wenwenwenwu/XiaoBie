@@ -82,7 +82,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     
     
     func setListRequest() {
-        WebTool.get(uri:"query_plan_type", para:["business_type": model.project_type], success: { (dict) in
+        WebTool.get(uri:"query_plan_type", para:[:], success: { (dict) in
             let model = DSetListResponseModel.parse(dict: dict)
             if model.code == "0" {
                 let setListVC = DSetlistViewController()
