@@ -57,11 +57,8 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Request
     func updateAddressRequest() {
-        let address = addressTextView.text.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        
-        WebTool.post(uri:"update_order_info", para:["address": address, "gtcdw": model.gtcdw, "order_id": model.id, "latitude": location.latitude,"longitude": location.longitude], success: { (dict) in
+        WebTool.post(uri:"update_order_info", para:["address": addressTextView.text!, "gtcdw": model.gtcdw, "order_id": model.id, "latitude": location.latitude,"longitude": location.longitude], success: { (dict) in
             let model = DToCheckUpdateAdressResponseModel.parse(dict: dict)
-            self.addressTextView.resignFirstResponder()
             self.addressTextView.isEditable = false
             self.addressTextView.isScrollEnabled = false
             if model.code == "0" {
@@ -70,7 +67,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
                 HudTool.showInfo(string: model.msg)
             }
         }) { (error) in
-            self.addressTextView.resignFirstResponder()
             self.addressTextView.isEditable = false
             self.addressTextView.isScrollEnabled = false
             HudTool.showInfo(string: error)
@@ -79,11 +75,8 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     
     
     //MARK: - UITextViewDelegate
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {//回车
-            locationTool.startUpdatingLocation()
-        }
-        return true
+    func textViewDidEndEditing(_ textView: UITextView) {
+        locationTool.startUpdatingLocation()
     }
     
     //MARK: - Setup
@@ -238,7 +231,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     lazy var addressTextView: UITextView = {
         let textView = UITextView()
         textView.isScrollEnabled = false
-        textView.returnKeyType = .done
         textView.delegate = self
         textView.font = font16
         textView.textColor = black_333333

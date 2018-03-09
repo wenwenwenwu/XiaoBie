@@ -36,6 +36,8 @@ class DToTestifyInfoCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     //MARK: - FactoryMethod
     class func cellWith(tableView : UITableView) -> DToTestifyInfoCell{
         let reuseIdentifier = "infoCell";

@@ -149,7 +149,6 @@ class DCodeCodeCell: UITableViewCell, UITextFieldDelegate {
         textField.font = font16
         textField.textColor = black_333333
         textField.keyboardType = .numberPad
-        textField.returnKeyType = .done
         textField.delegate = self
         return textField
     }()

@@ -289,7 +289,6 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     lazy var noteTextView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
-        textView.returnKeyType = .done
         textView.font = font14
         textView.textColor = black_333333
         return textView

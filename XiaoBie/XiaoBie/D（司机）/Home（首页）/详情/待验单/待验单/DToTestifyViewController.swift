@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class DToTestifyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -19,6 +20,17 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(remindButton)
         setupNavigationBar()
         setupFrame()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     //MARK: - Event Response
