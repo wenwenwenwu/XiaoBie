@@ -195,7 +195,7 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "已查单"
             case .uploaded:
                 statusStr = "凭证已上传"
-            case .complete:
+            case .havePlan, .noPlan:
                 statusStr = "完成"
             default:
                 statusStr = "添加营销案"

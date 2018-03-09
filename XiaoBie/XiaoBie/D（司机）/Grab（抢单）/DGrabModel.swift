@@ -28,6 +28,7 @@ class DGrabItemResponseModel: NSObject,YYModel {
 
 enum DHomeStatusType {
     /*
+     0-原始单(未被枪);
      1-待查单;
      2-查询中（做单员端显示待查单）;
      3-已查单;
@@ -38,10 +39,12 @@ enum DHomeStatusType {
      8-通过验证;
      9-无此活动;
      10-已查单(需现场验证,预约完成后还是进入待验单，也就是状态4);
-     13-凭证已上传
-     14-完成（支付完成）
-     15-待添加营销案(确认完成后到达完成状态)
+     13-凭证已上传;
+     15-待营销案确认(此时付款完成，确认完成后到达完成状态);
+     16-有营销案;
+     17-无营销案;
      */
+    case origin
     case toCheck
     case querying
     case checked
@@ -53,8 +56,9 @@ enum DHomeStatusType {
     case empty
     case checked2
     case uploaded
-    case complete
-    case add
+    case toAccessPlan
+    case havePlan
+    case noPlan
 }
 
 //抢单、订单列表、修改地址、修改套餐共用
@@ -121,10 +125,12 @@ class DGrabItemModel: NSObject {
                 statusType = .checked2
             case "13":
                 statusType = .uploaded
-            case "14":
-                statusType = .complete
+            case "15":
+                statusType = .toAccessPlan
+            case "16":
+                statusType = .havePlan
             default:
-                statusType = .add
+                statusType = .noPlan
             }
         }
     }
