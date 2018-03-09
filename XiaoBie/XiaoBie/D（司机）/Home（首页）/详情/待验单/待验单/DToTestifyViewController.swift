@@ -45,6 +45,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     @objc func remindButtonAction() {
         //输入验证码页面
         let codeVC = DCodeViewController()
+        codeVC.dealerId = currentClerk.id
         codeVC.model = model
         codeVC.serialNumber = serialNumber
         navigationController?.pushViewController(codeVC, animated: false)
@@ -223,7 +224,11 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }()
     
     var model = DGrabItemModel()
-    var clerkListArray: [DToCheckClerkModel] = []
+    var clerkListArray: [DToCheckClerkModel] = [] {
+        didSet {
+            currentClerk = clerkListArray[0]
+        }
+    }
     var currentClerk = DToCheckClerkModel()
     var serialNumber = ""
     

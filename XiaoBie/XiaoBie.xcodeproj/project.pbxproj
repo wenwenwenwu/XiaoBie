@@ -14,6 +14,7 @@
 		5B28CFEA202D750B00E2DA2F /* DGrabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFE9202D750B00E2DA2F /* DGrabView.swift */; };
 		5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */; };
 		5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFF2202D7F8100E2DA2F /* BlankView.swift */; };
+		5B2F7CA720524C2500C56D40 /* DCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CA620524C2500C56D40 /* DCodeModel.swift */; };
 		5B33F004204E232E00A672CE /* DCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33F003204E232E00A672CE /* DCompleteView.swift */; };
 		5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */; };
@@ -107,6 +108,7 @@
 		5B28CFE9202D750B00E2DA2F /* DGrabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabView.swift; sourceTree = "<group>"; };
 		5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabModel.swift; sourceTree = "<group>"; };
 		5B28CFF2202D7F8100E2DA2F /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		5B2F7CA620524C2500C56D40 /* DCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeModel.swift; sourceTree = "<group>"; };
 		5B33F003204E232E00A672CE /* DCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCompleteView.swift; sourceTree = "<group>"; };
 		5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyView.swift; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 			children = (
 				5BF3A88C204E338C00B76278 /* DCodeViewController.swift */,
 				5BCEFA44205122DE00CA059F /* DCodeView.swift */,
+				5B2F7CA620524C2500C56D40 /* DCodeModel.swift */,
 			);
 			path = "输入验证码";
 			sourceTree = "<group>";
@@ -852,6 +855,7 @@
 				5B48A82F2046A04800CA563A /* MChatViewController.swift in Sources */,
 				5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */,
 				5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */,
+				5B2F7CA720524C2500C56D40 /* DCodeModel.swift in Sources */,
 				5B5B8D6720492FC2002484EE /* DSetListView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */,
 				5BB76168204D327F00F3A026 /* DToTestifyViewController.swift in Sources */,

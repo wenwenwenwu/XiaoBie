@@ -15,9 +15,10 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
-        view.addSubview(remindButton)
+        view.addSubview(doneButton)
         setupNavigationBar()
         setupFrame()
+        codeListRequest()
     }
     
     deinit {
@@ -37,12 +38,12 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         print("聊天")
     }
     
-    @objc func codeCellButtonAction() {
-        
+    @objc func codeInputCellButtonAction() {
+        codeRequest()
     }
     
     @objc func doneButtonAction() {
-        remindRequest()
+        doneRequest()
     }
     
     //MARK: - Request
@@ -62,24 +63,65 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    
-    func remindRequest() {
-        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
+    func codeRequest() {
+        let codeCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! DCodeInputCodeCell
+        
+        WebTool.post(uri:"send_code_for_verify", para:["delivery_id": AccountTool.userInfo().id,
+                                                       "verify_code": codeCell.code,
+                                                       "order_id": model.id,
+                                                       "dealer_id": dealerId], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.codeListRequest()
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
         }) { (error) in
             HudTool.showInfo(string: error)
         }
     }
-        
+    
+    func codeListRequest() {
+        WebTool.get(uri:"list_verify_code", para:["order_id":model.id], success: { (dict) in
+            let model = DCodeListResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.codeListArray = model.data
+                self.tableView.reloadData()
+            } else {
+
+            }
+        }) { (error) in
+
+        }
+    }
+    
+    
+    func doneRequest() {
+        WebTool.get(uri:"pass_order_vefiry", para:["order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            //跳转上传凭证页面
+            let uploadVC = DUploadViewController()
+            uploadVC.model = self.model
+            self.navigationController?.pushViewController(uploadVC, animated: true)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-
+        switch section {
+        case 3:
+            return codeListArray.count
+        default:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,29 +134,38 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             let scanCell = DCodeScanCell.cellWith(tableView: tableView)
             scanCell.serialNumber = serialNumber
             return scanCell
+        case 2:
+            let codeInputCell = DCodeInputCodeCell.cellWith(tableView: tableView)
+            codeInputCell.codeButtonClosure = { [weak self] in
+                self?.codeInputCellButtonAction()
+            }
+            return codeInputCell
         default:
             let codeCell = DCodeCodeCell.cellWith(tableView: tableView)
-            codeCell.codeButtonClosure = { [weak self] in
-                self?.codeCellButtonAction()
-            }
+            codeCell.model = codeListArray[indexPath.row]
             return codeCell
         }
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
-            //记录当前做单员
-            currentClerk = clerkListArray[indexPath.row]
-        }
-    }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        switch section {
+        case 3:
+            return 20
+        default:
+            return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
+        switch section {
+        case 3:
+            let sectionHeader = DCodeSectionHeaderCell.cellWith(tableView: tableView)
+            return sectionHeader
+        default:
+            return UIView()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -144,7 +195,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
         }
         
-        remindButton.snp.makeConstraints { (make) in
+        doneButton.snp.makeConstraints { (make) in
             make.left.equalTo(13)
             make.right.equalTo(-13)
             make.bottom.equalTo(-10)
@@ -166,7 +217,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         return tableView
     }()
     
-    lazy var remindButton: UIButton = {
+    lazy var doneButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
         button.setTitle("完成", for: .normal)
@@ -179,8 +230,8 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }()
     
     var model = DGrabItemModel()
-    var clerkListArray: [DToCheckClerkModel] = []
-    var currentClerk = DToCheckClerkModel()
+    var codeListArray: [DCodeItemModel] = []
     var serialNumber = ""
+    var dealerId = ""
     
 }

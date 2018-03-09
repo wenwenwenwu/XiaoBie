@@ -23,6 +23,18 @@ class DateTool {
         return str月日时分
     }
     
+    class func strDateToStrMDHM(strDate: String)-> String {
+        guard !strDate.isEmpty else { return "" }
+        let date = formatterFull.date(from: strDate)
+        let calendar = Calendar.current
+        let month = calendar.component(Calendar.Component.month, from: date!)
+        let day = calendar.component(Calendar.Component.day, from: date!)
+        let hour = calendar.component(Calendar.Component.hour, from: date!)
+        let minute = calendar.component(Calendar.Component.minute, from: date!)
+        let strMDHM = "\(processTime(time: month))-\(processTime(time: day)) \(processTime(time: hour)): \(processTime(time: minute))"
+        return strMDHM
+    }
+    
     class func strDateToStr年月日(strDate: String)-> String {
         guard !strDate.isEmpty else { return "" }
         let date = formatterFull.date(from: strDate)
