@@ -38,11 +38,6 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         print(payMoney,selectedIndex)
     }
     
-    //MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        resignKeyBoardInView(view: view)
-    }
-    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -155,6 +150,5 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var model = DGrabItemModel()
     
-    var selectedIndex = 0
-    
+    var selectedIndex = 0    
 }

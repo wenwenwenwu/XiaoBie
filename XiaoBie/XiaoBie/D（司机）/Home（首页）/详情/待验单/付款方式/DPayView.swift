@@ -44,6 +44,11 @@ class DPayMoneyCell: UITableViewCell, UITextFieldDelegate {
         return cell as! DPayMoneyCell
     }
     
+    //MARK: - UITextFieldDelegate
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        payMoney = textField.text!
+    }
+    
     //MARK: - Setup
     func setupFrame() {
         titleLabel.snp.makeConstraints { (make) in
@@ -80,11 +85,6 @@ class DPayMoneyCell: UITableViewCell, UITextFieldDelegate {
             make.height.equalTo(12)
         }
         
-    }
-    
-    //MARK: - UITextFieldDelegate
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        payMoney = textField.text!
     }
     
     //MARK: - Properties
@@ -224,10 +224,8 @@ class DPayMethodCell: UITableViewCell {
             case .cash:
                 payMethodImageView.image = #imageLiteral(resourceName: "icon_cash")
                 titleLabel.text = "现金"
-           
-        }
-    }
-    
+            }
+        }    
     }
 }
 
