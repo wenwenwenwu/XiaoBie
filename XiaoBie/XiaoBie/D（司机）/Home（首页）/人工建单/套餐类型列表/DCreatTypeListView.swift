@@ -26,7 +26,7 @@ class DCreatSetTypeCell: UITableViewCell {
     
     //MARK: - FactoryMethod
     class func cellWith(tableView : UITableView) -> DCreatSetTypeCell{
-        let reuseIdentifier = "setCell";
+        let reuseIdentifier = "setTypeCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
             cell = DCreatSetTypeCell(style: .default, reuseIdentifier: reuseIdentifier)

@@ -18,6 +18,12 @@ class DCreatSetLevelViewController: UIViewController, UITableViewDataSource, UIT
         tableView.reloadData()
     }
     
+    //MARK: - Event Response
+    func cellSelectedAction(model: DSetItemModel) {
+        self.cellSelectedClosure(model)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -27,8 +33,7 @@ class DCreatSetLevelViewController: UIViewController, UITableViewDataSource, UIT
         let cell = DSetCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         cell.selectedClosure = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-            self?.editedClosure(cell.model)
+            self?.cellSelectedAction(model: cell.model)
         }
         return cell
     }
@@ -56,7 +61,7 @@ class DCreatSetLevelViewController: UIViewController, UITableViewDataSource, UIT
     
     var dataArray: [DSetItemModel] = []
     
-    var editedClosure: (DSetItemModel)->Void = { _ in }
+    var cellSelectedClosure: (DSetItemModel)->Void = { _ in }
     
 }
 

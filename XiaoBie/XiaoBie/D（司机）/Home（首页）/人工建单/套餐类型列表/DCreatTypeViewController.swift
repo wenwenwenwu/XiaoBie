@@ -18,6 +18,16 @@ class DCreatSetTypeViewController: UIViewController, UITableViewDataSource, UITa
         tableView.reloadData()
     }
     
+    deinit {
+        print("🐱")
+    }
+    
+    //MARK: - Event Response
+    func cellSelectedAction(title: String) {
+        self.cellSelectedClosure(title)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataArray.count
@@ -27,8 +37,7 @@ class DCreatSetTypeViewController: UIViewController, UITableViewDataSource, UITa
         let cell = DCreatSetTypeCell.cellWith(tableView: tableView)
         cell.title = dataArray[indexPath.row]
         cell.selectedClosure = { [weak self] title in
-            self?.navigationController?.popViewController(animated: true)
-            self?.editedClosure(title)
+            self?.cellSelectedAction(title: title)
         }
         return cell
     }
@@ -56,6 +65,6 @@ class DCreatSetTypeViewController: UIViewController, UITableViewDataSource, UITa
     
     var dataArray = ["手机", "宽带"]
     
-    var editedClosure: (String)->Void = { _ in }
+    var cellSelectedClosure: (String)->Void = { _ in }
     
 }

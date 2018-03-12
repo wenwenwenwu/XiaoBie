@@ -27,7 +27,7 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         
     }
     
-    func textFieldCellEditedAction(text: String, cellType: DCreatTextFieldCellType ) {
+    func textFieldCellendEditAction(text: String, cellType: DCreatTextFieldCellType ) {
         switch cellType {
         case .name:
             name = text
@@ -36,51 +36,33 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         case .ID:
             ID = text
         }
-        infomationChanged()
+        setupDoneButton()
     }
     
-    func textViewCellEditedAction(text: String) {
+    func textViewCellEndEditAction(text: String) {
         address = text
-        infomationChanged()
+        setupDoneButton()
     }
     
-    func setTypeCellAction()  {
-        let setLevelListVC = DCreatSetTypeViewController()
-        setLevelListVC.editedClosure = { setTypeIndex in
-            self.setTypeListVCEditedAction(setType: setTypeIndex)
-        }
-        self.navigationController?.pushViewController(setLevelListVC, animated: true)
-    }
-    
-    func setLevelCellAction() {
-        setLevelListRequest()
-    }
-    
-    func setLevelListVCEditedAction(setLevel: String)  {
-        let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCreatCell
-        cell.pickLabel.text = setLevel
-        self.setLevel = setLevel
-        infomationChanged()
-    }
-    
-    func setTypeListVCEditedAction(setType: String)  {
+    func setTypeListVCCellSelectedAction(setType: String)  {
         let cell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! DCreatCell
         cell.pickLabel.text = setType
         if setType == "手机" {
             self.setType = "0"
         } else {
             self.setType = "1"
-
+            
         }
-        infomationChanged()
+        setupDoneButton()
     }
     
-    func infomationChanged()  {
-        guard !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !setLevel.isEmpty else {
-            return
-        }
-        doneButtonItem.isEnabled = true
+    func setLevelListVCCellSelectedAction(setLevel: String)  {
+        let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCreatCell
+        cell.pickLabel.text = setLevel
+        self.setLevel = setLevel
+        setupDoneButton()
     }
+    
     
     //MARK: - Request
     func setLevelListRequest() {
@@ -89,8 +71,8 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
             if model.code == "0" {
                 let setLevelListVC = DCreatSetLevelViewController()
                 setLevelListVC.dataArray = model.data
-                setLevelListVC.editedClosure = { setItemModel in
-                    self.setLevelListVCEditedAction(setLevel: setItemModel.plan_name)
+                setLevelListVC.cellSelectedClosure = { setItemModel in
+                    self.setLevelListVCCellSelectedAction(setLevel: setItemModel.plan_name)
                 }
                 self.navigationController?.pushViewController(setLevelListVC, animated: true)
             } else {
@@ -119,8 +101,8 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         switch indexPath.section {
         case 0:
             let textFieldCell = DCreatTextFieldCell.cellWith(tableView: tableView)
-            textFieldCell.editedClosure = { [weak self] text, cellType in
-                self?.textFieldCellEditedAction(text: text, cellType: cellType)
+            textFieldCell.textFieldEndEditClosure = { [weak self] text, cellType in
+                self?.textFieldCellendEditAction(text: text, cellType: cellType)
             }
             switch indexPath.row {
             case 0:
@@ -134,8 +116,8 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
                 return textFieldCell
             default:
                 let textViewCell = DCreatTextViewCell.cellWith(tableView: tableView)
-                textViewCell.editedClosure = { [weak self] text in
-                    self?.textViewCellEditedAction(text: text)
+                textViewCell.textViewEndEditClosure = { [weak self] text in
+                    self?.textViewCellEndEditAction(text: text)
                 }
                 return textViewCell
             }
@@ -151,7 +133,22 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         }
     }
     
-    //MARK: - UITableViewDataSource
+    //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //套餐类型cell
+        if indexPath == IndexPath.init(row: 0, section: 1) {
+            let setTypeListVC = DCreatSetTypeViewController()
+            setTypeListVC.cellSelectedClosure = { setTypeIndex in
+                self.setTypeListVCCellSelectedAction(setType: setTypeIndex)
+            }
+            self.navigationController?.pushViewController(setTypeListVC, animated: true)
+        }
+        //套餐档位cell
+        if indexPath == IndexPath.init(row: 1, section: 1) {
+            setLevelListRequest()
+        }
+    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 3 {
             return 136
@@ -176,18 +173,6 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         return UIView()
     }
     
-    //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //套餐类型
-        if indexPath == IndexPath.init(row: 0, section: 1) {
-            setTypeCellAction()
-        }
-        //套餐档位
-        if indexPath == IndexPath.init(row: 1, section: 1) {
-            setLevelCellAction()
-        }
-    }
-
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "人工建单"
@@ -200,6 +185,11 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         doneButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_CCCCCC], for: .disabled)
         doneButtonItem.isEnabled = false
         navigationItem.rightBarButtonItem = doneButtonItem
+    }
+    
+    func setupDoneButton() {
+        let isCompleted = !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !setLevel.isEmpty
+        doneButtonItem.isEnabled = isCompleted
     }
     
     //MARK: - Properties

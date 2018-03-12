@@ -43,7 +43,7 @@ class DCreatTextFieldCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: - UITextFieldDelegate
     func textFieldDidEndEditing(_ textField: UITextField) {
-        editedClosure(textField.text!, cellType)
+        textFieldEndEditClosure(textField.text!, cellType)
     }
     
     //MARK: - Setup
@@ -92,18 +92,21 @@ class DCreatTextFieldCell: UITableViewCell, UITextFieldDelegate {
             switch cellType {
             case .name:
                 textField.attributedPlaceholder = NSAttributedString.init(string: "请输入姓名", attributes: [NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_999999])
+                textField.keyboardType = .default
                 titleLabel.text = "客户姓名"
             case .phone:
                 textField.attributedPlaceholder = NSAttributedString.init(string: "请输入手机号", attributes: [NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_999999])
+                textField.keyboardType = .phonePad
                 titleLabel.text = "联系方式"
             case .ID:
                 textField.attributedPlaceholder = NSAttributedString.init(string: "请输入身份证", attributes: [NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_999999])
+                textField.keyboardType = .namePhonePad
                 titleLabel.text = "身份证号"
             }
         }
     }
     
-    var editedClosure: (String, DCreatTextFieldCellType)->Void = {_,_ in }
+    var textFieldEndEditClosure: (String, DCreatTextFieldCellType)->Void = {_,_ in }
 }
 
 //DCreatCell
@@ -237,7 +240,7 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        editedClosure(textView.text)
+        textViewEndEditClosure(textView.text)
     }
     
     //MARK: - Setup
@@ -308,5 +311,5 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
         }
     }
     
-    var editedClosure: (String)->Void = {_ in }
+    var textViewEndEditClosure: (String)->Void = {_ in }
 }
