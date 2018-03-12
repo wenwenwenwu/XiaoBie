@@ -24,7 +24,22 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     @objc func doneButtonAction() {
+        guard ValidateTool.isPhoneNumber(vStr: phone) else {
+            HudTool.showInfo(string: "请输入正确的手机号")
+            return
+        }
         
+        guard ValidateTool.isIDCard(vStr: ID) else {
+            HudTool.showInfo(string: "请输入正确的身份证号")
+            return
+        }
+        
+        guard address.count >= 5 else {
+            HudTool.showInfo(string: "地址不小于5个字")
+            return
+        }
+        
+        creatRequest()
     }
     
     func textFieldCellendEditAction(text: String, cellType: DCreatTextFieldCellType ) {
@@ -56,10 +71,10 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         setupDoneButton()
     }
     
-    func setLevelListVCCellSelectedAction(setLevel: String)  {
+    func setLevelListVCCellSelectedAction(model: DSetItemModel)  {
         let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCreatCell
-        cell.pickLabel.text = setLevel
-        self.setLevel = setLevel
+        cell.pickLabel.text = model.plan_name
+        self.setLevelModel = model
         setupDoneButton()
     }
     
@@ -72,11 +87,29 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
                 let setLevelListVC = DCreatSetLevelViewController()
                 setLevelListVC.dataArray = model.data
                 setLevelListVC.cellSelectedClosure = { setItemModel in
-                    self.setLevelListVCCellSelectedAction(setLevel: setItemModel.plan_name)
+                    self.setLevelListVCCellSelectedAction(model: setItemModel)
                 }
                 self.navigationController?.pushViewController(setLevelListVC, animated: true)
             } else {
                 HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    func creatRequest() {
+        WebTool.get(uri:"create_order_manual", para:["project_type": setType,
+                                                     "address": address,
+                                                     "phone": phone,
+                                                     "user_name": name,
+                                                     "staff_id": AccountTool.userInfo().id,
+                                                     "id_num": ID,
+                                                     "plan_id": setLevelModel.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.dismiss(animated: true, completion: nil)
             }
         }) { (error) in
             HudTool.showInfo(string: error)
@@ -188,7 +221,7 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     func setupDoneButton() {
-        let isCompleted = !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !setLevel.isEmpty
+        let isCompleted = !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !setLevelModel.plan_name.isEmpty
         doneButtonItem.isEnabled = isCompleted
     }
     
@@ -210,5 +243,5 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     var ID = ""
     var address = ""
     var setType = ""
-    var setLevel = ""
+    var setLevelModel = DSetItemModel()
 }
