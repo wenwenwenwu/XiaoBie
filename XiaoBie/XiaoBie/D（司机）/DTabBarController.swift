@@ -21,7 +21,7 @@ class DTabBarController: UITabBarController,UITabBarControllerDelegate {
         //viewControllers
         let homeNav = NavigationController.init(rootViewController: DHomeViewController())
         let orderNav = NavigationController.init(rootViewController: DGrabViewController())
-        let chatNav = NavigationController.init(rootViewController: DChatViewController())
+        let chatNav = NavigationController.init(rootViewController: NIMSessionListViewController())
         let mineNav = NavigationController.init(rootViewController: DMineViewController())
         viewControllers = [homeNav,orderNav,chatNav,mineNav]
         

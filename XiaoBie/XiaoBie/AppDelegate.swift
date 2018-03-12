@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupWindow()
         setupIQKeyboard()
         setuGaoDe()
+        setupYunxin()
         return true
     }
 
@@ -75,5 +76,15 @@ extension AppDelegate {
         LocationTool.regist()
     }
     
-    
+    func setupYunxin() {
+        //注册
+        let option = NIMSDKOption.init(appKey: yunxinAppkey)
+        option.apnsCername = nil
+        option.pkCername = nil
+        NIMSDK.shared().register(with: option)
+        //自动登录
+        if AccountTool.isLogin() {
+            NIMSDK.shared().loginManager.autoLogin(AccountTool.userInfo().phone, token: AccountTool.userInfo().password)
+        }
+    }
 }

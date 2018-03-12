@@ -11,5 +11,6 @@
 
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import <AMapLocationKit/AMapLocationKit.h>
+#import "NIMKit.h"
 
 #endif /* BridgingHeader_h */

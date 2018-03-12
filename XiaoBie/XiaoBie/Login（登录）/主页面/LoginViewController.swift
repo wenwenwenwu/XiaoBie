@@ -90,6 +90,14 @@ class LoginViewController: UIViewController {
             if model.code == "0" {
                 //保存用户信息
                 AccountTool.login(with: model.data[0])
+                //登录云信
+                NIMSDK.shared().loginManager.login(AccountTool.userInfo().phone, token: AccountTool.userInfo().password, completion: { (error) in
+                    if error != nil {
+                        print(error!)
+                    } else {
+                        print("成功登陆云信")
+                    }
+                })
                 //根据角色设置显示页面
                 let roleName = AccountTool.userInfo().roleName!
                 mainVC.roleName = roleName
