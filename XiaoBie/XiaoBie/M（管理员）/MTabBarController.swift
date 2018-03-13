@@ -20,7 +20,7 @@ class MTabBarController: UITabBarController,UITabBarControllerDelegate {
     func setupTabBar() {
         //viewControllers
         let homeNav = NavigationController.init(rootViewController: MHomeViewController())
-        let chatNav = NavigationController.init(rootViewController: MChatViewController())
+        let chatNav = NavigationController.init(rootViewController: NIMSessionListViewController())
         let mineNav = NavigationController.init(rootViewController: MMineViewController())
         viewControllers = [homeNav,chatNav,mineNav]
         
