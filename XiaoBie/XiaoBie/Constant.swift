@@ -74,7 +74,7 @@ import UIKit
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
 
     //第三方
-    let JPushAppKey = "5a7e0489b11594cb421bccc4"
-    let gaodeAPIKey = "a42b22414915ccbdb3593b945829cfbe"
-    let yunxinAppkey = "01caf2718cabf414e87caccff36c8cb4"
+    let jPushAppKey = "5e56a0358ebab482ca76b127"
+    let gaoDeAppKey = "a42b22414915ccbdb3593b945829cfbe"
+    let yunXinAppkey = "01caf2718cabf414e87caccff36c8cb4"
 

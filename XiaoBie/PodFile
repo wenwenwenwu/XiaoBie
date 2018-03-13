@@ -7,19 +7,21 @@ target 'XiaoBie' do
 pod 'SnapKit'
 pod 'Alamofire'
 pod 'Kingfisher'
-#Objective-C必装
+pod 'IQKeyboardManagerSwift'
+#Objective-C必装（框架在用到的文件里添加）
 pod 'YYModel'
 pod 'MJRefresh'
 pod 'MBProgressHUD'
 #custom
-pod 'IQKeyboardManagerSwift'
+#高德地图（框架在桥接文件里添加）
 pod 'AMapLocation'
-#云信
+#云信（框架在桥接文件里添加）
 pod 'NIMSDK'
 pod 'SDWebImage', '~> 4.2.2'
 pod 'Toast', '~> 3.0'
 pod 'SVProgressHUD', '~> 2.0.3'
 pod 'M80AttributedLabel', '~> 1.6.3'
 pod 'TZImagePickerController', '~> 1.9.0'
-
+#极光推送（框架在桥接文件里添加）
+pod 'JPush'
 end

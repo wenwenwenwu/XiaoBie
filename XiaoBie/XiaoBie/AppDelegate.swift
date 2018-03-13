@@ -20,33 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupIQKeyboard()
         setuGaoDe()
         setupYunxin()
+        setupJpush(launchOptions: launchOptions)
         return true
     }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        
-    }
-
-
 }
 
 //MARK: - window相关
@@ -79,7 +55,7 @@ extension AppDelegate {
     
     func setupYunxin() {
         //注册
-        let option = NIMSDKOption.init(appKey: yunxinAppkey)
+        let option = NIMSDKOption.init(appKey: yunXinAppkey)
         option.apnsCername = nil
         option.pkCername = nil
         NIMSDK.shared().register(with: option)
@@ -91,5 +67,89 @@ extension AppDelegate {
         }
         
         
+    }
+}
+
+//MARK: - 极光相关
+extension AppDelegate: JPUSHRegisterDelegate {
+    //设置推送
+    func setupJpush(launchOptions: [UIApplicationLaunchOptionsKey: Any]?){
+        let entity = JPUSHRegisterEntity()
+        entity.types = (Int(JPAuthorizationOptions.alert.rawValue)|Int(JPAuthorizationOptions.badge.rawValue)|Int(JPAuthorizationOptions.sound.rawValue))
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        JPUSHService.setup(withOption: launchOptions, appKey: jPushAppKey, channel: "ios", apsForProduction: true)
+        
+    }
+    
+    //注册失败
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        /// Required - 注册 DeviceToken
+        JPUSHService.registerDeviceToken(deviceToken)
+        
+    }
+    
+    //注册成功
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("注册 APNS 失败 : \(error)")
+        
+    }
+    
+    //进入后台
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
+    }
+    
+    //进入前台
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
+    }
+    
+    //程序处于前台运行状态，收到远程通知后调用
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        //调用极光推送
+        JPUSHService.handleRemoteNotification(userInfo)
+        
+    }
+    
+    //程序处于后台或者被杀死状态，收到远程通知后，当你进入(aunch)程序时调用
+    //如果两个代理方法都被实现了，系统将只调用该方法
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        //调用极光推送
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    //MARK: - JPUSHRegisterDelegate
+    //程序处于前台运行状态，收到远程通知后
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        //消息内容暂不做处理
+        //提醒方式设置(Badge、Sound、Alert)
+        completionHandler(Int(UNNotificationPresentationOptions.alert.rawValue)|Int(UNNotificationPresentationOptions.badge.rawValue)|Int(UNNotificationPresentationOptions.sound.rawValue))
+    }
+    
+    @available(iOS 10.0, *)
+    //程序处于后台或者被杀死状态，收到远程通知后
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        //消息内容
+        let userInfo = response.notification.request.content.userInfo
+        //判断远程推送
+        if let _ = response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) {
+            receiveNotification(userInfo: userInfo)
+        }else{
+            //本地推送
+        }
+        //不必设置提醒方式
+        completionHandler()
+    }
+    
+    //收到通知后跳转相关页面
+    func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
+        JPUSHService.handleRemoteNotification(userInfo)
+        //跳转
+//        let model = PushModel.parse(dict: userInfo)
+       
     }
 }

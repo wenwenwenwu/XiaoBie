@@ -596,6 +596,7 @@
 		5BF3A88E204E339600B76278 /* DUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DUploadViewController.swift; sourceTree = "<group>"; };
 		5BF3A890204E33A500B76278 /* DPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPayViewController.swift; sourceTree = "<group>"; };
 		5BF3A892204E37DB00B76278 /* DPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPayView.swift; sourceTree = "<group>"; };
+		5BF520B52057A35800E2C496 /* XiaoBie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XiaoBie.entitlements; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -954,6 +955,7 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
+				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A821204692A600CA563A /* M（管理员） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
@@ -963,6 +965,7 @@
 				5B51FAD820293D0E001AB946 /* Global（全局） */,
 				5B9FDF0C202855FA00F306E9 /* Supporting File */,
 				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
+				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
 				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
 				5B7CCECD202808E000C99139 /* Assets.xcassets */,
 			);
@@ -982,7 +985,6 @@
 		5B9FDF0C202855FA00F306E9 /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
-				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
 				5B9FDF0E202855FA00F306E9 /* Info.plist */,
 			);
 			path = "Supporting File";
@@ -1722,6 +1724,11 @@
 					5B7CCEC2202808E000C99139 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2147,6 +2154,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = XiaoBie/XiaoBie.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
@@ -2158,7 +2166,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2170,6 +2178,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = XiaoBie/XiaoBie.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
@@ -2181,7 +2190,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

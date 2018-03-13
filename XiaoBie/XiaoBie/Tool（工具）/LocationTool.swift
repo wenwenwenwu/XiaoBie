@@ -28,7 +28,7 @@ class LocationTool: NSObject, AMapLocationManagerDelegate {
     
     //MARK: - Private Method
     class func regist() {
-        AMapServices.shared().apiKey = gaodeAPIKey
+        AMapServices.shared().apiKey = gaoDeAppKey
         AMapServices.shared().enableHTTPS = true
     }
     
