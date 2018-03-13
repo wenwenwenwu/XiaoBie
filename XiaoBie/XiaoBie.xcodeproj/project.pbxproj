@@ -230,6 +230,7 @@
 		5BF520B92057AB6000E2C496 /* CHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520B82057AB6000E2C496 /* CHomeListViewController.swift */; };
 		5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BA2057AE6900E2C496 /* CHomeListView.swift */; };
 		5BF520BE2057BD8000E2C496 /* CHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BD2057BD8000E2C496 /* CHomeModel.swift */; };
+		5BF520C12057D68700E2C496 /* DQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520C02057D68700E2C496 /* DQRCodeViewController.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -603,6 +604,7 @@
 		5BF520B82057AB6000E2C496 /* CHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeListViewController.swift; sourceTree = "<group>"; };
 		5BF520BA2057AE6900E2C496 /* CHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeListView.swift; sourceTree = "<group>"; };
 		5BF520BD2057BD8000E2C496 /* CHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeModel.swift; sourceTree = "<group>"; };
+		5BF520C02057D68700E2C496 /* DQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQRCodeViewController.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -1000,6 +1002,7 @@
 		5BB76166204D324D00F3A026 /* 待验单 */ = {
 			isa = PBXGroup;
 			children = (
+				5BF520BF2057D62000E2C496 /* 收款 */,
 				5BF3A888204E320400B76278 /* 待验单 */,
 				5BF3A889204E321600B76278 /* 输入验证码 */,
 				5BF3A88A204E324400B76278 /* 上传凭证 */,
@@ -1703,6 +1706,14 @@
 			path = "主页面";
 			sourceTree = "<group>";
 		};
+		5BF520BF2057D62000E2C496 /* 收款 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF520C02057D68700E2C496 /* DQRCodeViewController.swift */,
+			);
+			path = "收款";
+			sourceTree = "<group>";
+		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2003,6 +2014,7 @@
 				5BDE11E020565F50008D68EC /* NIMTeamMemberCardHeaderCell.m in Sources */,
 				5BDE11FA20565F50008D68EC /* NIMSessionMsgDatasource.m in Sources */,
 				5BDE11B920565F50008D68EC /* NIMKitUtil.m in Sources */,
+				5BF520C12057D68700E2C496 /* DQRCodeViewController.swift in Sources */,
 				5BDE11EB20565F50008D68EC /* NIMSessionListCell.m in Sources */,
 				5BDE11E820565F50008D68EC /* NIMMessageModel.m in Sources */,
 				5BDE11C220565F50008D68EC /* NIMInputAtCache.m in Sources */,

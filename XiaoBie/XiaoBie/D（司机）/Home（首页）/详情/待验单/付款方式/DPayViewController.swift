@@ -35,7 +35,7 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         //请求付款二维码
-        print(payMoney,selectedIndex)
+        navigationController?.pushViewController(DQRCodeViewController(), animated: true)
     }
     
     //MARK: - UITableViewDataSource
