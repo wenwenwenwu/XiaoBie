@@ -119,4 +119,15 @@ class SelectView: UIView {
     var buttonClosure: (Int)->Void = {_ in }
     
     var sliderWidth: CGFloat = 0
+    
+    var titleArray: [String] = [] {
+        didSet {
+            for item in titleArray {
+                let itemIndex = titleArray.index(of: item)
+                let button = stackView.arrangedSubviews[itemIndex!] as! UIButton
+                button.setTitle(item, for: .normal)
+            }
+        }
+    }
+    
 }

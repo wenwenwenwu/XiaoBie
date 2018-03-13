@@ -227,6 +227,9 @@
 		5BF3A88F204E339600B76278 /* DUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3A88E204E339600B76278 /* DUploadViewController.swift */; };
 		5BF3A891204E33A500B76278 /* DPayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3A890204E33A500B76278 /* DPayViewController.swift */; };
 		5BF3A893204E37DB00B76278 /* DPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF3A892204E37DB00B76278 /* DPayView.swift */; };
+		5BF520B92057AB6000E2C496 /* CHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520B82057AB6000E2C496 /* CHomeListViewController.swift */; };
+		5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BA2057AE6900E2C496 /* CHomeListView.swift */; };
+		5BF520BE2057BD8000E2C496 /* CHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BD2057BD8000E2C496 /* CHomeModel.swift */; };
 		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
@@ -597,6 +600,9 @@
 		5BF3A890204E33A500B76278 /* DPayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPayViewController.swift; sourceTree = "<group>"; };
 		5BF3A892204E37DB00B76278 /* DPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPayView.swift; sourceTree = "<group>"; };
 		5BF520B52057A35800E2C496 /* XiaoBie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XiaoBie.entitlements; sourceTree = "<group>"; };
+		5BF520B82057AB6000E2C496 /* CHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeListViewController.swift; sourceTree = "<group>"; };
+		5BF520BA2057AE6900E2C496 /* CHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeListView.swift; sourceTree = "<group>"; };
+		5BF520BD2057BD8000E2C496 /* CHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeModel.swift; sourceTree = "<group>"; };
 		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
@@ -682,7 +688,7 @@
 		5B48A82620469F9600CA563A /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
+				5BF520B62057AAE100E2C496 /* 主页面 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -714,7 +720,8 @@
 		5B48A82A2046A00700CA563A /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B48A8322046A23200CA563A /* CHomeViewController.swift */,
+				5BF520BC2057B5FD00E2C496 /* 主页面 */,
+				5BF520B72057AAEE00E2C496 /* 列表 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -1670,6 +1677,32 @@
 			path = "付款方式";
 			sourceTree = "<group>";
 		};
+		5BF520B62057AAE100E2C496 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5BF520B72057AAEE00E2C496 /* 列表 */ = {
+			isa = PBXGroup;
+			children = (
+				5BF520B82057AB6000E2C496 /* CHomeListViewController.swift */,
+				5BF520BA2057AE6900E2C496 /* CHomeListView.swift */,
+			);
+			path = "列表";
+			sourceTree = "<group>";
+		};
+		5BF520BC2057B5FD00E2C496 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8322046A23200CA563A /* CHomeViewController.swift */,
+				5BF520BD2057BD8000E2C496 /* CHomeModel.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
 		78000C48D14F8EB68F31A887 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1840,6 +1873,7 @@
 				5BDE120520565F50008D68EC /* NIMSessionLocationContentView.m in Sources */,
 				5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */,
 				5BDE11D620565F50008D68EC /* NIMTeamCardOperationItem.m in Sources */,
+				5BF520BE2057BD8000E2C496 /* CHomeModel.swift in Sources */,
 				5B48A8332046A23200CA563A /* CHomeViewController.swift in Sources */,
 				5B1F89142047967F0024B00B /* DChatView.swift in Sources */,
 				5BDE120A20565F50008D68EC /* NIMSessionImageContentView.m in Sources */,
@@ -1907,6 +1941,7 @@
 				5B28CFEA202D750B00E2DA2F /* DGrabView.swift in Sources */,
 				5BDE11C020565F50008D68EC /* NIMInputEmoticonTabView.m in Sources */,
 				5BDE11DC20565F50008D68EC /* NIMTeamSwitchTableViewCell.m in Sources */,
+				5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */,
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
 				5BDE11CF20565F50008D68EC /* NIMKitKeyboardInfo.m in Sources */,
 				5BDE11ED20565F50008D68EC /* NIMFileContentConfig.m in Sources */,
@@ -1977,6 +2012,7 @@
 				5B61830F204D0F5100147B1A /* PhoneNumberTool.swift in Sources */,
 				5BDE121920565F50008D68EC /* M80AttributedLabel+NIMKit.m in Sources */,
 				5BDE121320565F50008D68EC /* NSDictionary+NIMKit.m in Sources */,
+				5BF520B92057AB6000E2C496 /* CHomeListViewController.swift in Sources */,
 				5BDE11B220565F50008D68EC /* NIMKitAuthorizationTool.m in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5BDE11D920565F50008D68EC /* NIMCardMemberItem.m in Sources */,

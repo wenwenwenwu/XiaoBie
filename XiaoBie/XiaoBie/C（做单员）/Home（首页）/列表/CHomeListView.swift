@@ -1,23 +1,23 @@
 //
-//  DHomeListCell.swift
+//  MHomeListView.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/2/11.
+//  Created by wuwenwen on 2018/3/13.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 
-class DHomeListCell: UITableViewCell {
+class CHomeListCell: UITableViewCell {
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> DHomeListCell{
-        let reuseIdentifier = "homeListCell";
+    class func cellWith(tableView : UITableView) -> CHomeListCell{
+        let reuseIdentifier = "cHomeListCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = DHomeListCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = CHomeListCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! DHomeListCell
+        return cell as! CHomeListCell
     }
     
     //MARK: - Init
@@ -30,10 +30,8 @@ class DHomeListCell: UITableViewCell {
         whiteView.addSubview(statusLabel)
         whiteView.addSubview(lineView)
         whiteView.addSubview(iconImageView)
-        whiteView.addSubview(costLabel)
+        whiteView.addSubview(nameLabel)
         whiteView.addSubview(addressLabel)
-        whiteView.addSubview(distanceImageView)
-        whiteView.addSubview(distanceLabel)
         setupFrame()
     }
     
@@ -44,7 +42,7 @@ class DHomeListCell: UITableViewCell {
     //MARK: - Setup
     func setupFrame() {
         whiteView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(13, 13, 0, 13))
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(11, 0, 0, 0))
         }
         
         timeLabel.snp.makeConstraints { (make) in
@@ -66,34 +64,22 @@ class DHomeListCell: UITableViewCell {
         
         iconImageView.snp.makeConstraints { (make) in
             make.left.equalTo(13)
-            make.top.equalTo(lineView.snp.bottom).offset(10)
-            make.width.equalTo(60)
-            make.height.equalTo(60)
+            make.top.equalTo(lineView.snp.bottom).offset(9)
+            make.width.equalTo(61)
+            make.height.equalTo(61)
         }
         
-        costLabel.snp.makeConstraints { (make) in
+        nameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconImageView.snp.right).offset(11)
             make.top.equalTo(lineView.snp.bottom).offset(10)
             make.height.equalTo(15)
         }
         
         addressLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.right.equalTo(-15)
-            make.top.equalTo(costLabel.snp.bottom).offset(7)
+            make.left.equalTo(iconImageView.snp.right).offset(12)
+            make.right.equalTo(-26)
+            make.top.equalTo(nameLabel.snp.bottom).offset(9)
         }
-        
-        distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(13)
-            make.centerY.equalTo(distanceLabel)
-        }
-        
-        distanceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.top.equalTo(addressLabel.snp.bottom).offset(10)
-            make.height.equalTo(10)
-        }
-        
     }
     
     //MARK: - Properties
@@ -127,7 +113,7 @@ class DHomeListCell: UITableViewCell {
     
     lazy var iconImageView = UIImageView()
     
-    lazy var costLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = font16Medium
         label.textColor = black_333333
@@ -142,34 +128,17 @@ class DHomeListCell: UITableViewCell {
         return label
     }()
     
-    lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
-    
-    lazy var distanceLabel: UILabel = {
-        let label = UILabel()
-        label.font = font10
-        label.textColor = gray_999999
-        return label
-    }()
-    
     var model = DGrabItemModel() {
         didSet {
             //timeLabel
             timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.update_time)
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //costLabel
-            costLabel.text = "平均消费 \(model.average_cost) 元"
+            //nameLabel
+            nameLabel.text = model.user_name
             //addressLabel
-            addressLabel.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                distanceLabel.text = "距离：\(model.distanceKM)km"
-            }
+//            addressLabel.text = model.address
+            addressLabel.text = "杭州市西湖区杭大路38号1单元402室杭州市西湖区杭大路38号1单元402室"
             //statusLabel
             var statusStr = ""
             switch model.statusType {
@@ -184,9 +153,9 @@ class DHomeListCell: UITableViewCell {
             case .cancel:
                 statusStr = "客户取消"
             case .contact:
-                statusStr = "联系中"
+                statusStr = "待验单"
             case .accept:
-                statusStr = "正在验单"
+                statusStr = "待验单"
             case .access:
                 statusStr = "通过验证"
             case .empty:
@@ -197,12 +166,11 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "凭证已上传"
             case .havePlan, .noPlan:
                 statusStr = "完成"
-            case .toAccessPlan:
-                statusStr = "待添加营销案"
             default:
-                statusStr = "稍后联系"
+                statusStr = "待添加营销案"
             }
             statusLabel.text = statusStr
         }
     }
 }
+

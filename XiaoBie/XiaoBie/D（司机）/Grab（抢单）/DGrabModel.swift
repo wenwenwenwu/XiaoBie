@@ -27,41 +27,26 @@ class DGrabItemResponseModel: NSObject,YYModel {
 }
 
 enum DHomeStatusType {
-    /*
-     0-原始单(未被枪);
-     1-待查单;
-     2-查询中（做单员端显示待查单）;
-     3-已查单;
-     4-待验单;
-     5-客户取消;
-     6-司机联系验单员（司机端显示联系中，做单员端显示待验单）;
-     7-验单员收到司机给的弹窗，点击确认后（司机端显示正在验单，做单员端显示待验单）;
-     8-通过验证;
-     9-无此活动;
-     10-已查单(需现场验证,预约完成后还是进入待验单，也就是状态4);
-     13-凭证已上传;
-     15-待营销案确认(此时付款完成，确认完成后到达完成状态);
-     16-有营销案;
-     17-无营销案;
-     */
-    case origin
-    case toCheck
-    case querying
-    case checked
-    case toTestify
-    case cancel
-    case contact
-    case accept
-    case access
-    case empty
-    case checked2
-    case uploaded
-    case toAccessPlan
-    case havePlan
-    case noPlan
+    case origin //0-原始单(未被枪)
+    case toCheck //1-待查单
+    case querying //2-查询中（做单员端显示待查单）
+    case checked //3-已查单
+    case toTestify //4-待验单
+    case cancel //5-客户取消
+    case contact //6-司机联系验单员（司机端显示联系中，做单员端显示待验单）
+    case accept //7-验单员收到司机给的弹窗，点击确认后（司机端显示正在验单，做单员端显示待验单）
+    case access //8-通过验证
+    case empty //9-无此活动
+    case checked2 //10-已查单(需现场验证,预约完成后还是进入待验单，也就是状态4)
+    case uploaded //13-凭证已上传
+    case toAccessPlan //15-待营销案确认(此时付款完成，确认完成后到达完成状态)
+    case havePlan //16-有营销案
+    case noPlan //17-无营销案
+    case holdOn //18-保持待预约状态，稍后联系
 }
 
-//抢单、订单列表、修改地址、修改套餐共用
+//司机端抢单、订单列表、修改地址、修改套餐共用
+//做单员端订单列表共用
 class DGrabItemModel: NSObject {
     
     @objc var address = ""
@@ -129,8 +114,10 @@ class DGrabItemModel: NSObject {
                 statusType = .toAccessPlan
             case "16":
                 statusType = .havePlan
-            default:
+            case "17":
                 statusType = .noPlan
+            default:
+                statusType = .holdOn
             }
         }
     }
