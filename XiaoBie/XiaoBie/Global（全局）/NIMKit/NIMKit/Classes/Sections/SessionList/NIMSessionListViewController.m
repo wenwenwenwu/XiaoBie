@@ -7,7 +7,7 @@
 //
 
 #import "NIMSessionListViewController.h"
-#import "NIMContactSelectViewController.h"
+#import "NTESTeamListViewController.h"
 #import "NIMSessionViewController.h"
 #import "NIMSessionListCell.h"
 #import "UIView+NIM.h"
@@ -366,7 +366,8 @@
 }
 
 - (void)groupButtonAction {
-   
+    NTESTeamListViewController *teamListVC = [[NTESTeamListViewController alloc]init];
+    [self.navigationController pushViewController:teamListVC animated:YES];
 }
 #pragma mark - Notification
 - (void)onUserInfoHasUpdatedNotification:(NSNotification *)notification{

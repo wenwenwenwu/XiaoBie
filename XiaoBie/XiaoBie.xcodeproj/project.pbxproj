@@ -21,6 +21,7 @@
 		5B3519A7204408BE00CE92E4 /* DMyMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */; };
 		5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */; };
 		5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */; };
+		5B3819EB205774BB00E3D345 /* NTESTeamListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */; };
 		5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A7EF20464C6700CA563A /* DAlibiModel.swift */; };
 		5B48A81C2046814000CA563A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81B2046814000CA563A /* MainViewController.swift */; };
 		5B48A8202046927900CA563A /* CTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81F2046927900CA563A /* CTabBarController.swift */; };
@@ -245,6 +246,8 @@
 		5B3519A6204408BE00CE92E4 /* DMyMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyViewController.swift; sourceTree = "<group>"; };
 		5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyView.swift; sourceTree = "<group>"; };
 		5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyModel.swift; sourceTree = "<group>"; };
+		5B3819E9205774BA00E3D345 /* NTESTeamListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTeamListViewController.h; sourceTree = "<group>"; };
+		5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTeamListViewController.m; sourceTree = "<group>"; };
 		5B48A7EF20464C6700CA563A /* DAlibiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiModel.swift; sourceTree = "<group>"; };
 		5B48A81B2046814000CA563A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
 		5B48A81F2046927900CA563A /* CTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabBarController.swift; sourceTree = "<group>"; };
@@ -1254,6 +1257,8 @@
 		5BDE10E620565F4F008D68EC /* Team */ = {
 			isa = PBXGroup;
 			children = (
+				5B3819E9205774BA00E3D345 /* NTESTeamListViewController.h */,
+				5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */,
 				5BDE10E720565F4F008D68EC /* NIMTeamMemberListViewController.h */,
 				5BDE10E820565F4F008D68EC /* NIMAdvancedTeamCardViewController.h */,
 				5BDE10E920565F4F008D68EC /* NIMTeamNotifyUpdateViewController.h */,
@@ -2006,6 +2011,7 @@
 				5BDE121020565F50008D68EC /* NIMMessageCell.m in Sources */,
 				5BDE11C920565F50008D68EC /* NIMMemberGroupView.m in Sources */,
 				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
+				5B3819EB205774BB00E3D345 /* NTESTeamListViewController.m in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
 				5BDE121820565F50008D68EC /* UIView+NIM.m in Sources */,
 				5BF3A893204E37DB00B76278 /* DPayView.swift in Sources */,
