@@ -23,7 +23,9 @@ class DDriverListViewController: UIViewController, UITableViewDataSource, UITabl
     
     //MARK: - Event Response
     @objc func transferButtonAction() {
-        transferRequest()
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要转单吗？", message: nil, buttons: ["确定"]) { _ in
+            self.transferRequest()
+        }
     }
     
     //MARK: - Request
