@@ -168,7 +168,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 168
+        return 130
     }
     
     //MARK: - Setup

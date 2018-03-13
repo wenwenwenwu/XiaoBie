@@ -16,10 +16,7 @@ class DGrabCell: UITableViewCell {
         self.selectionStyle = .none
         contentView.backgroundColor = gray_F5F5F5
         contentView.addSubview(whiteView)
-        whiteView.addSubview(iconImageView)
         whiteView.addSubview(addressLabel)
-        whiteView.addSubview(distanceImageView)
-        whiteView.addSubview(distanceLabel)
         whiteView.addSubview(grabButton)
         setupFrame()
     }
@@ -41,36 +38,18 @@ class DGrabCell: UITableViewCell {
     //MARK: - Setup
     func setupFrame() {
         whiteView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(13, 13, 0, 13))
-        }
-        
-        iconImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(11)
-            make.top.equalTo(10)
-            make.width.equalTo(60)
-            make.height.equalTo(61)
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(16, 13, 0, 13))
         }
         
         addressLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.right.equalTo(-15)
-            make.top.equalTo(9)
+            make.left.equalTo(11)
+            make.right.equalTo(grabButton.snp.left).offset(-25)
+            make.top.equalTo(14)
         }
 
-        distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(13)
-            make.centerY.equalTo(distanceLabel)
-        }
-
-        distanceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.top.equalTo(addressLabel.snp.bottom).offset(18)
-            make.height.equalTo(10)
-        }
-        
         grabButton.snp.makeConstraints { (make) in
             make.right.equalTo(-10)
-            make.bottom.equalTo(-16)
+            make.centerY.equalToSuperview()
             make.width.equalTo(76)
             make.height.equalTo(31)
         }
@@ -90,22 +69,11 @@ class DGrabCell: UITableViewCell {
         return view
     }()
     
-    lazy var iconImageView = UIImageView()
-    
     lazy var addressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = font14
         label.textColor = gray_666666
-        return label
-    }()
-    
-    lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
-    
-    lazy var distanceLabel: UILabel = {
-        let label = UILabel()
-        label.font = font10
-        label.textColor = gray_999999
         return label
     }()
     
@@ -115,7 +83,7 @@ class DGrabCell: UITableViewCell {
         button.titleLabel?.font = font12
         button.setTitle("立即抢单", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+        button.setBackgroundImage(blue_3899F7.colorImage(), for: .normal)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(grabButtonAction), for: .touchUpInside)
@@ -124,20 +92,7 @@ class DGrabCell: UITableViewCell {
     
     var model = DGrabItemModel() {
         didSet {
-            //iconImageView
-            iconImageView.image = #imageLiteral(resourceName: "icon_phone")
-            //addressLabel
             addressLabel.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                distanceLabel.text = "距离：\(model.distanceKM)km"
-            }
-            
         }
     }
     

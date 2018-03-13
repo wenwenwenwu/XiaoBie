@@ -14,6 +14,7 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = white_FFFFFF
         view.addSubview(blankView)
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
@@ -24,6 +25,12 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTool.startUpdatingLocation()
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Event Response
@@ -130,7 +137,7 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 160
+        return 81
     }
     
     //MARK: - Setup
@@ -140,11 +147,11 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func setupFrame() {
         blankView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(navigationBarHeight, 0, 0, 0))
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(navigationBarHeight, 0, 0, 0))
         }
     }
     

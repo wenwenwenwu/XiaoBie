@@ -28,12 +28,11 @@ class DHomeListCell: UITableViewCell {
         contentView.addSubview(whiteView)
         whiteView.addSubview(timeLabel)
         whiteView.addSubview(statusLabel)
+        whiteView.addSubview(paymentLabel)
         whiteView.addSubview(lineView)
         whiteView.addSubview(iconImageView)
         whiteView.addSubview(costLabel)
         whiteView.addSubview(addressLabel)
-        whiteView.addSubview(distanceImageView)
-        whiteView.addSubview(distanceLabel)
         setupFrame()
     }
     
@@ -55,6 +54,12 @@ class DHomeListCell: UITableViewCell {
         statusLabel.snp.makeConstraints { (make) in
             make.right.equalTo(-14)
             make.centerY.equalTo(timeLabel)
+        }
+        
+        paymentLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(-14)
+            make.top.equalTo(lineView.snp.bottom).offset(12)
+            make.height.equalTo(10)
         }
         
         lineView.snp.makeConstraints { (make) in
@@ -83,17 +88,6 @@ class DHomeListCell: UITableViewCell {
             make.top.equalTo(costLabel.snp.bottom).offset(7)
         }
         
-        distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(13)
-            make.centerY.equalTo(distanceLabel)
-        }
-        
-        distanceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.top.equalTo(addressLabel.snp.bottom).offset(10)
-            make.height.equalTo(10)
-        }
-        
     }
     
     //MARK: - Properties
@@ -116,6 +110,13 @@ class DHomeListCell: UITableViewCell {
         let label = UILabel()
         label.font = font14
         label.textColor = red_DC152C
+        return label
+    }()
+    
+    lazy var paymentLabel: UILabel = {
+        let label = UILabel()
+        label.font = font14
+        label.textColor = red_D81E32
         return label
     }()
     
@@ -142,15 +143,6 @@ class DHomeListCell: UITableViewCell {
         return label
     }()
     
-    lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
-    
-    lazy var distanceLabel: UILabel = {
-        let label = UILabel()
-        label.font = font10
-        label.textColor = gray_999999
-        return label
-    }()
-    
     var model = DGrabItemModel() {
         didSet {
             //timeLabel
@@ -161,15 +153,8 @@ class DHomeListCell: UITableViewCell {
             costLabel.text = "平均消费 \(model.average_cost) 元"
             //addressLabel
             addressLabel.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                distanceLabel.text = "距离：\(model.distanceKM)km"
-            }
+            //paymentLabel
+            paymentLabel.text = "+\(model.payment)"
             //statusLabel
             var statusStr = ""
             switch model.statusType {
