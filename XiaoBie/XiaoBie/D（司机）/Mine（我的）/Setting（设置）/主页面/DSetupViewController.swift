@@ -52,6 +52,9 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
     func logoutCellAction() {
         //删除用户信息
         AccountTool.logout()
+        NIMSDK.shared().loginManager.logout { (error) in
+            
+        }
         //弹出登录界面
         let loginNC = NavigationController.init(rootViewController: LoginViewController())
         mainVC.present(loginNC, animated: false, completion: nil)

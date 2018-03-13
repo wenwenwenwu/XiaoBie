@@ -7,6 +7,7 @@
 //
 
 #import "NIMSessionListViewController.h"
+#import "NIMContactSelectViewController.h"
 #import "NIMSessionViewController.h"
 #import "NIMSessionListCell.h"
 #import "UIView+NIM.h"
@@ -60,6 +61,9 @@
     
     extern NSString *const NIMKitUserInfoHasUpdatedNotification;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onUserInfoHasUpdatedNotification:) name:NIMKitUserInfoHasUpdatedNotification object:nil];
+    
+    //自定义
+    [self setupNavBar];
 }
 
 - (void)refresh{
@@ -350,7 +354,20 @@
     }
 }
 
+#pragma mark - 自定义
+- (void)setupNavBar {
+    //title
+    self.navigationItem.title = @"聊天";
+    //rightBarButtonItem
+    UIBarButtonItem *groupItem = [[UIBarButtonItem alloc]initWithTitle:@"群组" style:(UIBarButtonItemStylePlain) target:self action:@selector(groupButtonAction)];
+    [groupItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:50/255 green:150/255 blue:250/255 alpha:1],NSFontAttributeName:[UIFont systemFontOfSize:14.0f]} forState:normal];
+     [groupItem setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:50/255 green:150/255 blue:250/255 alpha:1],NSFontAttributeName:[UIFont systemFontOfSize:14.0f]} forState:UIControlStateHighlighted];
+    self.navigationItem.rightBarButtonItem = groupItem;
+}
 
+- (void)groupButtonAction {
+   
+}
 #pragma mark - Notification
 - (void)onUserInfoHasUpdatedNotification:(NSNotification *)notification{
     [self refresh];

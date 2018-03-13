@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
     }
 
 
@@ -82,9 +83,13 @@ extension AppDelegate {
         option.apnsCername = nil
         option.pkCername = nil
         NIMSDK.shared().register(with: option)
+        //打印日志
+//        NIMSDK.shared().enableConsoleLog()
         //自动登录
         if AccountTool.isLogin() {
             NIMSDK.shared().loginManager.autoLogin(AccountTool.userInfo().phone, token: AccountTool.userInfo().password)
         }
+        
+        
     }
 }
