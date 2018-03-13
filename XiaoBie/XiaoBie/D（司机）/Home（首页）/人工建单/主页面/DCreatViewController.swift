@@ -109,6 +109,7 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
+                HudTool.showInfo(string: "新建完成，请在待验单列表中查看")
                 self.navigationController?.dismiss(animated: true, completion: nil)
             }
         }) { (error) in
