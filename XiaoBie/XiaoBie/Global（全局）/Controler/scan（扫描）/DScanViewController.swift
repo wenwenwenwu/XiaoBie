@@ -25,11 +25,13 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+        UIApplication.shared.isStatusBarHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
+        UIApplication.shared.isStatusBarHidden = false
     }
     
     //MARK：Setup
@@ -164,12 +166,11 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
         return scanRect
     }()
     
-    override var prefersStatusBarHidden: Bool {get { return true } }//隐藏状态栏
-    
     var device:AVCaptureDevice!
     var input:AVCaptureDeviceInput!
     var output:AVCaptureMetadataOutput!
     var session:AVCaptureSession!
     var preview:AVCaptureVideoPreviewLayer!
+    
     var scanedClosure:(String)->() = {_ in }
 }
