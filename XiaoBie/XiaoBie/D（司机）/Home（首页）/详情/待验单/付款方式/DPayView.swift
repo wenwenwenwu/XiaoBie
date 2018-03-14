@@ -8,11 +8,8 @@
 
 import UIKit
 
-enum PayMethod {
-    
-    case zhifubao
-    case weixin
-    case cash
+enum PayMethod: Int {
+    case zhifubao = 1, weixin, cash
 }
 
 class DPayMoneyCell: UITableViewCell, UITextFieldDelegate {

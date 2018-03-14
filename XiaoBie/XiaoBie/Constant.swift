@@ -63,6 +63,7 @@ import UIKit
     let font11 = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.regular)
     let font12 = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)
     let font14 = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
+    let font15 = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
     let font16 = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
     let font10Medium = UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.medium)
     let font16Medium = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.medium)

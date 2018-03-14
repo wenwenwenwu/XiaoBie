@@ -129,6 +129,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - UITableViewDataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

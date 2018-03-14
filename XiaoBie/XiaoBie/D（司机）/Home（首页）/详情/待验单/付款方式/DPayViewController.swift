@@ -35,7 +35,8 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
             return
         }
         //请求付款二维码
-        navigationController?.pushViewController(DQRCodeViewController(), animated: true)
+        let QRController = DQRCodeViewController.controllerWith(payMethod: payMethod, payMoney: payMoney, model: model)        
+        navigationController?.pushViewController(QRController, animated: true)
     }
     
     //MARK: - UITableViewDataSource
@@ -79,7 +80,8 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            selectedIndex = indexPath.row
+            let cell = tableView.cellForRow(at: indexPath) as! DPayMethodCell
+            payMethod = cell.payMethod
         }
     }
     
@@ -150,5 +152,5 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var model = DGrabItemModel()
     
-    var selectedIndex = 0    
+    var payMethod: PayMethod = .zhifubao
 }

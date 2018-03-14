@@ -14,10 +14,14 @@ class DQRCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(backButton)
-        view.addSubview(whiteView)
-        whiteView.addSubview(cancelButton)
-        whiteView.addSubview(lineView)
-        whiteView.addSubview(confirmButton)
+        view.addSubview(titleLabel)
+        view.addSubview(whiteSquareView)
+        whiteSquareView.addSubview(infoLabel)
+        whiteSquareView.addSubview(QRCodeImageView)
+        view.addSubview(whiteBackView)
+        whiteBackView.addSubview(cancelButton)
+        whiteBackView.addSubview(lineView)
+        whiteBackView.addSubview(confirmButton)
         view.backgroundColor = blue_3296FA
         setupFrame()
     }
@@ -34,6 +38,15 @@ class DQRCodeViewController: UIViewController {
         UIApplication.shared.statusBarStyle = .default
     }
     
+    //MARK: - Factory Method
+    class func controllerWith(payMethod: PayMethod, payMoney: String, model:DGrabItemModel) -> DQRCodeViewController {
+        let controller = DQRCodeViewController()
+        controller.payMethod = payMethod
+        controller.payMoney = payMoney
+        controller.model = model
+        return controller        
+    }
+    
     //MARK: - Event Response
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
@@ -44,17 +57,53 @@ class DQRCodeViewController: UIViewController {
     }
     
     @objc func confirmButtonAction() {
-        print("确认收款")
+        confirmRequest()
+    }
+    
+    //MARK: - Request
+    func confirmRequest() {
+        WebTool.post(uri:"payment_submit", para:["staff_id": AccountTool.userInfo().id, "plat_form_type": String(payMethod.rawValue), "order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - Setup
     func setupFrame() {
         backButton.snp.makeConstraints { (make) in
             make.left.equalTo(13)
-            make.top.equalTo(30)
+            make.top.equalTo(statusBarHeight+10)
+            make.width.equalTo(14)
+            make.height.equalTo(28)
         }
         
-        whiteView.snp.makeConstraints { (make) in
+        titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(backButton)
+        }
+        
+        whiteSquareView.snp.makeConstraints { (make) in
+            make.top.equalTo(statusBarHeight+64)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(screenWidth-18*2)
+        }
+        
+        infoLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(37)
+            make.centerX.equalToSuperview()
+        }
+        
+        QRCodeImageView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.height.equalTo(186)
+        }
+
+        whiteBackView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
             make.height.equalTo(45)
         }
@@ -77,7 +126,38 @@ class DQRCodeViewController: UIViewController {
     }
     
     //MARK: - Properties
-    lazy var whiteView: UIView = {
+    lazy var backButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.setBackgroundImage(#imageLiteral(resourceName: "icon_wreturn"), for: .normal)
+        button.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "收款"
+        label.font = font18Medium
+        label.textColor = white_FFFFFF
+        return label
+    }()
+    
+    lazy var whiteSquareView: UIView = {
+        let view = UIView()
+        view.backgroundColor = white_FFFFFF
+        return view
+    }()
+    
+    lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "扫一扫，向我付钱"
+        label.font = font15
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var QRCodeImageView = UIImageView.init(image: red_D81E32.colorImage())
+    
+    lazy var whiteBackView: UIView = {
         let view = UIView()
         view.backgroundColor = white_FFFFFF
         return view
@@ -109,12 +189,7 @@ class DQRCodeViewController: UIViewController {
         return view
     }()
     
-    lazy var backButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.frame = CGRect.init(x: 15, y: 35, width: 14, height: 28)
-        button.setBackgroundImage(#imageLiteral(resourceName: "icon_wreturn"), for: .normal)
-        button.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
-        return button
-    }()
-    
+    var payMoney = ""
+    var model: DGrabItemModel = DGrabItemModel()
+    var payMethod: PayMethod = .zhifubao
 }

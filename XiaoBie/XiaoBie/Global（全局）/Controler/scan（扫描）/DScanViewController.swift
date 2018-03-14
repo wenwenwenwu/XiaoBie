@@ -122,7 +122,7 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
     //MARK: - Properties
     lazy var backButton: UIButton = {
         let button = UIButton.init(type: .custom)
-        button.frame = CGRect.init(x: 15, y: 35, width: 14, height: 28)
+        button.frame = CGRect.init(x: 15, y: statusBarHeight+15, width: 14, height: 28)
         button.setBackgroundImage(#imageLiteral(resourceName: "icon_wreturn"), for: .normal)
         button.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         return button
