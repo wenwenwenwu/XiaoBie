@@ -162,28 +162,26 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "待查单"
             case .querying:
                 statusStr = "查询中"
-            case .checked:
+            case .checked, .checked2:
                 statusStr = "已查单"
             case .toTestify:
                 statusStr = "待验单"
             case .cancel:
                 statusStr = "客户取消"
             case .contact:
-                statusStr = "联系中"
+                statusStr = "待验单"
             case .accept:
-                statusStr = "正在验单"
-            case .access:
+                statusStr = "待验单"
+            case .access, .access2:
                 statusStr = "通过验证"
             case .empty:
                 statusStr = "无此活动"
-            case .checked2:
-                statusStr = "已查单"
-            case .uploaded:
+            case .uploaded, .uploaded2:
                 statusStr = "凭证已上传"
-            case .havePlan, .noPlan:
+            case .complete, .complete2:
                 statusStr = "完成"
-            case .toAccessPlan:
-                statusStr = "待添加营销案"
+            case .payComplete:
+                statusStr = "付款完成"
             default:
                 statusStr = "稍后联系"
             }

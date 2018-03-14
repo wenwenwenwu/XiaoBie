@@ -38,10 +38,12 @@ enum DHomeStatusType {
     case access //8-通过验证
     case empty //9-无此活动
     case checked2 //10-已查单(需现场验证,预约完成后还是进入待验单，也就是状态4)
-    case uploaded //13-凭证已上传
-    case toAccessPlan //15-待营销案确认(此时付款完成，确认完成后到达完成状态)
-    case havePlan //16-有营销案
-    case noPlan //17-无营销案
+    case access2 //11-通过验证(需判断营销案)
+    case uploaded //13-凭证已上传(不管营销案,后续付款完成后直接到状态17)
+    case uploaded2 //14-凭证已上传(需判断营销案)
+    case payComplete //15-付款完成(需要判断营销案)
+    case complete //16-完成状态(有营销案)
+    case complete2 //17-完成状态(无营销案)
     case holdOn //18-保持待预约状态，稍后联系
 }
 
@@ -108,14 +110,18 @@ class DGrabItemModel: NSObject {
                 statusType = .empty
             case "10":
                 statusType = .checked2
+            case "11":
+                statusType = .access2
             case "13":
                 statusType = .uploaded
+            case "14":
+                statusType = .uploaded2
             case "15":
-                statusType = .toAccessPlan
+                statusType = .payComplete
             case "16":
-                statusType = .havePlan
+                statusType = .complete
             case "17":
-                statusType = .noPlan
+                statusType = .complete2
             default:
                 statusType = .holdOn
             }

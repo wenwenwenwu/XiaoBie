@@ -124,21 +124,21 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
 //        cell.model.statusType = .contact
         switch cell.model.statusType {
-        case .toCheck, .querying:
+        case .toCheck, .querying: //待查单
             let toCheckVC = DToCheckViewController()
             toCheckVC.model = cell.model
             toCheckVC.updatedAdressClosure = { model in
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
-        case .checked, .checked2:
+        case .checked, .checked2, .holdOn: //已查单
             let checkedVC = DCheckedViewController()
             checkedVC.model = cell.model
             checkedVC.updatedAdressClosure = { model in
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(checkedVC, animated: true)
-        case .toTestify, .contact:
+        case .toTestify, .contact: //待验单之主页面
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
@@ -146,19 +146,19 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let codeVC = DCodeViewController()
             codeVC.model = cell.model
             navigationController?.pushViewController(codeVC, animated: true)
-        case .access:
+        case .access, .access2: //待验单之上传凭证页面
             let uploadVC = DUploadViewController()
             uploadVC.model = cell.model
             navigationController?.pushViewController(uploadVC, animated: true)
-        case .uploaded:
+        case .uploaded, .uploaded2: //待验单之付款页面
             let payVC = DPayViewController()
             payVC.model = cell.model
             navigationController?.pushViewController(payVC, animated: true)
-        case .toAccessPlan:
+        case .payComplete://待添加营销案(除了导航栏标题外与完成页面相同)
             let addVC = DAddViewController()
             addVC.model = cell.model
             navigationController?.pushViewController(addVC, animated: true)
-        case .havePlan, .noPlan:
+        case .complete, .complete2: //完成
             let completeVC = DCompleteViewController()
             completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)

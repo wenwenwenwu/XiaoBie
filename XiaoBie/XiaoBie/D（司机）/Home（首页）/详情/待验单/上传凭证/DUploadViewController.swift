@@ -41,11 +41,15 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         whiteView3.addSubview(confirmButton)
         
         setupNavigationBar()
+        setupController()//将当前页面变成导航控制器推出的首页，无法返回输入验证码状态
         setupFrame()
 
     }
     
     //MARK: - Event Response
+    @objc func backButtonAction() {
+        print("狗")
+    }
     @objc func tapeButtonTouchDownAction() {
         noteTextView.resignFirstResponder()
         recordTool.beginRecord()
@@ -60,13 +64,20 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func confirmButtonAction() {
-        guard !photoButtonView1.imageName.isEmpty && !photoButtonView2.imageName.isEmpty && !photoButtonView3.imageName.isEmpty && !photoButtonView4.imageName.isEmpty
-            else {
-            HudTool.showInfo(string: "必须上传四张照片")
+        //必须上传音频
+        guard !recordTool.audioName.isEmpty else{
+            HudTool.showInfo(string: "必须上传录音")
             return
         }
+        //有备注照片随意，无备注必须四张照片，
+        if noteTextView.text.isEmpty {
+            guard !photoButtonView1.imageName.isEmpty && !photoButtonView2.imageName.isEmpty && !photoButtonView3.imageName.isEmpty && !photoButtonView4.imageName.isEmpty
+                else {
+                    HudTool.showInfo(string: "必须上传四张照片或者填写备注")
+                    return
+            }
+        }
         confirmRequest()
-
     }
     
     //MARK: - Request
@@ -116,6 +127,12 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "上传凭证"
+    }
+    
+    func setupController() {
+        var controllerArray = navigationController?.viewControllers
+        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
+        navigationController?.setViewControllers(controllerArray!, animated: false)
     }
     
     func setupFrame() {

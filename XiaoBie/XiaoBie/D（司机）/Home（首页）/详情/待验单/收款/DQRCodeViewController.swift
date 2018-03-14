@@ -47,13 +47,27 @@ class DQRCodeViewController: UIViewController {
         return controller        
     }
     
+    //MARK: - Request
+    func cancelRequest() {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                //跳转回待验单主页面
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - Event Response
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc func cancelButtonAction() {
-        print("取消")
+        cancelRequest()
     }
     
     @objc func confirmButtonAction() {

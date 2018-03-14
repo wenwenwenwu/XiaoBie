@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -17,6 +17,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(tableView)
         view.addSubview(doneButton)
         setupNavigationBar()
+        setupController()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
         setupFrame()
         codeListRequest()
     }
@@ -24,12 +25,8 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     deinit {
         print("🐱")
     }
-    
+
     //MARK: - Event Response
-    @objc func backButtonAction() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
     @objc func transferButtonAction() {
         driverListRequest()
     }
@@ -179,8 +176,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "待验单"
-        //backItem
-        navigationItem.leftBarButtonItem = backButtonItem
         //transferButtonItem
         transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
         transferButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
@@ -203,8 +198,13 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func setupController() {
+        var controllerArray = navigationController?.viewControllers
+        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
+        navigationController?.setViewControllers(controllerArray!, animated: false)
+    }
+    
     //MARK: - Properties
-    lazy var backButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "icon_return").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonAction))
     lazy var transferButtonItem = UIBarButtonItem.init(title: "转单", style: .plain, target: self, action: #selector(transferButtonAction))
     lazy var chatButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
     
