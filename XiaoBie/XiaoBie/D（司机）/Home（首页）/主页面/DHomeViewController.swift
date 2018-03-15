@@ -13,31 +13,31 @@ class DHomeViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = gray_F5F5F5
         view.addSubview(infoView)
         view.addSubview(selectView)
         view.addSubview(pageView)
-
-        setupNavigationBar()
+        navigationItem.titleView = titleView
+        navigationItem.leftBarButtonItem = leftButtonItem
+        navigationItem.rightBarButtonItem = rightButtonItem
+        setupUI()
         infoRequest()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        clockinHandler.handle(forceDismiss: true)
+        clockinHandler.viewShowupEvent(forceDismiss: true)
     }
     
-    //MARK: - Setup
-    func setupNavigationBar() {
-        navigationItem.titleView = titleView
+    //MARK: - Event Response
+    @objc func clockinButtonEvent() {
+        clockinHandler.viewShowupEvent(forceDismiss: false)
+    }
+    
+    @objc func addButtonEvent() {
+        let creatVC = DCreatViewController()
+        let creatNav = NavigationController.init(rootViewController: creatVC)
+        present(creatNav, animated: true, completion: nil)
         
-        navigationItem.leftBarButtonItem = leftButtonItem
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
-        
-        navigationItem.rightBarButtonItem = rightButtonItem
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
-
     }
     
     //MARK: - Request
@@ -57,27 +57,7 @@ class DHomeViewController: UIViewController {
         }
     }
     
-//    func clockinStatusRequest() {
-//        WebTool.post(uri: "query_sign_up_status", para: ["staff_id":"4"], success: { (dict) in
-//            <#code#>
-//        }) { (error) in
-//            HudTool.showInfo(string: error)
-//        }
-//    }
-//    
-    //MARK: - Event Response
-    @objc func clockinButtonAction() {
-        clockinHandler.handle(forceDismiss: false)
-    }
-   
-    @objc func addButtonAction() {
-        let creatVC = DCreatViewController()
-        let creatNav = NavigationController.init(rootViewController: creatVC)
-        present(creatNav, animated: true, completion: nil)
-        
-    }
-    
-    //MARK: - Private Method
+    //MARK: - Action Method
     func selectViewChangeCurrentIndex(currentIndex: Int) {
         pageView.currentIndex = currentIndex
     }
@@ -86,10 +66,21 @@ class DHomeViewController: UIViewController {
         selectView.currentIndex = currentIndex
     }
     
-    //MARK: - Properties
-    lazy var leftButtonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonAction))
+    //MARK: - Setup
+    func setupUI() {
+        view.backgroundColor = gray_F5F5F5
+        //leftBarButtonItem
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
+        //rightBarButtonItem
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)        
+    }
     
-    lazy var rightButtonItem = UIBarButtonItem.init(title: "人工建单", style: .plain, target: self, action: #selector(addButtonAction))
+    //MARK: - Properties
+    lazy var leftButtonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonEvent))
+    
+    lazy var rightButtonItem = UIBarButtonItem.init(title: "人工建单", style: .plain, target: self, action: #selector(addButtonEvent))
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
@@ -98,7 +89,7 @@ class DHomeViewController: UIViewController {
     lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "添加营销案", "已完成"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
-    
+    //pageView
     lazy var toCheckVC = DHomeListViewController.controllerWith(listType: .toCheck)
     lazy var checkedVC = DHomeListViewController.controllerWith(listType: .checked)
     lazy var toTestifyVC = DHomeListViewController.controllerWith(listType: .toTestify)
@@ -108,5 +99,5 @@ class DHomeViewController: UIViewController {
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var clockinHandler = DClockinViewHandler.handlerWith(ownerController: self)    
+    lazy var clockinHandler = DClockinViewManager.managerWith(ownerController: self)    
 }

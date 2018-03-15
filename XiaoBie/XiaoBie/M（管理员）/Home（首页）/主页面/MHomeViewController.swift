@@ -30,7 +30,7 @@ class MHomeViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.shadowImage = gray_F0F0F0.colorImage()
-        clockinHandler.handle(forceDismiss: true)
+        clockinHandler.viewShowupEvent(forceDismiss: true)
     }
     
     //MARK: - Setup
@@ -58,7 +58,7 @@ class MHomeViewController: UIViewController {
     
     //MARK: - Event Response
     @objc func clockinButtonAction() {
-        clockinHandler.handle(forceDismiss: false)
+        clockinHandler.viewShowupEvent(forceDismiss: false)
     }
     
     //MARK: - Private Method
@@ -90,6 +90,6 @@ class MHomeViewController: UIViewController {
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     
-    lazy var clockinHandler = DClockinViewHandler.handlerWith(ownerController: self)
+    lazy var clockinHandler = DClockinViewManager.managerWith(ownerController: self)
 }
 

@@ -9,17 +9,24 @@
 import UIKit
 import YYModel
 
-//MARK: - HomeClockinStatusModel
+//MARK: - DHomeClockinStatusModel
 class DHomeClockinStatusResponseModel: NSObject,YYModel {
     
     @objc var code = ""
-    @objc var msg = ""
     @objc var result = ""
-    
+    @objc var msg = ""
+    @objc var data = DHomeClockinStatusModel()
+
     class func parse(dict : Any ) -> DHomeClockinStatusResponseModel{
         let model = DHomeClockinStatusResponseModel.yy_model(withJSON: dict)
         return model!
     }
+}
+
+class DHomeClockinStatusModel: NSObject {
+    //0表示未签到或签退，1标识已签到或签退
+    @objc var up_status = "" //签到状态
+    @objc var down_status = "" //签退状态
 }
 
 //MARK: - DHomeInfoModel

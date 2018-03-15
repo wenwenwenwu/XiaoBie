@@ -74,7 +74,7 @@
 		5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7D3A922047E618004CC761 /* DToCheckModel.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
-		5B997823202AC9450005357A /* DClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewHandler.swift */; };
+		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
 		5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA24F98204E9B340068B32F /* RecordTool.swift */; };
 		5BAA189B2059437D0078386D /* DGrabSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189A2059437D0078386D /* DGrabSearchController.swift */; };
 		5BAA189D2059458E0078386D /* DGrabSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */; };
@@ -308,7 +308,7 @@
 		5B7D3A922047E618004CC761 /* DToCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckModel.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
-		5B997822202AC9450005357A /* DClockinViewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewHandler.swift; sourceTree = "<group>"; };
+		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BA24F98204E9B340068B32F /* RecordTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTool.swift; sourceTree = "<group>"; };
@@ -634,7 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				5B6F3F96202BE7C70070818C /* DClockinView.swift */,
-				5B997822202AC9450005357A /* DClockinViewHandler.swift */,
+				5B997822202AC9450005357A /* DClockinViewManager.swift */,
 			);
 			path = "签到";
 			sourceTree = "<group>";
@@ -1958,7 +1958,7 @@
 				5BDE11C520565F50008D68EC /* NIMInputEmoticonButton.m in Sources */,
 				5BDE120B20565F50008D68EC /* NIMSessionFileTransContentView.m in Sources */,
 				5BDB5030202C3B490055C21E /* DMineCell.swift in Sources */,
-				5B997823202AC9450005357A /* DClockinViewHandler.swift in Sources */,
+				5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */,
 				5B51FAEE202947E2001AB946 /* UIViewController.swift in Sources */,
 				5BDE11CA20565F50008D68EC /* NIMKitMediaFetcher.m in Sources */,
 				5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */,

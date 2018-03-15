@@ -45,7 +45,7 @@ class DClockinView: UIView {
         dismiss()
     }
     
-    //MARK: - Private Method
+    //MARK: - Action Method
     func show() {
         //动画
         UIView.animate(withDuration: animationTime) {
