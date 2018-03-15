@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DQRCodeViewController: UIViewController {
 
@@ -168,8 +169,13 @@ class DQRCodeViewController: UIViewController {
         label.textColor = black_333333
         return label
     }()
-    
-    lazy var QRCodeImageView = UIImageView.init(image: red_D81E32.colorImage())
+
+    lazy var QRCodeImageView: UIImageView = {
+        let imageView = UIImageView()
+        var QRCodeTypePara = String(payMethod.rawValue - 1)//0表示支付宝二维码, 1表示微信二维码
+        imageView.kf.setImage(with: URL.init(string: QRCodeImageURL+QRCodeTypePara), placeholder: gray_F5F5F5.colorImage(), options: [.transition(.fade(1))], progressBlock: nil, completionHandler: nil)
+        return imageView
+    }()
     
     lazy var whiteBackView: UIView = {
         let view = UIView()

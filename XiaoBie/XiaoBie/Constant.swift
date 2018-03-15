@@ -77,6 +77,7 @@ import UIKit
     let baseURL = "http://116.62.206.174:8080/longwang/general/"
     let uploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
+    let QRCodeImageURL = "http://manage.cloudconfs.com:8080/longwang/oss/static_qr_img?platform_type="
 
     //第三方
     let jPushAppKey = "5e56a0358ebab482ca76b127"

@@ -22,22 +22,40 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - Event Response
-    @objc func confirmButtonAction() {
+    @objc func confirmButtonEvent() {
         let moneyCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 0)) as! DPayMoneyCell
         let payMoney = moneyCell.payMoney
         
-        guard !payMoney.isEmpty else {
+        if payMoney.isEmpty {
             HudTool.showInfo(string: "请输入金额")
             return
         }
         
-        guard payMoney != "0" else {
+        if payMoney == "0" && payMethod != .cash {
             HudTool.showInfo(string: "金额为0时只能选择现金收款")
             return
         }
-        //请求付款二维码
-        let QRController = DQRCodeViewController.controllerWith(payMethod: payMethod, payMoney: payMoney, model: model)        
-        navigationController?.pushViewController(QRController, animated: true)
+        
+        if payMethod == .cash {
+            confirmRequest()
+        } else {
+            //跳转付款二维码
+            let QRController = DQRCodeViewController.controllerWith(payMethod: payMethod, payMoney: payMoney, model: model)
+            navigationController?.pushViewController(QRController, animated: true)
+        }
+    }
+    
+    //MARK: - Request
+    func confirmRequest() {
+        WebTool.post(uri:"payment_submit", para:["staff_id": AccountTool.userInfo().id, "plat_form_type": String(payMethod.rawValue), "order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -153,7 +171,7 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
-        button.addTarget(self, action: #selector(confirmButtonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(confirmButtonEvent), for: .touchUpInside)
         return button
     }()
     
