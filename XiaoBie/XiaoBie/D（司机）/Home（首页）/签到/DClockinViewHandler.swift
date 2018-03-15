@@ -45,6 +45,7 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
     }
     
     //MARK: - Request
+    
     func clockinRequest() {
         let telephone = AccountTool.userInfo().phone
         let latitude = location.latitude
@@ -52,7 +53,7 @@ class DClockinViewHandler: NSObject, AMapLocationManagerDelegate {
         let signupType = (currentType == .clockin) ? "0" : "1"
         
         WebTool.post(uri: "staff_sign", para: ["img_name" : imageName, "telephone" : telephone, "sign_up_type" : signupType, "latitude" : latitude, "longitude": longitude ], success: { (dict) in
-            let model = DHomeClockinResponseModel.parse(dict: dict)
+            let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
         }) { (error) in
             HudTool.showInfo(string: error)

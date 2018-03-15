@@ -18,7 +18,7 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         view.addSubview(confirmButton)
         setupFrame()
         setupNavigationBar()
-        setupController()//将当前页面变成导航控制器推出的首页，无法返回上传凭证页面
+        setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回上传凭证页面
     }
     
     //MARK: - Event Response
@@ -116,7 +116,7 @@ class DPayViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.title = "代收金额"
     }
     
-    func setupController() {
+    func setupPopDestination() {
         var controllerArray = navigationController?.viewControllers
         controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
         navigationController?.setViewControllers(controllerArray!, animated: false)

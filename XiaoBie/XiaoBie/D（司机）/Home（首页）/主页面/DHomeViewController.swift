@@ -46,7 +46,9 @@ class DHomeViewController: UIViewController {
         WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
             let model = DHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
-                self.infoView.model = model.data
+                let infoModel = model.data
+                self.infoView.model = infoModel
+                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "已查单(\(infoModel.need_appoint_count))", "待验单(\(infoModel.need_verify_count))", "添加营销案(\(infoModel.market_case_count))", "已完成(\(infoModel.complete_count))"]
             }else{
 
             }
@@ -55,6 +57,14 @@ class DHomeViewController: UIViewController {
         }
     }
     
+//    func clockinStatusRequest() {
+//        WebTool.post(uri: "query_sign_up_status", para: ["staff_id":"4"], success: { (dict) in
+//            <#code#>
+//        }) { (error) in
+//            HudTool.showInfo(string: error)
+//        }
+//    }
+//    
     //MARK: - Event Response
     @objc func clockinButtonAction() {
         clockinHandler.handle(forceDismiss: false)

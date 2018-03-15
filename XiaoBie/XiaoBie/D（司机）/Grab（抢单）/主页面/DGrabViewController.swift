@@ -9,7 +9,11 @@
 import UIKit
 import MJRefresh
 
-class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        tabBarController?.tabBar.isHidden = true
+    }
+    
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -19,18 +23,19 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
         setupNavigationBar()
+        setupSearch()
         setupFrame()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTool.startUpdatingLocation()
-        navigationController?.isNavigationBarHidden = true
+//        navigationController?.isNavigationBarHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.isNavigationBarHidden = false
+//        navigationController?.isNavigationBarHidden = false
     }
     
     //MARK: - Event Response
@@ -140,10 +145,31 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
         return 81
     }
     
+    //MARK: - UISearchResultsUpdating
+    
     //MARK: - Setup
     func setupNavigationBar() {
         navigationItem.title = "抢单"
     }
+    
+    func setupSearch() {
+        let searchResultVC = DGrabSearchResultController()
+        let searchVC = DGrabSearchController.init(searchResultsController: searchResultVC)
+        searchVC.searchResultsUpdater = self
+        searchVC.delegate = self
+        searchVC.dimsBackgroundDuringPresentation = true
+        self.definesPresentationContext = true;
+
+        /*
+         //搜索框
+         _searchController.searchBar.delegate = self;
+         _searchController.searchBar.placeholder = @"搜索";
+         _searchController.searchBar.tag = NTMainSearchButtonTypeAll;
+         _tableView.tableHeaderView = _searchController.searchBar;
+         */
+        navigationItem.titleView = searchVC.searchBar
+    }
+    
     
     func setupFrame() {
         blankView.snp.makeConstraints { (make) in

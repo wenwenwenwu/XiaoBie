@@ -1,20 +1,21 @@
 //
-//  GrabView.swift
+//  SelectViewNew.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/2/11.
+//  Created by wuwenwen on 2018/3/15.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 
 class SelectView: UIView {
-    
+
     //MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = white_FFFFFF
-        addSubview(stackView)
+        addSubview(scrollView)
+        scrollView.addSubview(stackView)
         addSubview(lineView)
         addSubview(slideView)
     }
@@ -37,6 +38,7 @@ class SelectView: UIView {
             button.addTarget(chanelView, action: #selector(chanelButtonAction(_:)), for: .touchUpInside)
             chanelView.addSubview(button)
             chanelView.stackView.addArrangedSubview(button)
+            chanelView.buttonArray.append(button)
         }
         chanelView.sliderWidth = sliderWidth
         chanelView.buttonClosure = buttonClosure
@@ -46,6 +48,18 @@ class SelectView: UIView {
     
     //MARK: - Setup
     func setupFrame() {
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+        let buttonWidth = screenWidth/CGFloat(buttonArray.count)
+        for button in buttonArray {
+            button.snp.makeConstraints({ (make) in
+                make.width.equalTo( buttonWidth > 95 ? buttonWidth : 95)
+                make.height.equalTo(height)
+            })
+        }
+        
         stackView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -59,7 +73,7 @@ class SelectView: UIView {
         }
         
         lineView.snp.makeConstraints { (make) in
-            make.centerX.bottom.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
             make.width.equalTo(screenWidth)
             make.height.equalTo(1)
         }
@@ -89,6 +103,12 @@ class SelectView: UIView {
     }
     
     //MARK: - Properties
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsHorizontalScrollIndicator = false
+        return scrollView
+    }()
+    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
@@ -120,6 +140,8 @@ class SelectView: UIView {
     
     var sliderWidth: CGFloat = 0
     
+    var buttonArray: [UIButton] = []
+    
     var titleArray: [String] = [] {
         didSet {
             for item in titleArray {
@@ -129,5 +151,4 @@ class SelectView: UIView {
             }
         }
     }
-    
 }

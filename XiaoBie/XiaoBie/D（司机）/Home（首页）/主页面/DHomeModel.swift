@@ -9,17 +9,17 @@
 import UIKit
 import YYModel
 
-//MARK: - HomeClockinModel
-class DHomeClockinResponseModel: NSObject,YYModel {
+//MARK: - HomeClockinStatusModel
+class DHomeClockinStatusResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
     
-    class func parse(dict : Any ) -> DHomeClockinResponseModel{
-        let model = DHomeClockinResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> DHomeClockinStatusResponseModel{
+        let model = DHomeClockinStatusResponseModel.yy_model(withJSON: dict)
         return model!
-    }    
+    }
 }
 
 //MARK: - DHomeInfoModel
@@ -41,16 +41,16 @@ class DHomeInfoResponseModel: NSObject,YYModel {
 }
 
 class DHomeInfoModel: NSObject {
-    
-    @objc var complete_count = ""
-    @objc var need_appoint_count = ""
-    @objc var need_query_count = ""
-    @objc var need_verify_count = ""
-    @objc var original_order_count = ""
-    @objc var pay_count_today = ""
-    @objc var pay_count_total = ""
-    @objc var pay_money_today = ""
-    @objc var pay_money_total = ""
-    @objc var second_verify_count = ""
-    @objc var undone_order_count = ""
+
+    @objc var complete_count = "" //完成订单数量
+    @objc var need_appoint_count = "" //已查单数量
+    @objc var need_query_count = "" //待查单数量
+    @objc var need_verify_count = "" //待验单数量
+    @objc var original_order_count = "" //可抢单数量
+    @objc var pay_count_today = "" //今日结算数
+    @objc var pay_count_total = "" //总结算数
+    @objc var pay_money_today = "" //今日结算金额
+    @objc var pay_money_total = "" //总结算金额
+    @objc var market_case_count = "" //添加营销案数量
+    @objc var undone_order_count = "" //未完成订单数
 }

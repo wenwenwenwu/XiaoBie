@@ -42,7 +42,9 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func appointButtonAction() {
-       appointRequest()
+        DCheckedPopView.showPopViewWith { (appointType) in
+            self.appointRequest(appointType: appointType)
+        }
     }
     
     func infoCellupdatedAddressAction(model: DGrabItemModel) {
@@ -116,10 +118,10 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func appointRequest() {
+    func appointRequest(appointType: DCheckedPopStatus) {
+        print(appointType)
         let noteCell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCheckedNoteCell
-        
-        WebTool.post(uri:"customer_appoint", para:["appoint_remark": noteCell.note, "order_id": model.id], success: { (dict) in
+        WebTool.post(uri:"customer_appoint", para:["appoint_remark": noteCell.note, "order_id": model.id, "appoint_type": appointType.rawValue], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             self.navigationController?.popViewController(animated: true)

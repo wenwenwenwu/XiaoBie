@@ -14,6 +14,8 @@
 		5B28CFEA202D750B00E2DA2F /* DGrabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFE9202D750B00E2DA2F /* DGrabView.swift */; };
 		5B28CFEC202D7C1C00E2DA2F /* DGrabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */; };
 		5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B28CFF2202D7F8100E2DA2F /* BlankView.swift */; };
+		5B2CC9BE205A078500A25991 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC9BD205A078500A25991 /* SelectView.swift */; };
+		5B2CC9C0205A417400A25991 /* DCheckedPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CC9BF205A417400A25991 /* DCheckedPopView.swift */; };
 		5B2F7CA720524C2500C56D40 /* DCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CA620524C2500C56D40 /* DCodeModel.swift */; };
 		5B2F7CAA20525E3700C56D40 /* DCreatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CA920525E3700C56D40 /* DCreatViewController.swift */; };
 		5B2F7CAC205260FC00C56D40 /* DCreatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2F7CAB205260FC00C56D40 /* DCreatView.swift */; };
@@ -74,6 +76,8 @@
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewHandler.swift */; };
 		5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA24F98204E9B340068B32F /* RecordTool.swift */; };
+		5BAA189B2059437D0078386D /* DGrabSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189A2059437D0078386D /* DGrabSearchController.swift */; };
+		5BAA189D2059458E0078386D /* DGrabSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */; };
@@ -231,7 +235,6 @@
 		5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BA2057AE6900E2C496 /* CHomeListView.swift */; };
 		5BF520BE2057BD8000E2C496 /* CHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520BD2057BD8000E2C496 /* CHomeModel.swift */; };
 		5BF520C12057D68700E2C496 /* DQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF520C02057D68700E2C496 /* DQRCodeViewController.swift */; };
-		5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F404202FDF7F0031D9D4 /* SelectView.swift */; };
 		5BF8F40720300B4D0031D9D4 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF8F40620300B4D0031D9D4 /* PageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -243,6 +246,8 @@
 		5B28CFE9202D750B00E2DA2F /* DGrabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabView.swift; sourceTree = "<group>"; };
 		5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabModel.swift; sourceTree = "<group>"; };
 		5B28CFF2202D7F8100E2DA2F /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		5B2CC9BD205A078500A25991 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		5B2CC9BF205A417400A25991 /* DCheckedPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DCheckedPopView.swift; sourceTree = "<group>"; };
 		5B2F7CA620524C2500C56D40 /* DCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeModel.swift; sourceTree = "<group>"; };
 		5B2F7CA920525E3700C56D40 /* DCreatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatViewController.swift; sourceTree = "<group>"; };
 		5B2F7CAB205260FC00C56D40 /* DCreatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatView.swift; sourceTree = "<group>"; };
@@ -307,6 +312,8 @@
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BA24F98204E9B340068B32F /* RecordTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTool.swift; sourceTree = "<group>"; };
+		5BAA189A2059437D0078386D /* DGrabSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchController.swift; sourceTree = "<group>"; };
+		5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchResultController.swift; sourceTree = "<group>"; };
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeView.swift; sourceTree = "<group>"; };
@@ -605,7 +612,6 @@
 		5BF520BA2057AE6900E2C496 /* CHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeListView.swift; sourceTree = "<group>"; };
 		5BF520BD2057BD8000E2C496 /* CHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeModel.swift; sourceTree = "<group>"; };
 		5BF520C02057D68700E2C496 /* DQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQRCodeViewController.swift; sourceTree = "<group>"; };
-		5BF8F404202FDF7F0031D9D4 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		5BF8F40620300B4D0031D9D4 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		625C4FCB2912A7B858D2FD7C /* Pods-XiaoBie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiaoBie.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiaoBie/Pods-XiaoBie.release.xcconfig"; sourceTree = "<group>"; };
 		D91A1F6D117775FE7772F39B /* Pods_XiaoBie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XiaoBie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -751,9 +757,8 @@
 		5B495FF0202839CE00CC4B91 /* Grab（抢单） */ = {
 			isa = PBXGroup;
 			children = (
-				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
-				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
-				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
+				5BAA1897205942FE0078386D /* 搜索 */,
+				5BAA1896205942EC0078386D /* 主页面 */,
 			);
 			path = "Grab（抢单）";
 			sourceTree = "<group>";
@@ -801,7 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF8F40620300B4D0031D9D4 /* PageView.swift */,
-				5BF8F404202FDF7F0031D9D4 /* SelectView.swift */,
+				5B2CC9BD205A078500A25991 /* SelectView.swift */,
 				5B28CFF2202D7F8100E2DA2F /* BlankView.swift */,
 				5B4CFDA0202D3D9F009D44F1 /* Alert.swift */,
 			);
@@ -872,6 +877,7 @@
 		5B5B8D6220492F67002484EE /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
+				5B2CC9BF205A417400A25991 /* DCheckedPopView.swift */,
 				5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */,
 				5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */,
 			);
@@ -997,6 +1003,25 @@
 				5B9FDF0E202855FA00F306E9 /* Info.plist */,
 			);
 			path = "Supporting File";
+			sourceTree = "<group>";
+		};
+		5BAA1896205942EC0078386D /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B51FAE020293E73001AB946 /* DGrabViewController.swift */,
+				5B28CFE9202D750B00E2DA2F /* DGrabView.swift */,
+				5B28CFEB202D7C1C00E2DA2F /* DGrabModel.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5BAA1897205942FE0078386D /* 搜索 */ = {
+			isa = PBXGroup;
+			children = (
+				5BAA189A2059437D0078386D /* DGrabSearchController.swift */,
+				5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */,
+			);
+			path = "搜索";
 			sourceTree = "<group>";
 		};
 		5BB76166204D324D00F3A026 /* 待验单 */ = {
@@ -1954,12 +1979,14 @@
 				5BDE11DC20565F50008D68EC /* NIMTeamSwitchTableViewCell.m in Sources */,
 				5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */,
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
+				5BAA189D2059458E0078386D /* DGrabSearchResultController.swift in Sources */,
 				5BDE11CF20565F50008D68EC /* NIMKitKeyboardInfo.m in Sources */,
 				5BDE11ED20565F50008D68EC /* NIMFileContentConfig.m in Sources */,
 				5BDE11B420565F50008D68EC /* NIMKitTimerHolder.m in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
 				5BDE11E120565F50008D68EC /* NIMTeamCardHeaderCell.m in Sources */,
 				5B48A823204692D200CA563A /* MTabBarController.swift in Sources */,
+				5B2CC9C0205A417400A25991 /* DCheckedPopView.swift in Sources */,
 				5BDE11F220565F50008D68EC /* NIMTipContentConfig.m in Sources */,
 				5BDE11B120565F50008D68EC /* NIMKitFileLocationHelper.m in Sources */,
 				5BDE120F20565F50008D68EC /* NIMSessionRobotContentView.m in Sources */,
@@ -1992,6 +2019,7 @@
 				5BDE120220565F50008D68EC /* NIMMessageCellFactory.m in Sources */,
 				5BDE11D520565F50008D68EC /* NIMTeamMemberListViewController.m in Sources */,
 				5BDE120D20565F50008D68EC /* NIMSessionUnknowContentView.m in Sources */,
+				5BAA189B2059437D0078386D /* DGrabSearchController.swift in Sources */,
 				5BDE121E20565F50008D68EC /* NIMCommonTableData.m in Sources */,
 				5B51FAFF20294A1D001AB946 /* ValidateTool.swift in Sources */,
 				5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */,
@@ -2028,6 +2056,7 @@
 				5BDE11B220565F50008D68EC /* NIMKitAuthorizationTool.m in Sources */,
 				5B51FAFB202948AA001AB946 /* AccountTool.swift in Sources */,
 				5BDE11D920565F50008D68EC /* NIMCardMemberItem.m in Sources */,
+				5B2CC9BE205A078500A25991 /* SelectView.swift in Sources */,
 				5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */,
 				5BDE11A920565F50008D68EC /* NIMContactDataItem.m in Sources */,
 				5BDE11D020565F50008D68EC /* NIMKitNotificationFirer.m in Sources */,
@@ -2065,7 +2094,6 @@
 				5BDE11E220565F50008D68EC /* NIMTeamNotifyUpdateViewController.m in Sources */,
 				5BDE121020565F50008D68EC /* NIMMessageCell.m in Sources */,
 				5BDE11C920565F50008D68EC /* NIMMemberGroupView.m in Sources */,
-				5BF8F405202FDF7F0031D9D4 /* SelectView.swift in Sources */,
 				5B3819EB205774BB00E3D345 /* NTESTeamListViewController.m in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
 				5BDE121820565F50008D68EC /* UIView+NIM.m in Sources */,

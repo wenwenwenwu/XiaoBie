@@ -38,32 +38,36 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         whiteView2.addSubview(tapeButton)
         
         view.addSubview(whiteView3)
+        whiteView3.addSubview(cancelButton)
+        whiteView3.addSubview(lineView)
         whiteView3.addSubview(confirmButton)
         
         setupNavigationBar()
-        setupController()//将当前页面变成导航控制器推出的首页，无法返回输入验证码状态
+        setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回输入验证码状态
         setupFrame()
 
     }
     
     //MARK: - Event Response
-    @objc func backButtonAction() {
-        print("狗")
-    }
-    @objc func tapeButtonTouchDownAction() {
-        noteTextView.resignFirstResponder()
-        recordTool.beginRecord()
-    }
-    
-    @objc func tapeButtonTouchUpAction() {
-        recordTool.stopRecord()
+    @objc func tapeButtonEvent(_ button: UIButton) {
+        button.isSelected = !button.isSelected
+        if button.isSelected {
+            noteTextView.resignFirstResponder()
+            recordTool.beginRecord()
+        } else {
+            recordTool.stopRecord()
+        }
     }
     
-    @objc func playButtonAction() {
+    @objc func playButtonEvent() {
         recordTool.play()
     }
     
-    @objc func confirmButtonAction() {
+    @objc func cancelButtonEvent() {
+        cancelRequest()
+    }
+    
+    @objc func confirmButtonEvent() {
         //必须上传音频
         guard !recordTool.audioName.isEmpty else{
             HudTool.showInfo(string: "必须上传录音")
@@ -81,6 +85,19 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK: - Request
+    func cancelRequest() {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                //跳转回待验单主页面
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func confirmRequest() {
         let fileDictionary = ["credit_positive": photoButtonView1.imageName,
                               "credit_negative": photoButtonView2.imageName,
@@ -129,7 +146,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         navigationItem.title = "上传凭证"
     }
     
-    func setupController() {
+    func setupPopDestination() {
         var controllerArray = navigationController?.viewControllers
         controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
         navigationController?.setViewControllers(controllerArray!, animated: false)
@@ -217,11 +234,23 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
         
         whiteView3.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.height.equalTo(56)
+            make.height.equalTo(45)
+        }
+        
+        cancelButton.snp.makeConstraints { (make) in
+            make.top.left.bottom.equalToSuperview()
+            make.right.equalTo(lineView.snp.left)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(1)
+            make.height.equalTo(18)
         }
         
         confirmButton.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(11, 13, 10, 13))
+            make.top.right.bottom.equalToSuperview()
+            make.left.equalTo(lineView.snp.right)
         }
     }
 
@@ -314,35 +343,47 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     lazy var tapeButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font12
-        button.setTitle("长按录音", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
         button.setImage(#imageLiteral(resourceName: "icon_tape_white"), for: .normal)
+        button.setTitleColor(white_FFFFFF, for: .normal)
+        button.setTitle("开始录音", for: .normal)
+        button.setTitle("结束录音", for: .selected)
+        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+        button.setBackgroundImage(blue_2f85d8.colorImage(), for: .selected)
         button.imageEdgeInsets = UIEdgeInsetsMake(-6, 25, 6, -25)
         button.titleEdgeInsets = UIEdgeInsetsMake(20, -11, -20, 11)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(blue_2f85d8.colorImage(), for: .highlighted)
-        button.addTarget(self, action: #selector(tapeButtonTouchDownAction), for: .touchDown)
-        button.addTarget(self, action: #selector(tapeButtonTouchUpAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapeButtonEvent(_:)), for: .touchUpInside)
         return button
     }()
     
     lazy var playButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.setBackgroundImage(#imageLiteral(resourceName: "icon_yyt"), for: .normal)
-        button.addTarget(self, action: #selector(playButtonAction), for: .touchDown)
+        button.addTarget(self, action: #selector(playButtonEvent), for: .touchDown)
+        return button
+    }()
+    
+    lazy var cancelButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.titleLabel?.font = font14
+        button.setTitle("客户取消", for: .normal)
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonEvent), for: .touchUpInside)
         return button
     }()
     
     lazy var confirmButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
-        button.setTitle("确认上传", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(confirmButtonAction), for: .touchUpInside)
+        button.setTitle("确认提交", for: .normal)
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.addTarget(self, action: #selector(confirmButtonEvent), for: .touchUpInside)
         return button
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_D9D9D9
+        return view
     }()
     
     lazy var recordTool = RecordTool.toolWith(orderId: model.id) {

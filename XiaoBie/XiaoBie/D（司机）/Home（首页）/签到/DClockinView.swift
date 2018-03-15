@@ -88,8 +88,10 @@ class DClockinView: UIView {
         button.frame = CGRect.init(x: 13, y: 20, width: screenWidth-13*2, height: 36)
         button.titleLabel?.font = font14
         button.setTitle("上班打卡", for: .normal)
+        button.setTitle("已打卡", for: .disabled)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(clockinButtonAction), for: .touchUpInside)
@@ -101,8 +103,10 @@ class DClockinView: UIView {
         button.frame = CGRect.init(x: 13, y: 75, width: screenWidth-13*2, height: 36)
         button.titleLabel?.font = font14
         button.setTitle("下班打卡", for: .normal)
+        button.setTitle("已打卡", for: .disabled)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
         button.layer.cornerRadius = 2
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(clockoutButtonAction), for: .touchUpInside)

@@ -17,7 +17,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(tableView)
         view.addSubview(doneButton)
         setupNavigationBar()
-        setupController()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
+        setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
         setupFrame()
         codeListRequest()
     }
@@ -198,7 +198,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func setupController() {
+    func setupPopDestination() {
         var controllerArray = navigationController?.viewControllers
         controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
         navigationController?.setViewControllers(controllerArray!, animated: false)
