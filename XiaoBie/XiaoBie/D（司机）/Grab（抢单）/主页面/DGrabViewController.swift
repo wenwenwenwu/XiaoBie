@@ -33,7 +33,8 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func searchButtonAction() {
-        
+        let searchVC = DGrabSearchController()        
+        navigationController?.pushViewController(searchVC, animated: true)
     }
         
     //MARK: - Request
