@@ -23,7 +23,6 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         self.setupBlankView(isBlank: true, blankViewType: nil)
         setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
         
-        sourceRequest()
         loadRequest()
     }
     
@@ -31,27 +30,33 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Action
     func sourceViewLabelTapAction() {
-        print("shop")
+        sourceRequest()
     }
     
+    func pickPopViewPickedAction(source: String) {
+        self.source = source
+        loadRequest()
+    }
     
     //MARK: - Request
     func sourceRequest() {
         WebTool.post(uri: "list_phone_source", para: [:], success: { (dict) in
-            let model = MHistorySourceResponseModel.parse(dict: dict)
+            let model = MHistoryPickParaResponseModel.parse(dict: dict)
             if model.code == "0" {
-                let sourceName = model.data[0].source_name
-                self.sourceView.sourceName = sourceName
+                MHistoryPickPopView.showPopViewWith(ownerController: self, paraType: .source, dataArray: model.data) { _,source  in
+                    self.pickPopViewPickedAction(source: source)
+                }
+            } else {
+                HudTool.showInfo(string: model.msg)
             }
         }) { (error) in
-            
+            HudTool.showInfo(string: error)
         }
     }
     
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": "1", "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": "1", "page_size": pageSize], success: { (dict) in
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -84,7 +89,7 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
         
-        WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -191,6 +196,9 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     var dataArray: [DHistoryModel] = []
+
+    var source = ""
+    
     var pageCount = 0
     
     var startDate = ""

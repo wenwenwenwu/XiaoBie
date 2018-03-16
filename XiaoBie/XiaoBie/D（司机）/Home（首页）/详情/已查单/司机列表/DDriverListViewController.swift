@@ -65,7 +65,7 @@ class DDriverListViewController: UIViewController, UITableViewDataSource, UITabl
         cell.selectedClosure = { [weak self] in
             self?.driverItemModel = cell.model
         }
-        //shou ge xuan zhong
+        //首个选中
         if indexPath.row == 0 {
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }

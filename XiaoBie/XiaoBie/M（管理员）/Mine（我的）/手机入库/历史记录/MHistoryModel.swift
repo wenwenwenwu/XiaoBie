@@ -9,28 +9,32 @@
 import UIKit
 import YYModel
 
-class MHistorySourceResponseModel: NSObject,YYModel {
+class MHistoryPickParaResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
-    @objc var data: [MHistorySourceModel] = []
+    @objc var data: [MHistoryPickParaModel] = []
     
-    class func parse(dict : Any ) -> MHistorySourceResponseModel{
-        let model = MHistorySourceResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> MHistoryPickParaResponseModel{
+        let model = MHistoryPickParaResponseModel.yy_model(withJSON: dict)
         return model!
     }
     
     static func modelContainerPropertyGenericClass() -> [String : Any]? {
-        return ["data":MHistorySourceModel.self]
+        return ["data":MHistoryPickParaModel.self]
     }
 }
 
-class MHistorySourceModel: NSObject,YYModel {
+class MHistoryPickParaModel: NSObject,YYModel {
     
     @objc var id = ""
-    @objc var source_name = ""
+    @objc var model_id = ""
+    @objc var param_type = ""
     @objc var create_time = ""
     @objc var update_time = ""
+    @objc var param_name = ""//参数
+    @objc var model_name = ""//名称
+    @objc var source_name = ""//来源
 }
 

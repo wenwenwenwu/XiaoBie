@@ -42,6 +42,7 @@
 		5B4BBE68205B8D3D00FA76E7 /* MHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */; };
 		5B4BBE6A205B994000FA76E7 /* MHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */; };
 		5B4BBE6C205B9DAD00FA76E7 /* MHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */; };
+		5B4BBE6E205BA6CD00FA76E7 /* MHistoryPickPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */; };
 		5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA0202D3D9F009D44F1 /* Alert.swift */; };
 		5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */; };
 		5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */; };
@@ -279,6 +280,7 @@
 		5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryViewController.swift; sourceTree = "<group>"; };
 		5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryModel.swift; sourceTree = "<group>"; };
 		5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryView.swift; sourceTree = "<group>"; };
+		5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryPickPopView.swift; sourceTree = "<group>"; };
 		5B4CFDA0202D3D9F009D44F1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTabBarController.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */,
 				5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */,
 				5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */,
+				5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */,
 			);
 			path = "历史记录";
 			sourceTree = "<group>";
@@ -2089,6 +2092,7 @@
 				5B51FADD20293E5B001AB946 /* DMineViewController.swift in Sources */,
 				5BDE11E620565F50008D68EC /* NIMKitEvent.m in Sources */,
 				5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */,
+				5B4BBE6E205BA6CD00FA76E7 /* MHistoryPickPopView.swift in Sources */,
 				5BDE11FF20565F50008D68EC /* NIMKitLocationPoint.m in Sources */,
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
 				5BDE11CD20565F50008D68EC /* NIMPageView.m in Sources */,
