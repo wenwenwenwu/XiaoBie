@@ -77,7 +77,6 @@
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
 		5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA24F98204E9B340068B32F /* RecordTool.swift */; };
 		5BAA189B2059437D0078386D /* DGrabSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189A2059437D0078386D /* DGrabSearchController.swift */; };
-		5BAA189D2059458E0078386D /* DGrabSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
 		5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */; };
 		5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */; };
@@ -313,7 +312,6 @@
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		5BA24F98204E9B340068B32F /* RecordTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTool.swift; sourceTree = "<group>"; };
 		5BAA189A2059437D0078386D /* DGrabSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchController.swift; sourceTree = "<group>"; };
-		5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchResultController.swift; sourceTree = "<group>"; };
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BB2AAEF2029AA1B00AEC5A8 /* DHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeView.swift; sourceTree = "<group>"; };
@@ -1019,7 +1017,6 @@
 			isa = PBXGroup;
 			children = (
 				5BAA189A2059437D0078386D /* DGrabSearchController.swift */,
-				5BAA189C2059458E0078386D /* DGrabSearchResultController.swift */,
 			);
 			path = "搜索";
 			sourceTree = "<group>";
@@ -1979,7 +1976,6 @@
 				5BDE11DC20565F50008D68EC /* NIMTeamSwitchTableViewCell.m in Sources */,
 				5BF520BB2057AE6900E2C496 /* CHomeListView.swift in Sources */,
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
-				5BAA189D2059458E0078386D /* DGrabSearchResultController.swift in Sources */,
 				5BDE11CF20565F50008D68EC /* NIMKitKeyboardInfo.m in Sources */,
 				5BDE11ED20565F50008D68EC /* NIMFileContentConfig.m in Sources */,
 				5BDE11B420565F50008D68EC /* NIMKitTimerHolder.m in Sources */,

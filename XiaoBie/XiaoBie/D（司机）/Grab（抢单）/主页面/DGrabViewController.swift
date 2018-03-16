@@ -9,38 +9,31 @@
 import UIKit
 import MJRefresh
 
-class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
-    func updateSearchResults(for searchController: UISearchController) {
-        tabBarController?.tabBar.isHidden = true
-    }
+class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(blankView)
         view.addSubview(tableView)
-        self.setupBlankView(isBlank: true, blankViewType: nil)
-        setupNavigationBar()
-        setupSearch()
         setupFrame()
+        setupNavigationBar()
+        setupBlankView(isBlank: true, blankViewType: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         locationTool.startUpdatingLocation()
-//        navigationController?.isNavigationBarHidden = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        navigationController?.isNavigationBarHidden = false
-    }
-    
-    //MARK: - Event Response
+    //MARK: - Action
     func cellGrabButtonAction(indexPath: IndexPath) {
         grabRequest(indexPath: indexPath)
+    }
+    
+    @objc func searchButtonAction() {
+        
     }
         
     //MARK: - Request
@@ -145,39 +138,18 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
         return 81
     }
     
-    //MARK: - UISearchResultsUpdating
-    
     //MARK: - Setup
     func setupNavigationBar() {
-        navigationItem.title = "抢单"
+        navigationItem.titleView = searchButton
     }
-    
-    func setupSearch() {
-        let searchResultVC = DGrabSearchResultController()
-        let searchVC = DGrabSearchController.init(searchResultsController: searchResultVC)
-        searchVC.searchResultsUpdater = self
-        searchVC.delegate = self
-        searchVC.dimsBackgroundDuringPresentation = true
-        self.definesPresentationContext = true;
-
-        /*
-         //搜索框
-         _searchController.searchBar.delegate = self;
-         _searchController.searchBar.placeholder = @"搜索";
-         _searchController.searchBar.tag = NTMainSearchButtonTypeAll;
-         _tableView.tableHeaderView = _searchController.searchBar;
-         */
-        navigationItem.titleView = searchVC.searchBar
-    }
-    
     
     func setupFrame() {
         blankView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(navigationBarHeight, 0, 0, 0))
+            make.edges.equalToSuperview()
         }
         
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(navigationBarHeight, 0, 0, 0))
+            make.edges.equalToSuperview()
         }
     }
     
@@ -214,6 +186,24 @@ class DGrabViewController: UIViewController, UITableViewDataSource, UITableViewD
         let blankView = BlankView()
         return blankView
     }()
+    
+    lazy var searchButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.adjustsImageWhenHighlighted = false
+        button.frame = CGRect.init(x: 0, y: 0, width: screenWidth-13*2, height: 34)
+        button.titleLabel?.font = font16
+        button.setTitleColor(gray_B3B3B3, for: .normal)
+        button.setBackgroundImage(gray_F5F5F5.colorImage(), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "icon_search"), for: .normal)
+        button.setTitle("搜索", for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-30), 0, (button.width/2-30))
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-35), 0, (button.width/2-35))
+        button.layer.cornerRadius = 2
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     
     var location: (latitude: String, longitude: String) = ("", "")
     lazy var locationTool = LocationTool.toolWith { (latitude, longitude) in

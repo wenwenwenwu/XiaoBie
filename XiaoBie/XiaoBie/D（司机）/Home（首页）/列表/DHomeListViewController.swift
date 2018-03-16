@@ -122,7 +122,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-        cell.model.statusType = .uploaded
+//        cell.model.statusType = .uploaded
         switch cell.model.statusType {
         case .toCheck, .querying: //待查单
             let toCheckVC = DToCheckViewController()
