@@ -107,6 +107,7 @@ class DHistoryDateView: UIView {
         super.init(frame: frame)
         backgroundColor = gray_F5F5F5
         addSubview(dateLabel)
+        addSubview(lineView)
         setupFrame()
     }
     
@@ -120,6 +121,11 @@ class DHistoryDateView: UIView {
             make.left.equalTo(13)
             make.centerY.equalToSuperview()
         }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(1)
+        }
     }
     
     func setupDate(startDate: String, endDate: String) {
@@ -132,5 +138,11 @@ class DHistoryDateView: UIView {
         label.textColor = black_333333
         label.font = font14
         return label
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_E5E5E5
+        return view
     }()
 }

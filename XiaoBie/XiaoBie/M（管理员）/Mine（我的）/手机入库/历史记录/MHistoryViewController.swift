@@ -1,56 +1,53 @@
 //
-//  DHistoryViewController.swift
+//  MHistoryViewController.swift
 //  XiaoBie
 //
-//  Created by wuwenwen on 2018/2/23.
+//  Created by wuwenwen on 2018/3/16.
 //  Copyright © 2018年 wenwenwenwu. All rights reserved.
 //
 
 import UIKit
 import MJRefresh
 
-class DHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(blankView)
+
+        view.addSubview(sourceView)
         view.addSubview(dateView)
+        view.addSubview(blankView)
         view.addSubview(tableView)
+
         self.setupBlankView(isBlank: true, blankViewType: nil)
         setupFrame()//frame并不是screenBounds，因此不能在属性中直接设置
+        
+        sourceRequest()
         loadRequest()
     }
     
-    //MARK: - Setup
-    func setupFrame() {
-        blankView.snp.makeConstraints { (make) in
-            make.top.equalTo(dateView.snp.bottom)
-            make.left.bottom.right.equalToSuperview()
-        }
-        
-        dateView.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.height.equalTo(40)
-        }
-        
-        tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(dateView.snp.bottom)
-            make.left.bottom.right.equalToSuperview()
-        }
+
+    
+    //MARK: - Action
+    func sourceViewLabelTapAction() {
+        print("shop")
     }
     
-    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
-        tableView.isHidden = isBlank
-        blankView.viewType = blankViewType
-        blankView.buttonClosure = { [weak self] in
-            if self?.blankView.viewType == .noWeb {
-                self?.loadRequest()
-            }
-        }
-    }
     
     //MARK: - Request
+    func sourceRequest() {
+        WebTool.post(uri: "list_phone_source", para: [:], success: { (dict) in
+            let model = MHistorySourceResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let sourceName = model.data[0].source_name
+                self.sourceView.sourceName = sourceName
+            }
+        }) { (error) in
+            
+        }
+    }
+    
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
         
@@ -86,7 +83,7 @@ class DHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func loadMoreRequest() {
         let staffId = AccountTool.userInfo().id
-
+        
         WebTool.post(uri:"list_historical_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
             
             let model = DHistoryResponseModel.parse(dict: dict)
@@ -125,6 +122,40 @@ class DHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return 66
     }
     
+    //MARK: - Setup
+    func setupFrame() {
+        sourceView.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(40)
+        }
+    
+        dateView.snp.makeConstraints { (make) in
+            make.top.equalTo(sourceView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(40)
+        }
+        
+        blankView.snp.makeConstraints { (make) in
+            make.top.equalTo(dateView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
+        }
+        
+        tableView.snp.makeConstraints { (make) in
+            make.top.equalTo(dateView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
+        }
+    }
+    
+    func setupBlankView(isBlank: Bool, blankViewType: ViewType?) {
+        tableView.isHidden = isBlank
+        blankView.viewType = blankViewType
+        blankView.buttonClosure = { [weak self] in
+            if self?.blankView.viewType == .noWeb {
+                self?.loadRequest()
+            }
+        }
+    }
+    
     //MARK: - Properties
     lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.zero, style: .plain)
@@ -154,6 +185,10 @@ class DHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         view.setupDate(startDate: startDate, endDate: endDate)
         return view
     }()
+    
+    lazy var sourceView = MHistorySourceView.viewWith { [weak self] in
+        self?.sourceViewLabelTapAction()
+    }
     
     var dataArray: [DHistoryModel] = []
     var pageCount = 0

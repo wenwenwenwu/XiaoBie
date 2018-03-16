@@ -30,15 +30,6 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationController?.isNavigationBarHidden = false
     }
     
-    //MARK: - Event Response
-    func inStoreCellAction() {
-        print("手机入库")
-    }
-    
-    func settingCellAction() {
-        navigationController?.pushViewController(DSetupViewController(), animated: true)
-    }
-    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -65,9 +56,12 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.cellForRow(at: indexPath) as! DMineCell
         switch cell.type {
         case .inStore:
-            inStoreCellAction()
+            let storeVC = MStoreViewController()
+            storeVC.startDate = startDate
+            storeVC.endDate = endDate
+            navigationController?.pushViewController(storeVC, animated: true)
         default:
-            settingCellAction()
+            navigationController?.pushViewController(DSetupViewController(), animated: true)
         }
     }
     
@@ -87,4 +81,7 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     }()
     
     lazy var headView = DMyHeader()
+    
+    var startDate = DateTool.str本月一号()
+    var endDate = DateTool.str今天()
 }

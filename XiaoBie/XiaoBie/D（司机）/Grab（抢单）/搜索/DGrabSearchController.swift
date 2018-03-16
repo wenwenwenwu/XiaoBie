@@ -197,7 +197,6 @@ class DGrabSearchController: UIViewController, UITableViewDataSource, UITableVie
         textField.textColor = black_333333
         textField.font = font14
         textField.attributedPlaceholder = NSAttributedString.init(string: "搜索内容...", attributes: [NSAttributedStringKey.font: font14, NSAttributedStringKey.foregroundColor: gray_9C9EA0])
-        textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .search
         textField.delegate = self
         return textField

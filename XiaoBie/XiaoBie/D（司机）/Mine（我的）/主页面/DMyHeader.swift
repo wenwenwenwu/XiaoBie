@@ -93,7 +93,7 @@ class DMyHeader: UIView {
             //roundLabel
             let name = AccountTool.userInfo().name
             let rangeFirst = name.startIndex ... name.startIndex
-            roundLabel.text = String(name[rangeFirst])
+            roundLabel.text = String(name[rangeFirst] )
             //phoneLabel
             phoneLabel.text = AccountTool.userInfo().phone
         }

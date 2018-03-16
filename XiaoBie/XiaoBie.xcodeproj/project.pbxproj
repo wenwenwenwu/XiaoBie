@@ -37,6 +37,11 @@
 		5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9A2044FEEF0071406C /* DAlibiViewController.swift */; };
 		5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9C204501440071406C /* PhotoPickerTool.swift */; };
 		5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B498E9E204503DD0071406C /* DAlibiView.swift */; };
+		5B4BBE61205B718A00FA76E7 /* MStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE60205B718A00FA76E7 /* MStoreViewController.swift */; };
+		5B4BBE66205B8D1F00FA76E7 /* MInStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE65205B8D1F00FA76E7 /* MInStoreViewController.swift */; };
+		5B4BBE68205B8D3D00FA76E7 /* MHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */; };
+		5B4BBE6A205B994000FA76E7 /* MHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */; };
+		5B4BBE6C205B9DAD00FA76E7 /* MHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */; };
 		5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA0202D3D9F009D44F1 /* Alert.swift */; };
 		5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */; };
 		5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */; };
@@ -269,6 +274,11 @@
 		5B498E9A2044FEEF0071406C /* DAlibiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiViewController.swift; sourceTree = "<group>"; };
 		5B498E9C204501440071406C /* PhotoPickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerTool.swift; sourceTree = "<group>"; };
 		5B498E9E204503DD0071406C /* DAlibiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiView.swift; sourceTree = "<group>"; };
+		5B4BBE60205B718A00FA76E7 /* MStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MStoreViewController.swift; sourceTree = "<group>"; };
+		5B4BBE65205B8D1F00FA76E7 /* MInStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MInStoreViewController.swift; sourceTree = "<group>"; };
+		5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryViewController.swift; sourceTree = "<group>"; };
+		5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryModel.swift; sourceTree = "<group>"; };
+		5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryView.swift; sourceTree = "<group>"; };
 		5B4CFDA0202D3D9F009D44F1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTabBarController.swift; sourceTree = "<group>"; };
@@ -710,7 +720,8 @@
 		5B48A82820469FB100CA563A /* Mine（我的） */ = {
 			isa = PBXGroup;
 			children = (
-				5B48A8302046A08100CA563A /* MMineViewController.swift */,
+				5B4BBE5E205B714700FA76E7 /* 主页面 */,
+				5B4BBE5F205B715700FA76E7 /* 手机入库 */,
 			);
 			path = "Mine（我的）";
 			sourceTree = "<group>";
@@ -798,6 +809,50 @@
 				5B48A7EF20464C6700CA563A /* DAlibiModel.swift */,
 			);
 			path = "Alibi（凭证）";
+			sourceTree = "<group>";
+		};
+		5B4BBE5E205B714700FA76E7 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B48A8302046A08100CA563A /* MMineViewController.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5B4BBE5F205B715700FA76E7 /* 手机入库 */ = {
+			isa = PBXGroup;
+			children = (
+				5B4BBE62205B8CC900FA76E7 /* 主页面 */,
+				5B4BBE63205B8CD400FA76E7 /* 库存 */,
+				5B4BBE64205B8CE400FA76E7 /* 历史记录 */,
+			);
+			path = "手机入库";
+			sourceTree = "<group>";
+		};
+		5B4BBE62205B8CC900FA76E7 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B4BBE60205B718A00FA76E7 /* MStoreViewController.swift */,
+			);
+			path = "主页面";
+			sourceTree = "<group>";
+		};
+		5B4BBE63205B8CD400FA76E7 /* 库存 */ = {
+			isa = PBXGroup;
+			children = (
+				5B4BBE65205B8D1F00FA76E7 /* MInStoreViewController.swift */,
+			);
+			path = "库存";
+			sourceTree = "<group>";
+		};
+		5B4BBE64205B8CE400FA76E7 /* 历史记录 */ = {
+			isa = PBXGroup;
+			children = (
+				5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */,
+				5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */,
+				5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */,
+			);
+			path = "历史记录";
 			sourceTree = "<group>";
 		};
 		5B4CFD9F202D3D9F009D44F1 /* View */ = {
@@ -1933,6 +1988,7 @@
 				5BDE11C120565F50008D68EC /* NIMInputEmoticonManager.m in Sources */,
 				5B2F7CAC205260FC00C56D40 /* DCreatView.swift in Sources */,
 				5B48A8352046A24200CA563A /* CChatViewController.swift in Sources */,
+				5B4BBE6C205B9DAD00FA76E7 /* MHistoryView.swift in Sources */,
 				5BDE122020565F50008D68EC /* NIMKitConfig.m in Sources */,
 				5BDE11D720565F50008D68EC /* NIMTeamCardRowItem.m in Sources */,
 				5B5B8D6C20493DBC002484EE /* DDriverListViewController.swift in Sources */,
@@ -1960,6 +2016,8 @@
 				5BDE11CA20565F50008D68EC /* NIMKitMediaFetcher.m in Sources */,
 				5BB2AAF02029AA1B00AEC5A8 /* DHomeView.swift in Sources */,
 				5BDE120120565F50008D68EC /* NIMKitMessageAtModel.m in Sources */,
+				5B4BBE6A205B994000FA76E7 /* MHistoryModel.swift in Sources */,
+				5B4BBE61205B718A00FA76E7 /* MStoreViewController.swift in Sources */,
 				5B48A8202046927900CA563A /* CTabBarController.swift in Sources */,
 				5BDB5032202C45F80055C21E /* DMyHeader.swift in Sources */,
 				5BDE122220565F50008D68EC /* NIMKitIndependentModeExtraInfo.m in Sources */,
@@ -2056,6 +2114,7 @@
 				5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */,
 				5BDE11A920565F50008D68EC /* NIMContactDataItem.m in Sources */,
 				5BDE11D020565F50008D68EC /* NIMKitNotificationFirer.m in Sources */,
+				5B4BBE66205B8D1F00FA76E7 /* MInStoreViewController.swift in Sources */,
 				5BF04539203FFD3C003F8CE5 /* DStoreViewController.swift in Sources */,
 				5BDE121720565F50008D68EC /* NIMExtensionHelper.m in Sources */,
 				5BDE11B620565F50008D68EC /* NIMKitRobotDefaultTemplateParser.m in Sources */,
@@ -2081,6 +2140,7 @@
 				5BDE11F720565F50008D68EC /* NIMCellLayoutConfig.m in Sources */,
 				5BDE11F820565F50008D68EC /* NIMSessionDataSourceImpl.m in Sources */,
 				5BDE11B320565F50008D68EC /* NIMKitResourceResizer.m in Sources */,
+				5B4BBE68205B8D3D00FA76E7 /* MHistoryViewController.swift in Sources */,
 				5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */,
 				5BDE121420565F50008D68EC /* UIImage+NIMKit.m in Sources */,
 				5BDE11CB20565F50008D68EC /* NIMAvatarImageView.m in Sources */,

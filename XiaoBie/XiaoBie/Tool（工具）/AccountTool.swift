@@ -47,15 +47,12 @@ class AccountTool {
 }
 
 class UserInfoModel: NSObject, NSCoding,YYModel {
-    
-        @objc var agent_id = ""
-        @objc var business_type = ""
-        @objc var create_time = ""
+
         @objc var id = ""
         @objc var name = ""
         @objc var password = ""
         @objc var phone = ""
-        @objc var role_level = ""
+        @objc var avatar = ""
         @objc var role = "" {
             didSet {
                 switch role {
@@ -68,7 +65,14 @@ class UserInfoModel: NSObject, NSCoding,YYModel {
                 }
             }
         }
+        @objc var role_level = ""
+        @objc var business_type = ""
+        @objc var agent_id = ""
+        @objc var agent_name = ""
+        @objc var source_id = ""
+        @objc var create_time = ""
         @objc var update_time = ""
+        @objc var image_host = ""
         //自定义
         var roleName: Role?
     
