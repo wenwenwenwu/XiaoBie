@@ -45,6 +45,7 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func paraPopViewPickedAction(type: MStoreParaType, model: MHistoryPickParaModel) {
+        
         switch type {
         case .source:
             let pickedItem = model.source_name
@@ -66,8 +67,8 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Request
     func phoneInStoreRequest(serialNumber: String) {
-        WebTool.post(uri: "store_phone", para: ["memory": memory,
-                                                "staff_id": AccountTool.userInfo().id,
+        WebTool.post(uri: "store_phone", para: ["staff_id": AccountTool.userInfo().id,
+                                                "memory": memory,
                                                 "model": model,
                                                 "source_id":sourceId,
                                                 "serial_no": serialNumber], success: { (dict) in
@@ -239,10 +240,11 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     var dataArray: [DHistoryModel] = []
     var pageCount = 0
     
+    
     var source = ""
-    var sourceId = ""
+    var sourceId = "" //手机入库请求需要
     var model = ""
-    var modelId = "" //请求memory需要
+    var modelId = "" //手机参数请求需要
     var memory = ""    
     
 }

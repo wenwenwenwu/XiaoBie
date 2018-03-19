@@ -95,8 +95,6 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         isShow = false
     }
     
-    
-    
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataArray.count
@@ -136,9 +134,6 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         currentItem = cell.itemLabel.text!
         //回调
         pickedClosure(type, dataArray[indexPath.row])
-        //设置颜色
-        cell.itemLabel.textColor = blue_3899F7
-        cell.contentView.backgroundColor = blue_EBF5FF
         //消失
         dismiss()
         

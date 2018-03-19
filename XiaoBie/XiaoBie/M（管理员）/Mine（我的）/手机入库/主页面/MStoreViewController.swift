@@ -33,6 +33,7 @@ class MStoreViewController: UIViewController {
     }
     
     //MARK: - Action
+    //calendarButtonAction
     @objc func calendarButtonAction() {
         //弹出
         let calendarVC = CalendarViewController()
@@ -44,8 +45,7 @@ class MStoreViewController: UIViewController {
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
         self.present(calendarNC, animated: true, completion: nil)
     }
-    
-    
+        
     func calendarVCpickedDateAction(startDate: String, endDate: String) {
         historyVC.startDate = startDate
         historyVC.endDate = endDate
@@ -55,7 +55,7 @@ class MStoreViewController: UIViewController {
         self.startDate = startDate
         self.endDate = endDate
     }
-    
+    //scanButtonAction
     @objc func scanButtonAction() {
         //推出
         let scanVC = DScanViewController()
