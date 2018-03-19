@@ -196,3 +196,63 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     
     var dataArray: [MHistoryPickParaModel] = []
 }
+
+class MHistoryPickCell: UICollectionViewCell {
+    
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        //如果只是背景色的话可以和itemLabel的textColor一样，在UICollectionViewDelegate中设置，但是本项目需要圆角
+        backgroundView = grayView
+        selectedBackgroundView = blueView
+        contentView.addSubview(itemLabel)
+        setupFrame()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Setup
+    func setupFrame() {
+        itemLabel.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+        }
+    }
+    
+    func setupData(type: MStoreParaType, model: MHistoryPickParaModel) {
+        switch type {
+        case .source:
+            itemLabel.text = model.source_name
+        case .phoneModel:
+            itemLabel.text = model.model_name
+        case .phonePara:
+            itemLabel.text = model.param_name
+        }
+    }
+    
+    //MARK: - Properties
+    lazy var itemLabel: UILabel = {
+        let label = UILabel.init(frame: frame)
+        label.font = font12
+        return label
+    }()
+    
+    lazy var grayView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_F0F0F0
+        view.layer.cornerRadius = 2
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    lazy var blueView: UIView = {
+        let view = UIView()
+        view.backgroundColor = blue_EBF5FF
+        view.layer.cornerRadius = 2
+        view.clipsToBounds = true
+        return view
+    }()
+}
+
+
