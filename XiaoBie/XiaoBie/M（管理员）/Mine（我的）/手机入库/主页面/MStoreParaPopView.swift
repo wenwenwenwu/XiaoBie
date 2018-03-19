@@ -56,12 +56,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         WebTool.post(isShowHud: false, uri: uri, para: para, success: { (dict) in
             let model = MHistoryPickParaResponseModel.parse(dict: dict)
             if model.code == "0" {
-                let allModel = MHistoryPickParaModel() //"全部"model
-                allModel.source_name = "所有来源"
-                allModel.model_name = "所有型号"
-                allModel.param_name = "所有参数"
-                let dataArray = model.data
-                self.dataArray = [allModel] + dataArray
+                self.dataArray = [self.allModel] + model.data
                 self.show()
             } else {
                 HudTool.showInfo(string: model.msg)
@@ -110,26 +105,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickCell", for: indexPath) as! MHistoryPickCell
         let model = dataArray[indexPath.row]
-        //设置内容
-        cell.setupData(type: type, model: model)
-        //设置初始选中状态
-        var item = ""
-        switch type {
-        case .source:
-            item = model.source_name
-        case .phoneModel:
-            item = model.model_name
-        case .phonePara:
-            item = model.param_name
-        }
-        
-        if currentItem == item {
-            cell.itemLabel.textColor = blue_3899F7
-            cell.contentView.backgroundColor = blue_EBF5FF
-        }else {
-            cell.itemLabel.textColor = black_333333
-            cell.contentView.backgroundColor = gray_F0F0F0
-        }
+        cell.setupData(type: type, model: model, currentItem: currentItem)
         return cell
     }
     
@@ -166,13 +142,6 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         //消失
         dismiss()
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! MHistoryPickCell
-        //设置颜色
-        cell.itemLabel.textColor = black_333333
-        cell.contentView.backgroundColor = gray_F0F0F0
     }
     
     //MARK: - Properties
@@ -225,7 +194,16 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     
     var isShow = false
     
+    //"所有"model，加在dataArray第一个
+    let allModel: MHistoryPickParaModel = {
+        let model = MHistoryPickParaModel()
+        model.source_name = "所有来源"
+        model.model_name = "所有型号"
+        model.param_name = "所有参数"
+        return model
+    }()
     var dataArray: [MHistoryPickParaModel] = []
+    
 }
 
 class MHistoryPickCell: UICollectionViewCell {
@@ -235,10 +213,9 @@ class MHistoryPickCell: UICollectionViewCell {
         super.init(frame: frame)
 
         contentView.addSubview(itemLabel)
+        
         contentView.layer.cornerRadius = 2
         contentView.clipsToBounds = true
-        
-        contentView.backgroundColor = gray_F0F0F0
         setupFrame()
     }
     
@@ -253,14 +230,33 @@ class MHistoryPickCell: UICollectionViewCell {
         }
     }
     
-    func setupData(type: MStoreParaType, model: MHistoryPickParaModel) {
+    func setupData(type: MStoreParaType, model: MHistoryPickParaModel, currentItem: String) {
+        switch type {
+        //设置显示数据
+        case .source:
+            itemLabel.text = model.source_name
+        case .phoneModel:
+            itemLabel.text = model.model_name
+        case .phonePara:
+            itemLabel.text = model.param_name
+        }
+        //设置初始选中状态
+        var item = ""
         switch type {
         case .source:
-            itemLabel.text = (model.source_name).isEmpty ? "所有来源" : model.source_name
+            item = model.source_name
         case .phoneModel:
-            itemLabel.text = (model.model_name).isEmpty ? "所有型号" : model.model_name
+            item = model.model_name
         case .phonePara:
-            itemLabel.text = (model.param_name).isEmpty ? "所有参数" : model.param_name
+            item = model.param_name
+        }
+        
+        if currentItem == item {
+            itemLabel.textColor = blue_3899F7
+            contentView.backgroundColor = blue_EBF5FF
+        }else {
+            itemLabel.textColor = black_333333
+            contentView.backgroundColor = gray_F0F0F0
         }
     }
     
@@ -269,22 +265,6 @@ class MHistoryPickCell: UICollectionViewCell {
         let label = UILabel.init(frame: frame)
         label.font = font12
         return label
-    }()
-    
-    lazy var grayView: UIView = {
-        let view = UIView()
-        view.backgroundColor = gray_F0F0F0
-        view.layer.cornerRadius = 2
-        view.clipsToBounds = true
-        return view
-    }()
-    
-    lazy var blueView: UIView = {
-        let view = UIView()
-        view.backgroundColor = blue_EBF5FF
-        view.layer.cornerRadius = 2
-        view.clipsToBounds = true
-        return view
     }()
 }
 
