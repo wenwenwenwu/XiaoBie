@@ -837,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4BBE60205B718A00FA76E7 /* MStoreViewController.swift */,
+				5B4BBE6D205BA6CD00FA76E7 /* MStoreParaPopView.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -856,7 +857,6 @@
 				5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */,
 				5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */,
 				5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */,
-				5B4BBE6D205BA6CD00FA76E7 /* MStoreParaPopView.swift */,
 			);
 			path = "历史记录";
 			sourceTree = "<group>";

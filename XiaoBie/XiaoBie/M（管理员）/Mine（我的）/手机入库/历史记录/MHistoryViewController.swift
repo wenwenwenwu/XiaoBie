@@ -28,19 +28,19 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Action
     func sourceViewLabelTapAction() {
-        paraPopView.showActionWith(type: .source)
+        paraPopView.showActionWith(type: .source, currentItem: sourceView.sourceLabel.text == "请选择来源" ? "所有来源" : sourceView.sourceName)
     }
     
     func paraPopViewPickedAction(pickedItem: String) {
-        source = pickedItem
+        source = (pickedItem == "所有来源") ? "" : pickedItem
         sourceView.sourceName = pickedItem
         loadRequest()
     }
     
     //MARK: - Request
     func loadRequest() {
-        let staffId = AccountTool.userInfo().id
-        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": "1", "page_size": pageSize], success: { (dict) in
+        print("source:\(source)")
+        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "source": source, "page_num": "1", "page_size": pageSize], success: { (dict) in
             
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -72,9 +72,7 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadMoreRequest() {
-        let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
+        WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": AccountTool.userInfo().id, "start_time": startDate, "end_time": endDate, "source": source, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
 
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {

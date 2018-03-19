@@ -82,11 +82,11 @@ class MInStoreParaView: UIView {
         didSet {
             switch type {
             case .source:
-                paraName = "来源"
+                paraLabel.text = "来源"
             case .phoneModel:
-                paraName = "型号"
+                paraLabel.text = "型号"
             case .phonePara:
-                paraName = "筛选"
+                paraLabel.text = "筛选"
             }
         }
     }
@@ -95,6 +95,8 @@ class MInStoreParaView: UIView {
     
     var paraName = "" {
         didSet{
+            paraLabel.textColor =  blue_3296FA
+            arrowImageView.image = #imageLiteral(resourceName: "icon_xjt_selected")
             paraLabel.text = paraName
         }
     }

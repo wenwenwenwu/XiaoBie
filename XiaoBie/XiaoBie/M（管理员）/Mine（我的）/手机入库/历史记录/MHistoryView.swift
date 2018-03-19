@@ -57,7 +57,7 @@ class MHistorySourceView: UIView {
     //MARK: - Properties
     lazy var sourceLabel: UILabel = {
         let label = UILabel()
-        label.text = "来源"
+        label.text = "请选择来源"
         label.textColor = black_333333
         label.font = font14
         //添加点击手势

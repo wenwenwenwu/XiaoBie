@@ -40,4 +40,7 @@ class DHistoryModel: NSObject,YYModel {
     @objc var serial_no = ""
     @objc var source = ""
     @objc var update_time = ""
+    @objc var source_id = ""
+    @objc var store_admin_id = ""
+    @objc var admin_name = ""
 }
