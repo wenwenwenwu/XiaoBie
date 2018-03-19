@@ -38,15 +38,8 @@ class MStoreViewController: UIViewController {
         let calendarVC = CalendarViewController()
         calendarVC.startDate = startDate
         calendarVC.endDate = endDate
-        
         calendarVC.doneClosure = { startDate, endDate in
-            self.historyVC.startDate = startDate
-            self.historyVC.endDate = endDate
-            self.historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
-            self.historyVC.loadRequest()
-
-            self.startDate = startDate
-            self.endDate = endDate
+            self.calendarVCpickedDateAction(startDate: startDate, endDate: endDate)
         }
         let calendarNC = NavigationController.init(rootViewController: calendarVC)
         self.present(calendarNC, animated: true, completion: nil)
@@ -59,6 +52,16 @@ class MStoreViewController: UIViewController {
 //            self.claimPhoneRequest(serialNumber: serialNumber)
         }
         navigationController?.pushViewController(scanVC, animated: true)
+    }
+    
+    func calendarVCpickedDateAction(startDate: String, endDate: String) {
+        historyVC.startDate = startDate
+        historyVC.endDate = endDate
+        historyVC.dateView.setupDate(startDate: startDate, endDate: endDate)
+        historyVC.loadRequest()
+        
+        self.startDate = startDate
+        self.endDate = endDate
     }
     
     func selectViewChangeCurrentIndexAction(currentIndex: Int) {

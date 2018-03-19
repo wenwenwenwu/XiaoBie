@@ -28,31 +28,58 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
     }
     
     //MARK: - Factory Method
-    class func showPopViewWith(ownerController: UIViewController, paraType: MHistoryPickParaType, dataArray: [MHistoryPickParaModel], pickedClosure:  @escaping (MHistoryPickParaType,String)->Void) {
+    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MHistoryPickParaType,String)->Void) -> MHistoryPickPopView {
         let popView = MHistoryPickPopView.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
+        popView.ownerVC = ownerVC
         popView.pickedClosure = pickedClosure
-        popView.dataArray = dataArray
-        //动画
-        //collectionView高度
-        let rowNumber = dataArray.count/4+1        
-        let height = 15 * (rowNumber + 1) + 30 * rowNumber
-        
-        UIView.animate(withDuration: animationTime) {
-            popView.collectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: CGFloat(height))
-        }
-        //记录状态
-        popView.isShow = true
-        //加载
-        ownerController.view.addSubview(popView)
-        
+        return popView
     }
     
-    //MARK: - Event Response
+    //MARK: - Action
+    func showActionWith(type: MHistoryPickParaType) {
+        if isShow {
+            self.dismiss()
+        } else {
+            self.type = type
+            sourceRequest()
+        }
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss()
     }
     
+    //MARK: - Request
+    func sourceRequest() {
+        WebTool.post(isShowHud: false, uri: uri, para: para, success: { (dict) in
+            let model = MHistoryPickParaResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.dataArray = model.data
+                self.show()
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - Action Method
+    func show() {
+        //collectionView高度
+        let rowNumber = dataArray.count/4+1
+        let height = 15 * (rowNumber + 1) + 30 * rowNumber
+        //动画
+        UIView.animate(withDuration: animationTime) {
+            self.collectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: CGFloat(height))
+            self.backView.alpha = 1
+        }
+        //记录状态
+        isShow = true
+        //加载
+        ownerVC.view.addSubview(self)
+    }
+    
     func dismiss() {
         UIView.animate(withDuration: animationTime, animations: {
             self.collectionView.frame = CGRect.init(x: 0, y: 0, width: screenWidth, height: 0)
@@ -64,6 +91,8 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
         isShow = false
     }
     
+    
+    
     //MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataArray.count
@@ -71,7 +100,7 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pickCell", for: indexPath) as! MHistoryPickCell
-        cell.setupData(type: pickParaType, model: dataArray[indexPath.row])
+        cell.setupData(type: type, model: dataArray[indexPath.row])
         return cell
     }
     
@@ -98,7 +127,7 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //回调
         let cell = collectionView.cellForItem(at: indexPath) as! MHistoryPickCell
-        pickedClosure(pickParaType, cell.itemLabel.text!)
+        pickedClosure(type, cell.itemLabel.text!)
         //消失
         dismiss()
         
@@ -141,8 +170,27 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
         return collectionView
     }()
     
+    var ownerVC = UIViewController()
     var pickedClosure: (MHistoryPickParaType, String)->Void = {_,_  in }
-    var pickParaType = MHistoryPickParaType.source
+    
+    var uri = ""
+    var para: [String : String] = [:]
+    
+    var type = MHistoryPickParaType.source {
+        didSet {
+            switch type {
+            case .source:
+                uri = "list_phone_source"
+                para = [:]
+            case .phoneModel:
+                uri = "list_phone_model"
+                para = [:]
+            case .phonePara:
+                uri = "list_phone_param"
+                para = ["model_id":"1", "param_type":"0"]
+            }
+        }
+    }
     
     var isShow = false
     

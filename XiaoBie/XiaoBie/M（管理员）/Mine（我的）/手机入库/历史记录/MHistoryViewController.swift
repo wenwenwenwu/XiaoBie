@@ -26,37 +26,22 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         loadRequest()
     }
     
-
-    
     //MARK: - Action
     func sourceViewLabelTapAction() {
-        sourceRequest()
+        paraPopView.showActionWith(type: .source)
     }
     
-    func pickPopViewPickedAction(source: String) {
-        self.source = source
+    func paraPopViewPickedAction(pickedItem: String) {
+        source = pickedItem
+        sourceView.sourceName = pickedItem
         loadRequest()
     }
     
     //MARK: - Request
-    func sourceRequest() {
-        WebTool.post(uri: "list_phone_source", para: [:], success: { (dict) in
-            let model = MHistoryPickParaResponseModel.parse(dict: dict)
-            if model.code == "0" {
-                MHistoryPickPopView.showPopViewWith(ownerController: self, paraType: .source, dataArray: model.data) { _,source  in
-                    self.pickPopViewPickedAction(source: source)
-                }
-            } else {
-                HudTool.showInfo(string: model.msg)
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
-    }
-    
     func loadRequest() {
         let staffId = AccountTool.userInfo().id
         WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": "1", "page_size": pageSize], success: { (dict) in
+            
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = model.data
@@ -90,7 +75,7 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         let staffId = AccountTool.userInfo().id
         
         WebTool.post(uri:"list_historical_stored_phone", para:["staff_id": staffId, "start_time": startDate, "end_time": endDate, "source": source, "page_num": String(pageCount), "page_size": pageSize], success: { (dict) in
-            
+
             let model = DHistoryResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray += model.data
@@ -193,6 +178,10 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     
     lazy var sourceView = MHistorySourceView.viewWith { [weak self] in
         self?.sourceViewLabelTapAction()
+    }
+    
+    lazy var paraPopView = MHistoryPickPopView.viewWith(ownerVC: self) { (type, pickedItem) in
+        self.paraPopViewPickedAction(pickedItem: pickedItem)
     }
     
     var dataArray: [DHistoryModel] = []
