@@ -102,7 +102,7 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = DHistoryCell.cellWith(tableView: tableView)
+        let cell = MHistoryCell.cellWith(tableView: tableView)
         cell.model = dataArray[indexPath.row]
         return cell
     }
@@ -180,7 +180,7 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         self?.sourceViewLabelTapAction()
     }
     
-    lazy var paraPopView = MHistoryPickPopView.viewWith(ownerVC: self) { (type, pickedItem) in
+    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, pickedItem) in
         self.paraPopViewPickedAction(pickedItem: pickedItem)
     }
     

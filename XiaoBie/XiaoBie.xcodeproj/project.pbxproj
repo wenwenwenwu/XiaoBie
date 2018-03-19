@@ -42,7 +42,7 @@
 		5B4BBE68205B8D3D00FA76E7 /* MHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */; };
 		5B4BBE6A205B994000FA76E7 /* MHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */; };
 		5B4BBE6C205B9DAD00FA76E7 /* MHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */; };
-		5B4BBE6E205BA6CD00FA76E7 /* MHistoryPickPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */; };
+		5B4BBE6E205BA6CD00FA76E7 /* MStoreParaPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4BBE6D205BA6CD00FA76E7 /* MStoreParaPopView.swift */; };
 		5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA0202D3D9F009D44F1 /* Alert.swift */; };
 		5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */; };
 		5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */; };
@@ -69,6 +69,7 @@
 		5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6F20493E22002484EE /* DDriverListModel.swift */; };
 		5B61830F204D0F5100147B1A /* PhoneNumberTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */; };
 		5B6325EA203130C100659725 /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6325E9203130C100659725 /* DateTool.swift */; };
+		5B6E0758205F57DA00E827DA /* MInStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E0757205F57DA00E827DA /* MInStoreView.swift */; };
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
 		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
@@ -280,7 +281,7 @@
 		5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryViewController.swift; sourceTree = "<group>"; };
 		5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryModel.swift; sourceTree = "<group>"; };
 		5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryView.swift; sourceTree = "<group>"; };
-		5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHistoryPickPopView.swift; sourceTree = "<group>"; };
+		5B4BBE6D205BA6CD00FA76E7 /* MStoreParaPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MStoreParaPopView.swift; sourceTree = "<group>"; };
 		5B4CFDA0202D3D9F009D44F1 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		5B4CFDA3202D3D9F009D44F1 /* DTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTabBarController.swift; sourceTree = "<group>"; };
@@ -307,6 +308,7 @@
 		5B5B8D6F20493E22002484EE /* DDriverListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDriverListModel.swift; sourceTree = "<group>"; };
 		5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTool.swift; sourceTree = "<group>"; };
 		5B6325E9203130C100659725 /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
+		5B6E0757205F57DA00E827DA /* MInStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MInStoreView.swift; sourceTree = "<group>"; };
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5B702F402041392100DB4978 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -843,6 +845,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4BBE65205B8D1F00FA76E7 /* MInStoreViewController.swift */,
+				5B6E0757205F57DA00E827DA /* MInStoreView.swift */,
 			);
 			path = "库存";
 			sourceTree = "<group>";
@@ -853,7 +856,7 @@
 				5B4BBE67205B8D3D00FA76E7 /* MHistoryViewController.swift */,
 				5B4BBE6B205B9DAD00FA76E7 /* MHistoryView.swift */,
 				5B4BBE69205B994000FA76E7 /* MHistoryModel.swift */,
-				5B4BBE6D205BA6CD00FA76E7 /* MHistoryPickPopView.swift */,
+				5B4BBE6D205BA6CD00FA76E7 /* MStoreParaPopView.swift */,
 			);
 			path = "历史记录";
 			sourceTree = "<group>";
@@ -2092,7 +2095,7 @@
 				5B51FADD20293E5B001AB946 /* DMineViewController.swift in Sources */,
 				5BDE11E620565F50008D68EC /* NIMKitEvent.m in Sources */,
 				5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */,
-				5B4BBE6E205BA6CD00FA76E7 /* MHistoryPickPopView.swift in Sources */,
+				5B4BBE6E205BA6CD00FA76E7 /* MStoreParaPopView.swift in Sources */,
 				5BDE11FF20565F50008D68EC /* NIMKitLocationPoint.m in Sources */,
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
 				5BDE11CD20565F50008D68EC /* NIMPageView.m in Sources */,
@@ -2161,6 +2164,7 @@
 				5BDE11B520565F50008D68EC /* NIMKitRobotTemplate.m in Sources */,
 				5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */,
 				5BDE120620565F50008D68EC /* NIMSessionVideoContentView.m in Sources */,
+				5B6E0758205F57DA00E827DA /* MInStoreView.swift in Sources */,
 				5BDE11FD20565F50008D68EC /* NIMSessionConfigurator.m in Sources */,
 				5B51FAE120293E73001AB946 /* DGrabViewController.swift in Sources */,
 				5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */,

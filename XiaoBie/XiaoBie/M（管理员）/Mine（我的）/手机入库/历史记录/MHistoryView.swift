@@ -31,7 +31,7 @@ class MHistoryPickCell: UICollectionViewCell {
         }
     }
     
-    func setupData(type: MHistoryPickParaType, model: MHistoryPickParaModel) {
+    func setupData(type: MStoreParaType, model: MHistoryPickParaModel) {
         switch type {
         case .source:
             itemLabel.text = model.source_name
@@ -139,6 +139,127 @@ class MHistorySourceView: UIView {
     var sourceName = "" {
         didSet{
             sourceLabel.text = sourceName
+        }
+    }
+}
+
+class MHistoryCell: UITableViewCell {
+    
+    //MARK: - Init
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        self.selectionStyle = .none
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(dateLabel)
+        contentView.addSubview(numberLabel)
+        contentView.addSubview(infoLabel)
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(lineView)
+        setupFrame()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - FactoryMethod
+    class func cellWith(tableView : UITableView) -> MHistoryCell{
+        let reuseIdentifier = "historyCell";
+        var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
+        if (cell == nil) {
+            cell = MHistoryCell(style: .default, reuseIdentifier: reuseIdentifier)
+        }
+        return cell as! MHistoryCell
+    }
+    
+    //MARK: - Setup
+    func setupFrame() {
+        titleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(16)
+            make.left.equalTo(14)
+            make.height.equalTo(12)
+        }
+        
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(17)
+            make.right.equalTo(-14)
+            make.height.equalTo(9)
+        }
+        
+        numberLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(13)
+            make.height.equalTo(13)
+            make.top.equalTo(titleLabel.snp.bottom).offset(11)
+        }
+        
+        infoLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(nameLabel.snp.left).offset(-5)
+            make.centerY.equalTo(nameLabel)
+        }
+        
+        nameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(dateLabel.snp.bottom).offset(11)
+            make.right.equalTo(-16)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(1)
+        }
+    }
+    
+    //MARK: - Properties
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "手机串号"
+        label.font = font12
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = font12
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var numberLabel: UILabel = {
+        let label = UILabel()
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "入库: "
+        label.font = font12
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = font16
+        label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_F5F5F5
+        return view
+    }()
+    
+    var model = DHistoryModel() {
+        didSet {
+            //dateLabel
+            dateLabel.text = DateTool.strDateToStr年月日(strDate: model.update_time)
+            //numberLabel
+            numberLabel.text = model.serial_no
+            //nameLabel
+            nameLabel.text = "小明"
         }
     }
 }

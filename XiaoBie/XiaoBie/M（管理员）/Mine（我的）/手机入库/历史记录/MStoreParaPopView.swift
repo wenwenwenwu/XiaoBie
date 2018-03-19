@@ -1,5 +1,5 @@
 //
-//  MHistoryPickPopView.swift
+//  MStoreParaPopView.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum MHistoryPickParaType {
+enum MStoreParaType {
     case source
     case phoneModel
     case phonePara
 }
 
-class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     //MARK: Init
     override init(frame: CGRect) {
@@ -28,15 +28,15 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
     }
     
     //MARK: - Factory Method
-    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MHistoryPickParaType,String)->Void) -> MHistoryPickPopView {
-        let popView = MHistoryPickPopView.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
+    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,String)->Void) -> MStoreParaPopView {
+        let popView = MStoreParaPopView.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
         popView.ownerVC = ownerVC
         popView.pickedClosure = pickedClosure
         return popView
     }
     
     //MARK: - Action
-    func showActionWith(type: MHistoryPickParaType) {
+    func showActionWith(type: MStoreParaType) {
         if isShow {
             self.dismiss()
         } else {
@@ -171,12 +171,12 @@ class MHistoryPickPopView: UIView, UICollectionViewDataSource,UICollectionViewDe
     }()
     
     var ownerVC = UIViewController()
-    var pickedClosure: (MHistoryPickParaType, String)->Void = {_,_  in }
+    var pickedClosure: (MStoreParaType, String)->Void = {_,_  in }
     
     var uri = ""
     var para: [String : String] = [:]
     
-    var type = MHistoryPickParaType.source {
+    var type = MStoreParaType.source {
         didSet {
             switch type {
             case .source:
