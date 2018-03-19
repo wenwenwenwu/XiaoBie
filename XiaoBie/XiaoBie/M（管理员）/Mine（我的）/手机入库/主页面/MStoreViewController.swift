@@ -45,14 +45,6 @@ class MStoreViewController: UIViewController {
         self.present(calendarNC, animated: true, completion: nil)
     }
     
-    @objc func scanButtonAction() {
-        //推出
-        let scanVC = DScanViewController()
-        scanVC.scanedClosure = { serialNumber in
-//            self.claimPhoneRequest(serialNumber: serialNumber)
-        }
-        navigationController?.pushViewController(scanVC, animated: true)
-    }
     
     func calendarVCpickedDateAction(startDate: String, endDate: String) {
         historyVC.startDate = startDate
@@ -64,6 +56,19 @@ class MStoreViewController: UIViewController {
         self.endDate = endDate
     }
     
+    @objc func scanButtonAction() {
+        //推出
+        let scanVC = DScanViewController()
+        scanVC.scanedClosure = { serialNumber in
+            self.scanVCScanedAction(serialNumber: serialNumber)
+        }
+        navigationController?.pushViewController(scanVC, animated: true)
+    }
+    
+    func scanVCScanedAction(serialNumber: String) {
+        storeVC.phoneInStoreRequest(serialNumber:serialNumber)
+    }
+    
     func selectViewChangeCurrentIndexAction(currentIndex: Int) {
         pageView.currentIndex = currentIndex
         switchBarButtonItem(currentIndex: currentIndex)
@@ -72,22 +77,6 @@ class MStoreViewController: UIViewController {
     func pageViewChangeCurrentIndexAction(currentIndex: Int) {
         selectView.currentIndex = currentIndex
         switchBarButtonItem(currentIndex: currentIndex)
-    }
-    
-    //MARK: - Request
-    func claimPhoneRequest(serialNumber: String) {
-        let staffId = AccountTool.userInfo().id
-        
-        WebTool.post(uri: "claim_phone_delivery", para: ["staff_id" : staffId, "serial_no" : serialNumber], success: { (dict) in
-            let model = DBasicResponseModel.parse(dict: dict)
-            if model.code == "0" {
-//                self.storeVC.loadRequest()
-            } else {
-                HudTool.showInfo(string: model.msg)
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
     }
     
     //MARK: - Action Method
@@ -107,7 +96,6 @@ class MStoreViewController: UIViewController {
     
     //pageView
     
-//    lazy var storeVC = DStoreViewController()
     lazy var storeVC = MInStoreViewController()
 
     lazy var historyVC: MHistoryViewController = {

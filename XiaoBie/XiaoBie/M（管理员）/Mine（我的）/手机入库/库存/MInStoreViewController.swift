@@ -36,18 +36,28 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func paraViewTapAction() {
+        guard modelView.paraLabel.text != "型号" else {
+            HudTool.showInfo(string: "请先选择型号")
+            return
+        }
+        paraPopView.modelId = self.modelId
         paraPopView.showActionWith(type: .phonePara, currentItem: paraView.paraLabel.text == "筛选" ? "所有参数" : paraView.paraName)
     }
     
-    func paraPopViewPickedAction(type: MStoreParaType, pickedItem: String) {
+    func paraPopViewPickedAction(type: MStoreParaType, model: MHistoryPickParaModel) {
         switch type {
         case .source:
+            let pickedItem = model.source_name
             source = (pickedItem == "所有来源") ? "" : pickedItem
             sourceView.paraName = pickedItem
+            sourceId = (pickedItem == "所有来源") ? "" : model.id
         case .phoneModel:
-            model = (pickedItem == "所有型号") ? "" : pickedItem
+            let pickedItem = model.model_name
+            self.model = (pickedItem == "所有型号") ? "" : pickedItem
             modelView.paraName = pickedItem
+            modelId = (pickedItem == "所有型号") ? "" : model.id //关联参数筛选
         case .phonePara:
+            let pickedItem = model.param_name
             memory = (pickedItem == "所有参数") ? "" : pickedItem
             paraView.paraName = pickedItem
         }        
@@ -55,6 +65,23 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Request
+    func phoneInStoreRequest(serialNumber: String) {
+        WebTool.post(uri: "store_phone", para: ["memory": memory,
+                                                "staff_id": AccountTool.userInfo().id,
+                                                "model": model,
+                                                "source_id":sourceId,
+                                                "serial_no": serialNumber], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                self.loadRequest()
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func loadRequest() {
         print("memory:\(memory)")
         print("model:\(model)")
@@ -182,8 +209,8 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
         return stackView
     }()
     
-    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, pickedItem) in
-        self.paraPopViewPickedAction(type: type, pickedItem: pickedItem)
+    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
+        self.paraPopViewPickedAction(type: type, model: model)
     }
     
     lazy var tableView: UITableView = {
@@ -212,8 +239,10 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     var dataArray: [DHistoryModel] = []
     var pageCount = 0
     
-    var memory = ""
-    var model = ""
     var source = ""
+    var sourceId = ""
+    var model = ""
+    var modelId = "" //请求memory需要
+    var memory = ""    
     
 }

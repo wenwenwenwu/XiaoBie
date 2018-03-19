@@ -29,7 +29,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     }
     
     //MARK: - Factory Method
-    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,String)->Void) -> MStoreParaPopView {
+    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,MHistoryPickParaModel)->Void) -> MStoreParaPopView {
         let popView = MStoreParaPopView.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
         popView.ownerVC = ownerVC
         popView.pickedClosure = pickedClosure
@@ -135,7 +135,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         //记录
         currentItem = cell.itemLabel.text!
         //回调
-        pickedClosure(type, cell.itemLabel.text!)
+        pickedClosure(type, dataArray[indexPath.row])
         //设置颜色
         cell.itemLabel.textColor = blue_3899F7
         cell.contentView.backgroundColor = blue_EBF5FF
@@ -171,10 +171,12 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     
     var currentItem = ""
     var ownerVC = UIViewController()
-    var pickedClosure: (MStoreParaType, String)->Void = {_,_  in }
+    var pickedClosure: (MStoreParaType, MHistoryPickParaModel)->Void = {_,_  in }
     
     var uri = ""
     var para: [String : String] = [:]
+    
+    var modelId = ""
     
     var type = MStoreParaType.source {
         didSet {
@@ -187,7 +189,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
                 para = [:]
             case .phonePara:
                 uri = "list_phone_param"
-                para = ["model_id":"1", "param_type":"0"]
+                para = ["model_id": modelId, "param_type":"0"]
             }
         }
     }

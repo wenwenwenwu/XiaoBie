@@ -30,6 +30,7 @@ class MHistoryPickParaModel: NSObject,YYModel {
     
     @objc var id = ""
     @objc var model_id = ""
+    @objc var source_id = ""
     @objc var param_type = ""
     @objc var create_time = ""
     @objc var update_time = ""
