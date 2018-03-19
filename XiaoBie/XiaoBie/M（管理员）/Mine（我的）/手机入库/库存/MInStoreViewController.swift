@@ -56,7 +56,7 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
             let pickedItem = model.model_name
             self.model = (pickedItem == "所有型号") ? "" : pickedItem
             modelView.paraName = pickedItem
-            modelId = (pickedItem == "所有型号") ? "" : model.id //关联参数筛选
+            modelId = (pickedItem == "所有型号") ? "" : model.id
         case .phonePara:
             let pickedItem = model.param_name
             memory = (pickedItem == "所有参数") ? "" : pickedItem
