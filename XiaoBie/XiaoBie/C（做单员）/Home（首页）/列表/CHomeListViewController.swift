@@ -115,50 +115,26 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath) as! CHomeListCell
-        //        cell.model.statusType = .contact
-//        switch cell.model.statusType {
-//        case .toCheck, .querying:
-//            let toCheckVC = DToCheckViewController()
-//            toCheckVC.model = cell.model
-//            toCheckVC.updatedAdressClosure = { model in
-//                self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
-//            }
-//            navigationController?.pushViewController(toCheckVC, animated: true)
-//        case .checked, .checked2:
-//            let checkedVC = DCheckedViewController()
-//            checkedVC.model = cell.model
-//            checkedVC.updatedAdressClosure = { model in
-//                self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
-//            }
-//            navigationController?.pushViewController(checkedVC, animated: true)
-//        case .toTestify, .contact:
-//            let toTestifyVC = DToTestifyViewController()
+        let cell = tableView.cellForRow(at: indexPath) as! CHomeListCell
+//        cell.model.statusType = .contact
+        switch listType {
+        case .toCheck:
+            let toCheckVC = MToCheckViewController()
+            toCheckVC.model = cell.model
+            navigationController?.pushViewController(toCheckVC, animated: true)
+        case .toTestify:
+            let toTestifyVC = MToTestifyViewController()
 //            toTestifyVC.model = cell.model
-//            navigationController?.pushViewController(toTestifyVC, animated: true)
-//        case .accept:
-//            let codeVC = DCodeViewController()
-//            codeVC.model = cell.model
-//            navigationController?.pushViewController(codeVC, animated: true)
-//        case .access:
-//            let uploadVC = DUploadViewController()
-//            uploadVC.model = cell.model
-//            navigationController?.pushViewController(uploadVC, animated: true)
-//        case .uploaded:
-//            let payVC = DPayViewController()
-//            payVC.model = cell.model
-//            navigationController?.pushViewController(payVC, animated: true)
-//        case .toAccessPlan:
-//            let addVC = DAddViewController()
-//            addVC.model = cell.model
-//            navigationController?.pushViewController(addVC, animated: true)
-//        case .havePlan, .noPlan:
-//            let completeVC = DCompleteViewController()
-//            completeVC.model = cell.model
-//            navigationController?.pushViewController(completeVC, animated: true)
-//        default:
-//            print("🐱")
-//        }
+            navigationController?.pushViewController(toTestifyVC, animated: true)
+        case .toAdd:
+            let toAddVC = MAddViewController()
+//            toCheckVC.model = cell.model
+            navigationController?.pushViewController(toAddVC, animated: true)
+        case .complete:
+            let completeVC = MCompleteViewController()
+//            toCheckVC.model = cell.model
+            navigationController?.pushViewController(completeVC, animated: true)
+        }
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

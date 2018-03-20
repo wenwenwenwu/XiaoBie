@@ -131,7 +131,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(toCheckVC, animated: true)
-        case .checked, .checked2, .holdOn: //已查单
+        case .checked, .checked2, .orderSucess, .orderLater, .orderClose, .orderFail: //已查单
             let checkedVC = DCheckedViewController()
             checkedVC.model = cell.model
             checkedVC.updatedAdressClosure = { model in
@@ -154,7 +154,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let payVC = DPayViewController()
             payVC.model = cell.model
             navigationController?.pushViewController(payVC, animated: true)
-        case .payComplete://待添加营销案(除了导航栏标题外与完成页面相同)
+        case .payComplete, .paySuccess://待添加营销案(除了导航栏标题外与完成页面相同)
             let addVC = DAddViewController()
             addVC.model = cell.model
             navigationController?.pushViewController(addVC, animated: true)

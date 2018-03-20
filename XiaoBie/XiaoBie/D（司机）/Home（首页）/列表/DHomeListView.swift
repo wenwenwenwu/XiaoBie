@@ -180,10 +180,16 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "凭证已上传"
             case .complete, .complete2:
                 statusStr = "完成"
-            case .payComplete:
+            case .payComplete, .paySuccess:
                 statusStr = "付款完成"
+            case .orderSucess:
+                statusStr = "已预约"
+            case .orderLater:
+                statusStr = "再联系"
+            case .orderClose:
+                statusStr = "停机"
             default:
-                statusStr = "稍后联系"
+                statusStr = "预约失败"
             }
             statusLabel.text = statusStr
         }
