@@ -178,7 +178,9 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "无此活动"
             case .uploaded, .uploaded2:
                 statusStr = "凭证已上传"
-            case .complete, .complete2:
+            case .complete:
+                statusStr = "待确认完成"
+            case .complete2:
                 statusStr = "完成"
             case .payComplete, .paySuccess:
                 statusStr = "付款完成"

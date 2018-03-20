@@ -9,9 +9,10 @@
 import UIKit
 
 enum DCheckedPopStatus: String {
-    case isOrder = "0"
-    case later = "1"
-    case noReply = "2"
+    case need = "0"
+    case isOrder = "1"
+    case later = "2"
+    case close = "3"
 }
 
 class DCheckedPopView: UIView {
@@ -51,12 +52,14 @@ class DCheckedPopView: UIView {
     @objc func statusButtonEvent(_ sender: UIButton) {
         let title: String! = sender.titleLabel?.text
         switch title {
+        case "客户需要"?:
+            appointType = .need
         case "已预约"?:
             appointType = .isOrder
         case "再联系":
             appointType = .later
         default:
-            appointType = .noReply
+            appointType = .close
         }
         resetButtonStatus(button: sender)
     }
@@ -77,6 +80,7 @@ class DCheckedPopView: UIView {
     }
     
     func resetButtonStatus(button: UIButton) {
+        needButton.isSelected = false
         orderButton.isSelected = false
         againButton.isSelected = false
         noButton.isSelected = false
@@ -132,6 +136,12 @@ class DCheckedPopView: UIView {
         return backView
     }()
     
+    lazy var needButton: UIButton = {
+        let button = creatButton()
+        button.setTitle("客户需要", for: .normal)
+        return button
+    }()
+    
     lazy var orderButton: UIButton = {
         let button = creatButton()
         button.setTitle("已预约", for: .normal)
@@ -146,7 +156,7 @@ class DCheckedPopView: UIView {
     
     lazy var noButton: UIButton = {
         let button = creatButton()
-        button.setTitle("无人接听", for: .normal)
+        button.setTitle("停机", for: .normal)
         return button
     }()
     
@@ -168,7 +178,8 @@ class DCheckedPopView: UIView {
         stackView.axis = .horizontal
         stackView.alignment = .fill
         stackView.spacing = 10
-        orderButton.isSelected = true
+        needButton.isSelected = true
+        stackView.addArrangedSubview(needButton)
         stackView.addArrangedSubview(orderButton)
         stackView.addArrangedSubview(againButton)
         stackView.addArrangedSubview(noButton)
@@ -177,6 +188,6 @@ class DCheckedPopView: UIView {
     
     var submitSuccessClosure: (DCheckedPopStatus)->Void = {_ in }
     
-    var appointType = DCheckedPopStatus.isOrder
+    var appointType = DCheckedPopStatus.need
 }
 

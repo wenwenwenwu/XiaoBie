@@ -43,8 +43,12 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @objc func appointButtonAction() {
         DCheckedPopView.showPopViewWith { (appointType) in
-            self.appointRequest(appointType: appointType)
+            self.popViewSelectedAction(appointType: appointType)
         }
+    }
+    
+    func popViewSelectedAction(appointType: DCheckedPopStatus) {
+        appointRequest(appointType: appointType)
     }
     
     func infoCellupdatedAddressAction(model: DGrabItemModel) {
