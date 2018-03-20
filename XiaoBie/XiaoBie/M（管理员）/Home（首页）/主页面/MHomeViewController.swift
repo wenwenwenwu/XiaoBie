@@ -13,32 +13,37 @@ class MHomeViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = gray_F5F5F5
+        
+        navigationItem.titleView = titleView
+        navigationItem.leftBarButtonItem = clockinButtonItem
+        navigationItem.rightBarButtonItem = scratchButtonItem
+        view.addSubview(searchButton)
         view.addSubview(infoView)
+        infoView.addSubview(infoCell)
         view.addSubview(selectView)
         view.addSubview(pageView)
         
-        setupNavigationBar()
+        view.backgroundColor = white_FFFFFF
+
         infoRequest()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.shadowImage = gray_F0F0F0.colorImage()
         clockinHandler.viewShowupEvent(forceDismiss: true)
     }
     
-    //MARK: - Setup
-    func setupNavigationBar() {
-        navigationItem.titleView = titleView
-        
-        navigationItem.leftBarButtonItem = leftButtonItem
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+    //MARK: - Event Response
+    @objc func clockinButtonEvent() {
+        clockinHandler.viewShowupEvent(forceDismiss: false)
+    }
+    
+    @objc func scratchButtonAction() {
+        print("抓单")
+    }
+    
+    @objc func searchButtonAction() {
+        print("搜索")
     }
     
     //MARK: - Request
@@ -47,7 +52,9 @@ class MHomeViewController: UIViewController {
         WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
             let model = DHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
-                self.infoView.model = model.data
+                let infoModel = model.data
+//                self.infoView.model = infoModel
+                
             }else{
                 
             }
@@ -56,12 +63,7 @@ class MHomeViewController: UIViewController {
         }
     }
     
-    //MARK: - Event Response
-    @objc func clockinButtonAction() {
-        clockinHandler.viewShowupEvent(forceDismiss: false)
-    }
-    
-    //MARK: - Private Method
+    //MARK: - Action Method
     func selectViewChangeCurrentIndex(currentIndex: Int) {
         pageView.currentIndex = currentIndex
     }
@@ -71,22 +73,52 @@ class MHomeViewController: UIViewController {
     }
     
     //MARK: - Properties
-    lazy var leftButtonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonAction))
+    lazy var clockinButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonEvent))
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
+        return buttonItem
+    }()
+    
+    lazy var scratchButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem.init(title: "抓单", style: .plain, target: self, action: #selector(scratchButtonAction))
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
+        return buttonItem
+    }()
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
-    lazy var infoView = DHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
     
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待验单", "已验单", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+    
+    lazy var searchButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.adjustsImageWhenHighlighted = false
+        button.frame = CGRect.init(x: 13, y: 10, width: screenWidth-13*2, height: 34)
+        button.titleLabel?.font = font16
+        button.setTitleColor(gray_B3B3B3, for: .normal)
+        button.setBackgroundImage(gray_F5F5F5.colorImage(), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "icon_search"), for: .normal)
+        button.setTitle("搜索", for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-30), 0, (button.width/2-30))
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-35), 0, (button.width/2-35))
+        button.layer.cornerRadius = 2
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var infoView = MHomeInfoView.init(frame: CGRect.init(x: 0, y: searchButton.bottom, width: screenWidth, height: 117))
+    
+    lazy var infoCell = MHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_qianbao"), key1: "已完成", key2: "未完成")
+    
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["位置", "预警"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
-    
-    lazy var toCheckVC = DHomeListViewController.controllerWith(listType: .toCheck)
-    lazy var checkedVC = DHomeListViewController.controllerWith(listType: .checked)
-    lazy var toTestifyVC = DHomeListViewController.controllerWith(listType: .toTestify)
-    lazy var addVC = DHomeListViewController.controllerWith(listType: .add)
-    lazy var completeVC = DHomeListViewController.controllerWith(listType: .complete)
-    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-navigationBarHeight-selectView.bottom-tabbarHeight), VCArray: [toCheckVC, checkedVC, toTestifyVC, addVC, completeVC]) { [weak self] (currentIndex) in
+    //pageView
+    lazy var locationVC = MLocationController()
+    lazy var alertVC = MAlertViewController()
+    lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-navigationBarHeight-selectView.bottom-tabbarHeight), VCArray: [locationVC, alertVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     

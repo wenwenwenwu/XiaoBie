@@ -13,30 +13,33 @@ class CHomeViewController: UIViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = gray_F5F5F5
+        navigationItem.titleView = titleView
+        navigationItem.leftBarButtonItem = clockinButtonItem
+        
+        view.addSubview(infoView)
         view.addSubview(selectView)
         view.addSubview(pageView)
-        setupNavigationBar()
+
+        view.backgroundColor = gray_F5F5F5
+
         infoRequest()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.shadowImage = white_FFFFFF.colorImage()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.shadowImage = gray_F0F0F0.colorImage()
         clockinHandler.viewShowupEvent(forceDismiss: true)
     }
     
-    //MARK: - Setup
-    func setupNavigationBar() {
-        navigationItem.titleView = titleView
+    //MARK: - Event Response
+    @objc func clockinButtonEvent() {
+        clockinHandler.viewShowupEvent(forceDismiss: false)
+    }
+    
+    @objc func addButtonEvent() {
+        let creatVC = DCreatViewController()
+        let creatNav = NavigationController.init(rootViewController: creatVC)
+        present(creatNav, animated: true, completion: nil)
         
-        navigationItem.leftBarButtonItem = leftButtonItem
-        navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
     }
     
     //MARK: - Request
@@ -45,9 +48,9 @@ class CHomeViewController: UIViewController {
         WebTool.post(uri: "get_profile_for_dealer", para: ["staff_id" : staffId], success: { (dict) in
             let model = CHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
-                //更新信息
-                let titleArray = ["待查单(\(model.data.need_query_count))", "待验单(\(model.data.need_verify_count))", "添加营销案(\(model.data.market_count))", "已完成(\(model.data.completed_verify_count))"]
-                self.selectView.titleArray = titleArray
+                let infoModel = model.data
+                self.infoView.model = infoModel
+                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "待验单(\(infoModel.need_verify_count))", "添加营销案(\(infoModel.need_market_count))", "已完成(\(infoModel.completed_count))"]
             }else{
                 
             }
@@ -56,12 +59,7 @@ class CHomeViewController: UIViewController {
         }
     }
     
-    //MARK: - Event Response
-    @objc func clockinButtonAction() {
-        clockinHandler.viewShowupEvent(forceDismiss: false)
-    }
-    
-    //MARK: - Private Method
+    //MARK: - Action Method
     func selectViewChangeCurrentIndex(currentIndex: Int) {
         pageView.currentIndex = currentIndex
     }
@@ -71,11 +69,18 @@ class CHomeViewController: UIViewController {
     }
     
     //MARK: - Properties
-    lazy var leftButtonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonAction))
+    lazy var clockinButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem.init(title: "签到", style: .plain, target: self, action: #selector(clockinButtonEvent))
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .normal)
+        buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
+        return buttonItem
+    }()
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 40), titleArray:  ["待查单", "待验单", "已验单", "二次验证"], sliderWidth: 46) { [weak self] (currentIndex) in
+    lazy var infoView = CHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
+    
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "待验单", "营销案", "已完成"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     //pageView

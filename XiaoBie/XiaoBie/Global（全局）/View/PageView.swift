@@ -48,6 +48,7 @@ class PageView: UIView, UIScrollViewDelegate {
         let scrollView = UIScrollView.init(frame: self.bounds)
         scrollView.backgroundColor = gray_F5F5F5
         scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.bounces = false
         scrollView.delegate = self
         return scrollView

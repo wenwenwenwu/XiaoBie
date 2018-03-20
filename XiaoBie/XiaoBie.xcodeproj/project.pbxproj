@@ -79,6 +79,10 @@
 		5B7CCEC7202808E000C99139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7CCEC6202808E000C99139 /* AppDelegate.swift */; };
 		5B7CCECE202808E000C99139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B7CCECD202808E000C99139 /* Assets.xcassets */; };
 		5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7D3A922047E618004CC761 /* DToCheckModel.swift */; };
+		5B86DE972060B02D005BE448 /* MHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE962060B02D005BE448 /* MHomeView.swift */; };
+		5B86DE992060C4B2005BE448 /* MLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE982060C4B2005BE448 /* MLocationController.swift */; };
+		5B86DE9D2060C50F005BE448 /* MAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9C2060C50F005BE448 /* MAlertController.swift */; };
+		5B86DE9F2060D612005BE448 /* CHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9E2060D612005BE448 /* CHomeView.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
@@ -319,6 +323,10 @@
 		5B7CCEC6202808E000C99139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B7CCECD202808E000C99139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B7D3A922047E618004CC761 /* DToCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckModel.swift; sourceTree = "<group>"; };
+		5B86DE962060B02D005BE448 /* MHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHomeView.swift; sourceTree = "<group>"; };
+		5B86DE982060C4B2005BE448 /* MLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationController.swift; sourceTree = "<group>"; };
+		5B86DE9C2060C50F005BE448 /* MAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertController.swift; sourceTree = "<group>"; };
+		5B86DE9E2060D612005BE448 /* CHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeView.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
@@ -708,6 +716,8 @@
 		5B48A82620469F9600CA563A /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
+				5B86DE9B2060C4FE005BE448 /* 预警 */,
+				5B86DE9A2060C4C1005BE448 /* 位置 */,
 				5BF520B62057AAE100E2C496 /* 主页面 */,
 			);
 			path = "Home（首页）";
@@ -1044,6 +1054,22 @@
 				5B7CCECD202808E000C99139 /* Assets.xcassets */,
 			);
 			path = XiaoBie;
+			sourceTree = "<group>";
+		};
+		5B86DE9A2060C4C1005BE448 /* 位置 */ = {
+			isa = PBXGroup;
+			children = (
+				5B86DE982060C4B2005BE448 /* MLocationController.swift */,
+			);
+			path = "位置";
+			sourceTree = "<group>";
+		};
+		5B86DE9B2060C4FE005BE448 /* 预警 */ = {
+			isa = PBXGroup;
+			children = (
+				5B86DE9C2060C50F005BE448 /* MAlertController.swift */,
+			);
+			path = "预警";
 			sourceTree = "<group>";
 		};
 		5B9854C32047A69600C449C3 /* 待查单 */ = {
@@ -1767,6 +1793,7 @@
 			isa = PBXGroup;
 			children = (
 				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
+				5B86DE962060B02D005BE448 /* MHomeView.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -1784,6 +1811,7 @@
 			isa = PBXGroup;
 			children = (
 				5B48A8322046A23200CA563A /* CHomeViewController.swift */,
+				5B86DE9E2060D612005BE448 /* CHomeView.swift */,
 				5BF520BD2057BD8000E2C496 /* CHomeModel.swift */,
 			);
 			path = "主页面";
@@ -2042,9 +2070,11 @@
 				5B5B8D6E20493E12002484EE /* DDriverListView.swift in Sources */,
 				5BDE11CF20565F50008D68EC /* NIMKitKeyboardInfo.m in Sources */,
 				5BDE11ED20565F50008D68EC /* NIMFileContentConfig.m in Sources */,
+				5B86DE9F2060D612005BE448 /* CHomeView.swift in Sources */,
 				5BDE11B420565F50008D68EC /* NIMKitTimerHolder.m in Sources */,
 				5B4CFDA4202D3D9F009D44F1 /* Alert.swift in Sources */,
 				5BDE11E120565F50008D68EC /* NIMTeamCardHeaderCell.m in Sources */,
+				5B86DE9D2060C50F005BE448 /* MAlertController.swift in Sources */,
 				5B48A823204692D200CA563A /* MTabBarController.swift in Sources */,
 				5B2CC9C0205A417400A25991 /* DCheckedPopView.swift in Sources */,
 				5BDE11F220565F50008D68EC /* NIMTipContentConfig.m in Sources */,
@@ -2054,6 +2084,7 @@
 				5BDE11F620565F50008D68EC /* NIMBaseSessionContentConfig.m in Sources */,
 				5BDE11C320565F50008D68EC /* NIMInputToolBar.m in Sources */,
 				5BDE122120565F50008D68EC /* NIMKitColorButtonCell.m in Sources */,
+				5B86DE992060C4B2005BE448 /* MLocationController.swift in Sources */,
 				5B76B11920527AF60024E687 /* DCreatSetLevelViewController.swift in Sources */,
 				5BF3A891204E33A500B76278 /* DPayViewController.swift in Sources */,
 				5BDE11BE20565F50008D68EC /* NIMInputMoreContainerView.m in Sources */,
@@ -2067,6 +2098,7 @@
 				5B4CFDA5202D3D9F009D44F1 /* NavigationController.swift in Sources */,
 				5B5B8D692049314A002484EE /* SetListModel.swift in Sources */,
 				5BDE11D120565F50008D68EC /* NIMLoadProgressView.m in Sources */,
+				5B86DE972060B02D005BE448 /* MHomeView.swift in Sources */,
 				5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */,
 				5BDE11EA20565F50008D68EC /* NIMSessionListViewController.m in Sources */,
 				5BDE121220565F50008D68EC /* NIMSessionViewController.m in Sources */,

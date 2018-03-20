@@ -27,11 +27,14 @@ class CHomeInfoResponseModel: NSObject,YYModel {
 }
 
 class CHomeInfoModel: NSObject {
-    
+
+    @objc var totay_count = ""
+    @objc var month_count = ""
+    @objc var payment = ""
+    @objc var valuation = ""
     @objc var need_query_count = ""
     @objc var need_verify_count = ""
-    @objc var completed_verify_count = ""
-    @objc var need_second_verify_count = ""
-    @objc var market_count = ""
+    @objc var completed_count = ""
+    @objc var need_market_count = ""
 }
 
