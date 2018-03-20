@@ -83,6 +83,8 @@
 		5B86DE992060C4B2005BE448 /* MLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE982060C4B2005BE448 /* MLocationController.swift */; };
 		5B86DE9D2060C50F005BE448 /* MAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9C2060C50F005BE448 /* MAlertController.swift */; };
 		5B86DE9F2060D612005BE448 /* CHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9E2060D612005BE448 /* CHomeView.swift */; };
+		5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA02060DC0D005BE448 /* MLocationView.swift */; };
+		5B86DEA32060E10F005BE448 /* MLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA22060E10F005BE448 /* MLocationModel.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
@@ -327,6 +329,8 @@
 		5B86DE982060C4B2005BE448 /* MLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationController.swift; sourceTree = "<group>"; };
 		5B86DE9C2060C50F005BE448 /* MAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertController.swift; sourceTree = "<group>"; };
 		5B86DE9E2060D612005BE448 /* CHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeView.swift; sourceTree = "<group>"; };
+		5B86DEA02060DC0D005BE448 /* MLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationView.swift; sourceTree = "<group>"; };
+		5B86DEA22060E10F005BE448 /* MLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationModel.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
@@ -716,9 +720,9 @@
 		5B48A82620469F9600CA563A /* Home（首页） */ = {
 			isa = PBXGroup;
 			children = (
-				5B86DE9B2060C4FE005BE448 /* 预警 */,
-				5B86DE9A2060C4C1005BE448 /* 位置 */,
 				5BF520B62057AAE100E2C496 /* 主页面 */,
+				5B86DE9A2060C4C1005BE448 /* 位置 */,
+				5B86DE9B2060C4FE005BE448 /* 预警 */,
 			);
 			path = "Home（首页）";
 			sourceTree = "<group>";
@@ -1060,6 +1064,8 @@
 			isa = PBXGroup;
 			children = (
 				5B86DE982060C4B2005BE448 /* MLocationController.swift */,
+				5B86DEA02060DC0D005BE448 /* MLocationView.swift */,
+				5B86DEA22060E10F005BE448 /* MLocationModel.swift */,
 			);
 			path = "位置";
 			sourceTree = "<group>";
@@ -2009,6 +2015,7 @@
 				5BDB5038202C52DA0055C21E /* DSetupView.swift in Sources */,
 				5BDE11C720565F50008D68EC /* NIMGrowingInternalTextView.m in Sources */,
 				5BDE120920565F50008D68EC /* NIMSessionNetChatNotifyContentView.m in Sources */,
+				5B86DEA32060E10F005BE448 /* MLocationModel.swift in Sources */,
 				5BDE11AF20565F50008D68EC /* NIMContactSelectTabView.m in Sources */,
 				5BDE121B20565F50008D68EC /* NIMKitDataProviderImpl.m in Sources */,
 				5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */,
@@ -2163,6 +2170,7 @@
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
 				5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */,
 				5BDE11F420565F50008D68EC /* NIMTextContentConfig.m in Sources */,
+				5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5BDE121D20565F50008D68EC /* NIMCommonTableDelegate.m in Sources */,
 				5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */,
