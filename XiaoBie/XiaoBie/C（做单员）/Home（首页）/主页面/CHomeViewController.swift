@@ -22,6 +22,10 @@ class CHomeViewController: UIViewController {
 
         view.backgroundColor = gray_F5F5F5
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         infoRequest()
     }
     

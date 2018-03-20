@@ -15,8 +15,11 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
+        view.addSubview(whiteView)
+        whiteView.addSubview(cancelButton)
+        whiteView.addSubview(lineView)
         remindButton.isEnabled = false
-        view.addSubview(remindButton)
+        whiteView.addSubview(remindButton)
         setupNavigationBar()
         setupFrame()
     }
@@ -24,6 +27,12 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     //MARK: - Event Response
     @objc func chatButtonAction() {
         print("聊天")
+    }
+    
+    @objc func cancelButtonAction() {
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, buttons: ["确定"]) { _ in
+            self.cancelRequest()
+        }
     }
     
     @objc func remindButtonAction() {
@@ -48,6 +57,18 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    func cancelRequest() {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func remindRequest() {
         WebTool.get(uri:"notify_query_order", para:["order_id": model.id,  "dealer_id":currentClerk.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
@@ -66,6 +87,8 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         switch section {
         case 2:
             return clerkListArray.count
+        case 1:
+            return (model.statusType == .querying) ? 0 : 1
         default:
             return 1
         }
@@ -137,14 +160,30 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func setupFrame() {
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
+            make.left.top.right.equalToSuperview()
+            make.bottom.equalTo(whiteView.snp.top)
+        }
+        
+        whiteView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalToSuperview()
+            make.height.equalTo(44)
+        }
+        
+        cancelButton.snp.makeConstraints { (make) in
+            make.top.left.bottom.equalToSuperview()
+            make.right.equalTo(lineView.snp.left)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.left.equalTo(screenWidth / 2)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(1)
+            make.height.equalTo(17)
         }
         
         remindButton.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
-            make.right.equalTo(-13)
-            make.bottom.equalTo(-10)
-            make.height.equalTo(36)
+            make.top.right.bottom.equalToSuperview()
+            make.left.equalTo(lineView.snp.right)
         }
     }
     
@@ -160,17 +199,56 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         return tableView
     }()
     
+//    lazy var cancelButton: UIButton = {
+//        let button = UIButton.init(type: .custom)
+//        button.titleLabel?.font = font14
+//        button.setTitle("现场验证", for: .normal)
+//        button.setTitleColor(blue_3899F7, for: .normal)
+//        button.addTarget(self, action: #selector(liveButtonAction), for: .touchUpInside)
+//        return button
+//    }()
+    
+//    lazy var remindButton: UIButton = {
+//        let button = UIButton.init(type: .custom)
+//        button.titleLabel?.font = font14
+//        button.setTitle("提醒查单", for: .normal)
+//        button.setTitleColor(white_FFFFFF, for: .normal)
+//        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
+//        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
+//        button.layer.cornerRadius = 2
+//        button.clipsToBounds = true
+//        button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
+//        return button
+//    }()
+    lazy var whiteView: UIView = {
+        let view = UIView()
+        view.backgroundColor = white_FFFFFF
+        return view
+    }()
+    
+    lazy var cancelButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.titleLabel?.font = font14
+        button.setTitle("客户取消", for: .normal)
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var remindButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
         button.setTitle("提醒查单", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.setTitleColor(gray_999999, for: .disabled)
         button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
         return button
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_D9D9D9
+        return view
     }()
 
     var model = DGrabItemModel()

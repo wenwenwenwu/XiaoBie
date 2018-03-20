@@ -162,7 +162,7 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
     //MARK: - Properties
     lazy var costKeyLabel: UILabel = {
         let label = UILabel()
-        label.text = "平均消费"
+        label.text = "平均话费"
         label.font = font14
         label.textColor = gray_999999
         return label

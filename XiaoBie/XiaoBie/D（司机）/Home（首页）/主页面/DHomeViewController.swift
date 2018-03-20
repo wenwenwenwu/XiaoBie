@@ -20,6 +20,10 @@ class DHomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftButtonItem
         navigationItem.rightBarButtonItem = rightButtonItem
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         infoRequest()
     }
     

@@ -150,7 +150,7 @@ class DHomeListCell: UITableViewCell {
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
             //costLabel
-            costLabel.text = "平均消费 \(model.average_cost) 元"
+            costLabel.text = "平均话费 \(model.average_cost) 元"
             //addressLabel
             addressLabel.text = model.address
             //paymentLabel
