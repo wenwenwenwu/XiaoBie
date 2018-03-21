@@ -91,6 +91,7 @@
 		5B86DEB220610635005BE448 /* MCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB120610635005BE448 /* MCompleteViewController.swift */; };
 		5B86DEB42061E9E2005BE448 /* MCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB32061E9E2005BE448 /* MCompleteView.swift */; };
 		5B86DEB62061EE85005BE448 /* MCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB52061EE85005BE448 /* MCompleteModel.swift */; };
+		5B86DEB82062055B005BE448 /* MToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB72062055B005BE448 /* MToCheckView.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
@@ -343,6 +344,7 @@
 		5B86DEB120610635005BE448 /* MCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteViewController.swift; sourceTree = "<group>"; };
 		5B86DEB32061E9E2005BE448 /* MCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteView.swift; sourceTree = "<group>"; };
 		5B86DEB52061EE85005BE448 /* MCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteModel.swift; sourceTree = "<group>"; };
+		5B86DEB72062055B005BE448 /* MToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToCheckView.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
@@ -1106,6 +1108,7 @@
 			isa = PBXGroup;
 			children = (
 				5B86DEA62060F8E7005BE448 /* MToCheckViewController.swift */,
+				5B86DEB72062055B005BE448 /* MToCheckView.swift */,
 			);
 			path = "待查单";
 			sourceTree = "<group>";
@@ -2236,6 +2239,7 @@
 				5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5BDE121D20565F50008D68EC /* NIMCommonTableDelegate.m in Sources */,
+				5B86DEB82062055B005BE448 /* MToCheckView.swift in Sources */,
 				5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */,
 				5BDE120E20565F50008D68EC /* NIMSessionMessageContentView.m in Sources */,
 				5BDE11BC20565F50008D68EC /* NIMInputEmoticonParser.m in Sources */,

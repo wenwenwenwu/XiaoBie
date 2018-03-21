@@ -199,27 +199,6 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         return tableView
     }()
     
-//    lazy var cancelButton: UIButton = {
-//        let button = UIButton.init(type: .custom)
-//        button.titleLabel?.font = font14
-//        button.setTitle("现场验证", for: .normal)
-//        button.setTitleColor(blue_3899F7, for: .normal)
-//        button.addTarget(self, action: #selector(liveButtonAction), for: .touchUpInside)
-//        return button
-//    }()
-    
-//    lazy var remindButton: UIButton = {
-//        let button = UIButton.init(type: .custom)
-//        button.titleLabel?.font = font14
-//        button.setTitle("提醒查单", for: .normal)
-//        button.setTitleColor(white_FFFFFF, for: .normal)
-//        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-//        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
-//        button.layer.cornerRadius = 2
-//        button.clipsToBounds = true
-//        button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
-//        return button
-//    }()
     lazy var whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = white_FFFFFF

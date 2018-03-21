@@ -38,6 +38,10 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
         view.addSubview(tableView)
         self.setupBlankView(isBlank: true, blankViewType: nil)
         setupFrame()//frame并不是screenBounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadRequest()
     }
     
@@ -116,7 +120,7 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CHomeListCell
-//        cell.model.statusType = .contact
+//        cell.model.statusType = .toCheck
         switch listType {
         case .toCheck:
             let toCheckVC = MToCheckViewController()
@@ -128,10 +132,10 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             navigationController?.pushViewController(toTestifyVC, animated: true)
         case .toAdd:
             let toAddVC = MAddViewController()
-//            toCheckVC.model = cell.model
+            toAddVC.model = cell.model
             navigationController?.pushViewController(toAddVC, animated: true)
         case .complete:
-            let completeVC = MCompleteViewController()
+            let completeVC = MAddViewController()
             completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)
         }

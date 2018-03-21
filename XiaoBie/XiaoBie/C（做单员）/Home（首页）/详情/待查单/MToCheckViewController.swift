@@ -8,97 +8,98 @@
 
 import UIKit
 
-class MToCheckViewController: UIViewController {
+class MToCheckViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = chatButtonItem
+        view.addSubview(tableView)
+        view.addSubview(whiteView)
+        whiteView.addSubview(liveButton)
+        whiteView.addSubview(grayLine1)
+        whiteView.addSubview(yesButton)
+        whiteView.addSubview(grayLine2)
+        whiteView.addSubview(noButton)
+        
         navigationItem.title = "待查单"
-        navigationItem.rightBarButtonItem = chatBarButtonItem
-        view.addSubview(whiteView1)
-        whiteView1.addSubview(nameKeyLabel)
-        whiteView1.addSubview(nameValueLabel)
-        whiteView1.addSubview(phoneKeyLabel)
-        whiteView1.addSubview(phoneValueLabel)
-        whiteView1.addSubview(setKeyLabel)
-        whiteView1.addSubview(setValueLabel)
-        view.addSubview(whiteView2)
-        whiteView2.addSubview(liveButton)
-        whiteView2.addSubview(grayLine1)
-        whiteView2.addSubview(yesButton)
-        whiteView2.addSubview(grayLine2)
-        whiteView2.addSubview(noButton)
-        view.backgroundColor = gray_F5F5F5
+        view.backgroundColor = white_FFFFFF
         setupFrame()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    deinit {
+        print("🐱")
     }
     
-    //MARK: - Action
+    //MARK: - Event Response
     @objc func chatButtonAction() {
         print("聊天")
     }
     
     @objc func liveButtonAction() {
-        print("现场验证")
+        checkOrderRequest(targetStatus: "10")
     }
     
     @objc func yesButtonAction() {
-        print("有此活动")
+        checkOrderRequest(targetStatus: "9")
+    }
+    
+    @objc func noButtonAction() {
+        checkOrderRequest(targetStatus: "3")
+    }
+    
+    //MARK: - Request
+    func checkOrderRequest(targetStatus: String) {
+        WebTool.post(uri: "check_order_by_dealer",para: ["target_status": targetStatus,"order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    //MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let infoCell = MToCheckInfoCell.cellWith(tableView: tableView)
+        infoCell.model = model
+        return infoCell
+    }
+    
+    //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 96
     }
 
-    @objc func noButtonAction() {
-        print("无此活动")
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     //MARK: - Setup
     func setupFrame() {
-        whiteView1.snp.makeConstraints { (make) in
-            make.top.equalTo(10)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(96)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
         
-        //key
-        nameKeyLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(nameValueLabel)
-            make.left.equalTo(14)
-            make.height.equalTo(14)
-        }
-        
-        phoneKeyLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(phoneValueLabel)
-            make.left.equalTo(14)
-            make.height.equalTo(14)
-        }
-        
-        setKeyLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(setValueLabel)
-            make.left.equalTo(14)
-            make.height.equalTo(14)
-        }
-        //value
-        nameValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(16)
-            make.left.equalTo(nameKeyLabel.snp.right).offset(16)
-            make.height.equalTo(15)
-        }
-        
-        phoneValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(nameValueLabel.snp.bottom).offset(12)
-            make.left.equalTo(phoneKeyLabel.snp.right).offset(16)
-            make.height.equalTo(15)
-        }
-        
-        setValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneValueLabel.snp.bottom).offset(12)
-            make.left.equalTo(setKeyLabel.snp.right).offset(16)
-            make.height.equalTo(15)
-        }
-        
-        whiteView2.snp.makeConstraints { (make) in
+        whiteView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
             make.height.equalTo(44)
         }
@@ -132,69 +133,26 @@ class MToCheckViewController: UIViewController {
             make.top.bottom.right.equalToSuperview()
             make.left.equalTo(grayLine2.snp.right)
         }
-        
     }
     
     //MARK: - Properties
-    lazy var chatBarButtonItem: UIBarButtonItem = {
+    lazy var chatButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
         barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
         barButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
         return barButtonItem
     }()
     
-    lazy var whiteView1: UIView = {
-        let view = UIView()
-        view.backgroundColor = white_FFFFFF
-        return view
+    lazy var tableView: UITableView = {
+        let tableView = UITableView.init(frame: screenBounds, style: .grouped)
+        tableView.backgroundColor = gray_F5F5F5
+        tableView.separatorStyle = .none
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
     }()
     
-    lazy var nameKeyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "客户姓名"
-        label.font = font14
-        label.textColor = gray_999999
-        return label
-    }()
-    
-    lazy var nameValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
-    lazy var phoneKeyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "联系方式"
-        label.font = font14
-        label.textColor = gray_999999
-        return label
-    }()
-    
-    lazy var phoneValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
-    lazy var setKeyLabel: UILabel = {
-        let label = UILabel()
-        label.text = "套餐档位"
-        label.font = font14
-        label.textColor = gray_999999
-        return label
-    }()
-    
-    lazy var setValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
-    lazy var whiteView2: UIView = {
+    lazy var whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = white_FFFFFF
         return view
@@ -239,12 +197,5 @@ class MToCheckViewController: UIViewController {
         return view
     }()
     
-    var model = DGrabItemModel() {
-        didSet {
-            nameValueLabel.text = model.user_name
-            phoneValueLabel.text = model.phone1
-            setValueLabel.text = model.gtcdw
-        }
-    }
-    
+    var model = DGrabItemModel()
 }
