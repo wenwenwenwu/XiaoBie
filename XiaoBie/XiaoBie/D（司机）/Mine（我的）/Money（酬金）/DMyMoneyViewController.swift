@@ -121,7 +121,7 @@ class DMyMoneyViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Event Response
     @objc func cashButtonAction() {
-        Alert.showAlertWith(style: .alert, controller: self, title: "确认申请提现(清零总结算)？", message: nil, buttons: ["确定"]) { _ in
+        Alert.showAlertWith(style: .alert, controller: self, title: "确认申请提现(清零总结算)？", message: nil, functionButtons: ["确定"]) { _ in
             self.cashRequest()
         }
     }

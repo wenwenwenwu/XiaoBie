@@ -92,7 +92,7 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
             device.unlockForConfiguration()
             
         }catch _ as NSError{
-            Alert.showAlertWith(style: .alert, controller: self, title: "提醒", message: "请在iPhone的\"设置-隐私-相机\"选项中,允许本程序访问您的相机", buttons: ["确定"], closure: { _ in })
+            Alert.showAlertWith(style: .alert, controller: self, title: "提醒", message: "请在iPhone的\"设置-隐私-相机\"选项中,允许本程序访问您的相机", functionButtons: ["确定"], closure: { _ in })
         }
     }
     

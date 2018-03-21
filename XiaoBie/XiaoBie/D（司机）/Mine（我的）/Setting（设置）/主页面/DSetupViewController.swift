@@ -25,7 +25,7 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: - Event Response
     func clearCellAction() {
         //提示清空缓存
-        Alert.showAlertWith(style: .alert, controller: self, title: "确定清空缓存吗", message: nil, buttons: ["确定"]) { _ in
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定清空缓存吗", message: nil, functionButtons: ["确定"]) { _ in
             //清空硬盘缓存
             CacheTool.clearCache()
             //刷新数据

@@ -106,6 +106,7 @@
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
 		5BCBC7912062309F0015C3B1 /* MToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */; };
+		5BCBC793206243550015C3B1 /* MTOTestifyPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */; };
 		5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEFA44205122DE00CA059F /* DCodeView.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
@@ -362,6 +363,7 @@
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
 		5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToTestifyView.swift; sourceTree = "<group>"; };
+		5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTOTestifyPopView.swift; sourceTree = "<group>"; };
 		5BCEFA44205122DE00CA059F /* DCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeView.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -1120,6 +1122,7 @@
 			children = (
 				5B86DEAD20610619005BE448 /* MToTestifyViewController.swift */,
 				5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */,
+				5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */,
 			);
 			path = "待验单";
 			sourceTree = "<group>";
@@ -2247,6 +2250,7 @@
 				5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */,
 				5BDE120E20565F50008D68EC /* NIMSessionMessageContentView.m in Sources */,
 				5BDE11BC20565F50008D68EC /* NIMInputEmoticonParser.m in Sources */,
+				5BCBC793206243550015C3B1 /* MTOTestifyPopView.swift in Sources */,
 				5BDE11AE20565F50008D68EC /* NIMContactPickedView.m in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,

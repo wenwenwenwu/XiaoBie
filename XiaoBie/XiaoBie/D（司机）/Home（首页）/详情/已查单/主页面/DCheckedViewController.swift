@@ -36,7 +36,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func cancelButtonAction() {
-        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, buttons: ["确定"]) { _ in
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, functionButtons: ["确定"]) { _ in
             self.cancelRequest()
         }
     }
