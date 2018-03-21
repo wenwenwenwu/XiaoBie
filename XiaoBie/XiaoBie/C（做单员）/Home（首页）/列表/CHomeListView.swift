@@ -137,8 +137,7 @@ class CHomeListCell: UITableViewCell {
             //nameLabel
             nameLabel.text = model.user_name
             //addressLabel
-//            addressLabel.text = model.address
-            addressLabel.text = "杭州市西湖区杭大路38号1单元402室杭州市西湖区杭大路38号1单元402室"
+            addressLabel.text = model.address
             //statusLabel
             var statusStr = ""
             switch model.statusType {

@@ -41,11 +41,11 @@ class MToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @objc func yesButtonAction() {
-        checkOrderRequest(targetStatus: "9")
+        checkOrderRequest(targetStatus: "3")
     }
     
     @objc func noButtonAction() {
-        checkOrderRequest(targetStatus: "3")
+        checkOrderRequest(targetStatus: "9")
     }
     
     //MARK: - Request

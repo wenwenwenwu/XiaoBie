@@ -21,7 +21,7 @@ class MAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
         whiteView.addSubview(grayLine)
         whiteView.addSubview(noButton)
         
-        navigationItem.title = "待验单"
+        navigationItem.title = "待完成"
         view.backgroundColor = white_FFFFFF
         setupFrame()
         
