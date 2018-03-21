@@ -132,7 +132,7 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             navigationController?.pushViewController(toAddVC, animated: true)
         case .complete:
             let completeVC = MCompleteViewController()
-//            toCheckVC.model = cell.model
+            completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)
         }
         

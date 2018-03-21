@@ -172,6 +172,9 @@ class DGrabItemModel: NSObject {
     @objc var user_name = ""
     @objc var shipping_method = ""
     @objc var generate_type = ""
+    @objc var serial_no = ""
+    @objc var order_queryer_id = ""
+    @objc var project_id = ""
 
     //自定义
     var statusType: DHomeStatusType = .toCheck
