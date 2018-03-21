@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MToCheckInfoCell: UITableViewCell {
+class CToCheckInfoCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -30,13 +30,13 @@ class MToCheckInfoCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MToCheckInfoCell{
+    class func cellWith(tableView : UITableView) -> CToCheckInfoCell{
         let reuseIdentifier = "infoCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MToCheckInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = CToCheckInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MToCheckInfoCell
+        return cell as! CToCheckInfoCell
     }
     
     //MARK: - Setup

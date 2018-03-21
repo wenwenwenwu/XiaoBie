@@ -1,5 +1,5 @@
 //
-//  MToCheckViewController.swift
+//  CToCheckViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MToCheckViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CToCheckViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -67,7 +67,7 @@ class MToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let infoCell = MToCheckInfoCell.cellWith(tableView: tableView)
+        let infoCell = CToCheckInfoCell.cellWith(tableView: tableView)
         infoCell.model = model
         return infoCell
     }

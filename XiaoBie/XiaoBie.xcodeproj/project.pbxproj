@@ -85,13 +85,13 @@
 		5B86DE9F2060D612005BE448 /* CHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9E2060D612005BE448 /* CHomeView.swift */; };
 		5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA02060DC0D005BE448 /* MLocationView.swift */; };
 		5B86DEA32060E10F005BE448 /* MLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA22060E10F005BE448 /* MLocationModel.swift */; };
-		5B86DEA72060F8E7005BE448 /* MToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA62060F8E7005BE448 /* MToCheckViewController.swift */; };
-		5B86DEAE20610619005BE448 /* MToTestifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEAD20610619005BE448 /* MToTestifyViewController.swift */; };
+		5B86DEA72060F8E7005BE448 /* CToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */; };
+		5B86DEAE20610619005BE448 /* CToTestifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */; };
 		5B86DEB020610629005BE448 /* MAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEAF20610629005BE448 /* MAddViewController.swift */; };
 		5B86DEB220610635005BE448 /* MCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB120610635005BE448 /* MCompleteViewController.swift */; };
 		5B86DEB42061E9E2005BE448 /* MCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB32061E9E2005BE448 /* MCompleteView.swift */; };
 		5B86DEB62061EE85005BE448 /* MCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB52061EE85005BE448 /* MCompleteModel.swift */; };
-		5B86DEB82062055B005BE448 /* MToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB72062055B005BE448 /* MToCheckView.swift */; };
+		5B86DEB82062055B005BE448 /* CToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB72062055B005BE448 /* CToCheckView.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
@@ -105,8 +105,9 @@
 		5BB90CF92030345300F6CD9E /* DMyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */; };
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
-		5BCBC7912062309F0015C3B1 /* MToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */; };
-		5BCBC793206243550015C3B1 /* MTOTestifyPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */; };
+		5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */; };
+		5BCBC793206243550015C3B1 /* CToTestifyPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* CToTestifyPopView.swift */; };
+		5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC79820625E6C0015C3B1 /* PushModel.swift */; };
 		5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEFA44205122DE00CA059F /* DCodeView.swift */; };
 		5BDB502C202C1D2C0055C21E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502B202C1D2C0055C21E /* LoginViewController.swift */; };
 		5BDB502E202C1D570055C21E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB502D202C1D570055C21E /* LoginView.swift */; };
@@ -340,13 +341,13 @@
 		5B86DE9E2060D612005BE448 /* CHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeView.swift; sourceTree = "<group>"; };
 		5B86DEA02060DC0D005BE448 /* MLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationView.swift; sourceTree = "<group>"; };
 		5B86DEA22060E10F005BE448 /* MLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationModel.swift; sourceTree = "<group>"; };
-		5B86DEA62060F8E7005BE448 /* MToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToCheckViewController.swift; sourceTree = "<group>"; };
-		5B86DEAD20610619005BE448 /* MToTestifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToTestifyViewController.swift; sourceTree = "<group>"; };
+		5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckViewController.swift; sourceTree = "<group>"; };
+		5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyViewController.swift; sourceTree = "<group>"; };
 		5B86DEAF20610629005BE448 /* MAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAddViewController.swift; sourceTree = "<group>"; };
 		5B86DEB120610635005BE448 /* MCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteViewController.swift; sourceTree = "<group>"; };
 		5B86DEB32061E9E2005BE448 /* MCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteView.swift; sourceTree = "<group>"; };
 		5B86DEB52061EE85005BE448 /* MCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCompleteModel.swift; sourceTree = "<group>"; };
-		5B86DEB72062055B005BE448 /* MToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToCheckView.swift; sourceTree = "<group>"; };
+		5B86DEB72062055B005BE448 /* CToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckView.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
@@ -362,8 +363,9 @@
 		5BB90CF82030345300F6CD9E /* DMyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyPhoneViewController.swift; sourceTree = "<group>"; };
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
-		5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MToTestifyView.swift; sourceTree = "<group>"; };
-		5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTOTestifyPopView.swift; sourceTree = "<group>"; };
+		5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyView.swift; sourceTree = "<group>"; };
+		5BCBC792206243550015C3B1 /* CToTestifyPopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyPopView.swift; sourceTree = "<group>"; };
+		5BCBC79820625E6C0015C3B1 /* PushModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
 		5BCEFA44205122DE00CA059F /* DCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeView.swift; sourceTree = "<group>"; };
 		5BDB502B202C1D2C0055C21E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5BDB502D202C1D570055C21E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -929,6 +931,7 @@
 		5B51FAD820293D0E001AB946 /* Global（全局） */ = {
 			isa = PBXGroup;
 			children = (
+				5BCBC79420625E4C0015C3B1 /* Model */,
 				5BDE107F20565F4F008D68EC /* NIMKit */,
 				5B4CFDA1202D3D9F009D44F1 /* Controler */,
 				5B4CFD9F202D3D9F009D44F1 /* View */,
@@ -1111,8 +1114,8 @@
 		5B86DEA52060F8D5005BE448 /* 待查单 */ = {
 			isa = PBXGroup;
 			children = (
-				5B86DEA62060F8E7005BE448 /* MToCheckViewController.swift */,
-				5B86DEB72062055B005BE448 /* MToCheckView.swift */,
+				5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */,
+				5B86DEB72062055B005BE448 /* CToCheckView.swift */,
 			);
 			path = "待查单";
 			sourceTree = "<group>";
@@ -1120,9 +1123,9 @@
 		5B86DEAA206105E7005BE448 /* 待验单 */ = {
 			isa = PBXGroup;
 			children = (
-				5B86DEAD20610619005BE448 /* MToTestifyViewController.swift */,
-				5BCBC7902062309F0015C3B1 /* MToTestifyView.swift */,
-				5BCBC792206243550015C3B1 /* MTOTestifyPopView.swift */,
+				5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */,
+				5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */,
+				5BCBC792206243550015C3B1 /* CToTestifyPopView.swift */,
 			);
 			path = "待验单";
 			sourceTree = "<group>";
@@ -1219,6 +1222,14 @@
 				5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */,
 			);
 			path = "列表";
+			sourceTree = "<group>";
+		};
+		5BCBC79420625E4C0015C3B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BCBC79820625E6C0015C3B1 /* PushModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		5BDB5033202C521A0055C21E /* 主页面 */ = {
@@ -2164,7 +2175,7 @@
 				5B86DE992060C4B2005BE448 /* MLocationController.swift in Sources */,
 				5B76B11920527AF60024E687 /* DCreatSetLevelViewController.swift in Sources */,
 				5BF3A891204E33A500B76278 /* DPayViewController.swift in Sources */,
-				5B86DEAE20610619005BE448 /* MToTestifyViewController.swift in Sources */,
+				5B86DEAE20610619005BE448 /* CToTestifyViewController.swift in Sources */,
 				5BDE11BE20565F50008D68EC /* NIMInputMoreContainerView.m in Sources */,
 				5B0B7EC4202B03DB004CCCB8 /* LocationTool.swift in Sources */,
 				5BDE11DF20565F50008D68EC /* NIMTeamAnnouncementListCell.m in Sources */,
@@ -2209,8 +2220,8 @@
 				5BDE11FF20565F50008D68EC /* NIMKitLocationPoint.m in Sources */,
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
 				5BDE11CD20565F50008D68EC /* NIMPageView.m in Sources */,
-				5B86DEA72060F8E7005BE448 /* MToCheckViewController.swift in Sources */,
-				5BCBC7912062309F0015C3B1 /* MToTestifyView.swift in Sources */,
+				5B86DEA72060F8E7005BE448 /* CToCheckViewController.swift in Sources */,
+				5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */,
 				5BDE121620565F50008D68EC /* UITableView+NIMScrollToBottom.m in Sources */,
 				5BDE11E020565F50008D68EC /* NIMTeamMemberCardHeaderCell.m in Sources */,
 				5BDE11FA20565F50008D68EC /* NIMSessionMsgDatasource.m in Sources */,
@@ -2241,16 +2252,17 @@
 				5BDE121120565F50008D68EC /* NIMLocationViewController.m in Sources */,
 				5BDE121F20565F50008D68EC /* NIMKitSwitcherCell.m in Sources */,
 				5B48A8312046A08100CA563A /* MMineViewController.swift in Sources */,
+				5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */,
 				5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */,
 				5BDE11F420565F50008D68EC /* NIMTextContentConfig.m in Sources */,
 				5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5BDE121D20565F50008D68EC /* NIMCommonTableDelegate.m in Sources */,
-				5B86DEB82062055B005BE448 /* MToCheckView.swift in Sources */,
+				5B86DEB82062055B005BE448 /* CToCheckView.swift in Sources */,
 				5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */,
 				5BDE120E20565F50008D68EC /* NIMSessionMessageContentView.m in Sources */,
 				5BDE11BC20565F50008D68EC /* NIMInputEmoticonParser.m in Sources */,
-				5BCBC793206243550015C3B1 /* MTOTestifyPopView.swift in Sources */,
+				5BCBC793206243550015C3B1 /* CToTestifyPopView.swift in Sources */,
 				5BDE11AE20565F50008D68EC /* NIMContactPickedView.m in Sources */,
 				5B7D3A932047E618004CC761 /* DToCheckModel.swift in Sources */,
 				5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */,

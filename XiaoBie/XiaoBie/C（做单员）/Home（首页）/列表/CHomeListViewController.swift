@@ -123,11 +123,11 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
 //        cell.model.statusType = .toCheck
         switch listType {
         case .toCheck:
-            let toCheckVC = MToCheckViewController()
+            let toCheckVC = CToCheckViewController()
             toCheckVC.model = cell.model
             navigationController?.pushViewController(toCheckVC, animated: true)
         case .toTestify:
-            let toTestifyVC = MToTestifyViewController()
+            let toTestifyVC = CToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
         case .toAdd:
@@ -135,7 +135,7 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             toAddVC.model = cell.model
             navigationController?.pushViewController(toAddVC, animated: true)
         case .complete:
-            let completeVC = MToTestifyViewController()
+            let completeVC = CToTestifyViewController()
             completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)
         }

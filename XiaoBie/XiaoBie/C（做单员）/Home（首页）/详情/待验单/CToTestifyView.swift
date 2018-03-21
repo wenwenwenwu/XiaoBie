@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MToTestifyCodeCell: UITableViewCell {
+class CToTestifyCodeCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -26,13 +26,13 @@ class MToTestifyCodeCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MToTestifyCodeCell{
+    class func cellWith(tableView : UITableView) -> CToTestifyCodeCell{
         let reuseIdentifier = "codeCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MToTestifyCodeCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = CToTestifyCodeCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MToTestifyCodeCell
+        return cell as! CToTestifyCodeCell
     }
     
     //MARK: - Action

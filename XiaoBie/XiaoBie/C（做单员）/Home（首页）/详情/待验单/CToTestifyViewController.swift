@@ -1,5 +1,5 @@
 //
-//  MToTestifyViewController.swift
+//  CToTestifyViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MToTestifyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CToTestifyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -107,7 +107,7 @@ class MToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             infoCell.model = model
             return infoCell
         case 1:
-            let codeCell = MToTestifyCodeCell.cellWith(tableView: tableView)
+            let codeCell = CToTestifyCodeCell.cellWith(tableView: tableView)
             codeCell.sendButtonClosure = { [weak self] in
                 self?.codeCellSendButtonAction()
             }
