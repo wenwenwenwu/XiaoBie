@@ -9,15 +9,15 @@
 import UIKit
 import YYModel
 
-class MOrderDetailResponseModel: NSObject,YYModel {
+class COrderDetailResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
     @objc var data = DGrabItemModel()
     
-    class func parse(dict : Any ) -> MOrderDetailResponseModel{
-        let model = MOrderDetailResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> COrderDetailResponseModel{
+        let model = COrderDetailResponseModel.yy_model(withJSON: dict)
         return model!
     }
 }

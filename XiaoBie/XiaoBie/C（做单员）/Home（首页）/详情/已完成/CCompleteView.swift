@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MCompleteInfoCell: UITableViewCell {
+class CCompleteInfoCell: UITableViewCell {
     
     //MARK: - Init
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -32,13 +32,13 @@ class MCompleteInfoCell: UITableViewCell {
     }
     
     //MARK: - FactoryMethod
-    class func cellWith(tableView : UITableView) -> MCompleteInfoCell{
+    class func cellWith(tableView : UITableView) -> CCompleteInfoCell{
         let reuseIdentifier = "infoCell";
         var cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier)
         if (cell == nil) {
-            cell = MCompleteInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
+            cell = CCompleteInfoCell(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        return cell as! MCompleteInfoCell
+        return cell as! CCompleteInfoCell
     }
     
     //MARK: - Setup

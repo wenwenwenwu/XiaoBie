@@ -131,11 +131,11 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
         case .toAdd:
-            let toAddVC = MAddViewController()
+            let toAddVC = CAddViewController()
             toAddVC.model = cell.model
             navigationController?.pushViewController(toAddVC, animated: true)
         case .complete:
-            let completeVC = CToTestifyViewController()
+            let completeVC = CCompleteViewController()
             completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)
         }

@@ -25,6 +25,8 @@ class CToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
         navigationItem.title = "待查单"
         view.backgroundColor = white_FFFFFF
         setupFrame()
+        //适配推送情况(无论哪个导航控制器推出，最终都回到首页)
+        setupPopDestination()
     }
     
     deinit {
@@ -133,6 +135,12 @@ class CToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
             make.top.bottom.right.equalToSuperview()
             make.left.equalTo(grayLine2.snp.right)
         }
+    }
+    
+    func setupPopDestination() {
+        var controllerArray = navigationController?.viewControllers
+        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
+        navigationController?.setViewControllers(controllerArray!, animated: false)
     }
     
     //MARK: - Properties

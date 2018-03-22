@@ -162,8 +162,10 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "待查单"
             case .querying:
                 statusStr = "查询中"
-            case .checked, .checked2:
+            case .checked:
                 statusStr = "已查单"
+            case .checked2:
+                statusStr = "现场验证"
             case .toTestify:
                 statusStr = "待验单"
             case .cancel:
@@ -179,9 +181,9 @@ class DHomeListCell: UITableViewCell {
             case .uploaded, .uploaded2:
                 statusStr = "凭证已上传"
             case .complete:
-                statusStr = "待确认完成"
+                statusStr = "营销案"
             case .complete2:
-                statusStr = "完成"
+                statusStr = "已完成"
             case .payComplete, .paySuccess:
                 statusStr = "付款完成"
             case .orderSucess:

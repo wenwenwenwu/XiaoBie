@@ -34,6 +34,10 @@ class DScanViewController: UIViewController, AVCaptureMetadataOutputObjectsDeleg
         UIApplication.shared.isStatusBarHidden = false
     }
     
+    deinit {
+        print("🐱")
+    }
+    
     //MARK：Setup
     func setupCamera() {
         do{

@@ -312,6 +312,11 @@ class DToCheckScanCell: UITableViewCell {
     
     //MARK: - Event Response
     @objc func scanButtonAction() {
+        //每次点击都要创建新的
+        let scanVC = DScanViewController()
+        scanVC.scanedClosure = { [weak self] serialNumber in
+            self?.scanVCScanedAction(serialNumber: serialNumber)
+        }
         ownerController!.navigationController!.pushViewController(scanVC, animated: true)
     }
     
@@ -365,14 +370,6 @@ class DToCheckScanCell: UITableViewCell {
         button.setImage(#imageLiteral(resourceName: "icon_sys"), for: .normal)
         button.addTarget(self, action: #selector(scanButtonAction), for: .touchUpInside)
         return button
-    }()
-    
-    lazy var scanVC: DScanViewController = {
-        let scanVC = DScanViewController()
-        scanVC.scanedClosure = { [weak self] serialNumber in
-            self?.scanVCScanedAction(serialNumber: serialNumber)
-        }
-        return scanVC
     }()
     
     weak var ownerController: UIViewController?

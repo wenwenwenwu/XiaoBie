@@ -43,7 +43,17 @@ class CHomeViewController: UIViewController {
         let creatVC = DCreatViewController()
         let creatNav = NavigationController.init(rootViewController: creatVC)
         present(creatNav, animated: true, completion: nil)
-        
+    }
+    
+    //收到推送刷新信息时使用
+    func reloadData() {
+        //selectView刷新
+        infoRequest()
+        //pageView刷新
+        toCheckVC.loadRequest()
+        toTestifyVC.loadRequest()
+        addVC.loadRequest()
+        completeVC.loadRequest()
     }
     
     //MARK: - Request

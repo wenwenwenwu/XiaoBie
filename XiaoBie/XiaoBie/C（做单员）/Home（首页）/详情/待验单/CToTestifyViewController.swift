@@ -103,7 +103,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let infoCell = MCompleteInfoCell.cellWith(tableView: tableView)
+            let infoCell = CCompleteInfoCell.cellWith(tableView: tableView)
             infoCell.model = model
             return infoCell
         case 1:

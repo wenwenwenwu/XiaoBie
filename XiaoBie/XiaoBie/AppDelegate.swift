@@ -78,9 +78,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
         entity.types = (Int(JPAuthorizationOptions.alert.rawValue)|Int(JPAuthorizationOptions.badge.rawValue)|Int(JPAuthorizationOptions.sound.rawValue))
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         JPUSHService.setup(withOption: launchOptions, appKey: jPushAppKey, channel: "ios", apsForProduction: true)
-//        JPUSHService.setAlias(AccountTool.userInfo().phone, completion: { (iResCode, iTags, iAlias) in
-//            print(iResCode)
-//        }, seq: 0)
+        JPUSHService.setAlias(AccountTool.userInfo().phone, completion: { (iResCode, iTags, iAlias) in
+            print(iResCode)
+        }, seq: 0)
         
     }
     
@@ -152,33 +152,85 @@ extension AppDelegate: JPUSHRegisterDelegate {
     //收到通知后跳转相关页面
     func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
         JPUSHService.handleRemoteNotification(userInfo)
-        let model = PushModel.parse(dict: userInfo)        
-        //跳转
-        let roleName = AccountTool.userInfo().roleName!
-        switch roleName {
-        case .driver:
-            let tabbarVC = mainVC.childViewControllers[0] as! DTabBarController
-            tabbarVC.selectedIndex = 0
-            print("司机")
-        case .clerk:
-            clertHandlePush(model: model)
-            print("做单员")
-        case .manager:
-            print("管理员")
-        }
-    }
-    
-    func clertHandlePush(model: PushModel) {
+        let model = PushModel.parse(dict: userInfo)
         switch model.push_type {
-        case "0": //提醒查单
-            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
-            tabbarVC.selectedIndex = 0
-            
-            let homeNav = tabbarVC.viewControllers![0] as! NavigationController
-            CToTestifyPopView.show(nav: homeNav, orderId: model.order_id)
-        
+        case "0": //提醒做单员查单
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了","去查单"], cancelButton: nil, closure: { (buttonTitle) in
+                switch buttonTitle {
+                case "去查单":
+                    let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+                    let selectedNav = tabbarVC.selectedViewController as! NavigationController
+                    self.loadRequest(nav: selectedNav, orderId: model.order_id)
+                case "知道了":
+                    clerkHomeVCReloadData()
+                default:
+                    break
+                }
+            })
+        case "1": //提醒做单员返回验证码已发送
+            break
+        case "2": //提醒做单员验单
+            break
+        case "3": //提醒司机验证码已发送
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+            })
+        case "5": //提醒司机当前验单状态
+            break
+        case "6": //提醒司机验单完成
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                driverHomeVCReloadData()
+            })
+        case "7": //提醒司机查单完成
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                driverHomeVCReloadData()
+            })
+        case "8": //提醒做单员订单取消
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                clerkHomeVCReloadData()
+            })
+        case "9": //提醒司机订单完成
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+               driverHomeVCReloadData()
+            })
+        case "10": //提醒做单员已付款
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "客户已付款", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                clerkHomeVCReloadData()
+            })
         default:
-            print("🐶")
+            break
+        }
+        
+        //刷新司机端首页
+        func driverHomeVCReloadData() {
+            let tabbarVC = mainVC.childViewControllers[0] as! DTabBarController
+            let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
+            let homeVC = homeNav.viewControllers[0] as! DHomeViewController
+            homeVC.reloadData()
+        }
+        
+        //刷新做单员端首页
+        func clerkHomeVCReloadData() {
+            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+            let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
+            let homeVC = homeNav.viewControllers[0] as! CHomeViewController
+            homeVC.reloadData()
+        }
+        
+        
+    }
+    //获取订单详情
+    func loadRequest(nav: UINavigationController, orderId: String) {
+        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+            let model = COrderDetailResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let toCheckVC = CToCheckViewController()
+                toCheckVC.model = model.data
+                nav.pushViewController(toCheckVC, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
         }
     }
 }

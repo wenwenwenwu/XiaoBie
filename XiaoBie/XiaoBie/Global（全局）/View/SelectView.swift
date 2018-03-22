@@ -55,7 +55,7 @@ class SelectView: UIView {
         let buttonWidth = screenWidth/CGFloat(buttonArray.count)
         for button in buttonArray {
             button.snp.makeConstraints({ (make) in
-                make.width.equalTo( buttonWidth > 95 ? buttonWidth : 95)
+                make.width.equalTo( buttonWidth > 80 ? buttonWidth : 80)
                 make.height.equalTo(height)
             })
         }

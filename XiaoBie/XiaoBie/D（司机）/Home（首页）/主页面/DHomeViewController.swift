@@ -52,7 +52,7 @@ class DHomeViewController: UIViewController {
             if model.code == "0" {
                 let infoModel = model.data
                 self.infoView.model = infoModel
-                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "已查单(\(infoModel.need_appoint_count))", "待验单(\(infoModel.need_verify_count))", "添加营销案(\(infoModel.market_case_count))", "已完成(\(infoModel.complete_count))"]
+                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "已查单(\(infoModel.need_appoint_count))", "待验单(\(infoModel.need_verify_count))", "营销案(\(infoModel.market_case_count))", "已完成(\(infoModel.complete_count))"]
             }else{
 
             }
@@ -68,6 +68,17 @@ class DHomeViewController: UIViewController {
     
     func pageViewChangeCurrentIndex(currentIndex: Int) {
         selectView.currentIndex = currentIndex
+    }
+    //收到推送刷新信息时使用
+    func reloadData() {
+        //selectView刷新
+        infoRequest()
+        //pageView刷新
+        toCheckVC.loadRequest()
+        checkedVC.loadRequest()
+        toTestifyVC.loadRequest()
+        addVC.loadRequest()
+        completeVC.loadRequest()
     }
     
     //MARK: - Setup
@@ -90,7 +101,7 @@ class DHomeViewController: UIViewController {
     
     lazy var infoView = DHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
 
-    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "添加营销案", "已完成"], sliderWidth: 46) { [weak self] (currentIndex) in
+    lazy var selectView = SelectView.viewWith(frame: CGRect.init(x: 0, y: infoView.bottom, width: screenWidth, height: 40), titleArray:  ["待查单", "已查单", "待验单", "营销案", "已完成"], sliderWidth: 46) { [weak self] (currentIndex) in
         self?.selectViewChangeCurrentIndex(currentIndex: currentIndex)
     }
     //pageView
