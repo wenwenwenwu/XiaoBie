@@ -155,14 +155,14 @@ extension AppDelegate: JPUSHRegisterDelegate {
         let model = PushModel.parse(dict: userInfo)
         switch model.push_type {
         case "0": //提醒做单员查单
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了","去查单"], cancelButton: nil, closure: { (buttonTitle) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了"], cancelButton: nil, closure: { (buttonTitle) in
                 switch buttonTitle {
                 case "去查单":
                     let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
                     let selectedNav = tabbarVC.selectedViewController as! NavigationController
                     self.loadRequest(nav: selectedNav, orderId: model.order_id)
                 case "知道了":
-                    clerkHomeVCReloadData()
+                    self.clerkHomeVCReloadData()
                 default:
                     break
                 }
@@ -170,7 +170,18 @@ extension AppDelegate: JPUSHRegisterDelegate {
         case "1": //提醒做单员返回验证码已发送
             break
         case "2": //提醒做单员验单
-            break
+            Alert.showAlertWith(style: .actionSheet, controller: mainVC, title: "待验单", message: "司机小王请求验单", functionButtons: ["正在忙", "请稍等", "去验单"], cancelButton: nil, closure: { (buttonTitle) in
+                switch buttonTitle {
+                case "正在忙":
+                    break
+                case "请稍等":
+                    break
+                case "去验单":
+                    break
+                default:
+                    break
+                }
+            })
         case "3": //提醒司机验证码已发送
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
             })
@@ -178,46 +189,47 @@ extension AppDelegate: JPUSHRegisterDelegate {
             break
         case "6": //提醒司机验单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                driverHomeVCReloadData()
+                self.driverHomeVCReloadData()
             })
         case "7": //提醒司机查单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                driverHomeVCReloadData()
+                self.driverHomeVCReloadData()
             })
         case "8": //提醒做单员订单取消
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                clerkHomeVCReloadData()
+                self.clerkHomeVCReloadData()
             })
         case "9": //提醒司机订单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-               driverHomeVCReloadData()
+               self.driverHomeVCReloadData()
             })
         case "10": //提醒做单员已付款
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "客户已付款", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                clerkHomeVCReloadData()
+                self.clerkHomeVCReloadData()
             })
         default:
             break
         }
         
-        //刷新司机端首页
-        func driverHomeVCReloadData() {
-            let tabbarVC = mainVC.childViewControllers[0] as! DTabBarController
-            let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
-            let homeVC = homeNav.viewControllers[0] as! DHomeViewController
-            homeVC.reloadData()
-        }
-        
-        //刷新做单员端首页
-        func clerkHomeVCReloadData() {
-            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
-            let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
-            let homeVC = homeNav.viewControllers[0] as! CHomeViewController
-            homeVC.reloadData()
-        }
-        
         
     }
+    
+    //刷新司机端首页
+    func driverHomeVCReloadData() {
+        let tabbarVC = mainVC.childViewControllers[0] as! DTabBarController
+        let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
+        let homeVC = homeNav.viewControllers[0] as! DHomeViewController
+        homeVC.reloadData()
+    }
+    
+    //刷新做单员端首页
+    func clerkHomeVCReloadData() {
+        let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+        let homeNav = tabbarVC.childViewControllers[0] as! NavigationController
+        let homeVC = homeNav.viewControllers[0] as! CHomeViewController
+        homeVC.reloadData()
+    }
+    
     //获取订单详情
     func loadRequest(nav: UINavigationController, orderId: String) {
         WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
