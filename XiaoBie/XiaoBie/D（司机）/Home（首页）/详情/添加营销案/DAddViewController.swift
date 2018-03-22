@@ -40,7 +40,7 @@ class DAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Setup
     func setupNavigationBar() {
-        navigationItem.title = "已完成"//根据安卓端修改
+        navigationItem.title = "添加营销案"
     }
     
     //MARK: - Properties

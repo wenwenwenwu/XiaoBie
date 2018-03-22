@@ -24,6 +24,8 @@ import UIKit
     let red_DC152C = #colorLiteral(red: 0.862745098, green: 0.08235294118, blue: 0.1725490196, alpha: 1)
     let red_D81E32 = #colorLiteral(red: 0.8470588235, green: 0.1176470588, blue: 0.1960784314, alpha: 1)
 
+    let green_1bc356 = #colorLiteral(red: 0.1058823529, green: 0.7647058824, blue: 0.337254902, alpha: 1)
+
     let black_20 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.2)
     let black_40 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.3694884418)
 

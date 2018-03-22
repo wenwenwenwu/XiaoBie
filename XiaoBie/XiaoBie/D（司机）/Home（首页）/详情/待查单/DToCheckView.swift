@@ -406,6 +406,27 @@ class DToCheckClerkCell: UITableViewCell {
         return cell as! DToCheckClerkCell
     }
     
+    //MARK: - Action Method
+    func updateClerkStatus(statusType: String) {
+        switch statusType {
+        case "0":
+            statusLabel.textColor = red_DC152C
+            statusLabel.text = "正在忙"
+        case "1":
+            statusLabel.textColor = red_DC152C
+            statusLabel.text = "联系中..."
+        case "2":
+            statusLabel.textColor = green_1bc356
+            statusLabel.text = "正常"
+        default:
+            break
+        }
+    }
+    
+    func clearClerkStatus() {
+        statusLabel.text = ""
+    }
+    
     //MARK: - Setup
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)        
@@ -418,6 +439,11 @@ class DToCheckClerkCell: UITableViewCell {
             make.top.height.equalTo(15)
             make.bottom.equalTo(-15)
 
+        }
+        
+        statusLabel.snp.makeConstraints { (make) in
+            make.right.equalTo(selectButton.snp.left).offset(-15)
+            make.centerY.equalToSuperview()
         }
          
         selectButton.snp.makeConstraints { (make) in
@@ -444,7 +470,6 @@ class DToCheckClerkCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = font16
-        label.textColor = black_333333
         return label
     }()
     
@@ -465,6 +490,7 @@ class DToCheckClerkCell: UITableViewCell {
     var model = DToCheckClerkModel() {
         didSet {
             clerkLabel.text = model.name
+            statusLabel.text = ""//重置状态用
         }
     }
     

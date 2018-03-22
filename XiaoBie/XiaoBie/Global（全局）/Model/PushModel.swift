@@ -11,14 +11,10 @@ import YYModel
 
 class PushModel: NSObject,YYModel {
 
-    @objc var _j_business = ""
     @objc var order_id = ""
+    @objc var response_type = ""
     @objc var push_type = ""
-    @objc var _j_uid = ""
     @objc var type = ""
-    @objc var _j_msgid = ""
-    @objc var aps = ""
-
 
     class func parse(dict : Any ) -> PushModel{
         let model = PushModel.yy_model(withJSON: dict)

@@ -16,6 +16,8 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
+        view.addSubview(cancelButton)
+        view.addSubview(lineView)
         remindButton.isEnabled = false
         view.addSubview(remindButton)
         setupNavigationBar()
@@ -42,16 +44,12 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         print("聊天")
     }
     
+    @objc func cancelButtonAction() {
+        cancelRequest()
+    }
+    
     @objc func remindButtonAction() {
-        //输入验证码页面
-        let codeVC = DCodeViewController()
-        codeVC.dealerId = currentClerk.id
-        codeVC.model = model
-        codeVC.serialNumber = serialNumber
-        navigationController?.pushViewController(codeVC, animated: false)
-        
-//        //提醒验单
-//        remindRequest()
+        remindRequest()
     }
     
     func scanCellScanedAction() {
@@ -75,15 +73,37 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    //MARK: - Request
+    func cancelRequest() {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                let homeVC = self.navigationController?.viewControllers[0] as! DHomeViewController
+                //待预约页面更新
+                let toOrderVC = homeVC.checkedVC
+                toOrderVC.loadRequest()
+                //跳转回首页主页面
+                self.navigationController?.popToViewController(homeVC, animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func clerkListRequest() {
         WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)
             if model.code == "0" {
-                //设置提醒按钮
-                self.remindButton.isEnabled = true
                 //展示做单员列表
                 self.clerkListArray = model.data
                 self.tableView.reloadSections(IndexSet.init(integer: 2), with: .fade)
+                if !self.clerkListArray.isEmpty {
+                    //设置提醒按钮
+                    self.remindButton.isEnabled = true
+                    //设置默认的currentClerkCell
+                    self.currentClerkCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as? DToCheckClerkCell
+                }
             } else {
                 HudTool.showInfo(string: model.msg)
             }
@@ -93,17 +113,15 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func remindRequest() {
-        //跳转输入验证码
-        let dCodeVC = DCodeViewController()
-        dCodeVC.serialNumber = serialNumber
-        dCodeVC.model = model
-        navigationController?.pushViewController(dCodeVC, animated: false)
         
-        
+        print(currentClerkCell?.model.id)
 //        //提醒验证
-//        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerk.id], success: { (dict) in
+//        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerkCell.model.id], success: { (dict) in
 //            let model = DBasicResponseModel.parse(dict: dict)
 //            HudTool.showInfo(string: model.msg)
+//            if model.code == "0" {
+//               currentController = self //将当前控制器赋值给全局变量currentController，便于收到推送后操作
+//            }
 //        }) { (error) in
 //            HudTool.showInfo(string: error)
 //        }
@@ -150,9 +168,9 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
+        if indexPath.section == 2 {
             //记录当前做单员
-            currentClerk = clerkListArray[indexPath.row]
+            currentClerkCell = tableView.cellForRow(at: indexPath) as! DToCheckClerkCell
         }
     }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
@@ -186,14 +204,26 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     func setupFrame() {
         tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 44, 0))
+        }
+        
+        cancelButton.snp.makeConstraints { (make) in
+            make.left.bottom.equalToSuperview()
+            make.top.equalTo(tableView.snp.bottom)
+            make.right.equalTo(lineView.snp.left)
+        }
+        
+        lineView.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-14)
+            make.width.equalTo(1)
+            make.height.equalTo(17)
         }
         
         remindButton.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
-            make.right.equalTo(-13)
-            make.bottom.equalTo(-10)
-            make.height.equalTo(36)
+            make.right.bottom.equalToSuperview()
+            make.top.equalTo(tableView.snp.bottom)
+            make.left.equalTo(lineView.snp.right)
         }
     }
     
@@ -210,26 +240,35 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         return tableView
     }()
     
+    lazy var cancelButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.titleLabel?.font = font14
+        button.setTitle("客户取消", for: .normal)
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var remindButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
         button.setTitle("提醒验单", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.setBackgroundImage(gray_CCCCCC.colorImage(), for: .disabled)
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
+        button.setTitleColor(blue_3296FA, for: .normal)
+        button.setTitleColor(gray_B3B3B3, for: .disabled)
         button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
         return button
     }()
     
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_D9D9D9
+        return view
+    }()
+    
     var model = DGrabItemModel()
-    var clerkListArray: [DToCheckClerkModel] = [] {
-        didSet {
-            currentClerk = clerkListArray[0]
-        }
-    }
-    var currentClerk = DToCheckClerkModel()
+    var clerkListArray: [DToCheckClerkModel] = [] 
+    var currentClerkCell: DToCheckClerkCell?
+    
     var serialNumber = ""
     
 }

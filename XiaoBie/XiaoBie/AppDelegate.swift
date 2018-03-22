@@ -10,6 +10,9 @@ import UIKit
 import SnapKit
 import IQKeyboardManagerSwift
 
+var currentController: UIViewController?
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -192,12 +195,12 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 self.setClerkStatus(clerkStatus: clerkStatus, orderId: model.order_id)
 
             })
-        case "3": //提醒司机验证码已发送
+        case "3": //提醒司机验证码已发送（未完成）
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
             })
-        case "5": //提醒司机当前验单状态
+        case "5": //提醒司机当前验单状态（未完成）
             break
-        case "6": //提醒司机验单完成
+        case "6": //提醒司机验单完成（未完成）
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
             })

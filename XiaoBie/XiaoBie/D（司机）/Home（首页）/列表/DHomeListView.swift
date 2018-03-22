@@ -171,7 +171,7 @@ class DHomeListCell: UITableViewCell {
             case .cancel:
                 statusStr = "客户取消"
             case .contact:
-                statusStr = "待验单"
+                statusStr = "联系中"
             case .accept:
                 statusStr = "待验单"
             case .access, .access2:
