@@ -15,10 +15,8 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
-        view.addSubview(doneButton)
         setupNavigationBar()
         setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
-        setupFrame()
         codeListRequest()
     }
     
@@ -37,10 +35,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @objc func codeInputCellButtonAction() {
         codeRequest()
-    }
-    
-    @objc func doneButtonAction() {
-        doneRequest()
     }
     
     //MARK: - Request
@@ -90,20 +84,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }) { (error) in
 
-        }
-    }
-    
-    
-    func doneRequest() {
-        WebTool.get(uri:"pass_order_vefiry", para:["order_id": model.id], success: { (dict) in
-            let model = DBasicResponseModel.parse(dict: dict)
-            HudTool.showInfo(string: model.msg)
-            //跳转上传凭证页面
-            let uploadVC = DUploadViewController()
-            uploadVC.model = self.model
-            self.navigationController?.pushViewController(uploadVC, animated: true)
-        }) { (error) in
-            HudTool.showInfo(string: error)
         }
     }
     
@@ -185,19 +165,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationItem.rightBarButtonItems = [transferButtonItem, chatButtonItem]
     }
     
-    func setupFrame() {
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 56, 0))
-        }
-        
-        doneButton.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
-            make.right.equalTo(-13)
-            make.bottom.equalTo(-10)
-            make.height.equalTo(36)
-        }
-    }
-    
+
     func setupPopDestination() {
         var controllerArray = navigationController?.viewControllers
         controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
@@ -209,24 +177,12 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     lazy var chatButtonItem = UIBarButtonItem.init(title: "聊天", style: .plain, target: self, action: #selector(chatButtonAction))
     
     lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect.zero, style: .grouped)
+        let tableView = UITableView.init(frame: screenBounds, style: .grouped)
         tableView.backgroundColor = gray_F5F5F5
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
         return tableView
-    }()
-    
-    lazy var doneButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.titleLabel?.font = font14
-        button.setTitle("完成", for: .normal)
-        button.setTitleColor(white_FFFFFF, for: .normal)
-        button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(doneButtonAction), for: .touchUpInside)
-        return button
     }()
     
     var model = DGrabItemModel()

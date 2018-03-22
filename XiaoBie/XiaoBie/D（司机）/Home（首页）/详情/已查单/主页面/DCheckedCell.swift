@@ -17,8 +17,8 @@ class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
         contentView.backgroundColor = white_FFFFFF
         contentView.addSubview(costKeyLabel)
         contentView.addSubview(costValueLabel)
-        contentView.addSubview(timeKeyLabel)
-        contentView.addSubview(timeValueLabel)
+        contentView.addSubview(moneyKeyLabel)
+        contentView.addSubview(moneyValueLabel)
         contentView.addSubview(phoneKeyLabel)
         contentView.addSubview(phoneValueLabel)
         contentView.addSubview(addressKeyLabel)
@@ -85,8 +85,8 @@ class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
             make.height.equalTo(14)
         }
         
-        timeKeyLabel.snp.makeConstraints { (make) in
-            make.centerY.equalTo(timeValueLabel)
+        moneyKeyLabel.snp.makeConstraints { (make) in
+            make.centerY.equalTo(moneyValueLabel)
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
@@ -109,14 +109,14 @@ class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
             make.height.equalTo(15)
         }
         
-        timeValueLabel.snp.makeConstraints { (make) in
+        moneyValueLabel.snp.makeConstraints { (make) in
             make.top.equalTo(costValueLabel.snp.bottom).offset(12)
-            make.left.equalTo(timeKeyLabel.snp.right).offset(16)
+            make.left.equalTo(moneyKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
         }
         
         phoneValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(timeValueLabel.snp.bottom).offset(12)
+            make.top.equalTo(moneyValueLabel.snp.bottom).offset(12)
             make.left.equalTo(phoneKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
         }
@@ -161,15 +161,15 @@ class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
         return label
     }()
     
-    lazy var timeKeyLabel: UILabel = {
+    lazy var moneyKeyLabel: UILabel = {
         let label = UILabel()
-        label.text = "订单时间"
+        label.text = "代收金额"
         label.font = font14
         label.textColor = gray_999999
         return label
     }()
     
-    lazy var timeValueLabel: UILabel = {
+    lazy var moneyValueLabel: UILabel = {
         let label = UILabel()
         label.font = font16
         label.textColor = black_333333
@@ -233,8 +233,8 @@ class DCheckedInfoCell: UITableViewCell, UITextViewDelegate {
     
     var model = DGrabItemModel() {
         didSet {
-            costValueLabel.text = model.average_cost
-            timeValueLabel.text = model.update_time
+            costValueLabel.text = "\(model.average_cost)元"
+            moneyValueLabel.text = "\(model.update_time)（总价）"
             phoneValueLabel.text = model.phone1
             addressTextView.text = model.address
             //distanceLabel
