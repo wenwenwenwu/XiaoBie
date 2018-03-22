@@ -149,6 +149,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         completionHandler()
     }
     
+    //MARK: - Action Method
     //收到通知后跳转相关页面
     func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
         JPUSHService.handleRemoteNotification(userInfo)
@@ -160,7 +161,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 case "去查单":
                     let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
                     let selectedNav = tabbarVC.selectedViewController as! NavigationController
-                    self.loadRequest(nav: selectedNav, orderId: model.order_id)
+                    self.pushToCheckOrderDetailRequest(nav: selectedNav, orderId: model.order_id)
                 case "知道了":
                     self.clerkHomeVCReloadData()
                 default:
@@ -168,22 +169,31 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 }
             })
         case "1": //提醒做单员返回验证码已发送
-            break
+            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+            let selectedNav = tabbarVC.selectedViewController as! NavigationController
+            self.pushToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
         case "2": //提醒做单员验单
             Alert.showAlertWith(style: .actionSheet, controller: mainVC, title: "待验单", message: "司机小王请求验单", functionButtons: ["正在忙", "请稍等", "去验单"], cancelButton: nil, closure: { (buttonTitle) in
+                //clerkStatus
+                var clerkStatus = ""
                 switch buttonTitle {
                 case "正在忙":
-                    break
+                    clerkStatus = "0"
                 case "请稍等":
-                    break
+                    clerkStatus = "1"
                 case "去验单":
-                    break
+                    clerkStatus = "2"
+                    let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+                    let selectedNav = tabbarVC.selectedViewController as! NavigationController
+                    self.pushToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
                 default:
                     break
                 }
+                self.setClerkStatus(clerkStatus: clerkStatus, orderId: model.order_id)
+
             })
         case "3": //提醒司机验证码已发送
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
             })
         case "5": //提醒司机当前验单状态
             break
@@ -210,8 +220,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
         default:
             break
         }
-        
-        
     }
     
     //刷新司机端首页
@@ -230,8 +238,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
         homeVC.reloadData()
     }
     
-    //获取订单详情
-    func loadRequest(nav: UINavigationController, orderId: String) {
+    //MARK: - Request
+    //推出待查单
+    func pushToCheckOrderDetailRequest(nav: UINavigationController, orderId: String) {
         WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
             let model = COrderDetailResponseModel.parse(dict: dict)
             if model.code == "0" {
@@ -245,4 +254,49 @@ extension AppDelegate: JPUSHRegisterDelegate {
             HudTool.showInfo(string: error)
         }
     }
+    
+    //推出待验单(未发送验证码)
+    func pushToTestifyVCWithoutCode(nav: UINavigationController, orderId: String) {
+        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+            let model = COrderDetailResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let toTestifyVC = CToTestifyViewController()
+                toTestifyVC.model = model.data
+                nav.pushViewController(toTestifyVC, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    //推出待验单(发送验证码)
+    func pushToTestifyVCWithCode(nav: UINavigationController, orderId: String) {
+        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+            let model = COrderDetailResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let toTestifyVC = CToTestifyViewController()
+                toTestifyVC.model = model.data
+                toTestifyVC.refreshCode()
+                nav.pushViewController(toTestifyVC, animated: false)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    //设置验单员当前状态
+    func setClerkStatus(clerkStatus: String, orderId: String) {
+        WebTool.post(uri:"resp_verify_pop_win", para:["oper_type": clerkStatus, "staff_id": AccountTool.userInfo().id, "order_id": orderId], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    
 }

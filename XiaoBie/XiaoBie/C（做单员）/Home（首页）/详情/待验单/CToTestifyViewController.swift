@@ -24,6 +24,8 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.title = "待验单"
         view.backgroundColor = white_FFFFFF
         setupFrame()
+        //适配推送情况(无论哪个导航控制器推出，最终都回到首页)
+        setupPopDestination()
         
         codeListRequest()
     }
@@ -38,7 +40,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func codeCellSendButtonAction() {
-        
+        remindRequest()
     }
     
     @objc func passButtonAction() {
@@ -49,6 +51,11 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         passRequest(passType: "1")
     }
     
+    //MARK: - Action Method
+    func refreshCode() {
+        pushCodeListRequest()
+    }
+    
     //MARK: - Request
     func codeListRequest() {
         WebTool.get(uri:"list_verify_code", para:["order_id":model.id], success: { (dict) in
@@ -56,6 +63,25 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             if model.code == "0" {
                 self.codeListArray = model.data
                 self.tableView.reloadData()
+            } else {
+                
+            }
+        }) { (error) in
+            
+        }
+    }
+    
+    func pushCodeListRequest() {
+        WebTool.get(uri:"list_verify_code", para:["order_id":model.id], success: { (dict) in
+            let model = DCodeListResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                //刷新codeList
+                self.codeListArray = model.data
+                self.tableView.reloadData()
+                //刷新codeCell
+                let codeCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! CToTestifyCodeCell
+                codeCell.code = model.data[0].code
+                
             } else {
                 
             }
@@ -190,6 +216,12 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             make.top.right.bottom.equalToSuperview()
             make.left.equalTo(grayLine.snp.right)
         }
+    }
+    
+    func setupPopDestination() {
+        var controllerArray = navigationController?.viewControllers
+        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
+        navigationController?.setViewControllers(controllerArray!, animated: false)
     }
     
     //MARK: - Properties
