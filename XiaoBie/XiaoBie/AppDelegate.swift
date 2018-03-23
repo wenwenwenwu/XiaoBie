@@ -198,6 +198,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
             })
         case "3": //提醒司机验证码已发送（未完成）
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                
             })
         case "5": //提醒司机当前验单状态
             model.response_type = "1"

@@ -26,7 +26,8 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         setupFrame()
         //适配推送情况(无论哪个导航控制器推出，最终都回到首页)
         setupPopDestination()
-        
+        //进入页面即设置订单状态为接受验单。使在收不到推送的情况下跑通流程
+        setAccessStatusRequest()
         codeListRequest()
     }
     
@@ -57,6 +58,13 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - Request
+    func setAccessStatusRequest() {
+        WebTool.post(uri:"resp_verify_pop_win", para:["oper_type": "2", "staff_id": AccountTool.userInfo().id, "order_id": model.id], success: { (dict) in
+            
+        }) { (error) in
+        }
+    }
+    
     func codeListRequest() {
         WebTool.get(uri:"list_verify_code", para:["order_id":model.id], success: { (dict) in
             let model = DCodeListResponseModel.parse(dict: dict)

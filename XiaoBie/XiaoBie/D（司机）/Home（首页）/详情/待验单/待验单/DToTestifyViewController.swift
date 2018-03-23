@@ -127,7 +127,9 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func remindRequest() {
-        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerkCell!.model.id], success: { (dict) in
+        WebTool.get(uri:"notify_verify_order", para:["order_id": model.id,
+                                                     "serial_no":serialNumber,
+                                                     "dealer_id":currentClerkCell!.model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {

@@ -17,7 +17,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.addSubview(tableView)
         setupNavigationBar()
         setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
-        setAccessStatusRequest()//进入页面即设置订单状态为接受验单。使在收不到推送的情况下跑通流程
         codeListRequest()
     }
     
@@ -39,11 +38,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: - Request
-    func setAccessStatusRequest() {
-        WebTool.post(uri:"resp_verify_pop_win", para:["oper_type": "2", "staff_id": AccountTool.userInfo().id, "order_id": model.id], success: { (dict) in
-        }) { (error) in
-        }
-    }
     func driverListRequest() {
         WebTool.post(uri:"get_peer_staff_list", para:["staff_id": AccountTool.userInfo().id], success: { (dict) in
             let model = DDriverListResponseModel.parse(dict: dict)
