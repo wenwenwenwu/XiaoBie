@@ -142,7 +142,7 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
-        case .accept:
+        case .accept: //待验单之验证码页面
             let codeVC = DCodeViewController()
             codeVC.model = cell.model
             navigationController?.pushViewController(codeVC, animated: true)

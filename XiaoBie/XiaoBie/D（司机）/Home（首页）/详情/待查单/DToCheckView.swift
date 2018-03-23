@@ -423,14 +423,11 @@ class DToCheckClerkCell: UITableViewCell {
         }
     }
     
-    func clearClerkStatus() {
-        statusLabel.text = ""
-    }
-    
     //MARK: - Setup
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)        
         selectButton.isSelected = selected
+        statusLabel.text = ""//发生选中变化后，状态先清空
     }
     
     func setupFrame() {

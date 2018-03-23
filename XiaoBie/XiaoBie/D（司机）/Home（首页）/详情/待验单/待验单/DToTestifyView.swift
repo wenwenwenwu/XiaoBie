@@ -260,3 +260,54 @@ class DToTestifyInfoCell: UITableViewCell {
     }
 }
 
+enum CountDownButtonStatus {
+    case disabledCounting
+    case disabled
+    case enabled
+}
+
+class CountDownButton: UIButton {
+    
+    private var countdownTimer: Timer?
+    
+    var status: CountDownButtonStatus = .disabled {
+        didSet{
+            switch status {
+            case .disabledCounting:
+                remainingSeconds = 30
+                countdownTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTime(timer:)), userInfo: nil, repeats: true)
+                //用户交互动作不会影响计时器刷新了
+                RunLoop.current.add(countdownTimer!, forMode: .commonModes)
+                isEnabled = false
+            case .disabled:
+                countdownTimer?.invalidate()
+                countdownTimer = nil
+                setTitle("换人验单", for: .disabled)
+                isEnabled = false
+            case .enabled:
+                countdownTimer?.invalidate()
+                countdownTimer = nil
+                setTitle("换人验单", for: .normal)
+                isEnabled = true
+            }
+            changeStatusClosure(status)
+        }
+    }
+    
+    var changeStatusClosure: (CountDownButtonStatus)->Void = {_ in }
+        
+    private var remainingSeconds: Int = 0 {
+        willSet {
+            setTitle("\(newValue)", for: .normal)            
+            if newValue <= 0 {
+                status = .enabled
+            }
+        }
+    }
+    
+    @objc private func updateTime(timer: Timer) {
+        remainingSeconds -= 1
+    }
+}
+
+

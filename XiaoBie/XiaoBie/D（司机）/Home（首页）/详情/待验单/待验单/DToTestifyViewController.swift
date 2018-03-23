@@ -45,11 +45,24 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func cancelButtonAction() {
-        cancelRequest()
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, functionButtons: ["确定"]) { _ in
+            self.cancelRequest()
+        }
     }
     
     @objc func remindButtonAction() {
         remindRequest()
+    }
+    
+    func remindButtonChangeStatusAction(status: CountDownButtonStatus) {
+        switch status {
+        case .disabledCounting:
+            isClerkChangeable = false
+        case .disabled:
+            isClerkChangeable = false
+        case .enabled:
+            isClerkChangeable = true
+        }
     }
     
     func scanCellScanedAction() {
@@ -73,7 +86,6 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    //MARK: - Request
     func cancelRequest() {
         WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
@@ -99,6 +111,8 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
                 self.clerkListArray = model.data
                 self.tableView.reloadSections(IndexSet.init(integer: 2), with: .fade)
                 if !self.clerkListArray.isEmpty {
+                    //设置做单员可选
+                    self.isClerkChangeable = true
                     //设置提醒按钮
                     self.remindButton.isEnabled = true
                     //设置默认的currentClerkCell
@@ -113,18 +127,17 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func remindRequest() {
-        
-        print(currentClerkCell?.model.id)
-//        //提醒验证
-//        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerkCell.model.id], success: { (dict) in
-//            let model = DBasicResponseModel.parse(dict: dict)
-//            HudTool.showInfo(string: model.msg)
-//            if model.code == "0" {
-//               currentController = self //将当前控制器赋值给全局变量currentController，便于收到推送后操作
-//            }
-//        }) { (error) in
-//            HudTool.showInfo(string: error)
-//        }
+        WebTool.get(uri:"notify_verify_order", para:["verify_type":"0", "order_id": model.id, "dealer_id":currentClerkCell!.model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.remindButton.status = .disabledCounting
+                //将当前控制器赋值给全局变量currentController，便于收到推送后操作
+                currentController = self
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -167,10 +180,18 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - UITableViewDelegate
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.section == 2 && !isClerkChangeable {
+            return nil
+        } else {
+            return indexPath
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             //记录当前做单员
-            currentClerkCell = tableView.cellForRow(at: indexPath) as! DToCheckClerkCell
+            currentClerkCell = tableView.cellForRow(at: indexPath) as? DToCheckClerkCell
         }
     }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
@@ -249,13 +270,16 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         return button
     }()
     
-    lazy var remindButton: UIButton = {
-        let button = UIButton.init(type: .custom)
+    lazy var remindButton: CountDownButton = {
+        let button = CountDownButton.init(type: .custom)
         button.titleLabel?.font = font14
         button.setTitle("提醒验单", for: .normal)
         button.setTitleColor(blue_3296FA, for: .normal)
         button.setTitleColor(gray_B3B3B3, for: .disabled)
         button.addTarget(self, action: #selector(remindButtonAction), for: .touchUpInside)
+        button.changeStatusClosure = { [weak self] status in
+            self?.remindButtonChangeStatusAction(status: status)
+        }
         return button
     }()
     
@@ -271,5 +295,6 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     var serialNumber = ""
     
+    var isClerkChangeable = false
 }
 

@@ -157,6 +157,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
         JPUSHService.handleRemoteNotification(userInfo)
         let model = PushModel.parse(dict: userInfo)
+        model.push_type = "5"
         switch model.push_type {
         case "0": //提醒做单员查单
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了"], cancelButton: nil, closure: { (buttonTitle) in
@@ -198,8 +199,22 @@ extension AppDelegate: JPUSHRegisterDelegate {
         case "3": //提醒司机验证码已发送（未完成）
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
             })
-        case "5": //提醒司机当前验单状态（未完成）
-            break
+        case "5": //提醒司机当前验单状态
+            model.response_type = "1"
+            let dToTestifyVC = currentController as! DToTestifyViewController
+            //显示状态·
+            dToTestifyVC.currentClerkCell?.updateClerkStatus(statusType: model.response_type)
+            //换人操作
+            switch model.response_type {
+            case "0"://正在忙
+                //立刻换人
+                dToTestifyVC.remindButton.status = .enabled
+            case "1", "2"://请稍等、正常
+                //无法换人、无法提醒验单
+                dToTestifyVC.remindButton.status = .disabled
+            default:
+                break
+            }
         case "6": //提醒司机验单完成（未完成）
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
