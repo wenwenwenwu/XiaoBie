@@ -24,6 +24,7 @@ class DHomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false//避免DQRCodeViewController返回的bug
         infoRequest()
     }
     

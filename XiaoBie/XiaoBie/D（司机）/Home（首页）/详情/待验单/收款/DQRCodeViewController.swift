@@ -68,7 +68,9 @@ class DQRCodeViewController: UIViewController {
     }
     
     @objc func cancelButtonAction() {
-        cancelRequest()
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, functionButtons: ["确定"]) { _ in
+            self.cancelRequest()
+        }
     }
     
     @objc func confirmButtonAction() {
@@ -188,7 +190,6 @@ class DQRCodeViewController: UIViewController {
         button.titleLabel?.font = font14
         button.setTitle("客户取消", for: .normal)
         button.setTitleColor(blue_3296FA, for: .normal)
-        button.setBackgroundImage(white_FFFFFF.colorImage(), for: .normal)
         button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
         return button
     }()
@@ -198,7 +199,6 @@ class DQRCodeViewController: UIViewController {
         button.titleLabel?.font = font14
         button.setTitle("确认收款", for: .normal)
         button.setTitleColor(blue_3296FA, for: .normal)
-        button.setBackgroundImage(white_FFFFFF.colorImage(), for: .normal)
         button.addTarget(self, action: #selector(confirmButtonAction), for: .touchUpInside)
         return button
     }()
