@@ -16,7 +16,7 @@ class DMyHeader: UIView {
         backgroundColor = white_FFFFFF
         addSubview(shadowView)
         shadowView.addSubview(nameLabel)
-        shadowView.addSubview(roundLabel)
+        shadowView.addSubview(avatarImageView)
         shadowView.addSubview(phoneLabel)
         shadowView.addSubview(arrowView)
         setupFrame()
@@ -37,7 +37,7 @@ class DMyHeader: UIView {
             make.left.top.equalTo(16)
         }
         
-        roundLabel.snp.makeConstraints { (make) in
+        avatarImageView.snp.makeConstraints { (make) in
             make.top.equalTo(16)
             make.right.equalTo(-16)
             make.width.height.equalTo(40)
@@ -65,15 +65,12 @@ class DMyHeader: UIView {
         return label
     }()
     
-    lazy var roundLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = font14
-        label.textColor = white_FFFFFF
-        label.backgroundColor = blue_3296FA
-        label.layer.cornerRadius = 20
-        label.clipsToBounds = true
-        return label
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 20
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     lazy var phoneLabel: UILabel = {
@@ -90,10 +87,9 @@ class DMyHeader: UIView {
         didSet {
             //nameLabel
             nameLabel.text = AccountTool.userInfo().name
-            //roundLabel
-            let name = AccountTool.userInfo().name
-            let rangeFirst = name.startIndex ... name.startIndex
-            roundLabel.text = String(name[rangeFirst] )
+            //avatarImageView
+            let urlStr = "\(model.image_host)?avatar=\(model.avatar)"
+            avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
             //phoneLabel
             phoneLabel.text = AccountTool.userInfo().phone
         }

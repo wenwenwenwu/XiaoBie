@@ -92,6 +92,7 @@
 		5B86DEB42061E9E2005BE448 /* CCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB32061E9E2005BE448 /* CCompleteView.swift */; };
 		5B86DEB62061EE85005BE448 /* CCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB52061EE85005BE448 /* CCompleteModel.swift */; };
 		5B86DEB82062055B005BE448 /* CToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB72062055B005BE448 /* CToCheckView.swift */; };
+		5B95F87D2068EF9600E72BEE /* AvatarPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95F87C2068EF9600E72BEE /* AvatarPickerTool.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
@@ -348,6 +349,7 @@
 		5B86DEB32061E9E2005BE448 /* CCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCompleteView.swift; sourceTree = "<group>"; };
 		5B86DEB52061EE85005BE448 /* CCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCompleteModel.swift; sourceTree = "<group>"; };
 		5B86DEB72062055B005BE448 /* CToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckView.swift; sourceTree = "<group>"; };
+		5B95F87C2068EF9600E72BEE /* AvatarPickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerTool.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
@@ -943,6 +945,7 @@
 			isa = PBXGroup;
 			children = (
 				5B498E9C204501440071406C /* PhotoPickerTool.swift */,
+				5B95F87C2068EF9600E72BEE /* AvatarPickerTool.swift */,
 				5BA24F98204E9B340068B32F /* RecordTool.swift */,
 				5B6325E9203130C100659725 /* DateTool.swift */,
 				5B51FAFC20294A1D001AB946 /* CacheTool.swift */,
@@ -2224,6 +2227,7 @@
 				5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */,
 				5BDE11CD20565F50008D68EC /* NIMPageView.m in Sources */,
 				5B86DEA72060F8E7005BE448 /* CToCheckViewController.swift in Sources */,
+				5B95F87D2068EF9600E72BEE /* AvatarPickerTool.swift in Sources */,
 				5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */,
 				5BDE121620565F50008D68EC /* UITableView+NIMScrollToBottom.m in Sources */,
 				5BDE11E020565F50008D68EC /* NIMTeamMemberCardHeaderCell.m in Sources */,

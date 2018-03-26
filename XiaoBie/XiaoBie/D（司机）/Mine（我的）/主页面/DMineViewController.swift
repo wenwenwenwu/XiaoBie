@@ -31,6 +31,21 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: - Event Response
+    @objc func headViewTapAction() {
+        Alert.showAlertWith(style: .actionSheet, controller: self, title: nil, message: nil, functionButtons: ["相机", "相册"]) { (title) in
+            switch title {
+            case "相机":
+                self.avatarPickerTool.openCamera()
+            default:
+                self.avatarPickerTool.openAlbum()
+            }
+        }
+    }
+    
+    func photoPickerToolCompleteUploadEvent(imageName: String) {
+        updateAvatarRequest(imageName: imageName)
+    }
+    
     func phoneCellAction() {
         let myPhoneVC = DMyPhoneViewController()
         myPhoneVC.startDate = startDate
@@ -38,7 +53,7 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         navigationController?.pushViewController(myPhoneVC, animated: true)
     }
     
-    func queryCellAction() {
+    @objc func queryCellAction() {
         print("销售查询")
     }
     
@@ -58,6 +73,24 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func settingCellAction() {
         navigationController?.pushViewController(DSetupViewController(), animated: true)
+    }
+    
+    //MARK: - Request
+    func updateAvatarRequest(imageName: String) {
+        WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                //avatarImageView
+                let urlStr = "http://manage.cloudconfs.com:8080/longwang/oss/load_avatar?avatar=\(imageName)"
+                self.headView.avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
+                
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+            
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
     }
     
     //MARK: - UITableViewDataSource
@@ -127,7 +160,16 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         return tableView
     }()
     
-    lazy var headView = DMyHeader()
+    lazy var headView: DMyHeader = {
+        let view = DMyHeader()
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(headViewTapAction))
+        view.addGestureRecognizer(tap)
+        return view
+    }()
+    
+    lazy var avatarPickerTool = AvatarPickerTool.toolWith(ownerViewController: self) { (imageName, localUrl) in
+        self.photoPickerToolCompleteUploadEvent(imageName: imageName)
+    }
     
     var startDate = DateTool.str本月一号()
     var endDate = DateTool.str今天()

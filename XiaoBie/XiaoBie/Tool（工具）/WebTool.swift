@@ -64,9 +64,43 @@ class WebTool {
             }
         }
     }
+    
+    //头像上传
+    class func upLoadAvatar(imageURL: URL, success: @escaping (_ response: NSDictionary)->(), failture: @escaping (_ error : String)->()){
+        HudTool.show()
+        Alamofire.upload(
+            //数据
+            multipartFormData: { multipartFormData in
+                //图片地址（name和fileName:给自己看的）
+                multipartFormData.append(imageURL, withName: "UPLOAD_IMAGE", fileName: "image.jpg", mimeType: "image/jpg")
+            //网址
+        }, to: uploadURL + "upload_avatar"
+            //回调
+            , encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        HudTool.dismiss()
+                        if let jsonData = response.data{
+                            do{
+                                let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
+                                success(dict as! NSDictionary)
+                            }catch {
+                                failture("数据错误")
+                            }
+                        }else{
+                            failture("数据错误")
+                        }
+                    }
+                case .failure:
+                    HudTool.dismiss()
+                    failture("网络错误")
+                }
+        })
+        
+    }
 
-
-    //图片上传(其中type、orderId为订单凭证图片专用)
+    //照片上传(其中type、orderId为订单凭证图片专用)
     class func upLoadImage(para: String, type: String, orderId: String, imageURL: URL, success: @escaping (_ response: NSDictionary)->(), failture: @escaping (_ error : String)->()){
         HudTool.show()
         Alamofire.upload(

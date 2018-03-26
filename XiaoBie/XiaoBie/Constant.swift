@@ -78,7 +78,7 @@ import UIKit
 
     //网络
     let pageSize = "10"
-    let baseURL = "http://116.62.206.174:8080/longwang/general/"
+    let baseURL = "http://manage.cloudconfs.com:8080/longwang/general/"
     let uploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
     let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
     let QRCodeImageURL = "http://manage.cloudconfs.com:8080/longwang/oss/static_qr_img?platform_type="
