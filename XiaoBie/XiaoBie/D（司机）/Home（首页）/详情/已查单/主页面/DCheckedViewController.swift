@@ -131,6 +131,8 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
             self.navigationController?.popViewController(animated: true)
         }) { (error) in
             HudTool.showInfo(string: error)
+            //错误只能有一种，即预约超过五次，此时后台会将订单释放回抢单池。只需返回首页刷新即可
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
