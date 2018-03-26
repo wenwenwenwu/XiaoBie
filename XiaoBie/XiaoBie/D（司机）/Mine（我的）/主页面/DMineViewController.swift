@@ -80,9 +80,14 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             if model.code == "0" {
-                //avatarImageView
+                //更新avatarImageView
                 let urlStr = "http://manage.cloudconfs.com:8080/longwang/oss/load_avatar?avatar=\(imageName)"
                 self.headView.avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
+                //更新userInfoModel
+                let userInfoModel = AccountTool.userInfo()
+                userInfoModel.avatar = imageName
+                AccountTool.login(with: userInfoModel)
+                
                 
             } else {
                 HudTool.showInfo(string: model.msg)
