@@ -16,12 +16,20 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         view.backgroundColor = white_FFFFFF
         view.addSubview(tableView)
         setupNavigationBar()
-        setupPopDestination()//将当前页面变成导航控制器推出的首页，无法返回待验单状态
         codeListRequest()
     }
     
-    deinit {
-        print("🐱")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //隐藏导航控制器返回按钮
+        navigationItem.hidesBackButton = true
+        navigationItem.leftBarButtonItem = nil
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.hidesBackButton = false
     }
 
     //MARK: - Event Response
@@ -163,13 +171,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         chatButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .normal)
         chatButtonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : black_333333], for: .highlighted)
         navigationItem.rightBarButtonItems = [transferButtonItem, chatButtonItem]
-    }
-    
-
-    func setupPopDestination() {
-        var controllerArray = navigationController?.viewControllers
-        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
-        navigationController?.setViewControllers(controllerArray!, animated: false)
     }
     
     //MARK: - Properties

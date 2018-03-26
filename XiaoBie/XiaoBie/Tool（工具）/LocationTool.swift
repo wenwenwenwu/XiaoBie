@@ -11,14 +11,6 @@ import UIKit
 
 class LocationTool: NSObject, AMapLocationManagerDelegate {
     
-    var resultClosure: (String, String)->Void = { _,_ in }
-    
-    lazy var locationManager: AMapLocationManager = {
-        let locationManager = AMapLocationManager()
-        locationManager.delegate = self as AMapLocationManagerDelegate
-        return locationManager
-    }()
-    
     //MARK: - Factory Method
     class func toolWith(resultClosure: @escaping (String,String)->Void) -> LocationTool {
         let tool = LocationTool()
@@ -26,7 +18,7 @@ class LocationTool: NSObject, AMapLocationManagerDelegate {
         return tool
     }
     
-    //MARK: - Private Method
+    //MARK: - Action Method
     class func regist() {
         AMapServices.shared().apiKey = gaoDeAppKey
         AMapServices.shared().enableHTTPS = true
@@ -49,4 +41,13 @@ class LocationTool: NSObject, AMapLocationManagerDelegate {
         resultClosure("0", "0")
     }
     
+    //MARK: - Properties
+    lazy var locationManager: AMapLocationManager = {
+        let locationManager = AMapLocationManager()
+        locationManager.delegate = self as AMapLocationManagerDelegate
+        locationManager.allowsBackgroundLocationUpdates = true
+        return locationManager
+    }()
+    
+    var resultClosure: (String, String)->Void = { _,_ in }
 }

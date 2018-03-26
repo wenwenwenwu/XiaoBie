@@ -14,6 +14,35 @@ class DTabBarController: UITabBarController,UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
+        setupLocationTracker()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer.invalidate()
+    }
+    
+    deinit {        
+        print("🐱")
+    }
+    
+    //MARK: - Action
+    @objc func updateLocationAction() {
+        locationTool.startUpdatingLocation()
+    }
+    
+    func locationToolCompleteLocationEvent(latitude: String, longitude: String) {
+        uploadLocationRequest(latitude: latitude, longitude: longitude)
+    }
+    
+    //MARK: - Request
+    func uploadLocationRequest(latitude: String, longitude: String) {
+        //默默上传位置
+        WebTool.post(isShowHud: true, uri: "real_time_location", para: ["staff_id": AccountTool.userInfo().id, "latitude": latitude, "longitude": longitude], success: { dict in
+            let model = DBasicResponseModel.parse(dict: dict)
+            print(model.msg)
+            
+        }) { _ in }
     }
     
     //MARK: Setup
@@ -53,6 +82,20 @@ class DTabBarController: UITabBarController,UITabBarControllerDelegate {
         tabBar.isOpaque = true
     }
     
+    func setupLocationTracker() {
+        if UIApplication.shared.backgroundRefreshStatus == .denied && UIApplication.shared.backgroundRefreshStatus == .restricted {
+            Alert.showAlertWith(style: .alert, controller: self, title: "", message: "本应用还未开启后台应用刷新，请到设置-通用-后台应用刷新中开启", functionButtons: [], cancelButton: "确定", closure: { _ in })
+        } else {
+            timer.fire()
+        }
+    }
+    
+    //MARK: - Properties
+    lazy var timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(updateLocationAction), userInfo: nil, repeats: true)
+    
+    lazy var locationTool = LocationTool.toolWith { [weak self]  (latitude, longitude) in
+        self?.locationToolCompleteLocationEvent(latitude: latitude, longitude: longitude)
+    }
 }
 
 
