@@ -102,7 +102,7 @@ class MHomeViewController: UIViewController {
     }
     //pageView
     lazy var locationVC = MLocationController()
-    lazy var alertVC = MAlertViewController()
+    lazy var alertVC = MAlertController()
     lazy var pageView = PageView.viewWith(ownerVC: self, frame: CGRect.init(x: 0, y: selectView.bottom, width: screenWidth, height: screenHeight-navigationBarHeight-selectView.bottom-tabbarHeight), VCArray: [locationVC, alertVC]) { [weak self] (currentIndex) in
         self?.pageViewChangeCurrentIndex(currentIndex: currentIndex)
     }

@@ -83,7 +83,7 @@
 		5B86DE992060C4B2005BE448 /* MLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE982060C4B2005BE448 /* MLocationController.swift */; };
 		5B86DE9D2060C50F005BE448 /* MAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9C2060C50F005BE448 /* MAlertController.swift */; };
 		5B86DE9F2060D612005BE448 /* CHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DE9E2060D612005BE448 /* CHomeView.swift */; };
-		5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA02060DC0D005BE448 /* MLocationView.swift */; };
+		5B86DEA12060DC0D005BE448 /* MLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA02060DC0D005BE448 /* MLocationCell.swift */; };
 		5B86DEA32060E10F005BE448 /* MLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA22060E10F005BE448 /* MLocationModel.swift */; };
 		5B86DEA72060F8E7005BE448 /* CToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */; };
 		5B86DEAE20610619005BE448 /* CToTestifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */; };
@@ -108,6 +108,8 @@
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
 		5BC4F444206A22FC00E14065 /* ITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F443206A22FC00E14065 /* ITabBarViewController.swift */; };
 		5BC4F447206A354600E14065 /* STabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F446206A354600E14065 /* STabBarViewController.swift */; };
+		5BC4F449206A39E300E14065 /* MAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F448206A39E300E14065 /* MAlertCell.swift */; };
+		5BC4F44B206A3A1600E14065 /* MAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F44A206A3A1600E14065 /* MAlertModel.swift */; };
 		5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */; };
 		5BCBC793206243550015C3B1 /* PushNotifyTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* PushNotifyTool.swift */; };
 		5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC79820625E6C0015C3B1 /* PushModel.swift */; };
@@ -342,7 +344,7 @@
 		5B86DE982060C4B2005BE448 /* MLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationController.swift; sourceTree = "<group>"; };
 		5B86DE9C2060C50F005BE448 /* MAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertController.swift; sourceTree = "<group>"; };
 		5B86DE9E2060D612005BE448 /* CHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHomeView.swift; sourceTree = "<group>"; };
-		5B86DEA02060DC0D005BE448 /* MLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationView.swift; sourceTree = "<group>"; };
+		5B86DEA02060DC0D005BE448 /* MLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationCell.swift; sourceTree = "<group>"; };
 		5B86DEA22060E10F005BE448 /* MLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLocationModel.swift; sourceTree = "<group>"; };
 		5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckViewController.swift; sourceTree = "<group>"; };
 		5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyViewController.swift; sourceTree = "<group>"; };
@@ -369,6 +371,8 @@
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
 		5BC4F443206A22FC00E14065 /* ITabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITabBarViewController.swift; sourceTree = "<group>"; };
 		5BC4F446206A354600E14065 /* STabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STabBarViewController.swift; sourceTree = "<group>"; };
+		5BC4F448206A39E300E14065 /* MAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertCell.swift; sourceTree = "<group>"; };
+		5BC4F44A206A3A1600E14065 /* MAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertModel.swift; sourceTree = "<group>"; };
 		5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyView.swift; sourceTree = "<group>"; };
 		5BCBC792206243550015C3B1 /* PushNotifyTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifyTool.swift; sourceTree = "<group>"; };
 		5BCBC79820625E6C0015C3B1 /* PushModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
@@ -1094,7 +1098,7 @@
 			isa = PBXGroup;
 			children = (
 				5B86DE982060C4B2005BE448 /* MLocationController.swift */,
-				5B86DEA02060DC0D005BE448 /* MLocationView.swift */,
+				5B86DEA02060DC0D005BE448 /* MLocationCell.swift */,
 				5B86DEA22060E10F005BE448 /* MLocationModel.swift */,
 			);
 			path = "位置";
@@ -1104,6 +1108,8 @@
 			isa = PBXGroup;
 			children = (
 				5B86DE9C2060C50F005BE448 /* MAlertController.swift */,
+				5BC4F448206A39E300E14065 /* MAlertCell.swift */,
+				5BC4F44A206A3A1600E14065 /* MAlertModel.swift */,
 			);
 			path = "预警";
 			sourceTree = "<group>";
@@ -2157,6 +2163,7 @@
 				5BDB502E202C1D570055C21E /* LoginView.swift in Sources */,
 				5B33F004204E232E00A672CE /* DCompleteView.swift in Sources */,
 				5B51FAE320293EA6001AB946 /* DHomeViewController.swift in Sources */,
+				5BC4F44B206A3A1600E14065 /* MAlertModel.swift in Sources */,
 				5BDE11C520565F50008D68EC /* NIMInputEmoticonButton.m in Sources */,
 				5BDE120B20565F50008D68EC /* NIMSessionFileTransContentView.m in Sources */,
 				5BDB5030202C3B490055C21E /* DMineCell.swift in Sources */,
@@ -2253,6 +2260,7 @@
 				5B95F87D2068EF9600E72BEE /* AvatarPickerTool.swift in Sources */,
 				5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */,
 				5BDE121620565F50008D68EC /* UITableView+NIMScrollToBottom.m in Sources */,
+				5BC4F449206A39E300E14065 /* MAlertCell.swift in Sources */,
 				5BDE11E020565F50008D68EC /* NIMTeamMemberCardHeaderCell.m in Sources */,
 				5BDE11FA20565F50008D68EC /* NIMSessionMsgDatasource.m in Sources */,
 				5BDE11B920565F50008D68EC /* NIMKitUtil.m in Sources */,
@@ -2285,7 +2293,7 @@
 				5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */,
 				5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */,
 				5BDE11F420565F50008D68EC /* NIMTextContentConfig.m in Sources */,
-				5B86DEA12060DC0D005BE448 /* MLocationView.swift in Sources */,
+				5B86DEA12060DC0D005BE448 /* MLocationCell.swift in Sources */,
 				5B498E9F204503DD0071406C /* DAlibiView.swift in Sources */,
 				5BDE121D20565F50008D68EC /* NIMCommonTableDelegate.m in Sources */,
 				5B86DEB82062055B005BE448 /* CToCheckView.swift in Sources */,

@@ -123,7 +123,7 @@ class MLocationCell: UITableViewCell {
             addressLabel.text = model.address
             dateLabel.text = DateTool.strDateToStrMDHM(strDate: model.update_time)
             //avatarImageView
-            let urlStr = "\(model.image_host)?avatar=\(model.avatar)"
+            let urlStr = "\(model.image_host)\(model.avatar)"
             avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
         }
     }
