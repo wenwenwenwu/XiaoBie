@@ -1,5 +1,5 @@
 //
-//  MStoreViewController.swift
+//  IStoreViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MStoreViewController: UIViewController {
+class IStoreViewController: UIViewController {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -96,10 +96,10 @@ class MStoreViewController: UIViewController {
     
     //pageView
     
-    lazy var storeVC = MInStoreViewController()
+    lazy var storeVC = IInStoreViewController()
 
-    lazy var historyVC: MHistoryViewController = {
-        let VC = MHistoryViewController()
+    lazy var historyVC: IHistoryViewController = {
+        let VC = IHistoryViewController()
         VC.startDate = startDate
         VC.endDate = endDate
         return VC
@@ -114,6 +114,6 @@ class MStoreViewController: UIViewController {
     lazy var scanButtonItem = UIBarButtonItem.init(image:#imageLiteral(resourceName: "icon_lsj_sys").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(scanButtonAction))
     
     //记录calendarVC的日期信息,赋值给historyVC的初始日期信息
-    var startDate = ""
-    var endDate = ""
+    var startDate = DateTool.str本月一号()
+    var endDate = DateTool.str今天()
 }

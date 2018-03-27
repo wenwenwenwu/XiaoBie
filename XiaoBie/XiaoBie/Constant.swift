@@ -78,10 +78,10 @@ import UIKit
 
     //网络
     let pageSize = "10"
-    let baseURL = "http://manage.cloudconfs.com:8080/longwang/general/"
-    let uploadURL = "http://manage.cloudconfs.com:8080/longwang/oss/"
-    let imagesDownloadURL = "http://manage.cloudconfs.com:8080/longwang/oss/load_daily_evidence_img?img_name="
-    let QRCodeImageURL = "http://manage.cloudconfs.com:8080/longwang/oss/static_qr_img?platform_type="
+    let baseURL = "http://115.231.102.102:8080/longwang/general/"
+    let uploadURL = "http://115.231.102.102:8080/longwang/oss/"
+    let imagesDownloadURL = "http://115.231.102.102:8080/longwang/oss/load_daily_evidence_img?img_name="
+    let QRCodeImageURL = "http://115.231.102.102:8080/longwang/oss/static_qr_img?platform_type="
 
     //第三方
     let jPushAppKey = "5e56a0358ebab482ca76b127"

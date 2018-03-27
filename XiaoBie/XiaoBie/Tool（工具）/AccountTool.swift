@@ -60,8 +60,12 @@ class UserInfoModel: NSObject, NSCoding,YYModel {
                     roleName = .driver
                 case "1":
                     roleName = .clerk
-                default:
+                case "2":
                     roleName = .manager
+                case "3":
+                    roleName = .inStore
+                default:
+                    roleName = .sales
                 }
             }
         }
@@ -95,5 +99,7 @@ enum Role {
     case driver
     case clerk
     case manager
+    case inStore
+    case sales
 }
 

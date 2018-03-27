@@ -1,5 +1,5 @@
 //
-//  MHistoryViewController.swift
+//  IHistoryViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/16.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class MHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class IHistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -175,14 +175,14 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         return view
     }()
     
-    lazy var sourceView = MHistorySourceView.viewWith { [weak self] in
+    lazy var sourceView = IHistorySourceView.viewWith { [weak self] in
         self?.sourceViewLabelTapAction()
     }
     
 //    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
 //        self.paraPopViewPickedAction(model: model)
 //    }
-    lazy var paraPopView = MStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
+    lazy var paraPopView = IStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
         self?.paraPopViewPickedAction(model: model)
     }
     

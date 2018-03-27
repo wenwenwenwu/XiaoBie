@@ -1,5 +1,5 @@
 //
-//  MInStoreViewController.swift
+//  IInStoreViewController.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/16.
@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class MInStoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class IInStoreViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
         paraPopView.showActionWith(type: .phonePara, currentItem: paraView.paraLabel.text == "筛选" ? "所有参数" : paraView.paraName)
     }
     
-    func paraPopViewPickedAction(type: MStoreParaType, model: MHistoryPickParaModel) {
+    func paraPopViewPickedAction(type: IStoreParaType, model: MHistoryPickParaModel) {
         
         switch type {
         case .source:
@@ -188,15 +188,15 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Properties
-    lazy var sourceView = MInStoreParaView.viewWith(type: .source) { [weak self] in
+    lazy var sourceView = IInStoreParaView.viewWith(type: .source) { [weak self] in
         self?.sourceViewTapAction()
     }
     
-    lazy var modelView = MInStoreParaView.viewWith(type: .phoneModel) { [weak self] in
+    lazy var modelView = IInStoreParaView.viewWith(type: .phoneModel) { [weak self] in
         self?.modelViewTapAction()
     }
     
-    lazy var paraView = MInStoreParaView.viewWith(type: .phonePara) { [weak self] in
+    lazy var paraView = IInStoreParaView.viewWith(type: .phonePara) { [weak self] in
         self?.paraViewTapAction()
     }
     
@@ -215,7 +215,7 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
 //        self.paraPopViewPickedAction(type: type, model: model)
 //    }
     
-    lazy var paraPopView = MStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
+    lazy var paraPopView = IStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
         self?.paraPopViewPickedAction(type: type, model: model)
     }
     

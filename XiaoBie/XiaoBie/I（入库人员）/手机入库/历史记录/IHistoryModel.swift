@@ -9,15 +9,15 @@
 import UIKit
 import YYModel
 
-class MHistoryPickParaResponseModel: NSObject,YYModel {
+class IHistoryPickParaResponseModel: NSObject,YYModel {
     
     @objc var code = ""
     @objc var msg = ""
     @objc var result = ""
     @objc var data: [MHistoryPickParaModel] = []
     
-    class func parse(dict : Any ) -> MHistoryPickParaResponseModel{
-        let model = MHistoryPickParaResponseModel.yy_model(withJSON: dict)
+    class func parse(dict : Any ) -> IHistoryPickParaResponseModel{
+        let model = IHistoryPickParaResponseModel.yy_model(withJSON: dict)
         return model!
     }
     

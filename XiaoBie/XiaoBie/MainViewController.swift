@@ -78,7 +78,17 @@ class MainViewController: UIViewController {
                 let mTabBarVC = MTabBarController()
                 self.addChildViewController(mTabBarVC)
                 view.addSubview(mTabBarVC.view)
+            case .inStore:
+                let iTabBarVC = ITabBarController()
+                self.addChildViewController(iTabBarVC)
+                view.addSubview(iTabBarVC.view)
+            case .sales:
+                let mTabBarVC = MTabBarController()
+                self.addChildViewController(mTabBarVC)
+                view.addSubview(mTabBarVC.view)
+            
             }
+            
         }
     }
     

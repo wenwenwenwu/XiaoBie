@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MHistorySourceView: UIView {
+class IHistorySourceView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -25,8 +25,8 @@ class MHistorySourceView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(sourceLabelTapClosure: @escaping ()->Void) -> MHistorySourceView {
-        let view = MHistorySourceView()
+    class func viewWith(sourceLabelTapClosure: @escaping ()->Void) -> IHistorySourceView {
+        let view = IHistorySourceView()
         view.sourceLabelTapClosure = sourceLabelTapClosure
         return view
     }

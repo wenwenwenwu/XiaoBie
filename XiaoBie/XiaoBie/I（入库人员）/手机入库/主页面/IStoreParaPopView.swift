@@ -1,5 +1,5 @@
 //
-//  MStoreParaPopView.swift
+//  IStoreParaPopView.swift
 //  XiaoBie
 //
 //  Created by wuwenwen on 2018/3/16.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum MStoreParaType {
+enum IStoreParaType {
     case source
     case phoneModel
     case phonePara
 }
 
-class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+class IStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
 
     //MARK: Init
     override init(frame: CGRect) {
@@ -27,14 +27,14 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,MHistoryPickParaModel)->Void) {
+    convenience init(ownerVC: UIViewController, pickedClosure:  @escaping (IStoreParaType,MHistoryPickParaModel)->Void) {
         self.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
         self.ownerVC = ownerVC
         self.pickedClosure = pickedClosure
     }
     
     //MARK: - Action
-    func showActionWith(type: MStoreParaType, currentItem: String) {
+    func showActionWith(type: IStoreParaType, currentItem: String) {
         if isShow {
             self.dismiss()
         } else {
@@ -51,7 +51,7 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     //MARK: - Request
     func sourceRequest() {
         WebTool.post(isShowHud: false, uri: uri, para: para, success: { (dict) in
-            let model = MHistoryPickParaResponseModel.parse(dict: dict)
+            let model = IHistoryPickParaResponseModel.parse(dict: dict)
             if model.code == "0" {
                 self.dataArray = [self.allModel] + model.data
                 self.show()
@@ -163,14 +163,14 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     
     var currentItem = ""
     var ownerVC = UIViewController()
-    var pickedClosure: (MStoreParaType, MHistoryPickParaModel)->Void = {_,_  in }
+    var pickedClosure: (IStoreParaType, MHistoryPickParaModel)->Void = {_,_  in }
     
     var uri = ""
     var para: [String : String] = [:]
     
     var modelId = ""
     
-    var type = MStoreParaType.source {
+    var type = IStoreParaType.source {
         didSet {
             switch type {
             case .source:
@@ -224,7 +224,7 @@ class MHistoryPickCell: UICollectionViewCell {
         }
     }
     
-    func setupData(type: MStoreParaType, model: MHistoryPickParaModel, currentItem: String) {
+    func setupData(type: IStoreParaType, model: MHistoryPickParaModel, currentItem: String) {
         switch type {
         //设置显示数据
         case .source:

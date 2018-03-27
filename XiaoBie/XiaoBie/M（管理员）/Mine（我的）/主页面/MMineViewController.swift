@@ -95,7 +95,7 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.cellForRow(at: indexPath) as! DMineCell
         switch cell.type {
         case .inStore:
-            let storeVC = MStoreViewController()
+            let storeVC = IStoreViewController()
             storeVC.startDate = startDate
             storeVC.endDate = endDate
             navigationController?.pushViewController(storeVC, animated: true)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MInStoreParaView: UIView {
+class IInStoreParaView: UIView {
     
     //MARK: - Init
     override init(frame: CGRect) {
@@ -25,8 +25,8 @@ class MInStoreParaView: UIView {
     }
     
     //MARK: - Factory Method
-    class func viewWith(type: MStoreParaType, paraLabelTapClosure: @escaping ()->Void) -> MInStoreParaView {
-        let view = MInStoreParaView()
+    class func viewWith(type: IStoreParaType, paraLabelTapClosure: @escaping ()->Void) -> IInStoreParaView {
+        let view = IInStoreParaView()
         view.type = type
         view.paraLabelTapClosure = paraLabelTapClosure
         return view
@@ -78,7 +78,7 @@ class MInStoreParaView: UIView {
     
     lazy var tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
     
-    var type = MStoreParaType.source {
+    var type = IStoreParaType.source {
         didSet {
             switch type {
             case .source:
