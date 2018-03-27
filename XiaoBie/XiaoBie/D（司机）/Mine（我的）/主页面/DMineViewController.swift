@@ -172,8 +172,8 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
         return view
     }()
     
-    lazy var avatarPickerTool = AvatarPickerTool.toolWith(ownerViewController: self) { (imageName, localUrl) in
-        self.photoPickerToolCompleteUploadEvent(imageName: imageName)
+    lazy var avatarPickerTool = AvatarPickerTool.toolWith(ownerViewController: self) { [weak self] (imageName, localUrl) in
+        self?.photoPickerToolCompleteUploadEvent(imageName: imageName)
     }
     
     var startDate = DateTool.str本月一号()

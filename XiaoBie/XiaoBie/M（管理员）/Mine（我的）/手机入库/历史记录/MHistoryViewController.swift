@@ -26,10 +26,6 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         loadRequest()
     }
     
-    deinit {
-        print("🦄️")
-    }
-    
     //MARK: - Action
     func sourceViewLabelTapAction() {
         paraPopView.showActionWith(type: .source, currentItem: sourceView.sourceLabel.text == "请选择来源" ? "所有来源" : sourceView.sourceName)
