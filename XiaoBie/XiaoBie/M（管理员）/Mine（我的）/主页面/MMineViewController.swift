@@ -48,11 +48,11 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - Request
     func updateAvatarRequest(imageName: String) {
-        WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id], success: { (dict) in
+        WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id, "avatar": imageName], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             if model.code == "0" {
                 //更新avatarImageView
-                let urlStr = "http://manage.cloudconfs.com:8080/longwang/oss/load_avatar?avatar=\(imageName)"
+                let urlStr = "\(avatarURL)\(imageName)"
                 self.headView.avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
                 //更新userInfoModel
                 let userInfoModel = AccountTool.userInfo()
@@ -70,22 +70,13 @@ class MMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: - UITableViewDataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = DMineCell.cellWith(tableView: tableView)
-        switch indexPath.section {
-        case 0:
-            cell.type = .inStore
-        default:
-            cell.type = .setting
-        }
+        cell.type = .setting
         return cell
     }
     

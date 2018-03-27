@@ -62,7 +62,7 @@ extension CacheTool {
         //文件名
         let filePath = "\(cachePath)/\(CacheTool.uniqueFileName()).jpg"
         //缩图
-        image.draw(in: CGRect.init(x: 0, y: 0, width: 50, height: 50*4/3))//iPhone标准照片照片比例
+        image.draw(in: CGRect.init(x: 0, y: 0, width: 10, height: 10*4/3))//iPhone标准照片照片比例
         //压图
         let imageData = UIImageJPEGRepresentation(image, 0.1)
         //保存

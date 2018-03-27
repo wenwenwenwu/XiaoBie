@@ -1069,8 +1069,8 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
-				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
+				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A821204692A600CA563A /* M（管理员） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,

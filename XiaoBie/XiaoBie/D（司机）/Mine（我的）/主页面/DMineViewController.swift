@@ -77,11 +77,11 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - Request
     func updateAvatarRequest(imageName: String) {
-        WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id], success: { (dict) in
+        WebTool.post(uri: "update_employee_info", para: ["employee_id" : AccountTool.userInfo().id, "avatar": imageName], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             if model.code == "0" {
                 //更新avatarImageView
-                let urlStr = "http://manage.cloudconfs.com:8080/longwang/oss/load_avatar?avatar=\(imageName)"
+                let urlStr = "\(avatarURL)\(imageName)"
                 self.headView.avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
                 //更新userInfoModel
                 let userInfoModel = AccountTool.userInfo()

@@ -20,7 +20,7 @@ class ITabBarController: UITabBarController,UITabBarControllerDelegate {
     func setupTabBar() {
         //viewControllers
         let homeNav = NavigationController.init(rootViewController: IStoreViewController())
-        let mineNav = NavigationController.init(rootViewController: CMineViewController())
+        let mineNav = NavigationController.init(rootViewController: MMineViewController())
         viewControllers = [homeNav,mineNav]
         
         //title

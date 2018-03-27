@@ -82,6 +82,7 @@ import UIKit
     let uploadURL = "http://115.231.102.102:8080/longwang/oss/"
     let imagesDownloadURL = "http://115.231.102.102:8080/longwang/oss/load_daily_evidence_img?img_name="
     let QRCodeImageURL = "http://115.231.102.102:8080/longwang/oss/static_qr_img?platform_type="
+    let avatarURL = "http://115.231.102.102:8080/longwang/oss/load_avatar?avatar="
 
     //第三方
     let jPushAppKey = "5e56a0358ebab482ca76b127"
