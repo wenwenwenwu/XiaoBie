@@ -68,7 +68,7 @@ class IStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         // 刷新数据
         collectionView.reloadData()
         //collectionView高度
-        let rowNumber = dataArray.count/4+1
+        let rowNumber = (dataArray.count % 3 == 0) ? dataArray.count / 3 : dataArray.count / 3 + 1
         let height = 15 * (rowNumber + 1) + 30 * rowNumber
         //动画
         UIView.animate(withDuration: animationTime) {
@@ -107,7 +107,7 @@ class IStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
     //MARK: - UICollectionViewDelegateFlowLayout
     //Cell尺寸
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (screenWidth-15*5)/4
+        let width = (screenWidth-15*4)/3
         return CGSize.init(width: width, height: 30)
     }
     //每个Section的四边间距
