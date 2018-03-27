@@ -65,6 +65,29 @@ class WebTool {
         }
     }
     
+    //抓单
+    class func scratch(success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
+        HudTool.show()
+        Alamofire.request("http://115.231.102.102:8080/lwmanage/orderCatch/catch.do", method: HTTPMethod.post, parameters: [:]).responseJSON { (response) in
+            HudTool.dismiss()
+            switch response.result {
+            case .success:
+                if let jsonData = response.data{
+                    do{
+                        let dict = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers)
+                        success(dict as! NSDictionary)
+                    }catch {
+                        failture("数据错误")
+                    }
+                }else{
+                    failture("数据错误")
+                }
+            case .failure:
+                failture("网络错误")
+            }
+        }
+    }
+    
     //头像上传
     class func upLoadAvatar(imageURL: URL, success: @escaping (_ response: NSDictionary)->(), failture: @escaping (_ error : String)->()){
         HudTool.show()

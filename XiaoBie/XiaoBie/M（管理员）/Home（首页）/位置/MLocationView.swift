@@ -24,8 +24,9 @@ class MLocationCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        contentView.addSubview(roundLabel)
+        contentView.addSubview(avatarImageView)
         contentView.addSubview(nameLabel)
+        contentView.addSubview(dateLabel)
         contentView.addSubview(locationImageView)
         contentView.addSubview(addressLabel)
         contentView.addSubview(lineView)
@@ -39,7 +40,7 @@ class MLocationCell: UITableViewCell {
     
     //MARK: - Setup
     func setupFrame() {
-        roundLabel.snp.makeConstraints { (make) in
+        avatarImageView.snp.makeConstraints { (make) in
             make.top.equalTo(15)
             make.left.equalTo(14)
             make.width.height.equalTo(40)
@@ -47,13 +48,19 @@ class MLocationCell: UITableViewCell {
         
         nameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(15)
-            make.left.equalTo(roundLabel.snp.right).offset(11)
+            make.left.equalTo(avatarImageView.snp.right).offset(11)
             make.height.equalTo(15)
+        }
+        
+        dateLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(17)
+            make.right.equalTo(-14)
+            make.height.equalTo(9)
         }
         
         locationImageView.snp.makeConstraints { (make) in
             make.top.equalTo(nameLabel.snp.bottom).offset(12)
-            make.left.equalTo(roundLabel.snp.right).offset(11)
+            make.left.equalTo(avatarImageView.snp.right).offset(11)
             make.width.equalTo(12)
             make.height.equalTo(15)
         }
@@ -72,21 +79,25 @@ class MLocationCell: UITableViewCell {
     }
     
     //MARK: - Properties
-    lazy var roundLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        label.font = font14
-        label.textColor = white_FFFFFF
-        label.backgroundColor = blue_3296FA
-        label.layer.cornerRadius = 20
-        label.clipsToBounds = true
-        return label
+    lazy var avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 20
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.font = font16Medium
         label.textColor = black_333333
+        return label
+    }()
+    
+    lazy var dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = font12
+        label.textColor = gray_999999
         return label
     }()
     
@@ -110,9 +121,10 @@ class MLocationCell: UITableViewCell {
         didSet {
             nameLabel.text = model.name
             addressLabel.text = model.address
-            //roundLabel
-            let name = model.name
-            roundLabel.text = String(name[name.startIndex])            
+            dateLabel.text = DateTool.strDateToStrMDHM(strDate: model.update_time)
+            //avatarImageView
+            let urlStr = "\(model.image_host)?avatar=\(model.avatar)"
+            avatarImageView.kf.setImage(with: URL.init(string: urlStr), placeholder: gray_D9D9D9.colorImage(), options: nil, progressBlock: nil, completionHandler: nil)
         }
     }
 }

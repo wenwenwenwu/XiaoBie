@@ -46,5 +46,6 @@ class MLocationItemModel: NSObject {
     @objc var address = ""
     @objc var password = ""
     @objc var locate_time = ""
+    @objc var image_host = ""
 }
 

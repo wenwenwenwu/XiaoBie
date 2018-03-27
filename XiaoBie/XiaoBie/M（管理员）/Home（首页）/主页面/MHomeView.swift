@@ -58,7 +58,8 @@ class MHomeInfoView: UIView {
     
 //    var model = DHomeInfoModel() {
 //        didSet{
-//            self.cell1.valueLabel.text = model.original_order_count
+//            self.cell1.value1Label.text = model.original_order_count
+//            self.cell1.value2Label.text =
 //            self.cell2.valueLabel.text = model.undone_order_count
 //        }
 //    }

@@ -38,7 +38,7 @@ class MHomeViewController: UIViewController {
     }
     
     @objc func scratchButtonAction() {
-        print("抓单")
+        scratchRequest()
     }
     
     //MARK: - Request
@@ -47,7 +47,7 @@ class MHomeViewController: UIViewController {
         WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
             let model = DHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
-                let infoModel = model.data
+//                let infoModel = model.data
 //                self.infoView.model = infoModel
                 
             }else{
@@ -55,6 +55,15 @@ class MHomeViewController: UIViewController {
             }
         }) { (error) in
             
+        }
+    }
+    
+    func scratchRequest() {
+        WebTool.scratch(success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
         }
     }
     
