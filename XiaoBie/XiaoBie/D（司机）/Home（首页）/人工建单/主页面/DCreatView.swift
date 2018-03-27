@@ -272,7 +272,7 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
     //MARK: - Properties
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "所在地区"
+        label.text = "详细地址"
         label.font = font16
         label.textColor = black_333333
         return label

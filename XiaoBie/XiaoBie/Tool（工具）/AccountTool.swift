@@ -96,10 +96,10 @@ class UserInfoModel: NSObject, NSCoding,YYModel {
 }
 
 enum Role {
-    case driver
-    case clerk
-    case manager
-    case inStore
-    case sales
+    case driver //司机
+    case clerk //做单员
+    case manager //管理员
+    case inStore //入库人员
+    case sales //地推人员
 }
 

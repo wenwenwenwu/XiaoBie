@@ -107,6 +107,7 @@
 		5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */; };
 		5BB90CFE2030430F00F6CD9E /* DHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */; };
 		5BC4F444206A22FC00E14065 /* ITabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F443206A22FC00E14065 /* ITabBarViewController.swift */; };
+		5BC4F447206A354600E14065 /* STabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F446206A354600E14065 /* STabBarViewController.swift */; };
 		5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */; };
 		5BCBC793206243550015C3B1 /* PushNotifyTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* PushNotifyTool.swift */; };
 		5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC79820625E6C0015C3B1 /* PushModel.swift */; };
@@ -367,6 +368,7 @@
 		5BB90CFB203042F800F6CD9E /* DHomeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListViewController.swift; sourceTree = "<group>"; };
 		5BB90CFD2030430F00F6CD9E /* DHomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHomeListView.swift; sourceTree = "<group>"; };
 		5BC4F443206A22FC00E14065 /* ITabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITabBarViewController.swift; sourceTree = "<group>"; };
+		5BC4F446206A354600E14065 /* STabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STabBarViewController.swift; sourceTree = "<group>"; };
 		5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyView.swift; sourceTree = "<group>"; };
 		5BCBC792206243550015C3B1 /* PushNotifyTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifyTool.swift; sourceTree = "<group>"; };
 		5BCBC79820625E6C0015C3B1 /* PushModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
@@ -1069,11 +1071,12 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
+				5BC4F445206A352100E14065 /* S（地推人员） */,
 				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
-				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
-				5B48A821204692A600CA563A /* M（管理员） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
+				5B48A821204692A600CA563A /* M（管理员） */,
+				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5B495FF320283A5600CC4B91 /* Login（登录） */,
 				5B51FAE6202944E4001AB946 /* Tool（工具） */,
 				5B51FAE9202947E2001AB946 /* Extension（扩展） */,
@@ -1236,6 +1239,14 @@
 				5B4BBE5F205B715700FA76E7 /* 手机入库 */,
 			);
 			path = "I（入库人员）";
+			sourceTree = "<group>";
+		};
+		5BC4F445206A352100E14065 /* S（地推人员） */ = {
+			isa = PBXGroup;
+			children = (
+				5BC4F446206A354600E14065 /* STabBarViewController.swift */,
+			);
+			path = "S（地推人员）";
 			sourceTree = "<group>";
 		};
 		5BCBC79420625E4C0015C3B1 /* Model */ = {
@@ -2307,6 +2318,7 @@
 				5B86DEB62061EE85005BE448 /* CCompleteModel.swift in Sources */,
 				5B498E9B2044FEEF0071406C /* DAlibiViewController.swift in Sources */,
 				5BDE121820565F50008D68EC /* UIView+NIM.m in Sources */,
+				5BC4F447206A354600E14065 /* STabBarViewController.swift in Sources */,
 				5BF3A893204E37DB00B76278 /* DPayView.swift in Sources */,
 				5BDE11B520565F50008D68EC /* NIMKitRobotTemplate.m in Sources */,
 				5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */,
