@@ -56,13 +56,14 @@ class MHomeInfoView: UIView {
         return view
     }()
     
-//    var model = DHomeInfoModel() {
-//        didSet{
-//            self.cell1.value1Label.text = model.original_order_count
-//            self.cell1.value2Label.text =
-//            self.cell2.valueLabel.text = model.undone_order_count
-//        }
-//    }
+    var model = MHomeInfoModel() {
+        didSet{
+            self.cell1.value1Label.text = "\(model.complete_order_count)(单)"
+            self.cell1.value2Label.text = "\(model.undone_order_count)(单)"
+            self.cell2.value1Label.text = "\(model.total_pay)(元)"
+            self.cell2.value2Label.text = "\(model.total_unpay)(元)"
+        }
+    }
 }
 
 class MHomeInfoCell: UIView {

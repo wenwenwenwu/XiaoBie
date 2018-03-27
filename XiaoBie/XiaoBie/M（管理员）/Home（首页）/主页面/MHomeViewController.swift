@@ -44,11 +44,11 @@ class MHomeViewController: UIViewController {
     //MARK: - Request
     func infoRequest() {
         let staffId = AccountTool.userInfo().id
-        WebTool.post(uri: "get_profile", para: ["staff_id" : staffId], success: { (dict) in
-            let model = DHomeInfoResponseModel.parse(dict: dict)
+        WebTool.post(uri: "get_admin_profile", para: ["staff_id" : staffId], success: { (dict) in
+            let model = MHomeInfoResponseModel.parse(dict: dict)
             if model.code == "0" {
-//                let infoModel = model.data
-//                self.infoView.model = infoModel
+                let infoModel = model.data
+                self.infoView.model = infoModel
                 
             }else{
                 

@@ -74,7 +74,7 @@ class MAlertCell: UITableViewCell {
     lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.font = font12
-        label.textColor = blue_2f85d8
+        label.textColor = red_DC152C
         return label
     }()
     

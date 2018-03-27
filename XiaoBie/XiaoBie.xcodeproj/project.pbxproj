@@ -96,6 +96,7 @@
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
 		5B997823202AC9450005357A /* DClockinViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B997822202AC9450005357A /* DClockinViewManager.swift */; };
+		5BA1E002206A457B00BB8DBC /* MHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1E001206A457B00BB8DBC /* MHomeModel.swift */; };
 		5BA24F99204E9B340068B32F /* RecordTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA24F98204E9B340068B32F /* RecordTool.swift */; };
 		5BAA189B2059437D0078386D /* DGrabSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BAA189A2059437D0078386D /* DGrabSearchController.swift */; };
 		5BB2AAEC20298DB700AEC5A8 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */; };
@@ -359,6 +360,7 @@
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		5BA1E001206A457B00BB8DBC /* MHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHomeModel.swift; sourceTree = "<group>"; };
 		5BA24F98204E9B340068B32F /* RecordTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTool.swift; sourceTree = "<group>"; };
 		5BAA189A2059437D0078386D /* DGrabSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchController.swift; sourceTree = "<group>"; };
 		5BB2AAEB20298DB700AEC5A8 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -1909,6 +1911,7 @@
 			children = (
 				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
 				5B86DE962060B02D005BE448 /* MHomeView.swift */,
+				5BA1E001206A457B00BB8DBC /* MHomeModel.swift */,
 			);
 			path = "主页面";
 			sourceTree = "<group>";
@@ -2111,6 +2114,7 @@
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,
 				5BDE11F120565F50008D68EC /* NIMNotificationContentConfig.m in Sources */,
 				5BDB5036202C52B90055C21E /* DSetupViewController.swift in Sources */,
+				5BA1E002206A457B00BB8DBC /* MHomeModel.swift in Sources */,
 				5BDE120520565F50008D68EC /* NIMSessionLocationContentView.m in Sources */,
 				5B28CFF3202D7F8100E2DA2F /* BlankView.swift in Sources */,
 				5BDE11D620565F50008D68EC /* NIMTeamCardOperationItem.m in Sources */,
