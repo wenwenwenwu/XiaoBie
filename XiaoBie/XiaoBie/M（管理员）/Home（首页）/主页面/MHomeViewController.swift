@@ -17,7 +17,6 @@ class MHomeViewController: UIViewController {
         navigationItem.titleView = titleView
         navigationItem.leftBarButtonItem = clockinButtonItem
         navigationItem.rightBarButtonItem = scratchButtonItem
-        view.addSubview(searchButton)
         view.addSubview(infoView)
         infoView.addSubview(infoCell)
         view.addSubview(selectView)
@@ -40,10 +39,6 @@ class MHomeViewController: UIViewController {
     
     @objc func scratchButtonAction() {
         print("抓单")
-    }
-    
-    @objc func searchButtonAction() {
-        print("搜索")
     }
     
     //MARK: - Request
@@ -89,26 +84,7 @@ class MHomeViewController: UIViewController {
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     
-    
-    
-    lazy var searchButton: UIButton = {
-        let button = UIButton.init(type: .custom)
-        button.adjustsImageWhenHighlighted = false
-        button.frame = CGRect.init(x: 13, y: 10, width: screenWidth-13*2, height: 34)
-        button.titleLabel?.font = font16
-        button.setTitleColor(gray_B3B3B3, for: .normal)
-        button.setBackgroundImage(gray_F5F5F5.colorImage(), for: .normal)
-        button.setImage(#imageLiteral(resourceName: "icon_search"), for: .normal)
-        button.setTitle("搜索", for: .normal)
-        button.imageEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-30), 0, (button.width/2-30))
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, -(button.width/2-35), 0, (button.width/2-35))
-        button.layer.cornerRadius = 2
-        button.clipsToBounds = true
-        button.addTarget(self, action: #selector(searchButtonAction), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var infoView = MHomeInfoView.init(frame: CGRect.init(x: 0, y: searchButton.bottom, width: screenWidth, height: 117))
+    lazy var infoView = MHomeInfoView.init(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 117))
     
     lazy var infoCell = MHomeInfoCell.cellWith(image: #imageLiteral(resourceName: "icon_qianbao"), key1: "已完成", key2: "未完成")
     

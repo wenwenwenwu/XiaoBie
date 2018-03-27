@@ -26,6 +26,10 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         loadRequest()
     }
     
+    deinit {
+        print("🦄️")
+    }
+    
     //MARK: - Action
     func sourceViewLabelTapAction() {
         paraPopView.showActionWith(type: .source, currentItem: sourceView.sourceLabel.text == "请选择来源" ? "所有来源" : sourceView.sourceName)
@@ -179,8 +183,11 @@ class MHistoryViewController: UIViewController, UITableViewDataSource, UITableVi
         self?.sourceViewLabelTapAction()
     }
     
-    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
-        self.paraPopViewPickedAction(model: model)
+//    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
+//        self.paraPopViewPickedAction(model: model)
+//    }
+    lazy var paraPopView = MStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
+        self?.paraPopViewPickedAction(model: model)
     }
     
     var dataArray: [DHistoryModel] = []

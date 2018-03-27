@@ -26,6 +26,7 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
         loadRequest()
     }
     
+
     //MARK: - Action
     func sourceViewTapAction() {
         paraPopView.showActionWith(type: .source, currentItem: sourceView.paraLabel.text == "来源" ? "所有来源" : sourceView.paraName)
@@ -187,16 +188,16 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     //MARK: - Properties
-    lazy var sourceView = MInStoreParaView.viewWith(type: .source) {
-        self.sourceViewTapAction()
+    lazy var sourceView = MInStoreParaView.viewWith(type: .source) { [weak self] in
+        self?.sourceViewTapAction()
     }
     
-    lazy var modelView = MInStoreParaView.viewWith(type: .phoneModel) {
-        self.modelViewTapAction()
+    lazy var modelView = MInStoreParaView.viewWith(type: .phoneModel) { [weak self] in
+        self?.modelViewTapAction()
     }
     
-    lazy var paraView = MInStoreParaView.viewWith(type: .phonePara) {
-        self.paraViewTapAction()
+    lazy var paraView = MInStoreParaView.viewWith(type: .phonePara) { [weak self] in
+        self?.paraViewTapAction()
     }
     
     lazy var stackView: UIStackView = {
@@ -210,8 +211,12 @@ class MInStoreViewController: UIViewController, UITableViewDataSource, UITableVi
         return stackView
     }()
     
-    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
-        self.paraPopViewPickedAction(type: type, model: model)
+//    lazy var paraPopView = MStoreParaPopView.viewWith(ownerVC: self) { (type, model) in
+//        self.paraPopViewPickedAction(type: type, model: model)
+//    }
+    
+    lazy var paraPopView = MStoreParaPopView.init(ownerVC: self) { [weak self] (type, model) in
+        self?.paraPopViewPickedAction(type: type, model: model)
     }
     
     lazy var tableView: UITableView = {

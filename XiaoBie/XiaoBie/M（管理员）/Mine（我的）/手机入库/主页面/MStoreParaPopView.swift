@@ -21,19 +21,16 @@ class MStoreParaPopView: UIView, UICollectionViewDataSource,UICollectionViewDele
         super.init(frame: frame)
         addSubview(backView)
         addSubview(collectionView)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Factory Method
-    class func viewWith(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,MHistoryPickParaModel)->Void) -> MStoreParaPopView {
-        let popView = MStoreParaPopView.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
-        popView.ownerVC = ownerVC
-        popView.pickedClosure = pickedClosure
-        return popView
+    convenience init(ownerVC: UIViewController, pickedClosure:  @escaping (MStoreParaType,MHistoryPickParaModel)->Void) {
+        self.init(frame: CGRect.init(x: 0, y: 40, width: screenWidth, height: screenHeight-navigationBarHeight-40))
+        self.ownerVC = ownerVC
+        self.pickedClosure = pickedClosure
     }
     
     //MARK: - Action
