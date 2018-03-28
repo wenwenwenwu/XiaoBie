@@ -38,9 +38,10 @@ class MainViewController: UIViewController {
                 let status = lockedModel.status
                 switch status {
                 case "7": //待验单之验证码页面
-                    let codeVC = DCodeViewController()
-                    codeVC.model = model.data
-                    self.dHomeNav.pushViewController(codeVC, animated: false)
+                    let toTestifyVC = DToTestifyViewController()
+                    toTestifyVC.isLocked = true
+                    toTestifyVC.model = model.data
+                    self.dHomeNav.pushViewController(toTestifyVC, animated: false)
                 case "8", "11": //待验单之上传凭证页面
                     let uploadVC = DUploadViewController()
                     uploadVC.model = model.data

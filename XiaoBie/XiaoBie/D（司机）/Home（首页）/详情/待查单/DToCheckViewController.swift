@@ -41,7 +41,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - Request
     func clerkListRequest(serialNumber: String) {
-        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
+        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no": serialNumber, "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)
             if model.code == "0" {
                 //设置提醒按钮
@@ -58,7 +58,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func cancelRequest() {
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
@@ -121,6 +121,8 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
             //首个选中
             if indexPath.row == 0 {
                 tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+                //记录首个做单员
+                currentClerk = clerkListArray[0]
             }
             return clerkCell
         }
@@ -128,7 +130,7 @@ class DToCheckViewController: UIViewController, UITableViewDataSource, UITableVi
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 2 {
+        if indexPath.section == 2 {
             //记录当前做单员
             currentClerk = clerkListArray[indexPath.row]
         }

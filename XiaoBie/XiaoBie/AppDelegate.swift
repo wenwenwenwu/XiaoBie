@@ -190,7 +190,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
                     clerkStatus = "2"
                     let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
                     let selectedNav = tabbarVC.selectedViewController as! NavigationController
-                    self.pushCToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
+                    self.pushDCodeVC(nav: selectedNav, orderId: model.order_id)
                 default:
                     break
                 }
@@ -199,7 +199,14 @@ extension AppDelegate: JPUSHRegisterDelegate {
             })
         case "8": //提醒做单员订单取消
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                self.clerkHomeVCReloadData()
+                switch AccountTool.userInfo().roleName! {
+                case .driver:
+                    self.driverHomeVCReloadData()
+                case .clerk:
+                    self.clerkHomeVCReloadData()
+                default:
+                    break
+                }
             })
         
         case "3": //提醒司机验证码已发送
@@ -222,14 +229,16 @@ extension AppDelegate: JPUSHRegisterDelegate {
             default:
                 break
             }
-        case "6": //提醒司机验单完成（未完成）
+        case "6": //提醒司机验单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
+                currentController?.navigationController?.popToRootViewController(animated: true)
             })
         case "7": //提醒司机查单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
             })
+            
 
         case "9": //提醒司机订单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in

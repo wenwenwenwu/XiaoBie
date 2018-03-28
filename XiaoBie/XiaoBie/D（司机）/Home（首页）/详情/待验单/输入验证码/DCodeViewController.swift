@@ -68,7 +68,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         WebTool.post(uri:"send_code_for_verify", para:["delivery_id": AccountTool.userInfo().id,
                                                        "verify_code": codeCell.code,
                                                        "order_id": model.id,
-                                                       "dealer_id": dealerId], success: { (dict) in
+                                                       "dealer_id": model.order_checker_id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
@@ -117,7 +117,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             return infoCell
         case 1:
             let scanCell = DCodeScanCell.cellWith(tableView: tableView)
-            scanCell.serialNumber = serialNumber
+            scanCell.serialNumber = model.serial_no
             return scanCell
         case 2:
             let codeInputCell = DCodeInputCodeCell.cellWith(tableView: tableView)
@@ -188,7 +188,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var model = DGrabItemModel()
     var codeListArray: [DCodeItemModel] = []
-    var serialNumber = ""
     var dealerId = ""
     
 }

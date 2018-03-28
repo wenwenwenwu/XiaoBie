@@ -137,7 +137,7 @@ class DCodeInputCodeCell: UITableViewCell, UITextFieldDelegate {
     //MARK: - Properties
     lazy var keyLabel: UILabel = {
         let label = UILabel()
-        label.text = "验证码"
+        label.text = "发送验证码"
         label.font = font16
         label.textColor = black_333333
         return label

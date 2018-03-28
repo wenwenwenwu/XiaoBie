@@ -27,7 +27,11 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.sharedManager().enable = false
-        
+        if isLocked {
+            //隐藏导航控制器返回按钮
+            navigationItem.hidesBackButton = true
+            navigationItem.leftBarButtonItem = nil
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -87,7 +91,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func cancelRequest() {
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
@@ -104,7 +108,7 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func clerkListRequest() {
-        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no":"ff873985", "order_id":model.id], success: { (dict) in
+        WebTool.get(uri:"get_dealer_by_serialno", para:["business_type": model.project_type,  "serial_no": serialNumber, "order_id":model.id], success: { (dict) in
             let model = DToCheckClerkResponseModel.parse(dict: dict)
             if model.code == "0" {
                 //展示做单员列表
@@ -298,5 +302,8 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     var serialNumber = ""
     
     var isClerkChangeable = false
+    
+    var isLocked = false
+    
 }
 

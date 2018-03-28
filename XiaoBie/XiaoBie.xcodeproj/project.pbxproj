@@ -286,7 +286,7 @@
 		5B3819E9205774BA00E3D345 /* NTESTeamListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTeamListViewController.h; sourceTree = "<group>"; };
 		5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTeamListViewController.m; sourceTree = "<group>"; };
 		5B48A7EF20464C6700CA563A /* DAlibiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiModel.swift; sourceTree = "<group>"; };
-		5B48A81B2046814000CA563A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../MainViewController.swift; sourceTree = "<group>"; };
+		5B48A81B2046814000CA563A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B48A81F2046927900CA563A /* CTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabBarController.swift; sourceTree = "<group>"; };
 		5B48A822204692D200CA563A /* MTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTabBarController.swift; sourceTree = "<group>"; };
 		5B48A82C2046A02C00CA563A /* MHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHomeViewController.swift; sourceTree = "<group>"; };
@@ -923,7 +923,6 @@
 			children = (
 				5BF0454120401085003F8CE5 /* scan（扫描） */,
 				5B702F3D20412FD000DB4978 /* calendar（日历） */,
-				5B48A81B2046814000CA563A /* MainViewController.swift */,
 				5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */,
 			);
 			path = Controler;
@@ -1078,15 +1077,16 @@
 			isa = PBXGroup;
 			children = (
 				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
+				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
+				5B48A81B2046814000CA563A /* MainViewController.swift */,
+				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
+				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
 				5B48A821204692A600CA563A /* M（管理员） */,
 				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5BC4F445206A352100E14065 /* S（地推人员） */,
 				5B495FF320283A5600CC4B91 /* Login（登录） */,
-				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
-				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
-				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
 				5B51FAE6202944E4001AB946 /* Tool（工具） */,
 				5B51FAE9202947E2001AB946 /* Extension（扩展） */,
 				5B51FAD820293D0E001AB946 /* Global（全局） */,

@@ -98,7 +98,7 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     
     //MARK: - Request
     func cancelRequest() {
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["order_id":model.id], success: { (dict) in
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
