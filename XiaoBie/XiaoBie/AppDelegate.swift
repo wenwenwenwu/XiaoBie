@@ -82,6 +82,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         JPUSHService.setup(withOption: launchOptions, appKey: jPushAppKey, channel: "ios", apsForProduction: true)
         //去登录处设置极光推送的audience
+        //还要注意在应用的targets-capability-background modes中开启remote notification
     }
     
     //MARK: - UIApplicationDelegate
@@ -293,22 +294,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
             HudTool.showInfo(string: error)
         }
     }
-    
-//    //做单员端推出待验单(未发送验证码)
-//    func pushCToTestifyVCWithoutCode(nav: UINavigationController, orderId: String) {
-//        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
-//            let model = COrderDetailResponseModel.parse(dict: dict)
-//            if model.code == "0" {
-//                let toTestifyVC = CToTestifyViewController()
-//                toTestifyVC.model = model.data
-//                nav.pushViewController(toTestifyVC, animated: true)
-//            } else {
-//                HudTool.showInfo(string: model.msg)
-//            }
-//        }) { (error) in
-//            HudTool.showInfo(string: error)
-//        }
-//    }
     
     //做单员端推出待验单(发送验证码)
     func pushCToTestifyVCWithCode(nav: UINavigationController, orderId: String) {
