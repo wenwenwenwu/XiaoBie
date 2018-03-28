@@ -210,6 +210,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 switch AccountTool.userInfo().roleName! {
                 case .driver:
+                    currentController?.navigationController?.popToRootViewController(animated: true)//因为无法手动返回
                     self.driverHomeVCReloadData()
                 case .clerk:
                     self.clerkHomeVCReloadData()
@@ -230,10 +231,10 @@ extension AppDelegate: JPUSHRegisterDelegate {
             dToTestifyVC.currentClerkCell?.updateClerkStatus(statusType: model.response_type)
             //换人操作
             switch model.response_type {
-            case "0"://正在忙
+            case "0", "1"://正在忙、请稍等
                 //立刻换人
                 dToTestifyVC.remindButton.status = .enabled
-            case "1", "2"://请稍等、正常
+            case "2"://正常
                 //无法换人、无法提醒验单
                 dToTestifyVC.remindButton.status = .disabled
             default:
@@ -241,9 +242,8 @@ extension AppDelegate: JPUSHRegisterDelegate {
             }
             
         case "6": //提醒司机验单完成
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                self.driverHomeVCReloadData()
-                currentController?.navigationController?.popToRootViewController(animated: true)
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "验单已完成", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                self.pushDUploadVC(nav: (currentController?.navigationController)!, orderId: model.order_id)
             })
             
         case "7": //提醒司机查单完成
@@ -369,4 +369,19 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }
     }
     
+    //司机端推出上传凭证页面
+    func pushDUploadVC(nav: UINavigationController, orderId: String) {
+        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+            let model = COrderDetailResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let uploadVC = DUploadViewController()
+                uploadVC.model = model.data
+                nav.pushViewController(uploadVC, animated: false)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
 }

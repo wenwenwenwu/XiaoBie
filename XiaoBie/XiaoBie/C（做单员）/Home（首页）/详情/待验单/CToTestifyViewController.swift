@@ -17,8 +17,10 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.rightBarButtonItem = chatButtonItem
         view.addSubview(tableView)
         view.addSubview(whiteView)
+        whiteView.addSubview(cancelButton)
+        whiteView.addSubview(grayLine1)
         whiteView.addSubview(addButton)
-        whiteView.addSubview(grayLine)
+        whiteView.addSubview(grayLine2)
         whiteView.addSubview(passButton)
         
         navigationItem.title = "待验单"
@@ -48,6 +50,12 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     
     @objc func addButtonAction() {
         passRequest(passType: "1")
+    }
+    
+    @objc func cancelButtonAction() {
+        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, functionButtons: ["确定"]) { _ in
+            self.cancelRequest()
+        }
     }
     
     //MARK: - Action Method
@@ -95,6 +103,18 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             }
         }) { (error) in
             
+        }
+    }
+    
+    func cancelRequest() {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
         }
     }
     
@@ -208,21 +228,34 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             make.height.equalTo(44)
         }
         
-        grayLine.snp.makeConstraints { (make) in
-            make.left.equalTo(screenWidth / 2)
+        cancelButton.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalToSuperview()
+            make.right.equalTo(grayLine1.snp.left)
+        }
+        
+        grayLine1.snp.makeConstraints { (make) in
+            make.left.equalTo(screenWidth / 3)
             make.width.equalTo(1)
             make.height.equalTo(17)
             make.centerY.equalToSuperview()
         }
         
         addButton.snp.makeConstraints { (make) in
-            make.top.left.bottom.equalToSuperview()
-            make.right.equalTo(grayLine.snp.left)
+            make.top.bottom.equalToSuperview()
+            make.left.equalTo(grayLine1.snp.right)
+            make.right.equalTo(grayLine2.snp.left)
+        }
+        
+        grayLine2.snp.makeConstraints { (make) in
+            make.left.equalTo(screenWidth * 2 / 3)
+            make.width.equalTo(1)
+            make.height.equalTo(17)
+            make.centerY.equalToSuperview()
         }
         
         passButton.snp.makeConstraints { (make) in
             make.top.right.bottom.equalToSuperview()
-            make.left.equalTo(grayLine.snp.right)
+            make.left.equalTo(grayLine2.snp.right)
         }
     }
     
@@ -249,6 +282,15 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         return view
     }()
     
+    lazy var cancelButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.titleLabel?.font = font14
+        button.setTitle("取消", for: .normal)
+        button.setTitleColor(blue_3899F7, for: .normal)
+        button.addTarget(self, action: #selector(cancelButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var addButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
@@ -267,7 +309,13 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         return button
     }()
     
-    lazy var grayLine: UIView = {
+    lazy var grayLine1: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_D9D9D9
+        return view
+    }()
+    
+    lazy var grayLine2: UIView = {
         let view = UIView()
         view.backgroundColor = gray_D9D9D9
         return view

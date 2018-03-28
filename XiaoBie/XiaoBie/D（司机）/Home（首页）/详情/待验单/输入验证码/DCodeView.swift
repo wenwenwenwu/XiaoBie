@@ -137,7 +137,7 @@ class DCodeInputCodeCell: UITableViewCell, UITextFieldDelegate {
     //MARK: - Properties
     lazy var keyLabel: UILabel = {
         let label = UILabel()
-        label.text = "发送验证码"
+        label.text = "验证码"
         label.font = font16
         label.textColor = black_333333
         return label
@@ -156,7 +156,7 @@ class DCodeInputCodeCell: UITableViewCell, UITextFieldDelegate {
     lazy var codeButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font12
-        button.setTitle("验证码", for: .normal)
+        button.setTitle("发送", for: .normal)
         button.setTitleColor(white_FFFFFF, for: .normal)
         button.setBackgroundImage(blue_3296FA.colorImage(), for: .normal)
         button.addTarget(self, action: #selector(codeButtonAction), for: .touchUpInside)

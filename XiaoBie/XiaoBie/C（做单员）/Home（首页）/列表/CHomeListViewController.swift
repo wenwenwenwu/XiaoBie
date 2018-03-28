@@ -120,7 +120,7 @@ class CHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! CHomeListCell
-//        cell.model.statusType = .toCheck
+        cell.model.statusType = .toTestify
         switch listType {
         case .toCheck:
             let toCheckVC = CToCheckViewController()

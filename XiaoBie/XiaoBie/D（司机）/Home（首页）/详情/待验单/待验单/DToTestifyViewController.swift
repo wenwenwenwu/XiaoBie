@@ -22,6 +22,8 @@ class DToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(remindButton)
         setupNavigationBar()
         setupFrame()
+        //将当前控制器赋值给全局变量currentController，便于收到推送后操作
+        currentController = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
