@@ -141,10 +141,8 @@ class CHomeListCell: UITableViewCell {
             //statusLabel
             var statusStr = ""
             switch model.statusType {
-            case .toCheck:
+            case .toCheck, .querying:
                 statusStr = "待查单"
-            case .querying:
-                statusStr = "查询中"
             case .checked, .checked2:
                 statusStr = "已查单"
             case .toTestify:
@@ -163,7 +161,7 @@ class CHomeListCell: UITableViewCell {
                 statusStr = "凭证已上传"
             case .complete, .complete2:
                 statusStr = "完成"
-            case .payComplete:
+            case .payComplete, .paySuccess:
                 statusStr = "付款完成"
             default:
                 statusStr = "稍后联系"

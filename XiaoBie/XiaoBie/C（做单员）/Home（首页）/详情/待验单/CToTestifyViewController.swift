@@ -88,7 +88,9 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
                 self.tableView.reloadData()
                 //刷新codeCell
                 let codeCell = self.tableView.cellForRow(at: IndexPath.init(row: 0, section: 1)) as! CToTestifyCodeCell
-                codeCell.code = model.data[0].code
+                if let code = model.data.first?.code {
+                    codeCell.code = code
+                }
                 
             } else {
                 

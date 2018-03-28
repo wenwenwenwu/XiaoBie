@@ -132,14 +132,18 @@ extension AppDelegate: JPUSHRegisterDelegate {
     //程序处于前台运行状态，收到远程通知后
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
-        //提醒方式设置(Badge、Sound、Alert)
-        completionHandler(Int(UNNotificationPresentationOptions.alert.rawValue)|Int(UNNotificationPresentationOptions.badge.rawValue)|Int(UNNotificationPresentationOptions.sound.rawValue))
-        //消息内容暂不做处理
+        //提醒方式设置(Badge、Sound)
+        completionHandler(Int(UNNotificationPresentationOptions.badge.rawValue)|Int(UNNotificationPresentationOptions.sound.rawValue))
+        //消息内容
+        let userInfo = notification.request.content.userInfo
+        receiveNotification(userInfo: userInfo)
     }
     
     @available(iOS 10.0, *)
     //程序处于后台或者被杀死状态，收到远程通知后
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        //系统要求设置
+        completionHandler()
         //消息内容
         let userInfo = response.notification.request.content.userInfo
         //判断远程推送
@@ -148,8 +152,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }else{
             //本地推送
         }
-        //不必设置提醒方式
-        completionHandler()
     }
     
     //MARK: - Action Method
@@ -157,10 +159,9 @@ extension AppDelegate: JPUSHRegisterDelegate {
     func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
         JPUSHService.handleRemoteNotification(userInfo)
         let model = PushModel.parse(dict: userInfo)
-        model.push_type = "5"
         switch model.push_type {
         case "0": //提醒做单员查单
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了"], cancelButton: nil, closure: { (buttonTitle) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "通知", message: "你有一个待查单", functionButtons: ["知道了", "去查单"], cancelButton: nil, closure: { (buttonTitle) in
                 switch buttonTitle {
                 case "去查单":
                     let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
@@ -196,6 +197,11 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 self.setClerkStatus(clerkStatus: clerkStatus, orderId: model.order_id)
 
             })
+        case "8": //提醒做单员订单取消
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                self.clerkHomeVCReloadData()
+            })
+        
         case "3": //提醒司机验证码已发送
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.pushDCodeVC(nav: (currentController?.navigationController)!, orderId: model.order_id)
@@ -217,24 +223,17 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 break
             }
         case "6": //提醒司机验单完成（未完成）
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
             })
         case "7": //提醒司机查单完成
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
             })
-        case "8": //提醒做单员订单取消
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                self.clerkHomeVCReloadData()
-            })
+
         case "9": //提醒司机订单完成
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                self.driverHomeVCReloadData()
-            })
-        case "10": //提醒做单员已付款
-            Alert.showAlertWith(style: .alert, controller: mainVC, title: "客户已付款", message: "请到首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
-                self.clerkHomeVCReloadData()
             })
         default:
             break
