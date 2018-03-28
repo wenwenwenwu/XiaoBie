@@ -33,22 +33,6 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func rankCellAction() {
-        print("给龙网评分")
-    }
-    
-    func pravicyCellAction() {
-        print("隐私协议")
-    }
-    
-    func suggestCellAction() {
-        print("建议与反馈")
-    }
-    
-    func aboutCellAction() {
-        print("关于我们")
-    }
-    
     func logoutCellAction() {
         //删除用户信息
         AccountTool.logout()
@@ -66,15 +50,13 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
 
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
-        case 1:
-            return 1
+            return 2
         default:
             return 1
         }
@@ -88,16 +70,10 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
             case 0:
                 cell.type = .clear
             case 1:
-                cell.type = .rank
-            case 3:
-                cell.type = .suggest
+                cell.type = .version
             default:
-                cell.type = .privacy
+                break
             }
-            return cell
-        case 1:
-            let cell = DSetupCell.cellWith(tableView: tableView)
-            cell.type = .about
             return cell
         default:
             let cell = DLogoutCell.cellWith(tableView: tableView)
@@ -114,14 +90,8 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
             switch setupCell.type {
             case .clear:
                 clearCellAction()
-            case .rank:
-                rankCellAction()
-            case .privacy:
-                pravicyCellAction()
-            case .suggest:
-                suggestCellAction()
-            case .about:
-                aboutCellAction()
+            default:
+                break
             }
         } else {
             logoutCellAction()

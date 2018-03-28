@@ -11,10 +11,7 @@ import UIKit
 //MARK: - DSetupCell
 enum DSetupCellType {
     case clear
-    case rank
-    case suggest
-    case privacy
-    case about
+    case version
 }
 
 class DSetupCell: UITableViewCell {
@@ -101,20 +98,12 @@ class DSetupCell: UITableViewCell {
             case .clear:
                 titleLabel.text = "清除缓存"
                 infoLabel.text = "\(CacheTool.fileSizeOfCache())M"
-            case .rank:
-                titleLabel.text = "给龙网评分"
-                infoLabel.isHidden = true
-            case .privacy:
-                titleLabel.text = "隐私协议"
-                infoLabel.isHidden = true
-            case .suggest:
-                titleLabel.text = "建议与反馈"
-                infoLabel.isHidden = true
+            case .version:
+                titleLabel.text = "当前版本"
+                infoLabel.text = "1.0"
                 lineView.isHidden = true
             default:
-                titleLabel.text = "关于我们"
-                infoLabel.isHidden = true
-                lineView.isHidden = true
+                break
             }
         }
     }
