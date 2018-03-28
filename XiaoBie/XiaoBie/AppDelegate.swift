@@ -81,10 +81,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         entity.types = (Int(JPAuthorizationOptions.alert.rawValue)|Int(JPAuthorizationOptions.badge.rawValue)|Int(JPAuthorizationOptions.sound.rawValue))
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         JPUSHService.setup(withOption: launchOptions, appKey: jPushAppKey, channel: "ios", apsForProduction: true)
-        JPUSHService.setAlias(AccountTool.userInfo().phone, completion: { (iResCode, iTags, iAlias) in
-            print(iResCode)
-        }, seq: 0)
-        
+        //去登录处设置极光推送的audience
     }
     
     //MARK: - UIApplicationDelegate
@@ -136,7 +133,12 @@ extension AppDelegate: JPUSHRegisterDelegate {
         completionHandler(Int(UNNotificationPresentationOptions.badge.rawValue)|Int(UNNotificationPresentationOptions.sound.rawValue))
         //消息内容
         let userInfo = notification.request.content.userInfo
-        receiveNotification(userInfo: userInfo)
+        //判断远程推送
+        if let _ = notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self) {
+            receiveNotification(userInfo: userInfo)
+        }else{
+            //本地推送
+        }
     }
     
     @available(iOS 10.0, *)
@@ -154,7 +156,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }
     }
     
-    //MARK: - Action Method
+    //MARK: - Action
     //收到通知后跳转相关页面
     func receiveNotification(userInfo : Dictionary<AnyHashable, Any>){
         JPUSHService.handleRemoteNotification(userInfo)
@@ -173,12 +175,8 @@ extension AppDelegate: JPUSHRegisterDelegate {
                     break
                 }
             })
-        case "1": //提醒做单员返回验证码已发送
-            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
-            let selectedNav = tabbarVC.selectedViewController as! NavigationController
-            self.pushCToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
         case "2": //提醒做单员验单
-            Alert.showAlertWith(style: .actionSheet, controller: mainVC, title: "待验单", message: "司机小王请求验单", functionButtons: ["正在忙", "请稍等", "去验单"], cancelButton: nil, closure: { (buttonTitle) in
+            Alert.showAlertWith(style: .actionSheet, controller: mainVC, title: "通知", message: "司机请求验单", functionButtons: ["正在忙", "请稍等", "去验单"], cancelButton: nil, closure: { (buttonTitle) in
                 //clerkStatus
                 var clerkStatus = ""
                 switch buttonTitle {
@@ -190,14 +188,25 @@ extension AppDelegate: JPUSHRegisterDelegate {
                     clerkStatus = "2"
                     let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
                     let selectedNav = tabbarVC.selectedViewController as! NavigationController
-                    self.pushDCodeVC(nav: selectedNav, orderId: model.order_id)
+                    self.pushCToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
                 default:
                     break
                 }
                 self.setClerkStatus(clerkStatus: clerkStatus, orderId: model.order_id)
-
             })
-        case "8": //提醒做单员订单取消
+        case "1": //提醒做单员返回验证码已发送
+            let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+            let selectedNav = tabbarVC.selectedViewController as! NavigationController
+            self.pushCToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
+            
+        case "10": //提醒做单员已付款
+            Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已付款", message: "请确认", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
+                let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
+                let selectedNav = tabbarVC.selectedViewController as! NavigationController
+                self.pushCCompleteVC(nav: selectedNav, orderId: model.order_id)
+            })
+            
+        case "8": //提醒司机/做单员订单取消
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已取消", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 switch AccountTool.userInfo().roleName! {
                 case .driver:
@@ -213,6 +222,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验证码已发送", message: "请客户注意查收", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.pushDCodeVC(nav: (currentController?.navigationController)!, orderId: model.order_id)
             })
+            
         case "5": //提醒司机当前验单状态
             guard  currentController != nil else { return } //忽略手动刷新变为通过状态时返回的推送
             let dToTestifyVC = currentController as! DToTestifyViewController
@@ -229,26 +239,29 @@ extension AppDelegate: JPUSHRegisterDelegate {
             default:
                 break
             }
+            
         case "6": //提醒司机验单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "验单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
                 currentController?.navigationController?.popToRootViewController(animated: true)
             })
+            
         case "7": //提醒司机查单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "查单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                 self.driverHomeVCReloadData()
             })
             
-
         case "9": //提醒司机订单完成
             Alert.showAlertWith(style: .alert, controller: mainVC, title: "订单已完成", message: "请在首页查看", functionButtons: ["知道了"], cancelButton: nil, closure: { (_) in
                self.driverHomeVCReloadData()
             })
+            
         default:
             break
         }
     }
     
+    //MARK: - Action Method
     //刷新司机端首页
     func driverHomeVCReloadData() {
         let tabbarVC = mainVC.childViewControllers[0] as! DTabBarController
@@ -265,7 +278,6 @@ extension AppDelegate: JPUSHRegisterDelegate {
         homeVC.reloadData()
     }
     
-    //MARK: - Request
     //做单员端推出待查单
     func pushCToCheckOrderDetailRequest(nav: UINavigationController, orderId: String) {
         WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
@@ -282,21 +294,21 @@ extension AppDelegate: JPUSHRegisterDelegate {
         }
     }
     
-    //做单员端推出待验单(未发送验证码)
-    func pushCToTestifyVCWithoutCode(nav: UINavigationController, orderId: String) {
-        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
-            let model = COrderDetailResponseModel.parse(dict: dict)
-            if model.code == "0" {
-                let toTestifyVC = CToTestifyViewController()
-                toTestifyVC.model = model.data
-                nav.pushViewController(toTestifyVC, animated: true)
-            } else {
-                HudTool.showInfo(string: model.msg)
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
-    }
+//    //做单员端推出待验单(未发送验证码)
+//    func pushCToTestifyVCWithoutCode(nav: UINavigationController, orderId: String) {
+//        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+//            let model = COrderDetailResponseModel.parse(dict: dict)
+//            if model.code == "0" {
+//                let toTestifyVC = CToTestifyViewController()
+//                toTestifyVC.model = model.data
+//                nav.pushViewController(toTestifyVC, animated: true)
+//            } else {
+//                HudTool.showInfo(string: model.msg)
+//            }
+//        }) { (error) in
+//            HudTool.showInfo(string: error)
+//        }
+//    }
     
     //做单员端推出待验单(发送验证码)
     func pushCToTestifyVCWithCode(nav: UINavigationController, orderId: String) {
@@ -320,6 +332,22 @@ extension AppDelegate: JPUSHRegisterDelegate {
         WebTool.post(uri:"resp_verify_pop_win", para:["oper_type": clerkStatus, "staff_id": AccountTool.userInfo().id, "order_id": orderId], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
+    //做单员端推出待付款
+    func pushCCompleteVC(nav: UINavigationController, orderId: String) {
+        WebTool.post(uri:"get_order_detail", para:["order_id": orderId], success: { (dict) in
+            let model = COrderDetailResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let completeVC = CCompleteViewController()
+                completeVC.model = model.data
+                nav.pushViewController(completeVC, animated: false)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
         }) { (error) in
             HudTool.showInfo(string: error)
         }

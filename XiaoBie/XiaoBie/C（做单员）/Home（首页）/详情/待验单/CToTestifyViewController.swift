@@ -24,10 +24,8 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.title = "待验单"
         view.backgroundColor = white_FFFFFF
         setupFrame()
-        //适配推送情况(无论哪个导航控制器推出，最终都回到首页)
-        setupPopDestination()
         //进入页面即设置订单状态为接受验单。使在收不到推送的情况下跑通流程
-        setAccessStatusRequest()
+//        setAccessStatusRequest()
         codeListRequest()
     }
     
@@ -226,12 +224,6 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             make.top.right.bottom.equalToSuperview()
             make.left.equalTo(grayLine.snp.right)
         }
-    }
-    
-    func setupPopDestination() {
-        var controllerArray = navigationController?.viewControllers
-        controllerArray = [(controllerArray?.first)!, (controllerArray?.last)!]
-        navigationController?.setViewControllers(controllerArray!, animated: false)
     }
     
     //MARK: - Properties

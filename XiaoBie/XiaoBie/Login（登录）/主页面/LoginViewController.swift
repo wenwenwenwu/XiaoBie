@@ -98,6 +98,10 @@ class LoginViewController: UIViewController {
                         print("成功登陆云信")
                     }
                 })
+                //设置极光推送的audience
+                JPUSHService.setAlias(AccountTool.userInfo().phone, completion: { (iResCode, iTags, iAlias) in
+                    print(iResCode)
+                }, seq: 0)
                 //根据角色设置显示页面
                 let roleName = AccountTool.userInfo().roleName!
                 mainVC.roleName = roleName

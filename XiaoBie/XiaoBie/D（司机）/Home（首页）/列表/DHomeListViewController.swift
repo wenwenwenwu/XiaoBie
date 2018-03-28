@@ -122,7 +122,6 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DHomeListCell
-//        cell.model.statusType = .accept
         switch cell.model.statusType {
         case .toCheck, .querying: //待查单
             let toCheckVC = DToCheckViewController()
@@ -138,14 +137,14 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
                 self.pushedVCupdatedAddressAction(indexPath: indexPath, model: model)
             }
             navigationController?.pushViewController(checkedVC, animated: true)
-        case .toTestify, .contact: //待验单之主页面
+        case .toTestify, .contact, .accept: //待验单之主页面
             let toTestifyVC = DToTestifyViewController()
             toTestifyVC.model = cell.model
             navigationController?.pushViewController(toTestifyVC, animated: true)
-        case .accept: //待验单之验证码页面
-            let codeVC = DCodeViewController()
-            codeVC.model = cell.model
-            navigationController?.pushViewController(codeVC, animated: true)
+//        case .accept: //待验单之验证码页面
+//            let codeVC = DCodeViewController()
+//            codeVC.model = cell.model
+//            navigationController?.pushViewController(codeVC, animated: true)
         case .access, .access2: //待验单之上传凭证页面
             let uploadVC = DUploadViewController()
             uploadVC.model = cell.model
