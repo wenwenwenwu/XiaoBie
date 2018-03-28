@@ -361,7 +361,7 @@
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
 		5B997822202AC9450005357A /* DClockinViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinViewManager.swift; sourceTree = "<group>"; };
 		5B9FDF0E202855FA00F306E9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		5B9FDF102028567100F306E9 /* BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BridgingHeader.h; path = ../BridgingHeader.h; sourceTree = "<group>"; };
 		5BA1E001206A457B00BB8DBC /* MHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHomeModel.swift; sourceTree = "<group>"; };
 		5BA24F98204E9B340068B32F /* RecordTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTool.swift; sourceTree = "<group>"; };
 		5BAA189A2059437D0078386D /* DGrabSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGrabSearchController.swift; sourceTree = "<group>"; };
@@ -1078,11 +1078,8 @@
 		5B7CCEC5202808E000C99139 /* XiaoBie */ = {
 			isa = PBXGroup;
 			children = (
-				5B26F339206B968D00B34E07 /* LaunchScreen.storyboard */,
-				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
 				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
 				5B48A81B2046814000CA563A /* MainViewController.swift */,
-				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
 				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
@@ -1095,6 +1092,8 @@
 				5B51FAD820293D0E001AB946 /* Global（全局） */,
 				5B9FDF0C202855FA00F306E9 /* Supporting File */,
 				5B7CCECD202808E000C99139 /* Assets.xcassets */,
+				5B26F339206B968D00B34E07 /* LaunchScreen.storyboard */,
+				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
 			);
 			path = XiaoBie;
 			sourceTree = "<group>";
@@ -1180,6 +1179,7 @@
 		5B9FDF0C202855FA00F306E9 /* Supporting File */ = {
 			isa = PBXGroup;
 			children = (
+				5B9FDF102028567100F306E9 /* BridgingHeader.h */,
 				5B9FDF0E202855FA00F306E9 /* Info.plist */,
 			);
 			path = "Supporting File";
@@ -2481,7 +2481,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2505,7 +2505,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mukitech.XiaoBie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/BridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/XiaoBie/Supporting File/BridgingHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
