@@ -135,7 +135,7 @@ class MHistoryCell: UITableViewCell {
         
         infoLabel.snp.makeConstraints { (make) in
             make.right.equalTo(nameLabel.snp.left).offset(-5)
-            make.centerY.equalTo(nameLabel)
+            make.top.equalTo(dateLabel.snp.bottom).offset(15)
         }
         
         nameLabel.snp.makeConstraints { (make) in
@@ -200,7 +200,7 @@ class MHistoryCell: UITableViewCell {
             //numberLabel
             numberLabel.text = model.serial_no
             //nameLabel
-            nameLabel.text = "小明"
+            nameLabel.text = model.admin_name
         }
     }
 }

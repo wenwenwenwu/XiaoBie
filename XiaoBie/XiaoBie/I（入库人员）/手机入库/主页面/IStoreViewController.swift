@@ -57,13 +57,19 @@ class IStoreViewController: UIViewController {
     }
     //scanButtonAction
     @objc func scanButtonAction() {
-        //推出
-        let scanVC = DScanViewController()
-        scanVC.scanedClosure = { serialNumber in
-            self.scanVCScanedAction(serialNumber: serialNumber)
+        if storeVC.memory.isEmpty || storeVC.model.isEmpty || storeVC.sourceId.isEmpty {
+            HudTool.showInfo(string: "请选择入库条件")
+            return
+        } else {
+            //推出
+            let scanVC = DScanViewController()
+            scanVC.scanedClosure = { serialNumber in
+                self.scanVCScanedAction(serialNumber: serialNumber)
+            }
+            navigationController?.pushViewController(scanVC, animated: true)
         }
-        navigationController?.pushViewController(scanVC, animated: true)
     }
+        
     
     func scanVCScanedAction(serialNumber: String) {
         storeVC.phoneInStoreRequest(serialNumber:serialNumber)
