@@ -57,19 +57,22 @@ extension AppDelegate {
     }
     
     func setupYunxin() {
-        //注册
-        let option = NIMSDKOption.init(appKey: yunXinAppkey)
-        option.apnsCername = nil
-        option.pkCername = nil
-        NIMSDK.shared().register(with: option)
         //打印日志
 //        NIMSDK.shared().enableConsoleLog()
+        //注册云信
+        let option = NIMSDKOption.init(appKey: yunXinAppkey)
+        option.apnsCername = "develop"
+        option.pkCername = nil
+        NIMSDK.shared().register(with: option)
+        //注册APNs
+        let types = UIUserNotificationType.init(rawValue: UIUserNotificationType.badge.rawValue | UIUserNotificationType.sound.rawValue | UIUserNotificationType.alert.rawValue)
+        let setting = UIUserNotificationSettings.init(types: types, categories: nil)
+        UIApplication.shared.registerUserNotificationSettings(setting)
+        UIApplication.shared.registerForRemoteNotifications()
         //自动登录
         if AccountTool.isLogin() {
             NIMSDK.shared().loginManager.autoLogin(AccountTool.userInfo().phone, token: AccountTool.userInfo().password)
         }
-        
-        
     }
 }
 
@@ -90,6 +93,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         /// Required - 注册 DeviceToken
         JPUSHService.registerDeviceToken(deviceToken)
+        NIMSDK.shared().updateApnsToken(deviceToken)
         
     }
     
