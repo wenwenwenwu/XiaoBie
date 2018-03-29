@@ -298,7 +298,7 @@ class CountDownButton: UIButton {
         
     private var remainingSeconds: Int = 0 {
         willSet {
-            setTitle("\(newValue)", for: .normal)            
+            setTitle("等待做单员答复(\(newValue))", for: .normal)            
             if newValue <= 0 {
                 status = .enabled
             }

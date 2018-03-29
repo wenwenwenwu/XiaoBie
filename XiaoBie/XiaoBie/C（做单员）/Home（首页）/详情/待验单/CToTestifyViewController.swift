@@ -133,7 +133,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
-                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }) { (error) in
             HudTool.showInfo(string: error)

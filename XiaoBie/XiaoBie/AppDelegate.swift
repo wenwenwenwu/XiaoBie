@@ -223,6 +223,7 @@ extension AppDelegate: JPUSHRegisterDelegate {
                 self.setClerkStatus(clerkStatus: clerkStatus, orderId: model.order_id)
             })
         case "1": //提醒做单员返回验证码已发送
+            HudTool.showInfo(string: "验证码已发送")
             let tabbarVC = mainVC.childViewControllers[0] as! CTabBarController
             let selectedNav = tabbarVC.selectedViewController as! NavigationController
             self.pushCToTestifyVCWithCode(nav: selectedNav, orderId: model.order_id)
@@ -259,14 +260,14 @@ extension AppDelegate: JPUSHRegisterDelegate {
             dToTestifyVC.currentClerkCell?.updateClerkStatus(statusType: model.response_type)
             //换人操作
             switch model.response_type {
-            case "0", "1"://正在忙、请稍等
+            case "0"://正在忙
                 //立刻换人
                 dToTestifyVC.remindButton.status = .enabled
             case "2"://正常
                 //无法换人、无法提醒验单
                 dToTestifyVC.remindButton.status = .disabled
-            default:
-                break
+            default://请稍等
+                break//无操作
             }
             
         case "6": //提醒司机验单完成
