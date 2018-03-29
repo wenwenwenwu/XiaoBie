@@ -17,7 +17,8 @@ var currentController: UIViewController?
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    //程序加载
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
         setupIQKeyboard()
@@ -26,9 +27,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupJpush(launchOptions: launchOptions)
         return true
     }
+    
+    //进入后台
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
+    }
+    
+    //进入前台
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
+    }
+    
+    //远程通知注册成功
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        /// Required - 注册 DeviceToken
+        JPUSHService.registerDeviceToken(deviceToken)
+        NIMSDK.shared().updateApnsToken(deviceToken)
+        
+    }
+    
+    //远程通知注册失败
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("注册 APNS 失败 : \(error)")
+        
+    }
+    
+    //程序处于前台运行状态，收到远程通知
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        //调用极光推送
+        JPUSHService.handleRemoteNotification(userInfo)
+        
+    }
+    
+    //程序处于后台或者被杀死状态，收到远程通知后（如果两个代理方法都被实现了，系统将只调用该方法）
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        completionHandler(UIBackgroundFetchResult.newData)
+        //调用极光推送
+        JPUSHService.handleRemoteNotification(userInfo)
+    }
 }
 
-//MARK: - window相关
+//MARK: - window
 extension AppDelegate {
     
     func setupWindow() {
@@ -47,18 +88,31 @@ extension AppDelegate {
         }
     }
     
+}
+
+//MARK: - IQ键盘
+extension AppDelegate {
+    
     func setupIQKeyboard() {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().toolbarDoneBarButtonItemText = "完成"
     }
+}
+
+//MARK: - 高德
+extension AppDelegate {
     
     func setuGaoDe() {
         LocationTool.regist()
     }
+}
+
+//MARK: - 云信
+extension AppDelegate: NIMLoginManagerDelegate {
     
     func setupYunxin() {
         //打印日志
-//        NIMSDK.shared().enableConsoleLog()
+        //NIMSDK.shared().enableConsoleLog()
         //注册云信
         let option = NIMSDKOption.init(appKey: yunXinAppkey)
         option.apnsCername = "develop"
@@ -70,13 +124,24 @@ extension AppDelegate {
         UIApplication.shared.registerUserNotificationSettings(setting)
         UIApplication.shared.registerForRemoteNotifications()
         //自动登录
+        NIMSDK.shared().loginManager.add(self)
         if AccountTool.isLogin() {
             NIMSDK.shared().loginManager.autoLogin(AccountTool.userInfo().phone, token: AccountTool.userInfo().password)
         }
+        //去用户登录处设置云信登录，去用户登出处设置云信登出
+    }
+    
+    //NIMLoginManagerDelegate
+    func onKick(_ code: NIMKickReason, clientType: NIMLoginClientType) {
+        HudTool.showInfo(string: "您的帐号已在别处登录")
+        //调用司机端-我的-设置控制器-登出方法
+        let dSetupVC = DSetupViewController()
+        dSetupVC.logoutCellAction()
+        
     }
 }
 
-//MARK: - 极光相关
+//MARK: - 极光
 extension AppDelegate: JPUSHRegisterDelegate {
     //设置推送
     func setupJpush(launchOptions: [UIApplicationLaunchOptionsKey: Any]?){
@@ -84,50 +149,8 @@ extension AppDelegate: JPUSHRegisterDelegate {
         entity.types = (Int(JPAuthorizationOptions.alert.rawValue)|Int(JPAuthorizationOptions.badge.rawValue)|Int(JPAuthorizationOptions.sound.rawValue))
         JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         JPUSHService.setup(withOption: launchOptions, appKey: jPushAppKey, channel: "ios", apsForProduction: true)
-        //去登录处设置极光推送的audience
+        //去用户登录处设置极光推送的audience
         //还要注意在应用的targets-capability-background modes中开启remote notification
-    }
-    
-    //MARK: - UIApplicationDelegate
-    //注册成功
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        /// Required - 注册 DeviceToken
-        JPUSHService.registerDeviceToken(deviceToken)
-        NIMSDK.shared().updateApnsToken(deviceToken)
-        
-    }
-    
-    //注册失败
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("注册 APNS 失败 : \(error)")
-        
-    }
-    
-    //进入后台
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
-    }
-    
-    //进入前台
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        UIApplication.shared.applicationIconBadgeNumber = 0
-        JPUSHService.setBadge(0)//清空JPush服务器中存储的badge值
-    }
-    
-    //程序处于前台运行状态，收到远程通知
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        //调用极光推送
-        JPUSHService.handleRemoteNotification(userInfo)
-        
-    }
-    
-    //程序处于后台或者被杀死状态，收到远程通知后，进入(launch)程序
-    //如果两个代理方法都被实现了，系统将只调用该方法
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        completionHandler(UIBackgroundFetchResult.newData)
-        //调用极光推送
-        JPUSHService.handleRemoteNotification(userInfo)
     }
     
     //MARK: - JPUSHRegisterDelegate
