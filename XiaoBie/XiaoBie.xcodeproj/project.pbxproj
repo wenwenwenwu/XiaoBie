@@ -848,7 +848,9 @@
 		5B495FF320283A5600CC4B91 /* Login（登录） */ = {
 			isa = PBXGroup;
 			children = (
-				5BDB5033202C521A0055C21E /* 主页面 */,
+				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
+				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
+				5BDB502D202C1D570055C21E /* LoginView.swift */,
 			);
 			path = "Login（登录）";
 			sourceTree = "<group>";
@@ -1081,19 +1083,19 @@
 				5B7CCEC6202808E000C99139 /* AppDelegate.swift */,
 				5B48A81B2046814000CA563A /* MainViewController.swift */,
 				5B50E1BC20284EDC00B365C8 /* Constant.swift */,
+				5B495FF320283A5600CC4B91 /* Login（登录） */,
 				5B48A81D204690DB00CA563A /* D（司机） */,
 				5B48A81E2046922E00CA563A /* C（做单员） */,
 				5B48A821204692A600CA563A /* M（管理员） */,
 				5BC4F442206A220600E14065 /* I（入库人员） */,
 				5BC4F445206A352100E14065 /* S（地推人员） */,
-				5B495FF320283A5600CC4B91 /* Login（登录） */,
+				5B7CCECD202808E000C99139 /* Assets.xcassets */,
+				5B26F339206B968D00B34E07 /* LaunchScreen.storyboard */,
+				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
 				5B51FAE6202944E4001AB946 /* Tool（工具） */,
 				5B51FAE9202947E2001AB946 /* Extension（扩展） */,
 				5B51FAD820293D0E001AB946 /* Global（全局） */,
 				5B9FDF0C202855FA00F306E9 /* Supporting File */,
-				5B7CCECD202808E000C99139 /* Assets.xcassets */,
-				5B26F339206B968D00B34E07 /* LaunchScreen.storyboard */,
-				5BF520B52057A35800E2C496 /* XiaoBie.entitlements */,
 			);
 			path = XiaoBie;
 			sourceTree = "<group>";
@@ -1266,16 +1268,6 @@
 				5BCBC79820625E6C0015C3B1 /* PushModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5BDB5033202C521A0055C21E /* 主页面 */ = {
-			isa = PBXGroup;
-			children = (
-				5BB2AAED20299C7800AEC5A8 /* LoginModel.swift */,
-				5BDB502B202C1D2C0055C21E /* LoginViewController.swift */,
-				5BDB502D202C1D570055C21E /* LoginView.swift */,
-			);
-			path = "主页面";
 			sourceTree = "<group>";
 		};
 		5BDB5034202C52A60055C21E /* Setting（设置） */ = {
