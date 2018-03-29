@@ -54,7 +54,8 @@ class DMineViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func queryCellAction() {
-        print("销售查询")
+        let queryVC = DQueryViewController()
+        navigationController?.pushViewController(queryVC, animated: true)
     }
     
     func uploadCellAction() {

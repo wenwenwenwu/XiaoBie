@@ -157,7 +157,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let infoCell = CCompleteInfoCell.cellWith(tableView: tableView)
+            let infoCell = CToTestifyInfoCell.cellWith(tableView: tableView)
             infoCell.model = model
             return infoCell
         case 1:
@@ -174,16 +174,6 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 2:
-            return 22
-        case 1:
-            return 45
-        default:
-            return 118
-        }
-    }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {

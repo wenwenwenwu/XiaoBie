@@ -74,6 +74,8 @@
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
 		5B702F412041392100DB4978 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F402041392100DB4978 /* CalendarView.swift */; };
+		5B730BCD206CD8F900D52E65 /* CToTestifyInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B730BCC206CD8F900D52E65 /* CToTestifyInfoCell.swift */; };
+		5B730BD0206CE0F800D52E65 /* DQueryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B730BCF206CE0F800D52E65 /* DQueryViewController.swift */; };
 		5B76B11920527AF60024E687 /* DCreatSetLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11820527AF60024E687 /* DCreatSetLevelViewController.swift */; };
 		5B76B11B20527B060024E687 /* DCreatTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11A20527B060024E687 /* DCreatTypeViewController.swift */; };
 		5B76B11D205280920024E687 /* DCreatTypeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B11C205280920024E687 /* DCreatTypeListView.swift */; };
@@ -112,7 +114,7 @@
 		5BC4F447206A354600E14065 /* STabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F446206A354600E14065 /* STabBarViewController.swift */; };
 		5BC4F449206A39E300E14065 /* MAlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F448206A39E300E14065 /* MAlertCell.swift */; };
 		5BC4F44B206A3A1600E14065 /* MAlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC4F44A206A3A1600E14065 /* MAlertModel.swift */; };
-		5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */; };
+		5BCBC7912062309F0015C3B1 /* CToTestifyCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC7902062309F0015C3B1 /* CToTestifyCodeCell.swift */; };
 		5BCBC793206243550015C3B1 /* PushNotifyTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC792206243550015C3B1 /* PushNotifyTool.swift */; };
 		5BCBC79920625E6C0015C3B1 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCBC79820625E6C0015C3B1 /* PushModel.swift */; };
 		5BCEFA45205122DE00CA059F /* DCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCEFA44205122DE00CA059F /* DCodeView.swift */; };
@@ -336,6 +338,8 @@
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		5B702F402041392100DB4978 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		5B730BCC206CD8F900D52E65 /* CToTestifyInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyInfoCell.swift; sourceTree = "<group>"; };
+		5B730BCF206CE0F800D52E65 /* DQueryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQueryViewController.swift; sourceTree = "<group>"; };
 		5B76B11820527AF60024E687 /* DCreatSetLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatSetLevelViewController.swift; sourceTree = "<group>"; };
 		5B76B11A20527B060024E687 /* DCreatTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatTypeViewController.swift; sourceTree = "<group>"; };
 		5B76B11C205280920024E687 /* DCreatTypeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCreatTypeListView.swift; sourceTree = "<group>"; };
@@ -377,7 +381,7 @@
 		5BC4F446206A354600E14065 /* STabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STabBarViewController.swift; sourceTree = "<group>"; };
 		5BC4F448206A39E300E14065 /* MAlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertCell.swift; sourceTree = "<group>"; };
 		5BC4F44A206A3A1600E14065 /* MAlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAlertModel.swift; sourceTree = "<group>"; };
-		5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyView.swift; sourceTree = "<group>"; };
+		5BCBC7902062309F0015C3B1 /* CToTestifyCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToTestifyCodeCell.swift; sourceTree = "<group>"; };
 		5BCBC792206243550015C3B1 /* PushNotifyTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifyTool.swift; sourceTree = "<group>"; };
 		5BCBC79820625E6C0015C3B1 /* PushModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
 		5BCEFA44205122DE00CA059F /* DCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCodeView.swift; sourceTree = "<group>"; };
@@ -838,6 +842,7 @@
 			children = (
 				5B4CFDA9202D47EB009D44F1 /* 主页面 */,
 				5BB90CF72030342500F6CD9E /* Phone（领手机） */,
+				5B730BCE206CE0C200D52E65 /* 营销查询 */,
 				5B3519A5204408A100CE92E4 /* Money（酬金） */,
 				5B498E992044FE890071406C /* Alibi（凭证） */,
 				5BDB5034202C52A60055C21E /* Setting（设置） */,
@@ -1033,6 +1038,14 @@
 			path = "calendar（日历）";
 			sourceTree = "<group>";
 		};
+		5B730BCE206CE0C200D52E65 /* 营销查询 */ = {
+			isa = PBXGroup;
+			children = (
+				5B730BCF206CE0F800D52E65 /* DQueryViewController.swift */,
+			);
+			path = "营销查询";
+			sourceTree = "<group>";
+		};
 		5B76B11520527AB90024E687 /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1144,7 +1157,8 @@
 			isa = PBXGroup;
 			children = (
 				5B86DEAD20610619005BE448 /* CToTestifyViewController.swift */,
-				5BCBC7902062309F0015C3B1 /* CToTestifyView.swift */,
+				5BCBC7902062309F0015C3B1 /* CToTestifyCodeCell.swift */,
+				5B730BCC206CD8F900D52E65 /* CToTestifyInfoCell.swift */,
 				5BCBC792206243550015C3B1 /* PushNotifyTool.swift */,
 			);
 			path = "待验单";
@@ -2098,6 +2112,7 @@
 				5BDE11DD20565F50008D68EC /* NIMTimePickerView.m in Sources */,
 				5B5B8D6720492FC2002484EE /* DSetListView.swift in Sources */,
 				5B4CFDA6202D3D9F009D44F1 /* DTabBarController.swift in Sources */,
+				5B730BCD206CD8F900D52E65 /* CToTestifyInfoCell.swift in Sources */,
 				5BC4F444206A22FC00E14065 /* ITabBarViewController.swift in Sources */,
 				5BB76168204D327F00F3A026 /* DToTestifyViewController.swift in Sources */,
 				5B51FAD720293942001AB946 /* DHomeModel.swift in Sources */,
@@ -2229,6 +2244,7 @@
 				5BDE121220565F50008D68EC /* NIMSessionViewController.m in Sources */,
 				5BDE120C20565F50008D68EC /* NIMSessionTextContentView.m in Sources */,
 				5BDE11DB20565F50008D68EC /* NIMTeamAnnouncementListViewController.m in Sources */,
+				5B730BD0206CE0F800D52E65 /* DQueryViewController.swift in Sources */,
 				5BDE11BB20565F50008D68EC /* NIMSpellingCenter.m in Sources */,
 				5B5B8D6520492FAB002484EE /* DSetlistViewController.swift in Sources */,
 				5BDE11E720565F50008D68EC /* NIMMediaItem.m in Sources */,
@@ -2258,7 +2274,7 @@
 				5BDE11CD20565F50008D68EC /* NIMPageView.m in Sources */,
 				5B86DEA72060F8E7005BE448 /* CToCheckViewController.swift in Sources */,
 				5B95F87D2068EF9600E72BEE /* AvatarPickerTool.swift in Sources */,
-				5BCBC7912062309F0015C3B1 /* CToTestifyView.swift in Sources */,
+				5BCBC7912062309F0015C3B1 /* CToTestifyCodeCell.swift in Sources */,
 				5BDE121620565F50008D68EC /* UITableView+NIMScrollToBottom.m in Sources */,
 				5BC4F449206A39E300E14065 /* MAlertCell.swift in Sources */,
 				5BDE11E020565F50008D68EC /* NIMTeamMemberCardHeaderCell.m in Sources */,
