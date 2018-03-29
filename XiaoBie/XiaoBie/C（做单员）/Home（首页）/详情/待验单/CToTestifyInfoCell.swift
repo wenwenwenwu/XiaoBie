@@ -55,7 +55,7 @@ class CToTestifyInfoCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Request
     func updateNoteRequest() {
-        WebTool.post(uri:"change_remark", para:["order_id": AccountTool.userInfo().id, "remark": noteTextView.text], success: { (dict) in
+        WebTool.post(uri:"change_remark", para:["order_id": model.id, "remark": noteTextView.text], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             self.noteTextView.isEditable = false
             HudTool.showInfo(string: model.msg)

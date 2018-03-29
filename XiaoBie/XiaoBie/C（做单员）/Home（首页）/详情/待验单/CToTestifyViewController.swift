@@ -26,8 +26,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         navigationItem.title = "待验单"
         view.backgroundColor = white_FFFFFF
         setupFrame()
-        //进入页面即设置订单状态为接受验单。使在收不到推送的情况下跑通流程
-//        setAccessStatusRequest()
+        setupNavigationBar()
         codeListRequest()
     }
     
@@ -36,6 +35,10 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - Event Response
+    @objc func backButtonAction() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     @objc func chatButtonAction() {
         print("聊天")
     }
@@ -247,6 +250,10 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
             make.top.right.bottom.equalToSuperview()
             make.left.equalTo(grayLine2.snp.right)
         }
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "icon_return").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(backButtonAction))
     }
     
     //MARK: - Properties

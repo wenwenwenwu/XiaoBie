@@ -367,10 +367,9 @@ class DCheckedNoteCell: UITableViewCell, UITextFieldDelegate {
     }
     
     //MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         note = textField.text!
         textField.resignFirstResponder()
-        return true
     }
     
     //MARK: - Setup
