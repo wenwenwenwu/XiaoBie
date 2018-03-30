@@ -38,6 +38,10 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
         AccountTool.logout()
         //云信登出
         NIMSDK.shared().loginManager.logout { (error) in }
+        //将极光的别名设为其他
+        JPUSHService.setAlias("other", completion: { (iResCode, iTags, iAlias) in
+            print(iResCode)
+        }, seq: 0)
         //弹出登录界面
         let loginNC = NavigationController.init(rootViewController: LoginViewController())
         mainVC.present(loginNC, animated: false, completion: nil)
