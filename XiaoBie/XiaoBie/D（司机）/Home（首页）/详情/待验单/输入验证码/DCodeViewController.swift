@@ -42,7 +42,12 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func codeInputCellButtonAction() {
-        codeRequest()
+        let codeCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! DCodeInputCodeCell
+        guard !codeCell.code.isEmpty else {
+            HudTool.showInfo(string: "验证码不能为空")
+            return
+        }
+        codeRequest(code: codeCell.code)
     }
     
     //MARK: - Request
@@ -62,11 +67,9 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    func codeRequest() {
-        let codeCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! DCodeInputCodeCell
-        
+    func codeRequest(code: String) {
         WebTool.post(uri:"send_code_for_verify", para:["delivery_id": AccountTool.userInfo().id,
-                                                       "verify_code": codeCell.code,
+                                                       "verify_code": code,
                                                        "order_id": model.id,
                                                        "dealer_id": model.order_checker_id], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
