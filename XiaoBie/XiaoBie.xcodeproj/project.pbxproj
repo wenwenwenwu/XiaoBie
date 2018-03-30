@@ -255,6 +255,7 @@
 		5BF0453E203FFF3A003F8CE5 /* DHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */; };
 		5BF045402040020B003F8CE5 /* DHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0453F2040020B003F8CE5 /* DHistoryView.swift */; };
 		5BF0454320401085003F8CE5 /* DScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF0454220401085003F8CE5 /* DScanViewController.swift */; };
+		5BF2A391206E314D00AC453D /* CToCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2A390206E314D00AC453D /* CToCheckModel.swift */; };
 		5BF2FC372048E7E5001755C8 /* DCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC362048E7E5001755C8 /* DCompleteViewController.swift */; };
 		5BF2FC3B2048E9FD001755C8 /* DCheckedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */; };
 		5BF2FC3D2048EA19001755C8 /* DCheckedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */; };
@@ -663,6 +664,7 @@
 		5BF0453D203FFF3A003F8CE5 /* DHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryModel.swift; sourceTree = "<group>"; };
 		5BF0453F2040020B003F8CE5 /* DHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DHistoryView.swift; sourceTree = "<group>"; };
 		5BF0454220401085003F8CE5 /* DScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DScanViewController.swift; sourceTree = "<group>"; };
+		5BF2A390206E314D00AC453D /* CToCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckModel.swift; sourceTree = "<group>"; };
 		5BF2FC362048E7E5001755C8 /* DCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCompleteViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3A2048E9FD001755C8 /* DCheckedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedViewController.swift; sourceTree = "<group>"; };
 		5BF2FC3C2048EA19001755C8 /* DCheckedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCheckedCell.swift; sourceTree = "<group>"; };
@@ -1152,6 +1154,7 @@
 			children = (
 				5B86DEA62060F8E7005BE448 /* CToCheckViewController.swift */,
 				5B86DEB72062055B005BE448 /* CToCheckView.swift */,
+				5BF2A390206E314D00AC453D /* CToCheckModel.swift */,
 			);
 			path = "待查单";
 			sourceTree = "<group>";
@@ -2180,6 +2183,7 @@
 				5BDE11EC20565F50008D68EC /* NIMRobotContentConfig.m in Sources */,
 				5BDE11FC20565F50008D68EC /* NIMSessionLayoutImpl.m in Sources */,
 				5BB90CFC203042F800F6CD9E /* DHomeListViewController.swift in Sources */,
+				5BF2A391206E314D00AC453D /* CToCheckModel.swift in Sources */,
 				5BDE11B020565F50008D68EC /* NIMContactSelectConfig.m in Sources */,
 				5B498E9D204501440071406C /* PhotoPickerTool.swift in Sources */,
 				5BDE11E420565F50008D68EC /* NIMTimestampModel.m in Sources */,

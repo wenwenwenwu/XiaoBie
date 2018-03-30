@@ -38,7 +38,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     @objc func chatButtonAction() {
-        print("聊天")
+        chatSessionRequest()
     }
     
     @objc func codeInputCellButtonAction() {
@@ -51,6 +51,21 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     //MARK: - Request
+    func chatSessionRequest() {
+        WebTool.post(uri: "get_groupid_by_staffid",para: ["staff_id": AccountTool.userInfo().id], success: { (dict) in
+            let model = CChatSessionResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let session = NIMSession.init(model.data, type: NIMSessionType.init(rawValue: 1)!)
+                let vc = NIMSessionViewController.init(session: session)
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func driverListRequest() {
         WebTool.post(uri:"get_peer_staff_list", para:["staff_id": AccountTool.userInfo().id], success: { (dict) in
             let model = DDriverListResponseModel.parse(dict: dict)

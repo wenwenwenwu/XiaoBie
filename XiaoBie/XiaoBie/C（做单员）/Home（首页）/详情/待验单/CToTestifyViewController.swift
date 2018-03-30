@@ -40,7 +40,7 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func chatButtonAction() {
-        print("聊天")
+        chatSessionRequest()
     }
     
     func codeCellSendButtonAction() {
@@ -73,6 +73,21 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     //MARK: - Request
+    func chatSessionRequest() {
+        WebTool.post(uri: "get_groupid_by_staffid",para: ["staff_id": AccountTool.userInfo().id], success: { (dict) in
+            let model = CChatSessionResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let session = NIMSession.init(model.data, type: NIMSessionType.init(rawValue: 1)!)
+                let vc = NIMSessionViewController.init(session: session)
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func setAccessStatusRequest() {
         WebTool.post(uri:"resp_verify_pop_win", para:["oper_type": "2", "staff_id": AccountTool.userInfo().id, "order_id": model.id], success: { (dict) in
             

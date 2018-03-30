@@ -34,7 +34,7 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     //MARK: - Event Response
     @objc func chatButtonAction() {
-        print("聊天")
+        chatSessionRequest()
     }
     
     @objc func yesButtonAction() {
@@ -46,6 +46,21 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - Request
+    func chatSessionRequest() {
+        WebTool.post(uri: "get_groupid_by_staffid",para: ["staff_id": AccountTool.userInfo().id], success: { (dict) in
+            let model = CChatSessionResponseModel.parse(dict: dict)
+            if model.code == "0" {
+                let session = NIMSession.init(model.data, type: NIMSessionType.init(rawValue: 1)!)
+                let vc = NIMSessionViewController.init(session: session)
+                self.navigationController?.pushViewController(vc!, animated: true)
+            } else {
+                HudTool.showInfo(string: model.msg)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     func codeListRequest() {
         WebTool.get(uri:"list_verify_code", para:["order_id":model.id], success: { (dict) in
             let model = DCodeListResponseModel.parse(dict: dict)
