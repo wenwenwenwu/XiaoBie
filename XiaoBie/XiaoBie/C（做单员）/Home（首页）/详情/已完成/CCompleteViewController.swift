@@ -93,14 +93,6 @@ class CCompleteViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 1:
-            return 22
-        default:
-            return 118
-        }
-    }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {

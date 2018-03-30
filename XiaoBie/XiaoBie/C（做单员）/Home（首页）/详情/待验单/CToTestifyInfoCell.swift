@@ -128,7 +128,7 @@ class CToTestifyInfoCell: UITableViewCell, UITextViewDelegate {
             make.height.equalTo(15)
         }
         
-        //addressTextView
+        //noteTextView
         noteTextView.snp.makeConstraints { (make) in
             make.top.equalTo(numberValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)

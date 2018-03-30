@@ -24,6 +24,9 @@ class CCompleteInfoCell: UITableViewCell {
         contentView.addSubview(setKeyLabel)
         contentView.addSubview(numberKeyLabel)
         contentView.addSubview(numberValueLabel)
+        contentView.addSubview(noteKeyLabel)
+        noteTextView.isEditable = false
+        contentView.addSubview(noteTextView)
         setupFrame()
     }
     
@@ -67,6 +70,13 @@ class CCompleteInfoCell: UITableViewCell {
             make.left.equalTo(14)
             make.height.equalTo(14)
         }
+        
+        noteKeyLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(numberKeyLabel.snp.bottom).offset(12)
+            make.left.equalTo(14)
+            make.height.equalTo(14)
+        }
+        
         //value
         nameValueLabel.snp.makeConstraints { (make) in
             make.top.equalTo(16)
@@ -90,6 +100,15 @@ class CCompleteInfoCell: UITableViewCell {
             make.top.equalTo(setValueLabel.snp.bottom).offset(11)
             make.left.equalTo(numberKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
+        }
+        
+        //noteTextView
+        noteTextView.snp.makeConstraints { (make) in
+            make.top.equalTo(numberValueLabel.snp.bottom).offset(2)
+            make.left.equalTo(83)
+            make.right.equalTo(-67)
+            make.height.equalTo(40)
+            make.bottom.equalTo(-22)
         }
     }
     
@@ -154,12 +173,28 @@ class CCompleteInfoCell: UITableViewCell {
         return label
     }()
     
+    lazy var noteKeyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "备注信息"
+        label.font = font14
+        label.textColor = gray_999999
+        return label
+    }()
+    
+    lazy var noteTextView: UITextView = {
+        let textView = UITextView()
+        textView.font = font14
+        textView.textColor = black_333333
+        return textView
+    }()
+    
     var model = DGrabItemModel() {
         didSet {
             nameValueLabel.text = model.user_name
             phoneValueLabel.text = model.phone1
             setValueLabel.text = model.gtcdw
-            numberValueLabel.text = model.serial_no            
+            numberValueLabel.text = model.serial_no
+            noteTextView.text = model.remark
         }
     }
 }
