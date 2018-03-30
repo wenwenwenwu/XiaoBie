@@ -2497,6 +2497,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/wuwenwen/Documents/XiaoBie/XiaoBie/XiaoBie/Supporting File/BridgingHeader.h";
 				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
@@ -2521,6 +2522,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MPXR757EXU;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "/Users/wuwenwen/Documents/XiaoBie/XiaoBie/XiaoBie/Supporting File/BridgingHeader.h";
 				INFOPLIST_FILE = "$(SRCROOT)/XiaoBie/Supporting File/Info.plist";
