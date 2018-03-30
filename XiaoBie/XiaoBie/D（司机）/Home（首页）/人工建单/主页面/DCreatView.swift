@@ -13,6 +13,7 @@ enum DCreatTextFieldCellType {
     case name
     case phone
     case ID
+    case set
 }
 class DCreatTextFieldCell: UITableViewCell, UITextFieldDelegate {
     
@@ -102,6 +103,9 @@ class DCreatTextFieldCell: UITableViewCell, UITextFieldDelegate {
                 textField.attributedPlaceholder = NSAttributedString.init(string: "请输入身份证", attributes: [NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_999999])
                 textField.keyboardType = .namePhonePad
                 titleLabel.text = "身份证号"
+            case .set:
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入套餐档位", attributes: [NSAttributedStringKey.font : font16, NSAttributedStringKey.foregroundColor : gray_999999])
+                titleLabel.text = "套餐档位"
             }
         }
     }

@@ -50,6 +50,8 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
             phone = text
         case .ID:
             ID = text
+        case .set:
+            set = text
         }
         setupDoneButton()
     }
@@ -71,47 +73,21 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
         setupDoneButton()
     }
     
-    func setLevelListVCCellSelectedAction(model: DSetItemModel)  {
-        let cell = tableView.cellForRow(at: IndexPath.init(row: 1, section: 1)) as! DCreatCell
-        cell.pickLabel.text = model.plan_name
-        self.setLevelModel = model
-        setupDoneButton()
-    }
-    
-    
     //MARK: - Request
-    func setLevelListRequest() {
-        WebTool.get(uri:"query_plan_type", para:[:], success: { (dict) in
-            let model = DSetListResponseModel.parse(dict: dict)
-            if model.code == "0" {
-                let setLevelListVC = DCreatSetLevelViewController()
-                setLevelListVC.dataArray = model.data
-                setLevelListVC.cellSelectedClosure = { setItemModel in
-                    self.setLevelListVCCellSelectedAction(model: setItemModel)
-                }
-                self.navigationController?.pushViewController(setLevelListVC, animated: true)
-            } else {
-                HudTool.showInfo(string: model.msg)
-            }
-        }) { (error) in
-            HudTool.showInfo(string: error)
-        }
-    }
-    
     func creatRequest() {
         print(setType)
         print(address)
         print(phone)
         print(name)
         print(ID)
-        print(setLevelModel.id)
+        print(set)
         WebTool.get(uri:"create_order_manual", para:["project_type": setType,
                                                      "address": address,
                                                      "phone": phone,
                                                      "user_name": name,
                                                      "staff_id": AccountTool.userInfo().id,
                                                      "id_num": ID,
-                                                     "plan_id": setLevelModel.id], success: { (dict) in
+                                                     "plan_name": set], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
@@ -162,14 +138,19 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
                 return textViewCell
             }
         default:
-            let cell = DCreatCell.cellWith(tableView: tableView)
             switch indexPath.row {
             case 0:
+                let cell = DCreatCell.cellWith(tableView: tableView)
                 cell.cellType = .type
+                return cell
             default:
-                cell.cellType = .level
+                let textFieldCell = DCreatTextFieldCell.cellWith(tableView: tableView)
+                textFieldCell.textFieldEndEditClosure = { [weak self] text, cellType in
+                    self?.textFieldCellendEditAction(text: text, cellType: cellType)
+                }
+                textFieldCell.cellType = .set
+                return textFieldCell
             }
-            return cell
         }
     }
     
@@ -182,10 +163,6 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
                 self.setTypeListVCCellSelectedAction(setType: setTypeIndex)
             }
             self.navigationController?.pushViewController(setTypeListVC, animated: true)
-        }
-        //套餐档位cell
-        if indexPath == IndexPath.init(row: 1, section: 1) {
-            setLevelListRequest()
         }
     }
 
@@ -228,7 +205,7 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     func setupDoneButton() {
-        let isCompleted = !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !setLevelModel.plan_name.isEmpty
+        let isCompleted = !name.isEmpty && !phone.isEmpty && !ID.isEmpty && !address.isEmpty && !setType.isEmpty && !set.isEmpty
         doneButtonItem.isEnabled = isCompleted
     }
     
@@ -250,5 +227,5 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     var ID = ""
     var address = ""
     var setType = ""
-    var setLevelModel = DSetItemModel()
+    var set = ""
 }
