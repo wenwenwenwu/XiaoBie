@@ -38,7 +38,7 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
         AccountTool.logout()
         //云信登出
         NIMSDK.shared().loginManager.logout { (error) in }
-        //将极光的别名设为其他
+        //将极光的别名设为其他,登出时收不到推送
         JPUSHService.setAlias("other", completion: { (iResCode, iTags, iAlias) in
             print(iResCode)
         }, seq: 0)
