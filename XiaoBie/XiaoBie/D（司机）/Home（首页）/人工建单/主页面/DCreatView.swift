@@ -209,10 +209,8 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         contentView.backgroundColor = white_FFFFFF
-        contentView.addSubview(titleLabel)
         contentView.addSubview(textView)
         contentView.addSubview(placeHolderLabel)
-        contentView.addSubview(lineView)
         setupFrame()
     }
     
@@ -245,13 +243,8 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
     
     //MARK: - Setup
     func setupFrame() {
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(13)
-            make.top.equalTo(15)
-        }
-        
         placeHolderLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(lineView.snp.bottom).offset(16)
+            make.top.equalTo(16)
             make.left.equalTo(14)
         }
         
@@ -261,23 +254,9 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
             make.bottom.equalTo(-8)
             make.right.equalTo(-9)
         }
-        
-        lineView.snp.makeConstraints { (make) in
-            make.top.equalTo(46)
-            make.left.right.equalToSuperview()
-            make.height.equalTo(1)
-        }
     }
     
     //MARK: - Properties
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "详细地址"
-        label.font = font16
-        label.textColor = black_333333
-        return label
-    }()
-    
     lazy var placeHolderLabel: UILabel = {
         let label = UILabel()
         label.text = "请填写详细地址，不小于5个字"
@@ -293,23 +272,6 @@ class DCreatTextViewCell: UITableViewCell, UITextViewDelegate {
         textView.textColor = black_333333
         return textView
     }()
-    
-    lazy var lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = gray_F0F0F0
-        return view
-    }()
-    
-    var cellType: DCreatCellType = .type {
-        didSet {
-            switch cellType {
-            case .type:
-                titleLabel.text = "订单类型"
-            case .level:
-                titleLabel.text = "套餐档位"
-            }
-        }
-    }
     
     var textViewEndEditClosure: (String)->Void = {_ in }
 }

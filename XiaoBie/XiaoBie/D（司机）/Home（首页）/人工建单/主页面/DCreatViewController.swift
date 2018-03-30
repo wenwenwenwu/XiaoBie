@@ -99,6 +99,12 @@ class DCreatViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     func creatRequest() {
+        print(setType)
+        print(address)
+        print(phone)
+        print(name)
+        print(ID)
+        print(setLevelModel.id)
         WebTool.get(uri:"create_order_manual", para:["project_type": setType,
                                                      "address": address,
                                                      "phone": phone,
