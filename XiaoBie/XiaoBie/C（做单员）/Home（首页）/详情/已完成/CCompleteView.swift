@@ -87,7 +87,7 @@ class CCompleteInfoCell: UITableViewCell {
         }
 
         numberValueLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(setValueLabel.snp.bottom).offset(12)
+            make.top.equalTo(setValueLabel.snp.bottom).offset(11)
             make.left.equalTo(numberKeyLabel.snp.right).offset(16)
             make.height.equalTo(15)
         }
