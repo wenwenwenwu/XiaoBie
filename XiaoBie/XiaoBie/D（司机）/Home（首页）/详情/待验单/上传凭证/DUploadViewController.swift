@@ -76,7 +76,15 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc func cancelButtonEvent() {
-        cancelRequest()
+        let cancelVC = CancelViewController()
+        cancelVC.confirmButtonClosure = {[unowned self] cancelReason in
+            self.cancelVCConfirmButtonAction(cancelReason: cancelReason)
+        }
+        navigationController?.pushViewController(cancelVC, animated: true)
+    }
+    
+    func cancelVCConfirmButtonAction(cancelReason: String) {
+        cancelRequest(cancelReason: cancelReason)
     }
     
     @objc func confirmButtonEvent() {
@@ -97,8 +105,8 @@ class DUploadViewController: UIViewController, UITextViewDelegate {
     }
     
     //MARK: - Request
-    func cancelRequest() {
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
+    func cancelRequest(cancelReason: String) {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id, "remark": cancelReason], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {

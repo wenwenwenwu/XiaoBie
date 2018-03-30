@@ -95,6 +95,7 @@
 		5B86DEB42061E9E2005BE448 /* CCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB32061E9E2005BE448 /* CCompleteView.swift */; };
 		5B86DEB62061EE85005BE448 /* CCompleteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB52061EE85005BE448 /* CCompleteModel.swift */; };
 		5B86DEB82062055B005BE448 /* CToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B86DEB72062055B005BE448 /* CToCheckView.swift */; };
+		5B950DFD206E09D9005CC30F /* CancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B950DFC206E09D9005CC30F /* CancelViewController.swift */; };
 		5B95F87D2068EF9600E72BEE /* AvatarPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95F87C2068EF9600E72BEE /* AvatarPickerTool.swift */; };
 		5B9854C52047A6DB00C449C3 /* DToCheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */; };
 		5B9854C72047A90D00C449C3 /* DToCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9854C62047A90D00C449C3 /* DToCheckView.swift */; };
@@ -360,6 +361,7 @@
 		5B86DEB32061E9E2005BE448 /* CCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCompleteView.swift; sourceTree = "<group>"; };
 		5B86DEB52061EE85005BE448 /* CCompleteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCompleteModel.swift; sourceTree = "<group>"; };
 		5B86DEB72062055B005BE448 /* CToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CToCheckView.swift; sourceTree = "<group>"; };
+		5B950DFC206E09D9005CC30F /* CancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelViewController.swift; sourceTree = "<group>"; };
 		5B95F87C2068EF9600E72BEE /* AvatarPickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarPickerTool.swift; sourceTree = "<group>"; };
 		5B9854C42047A6DB00C449C3 /* DToCheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckViewController.swift; sourceTree = "<group>"; };
 		5B9854C62047A90D00C449C3 /* DToCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DToCheckView.swift; sourceTree = "<group>"; };
@@ -930,6 +932,7 @@
 		5B4CFDA1202D3D9F009D44F1 /* Controler */ = {
 			isa = PBXGroup;
 			children = (
+				5B950DFB206E09C8005CC30F /* 取消订单 */,
 				5BF0454120401085003F8CE5 /* scan（扫描） */,
 				5B702F3D20412FD000DB4978 /* calendar（日历） */,
 				5B4CFDA2202D3D9F009D44F1 /* NavigationController.swift */,
@@ -1180,6 +1183,14 @@
 				5B86DEB32061E9E2005BE448 /* CCompleteView.swift */,
 			);
 			path = "已完成";
+			sourceTree = "<group>";
+		};
+		5B950DFB206E09C8005CC30F /* 取消订单 */ = {
+			isa = PBXGroup;
+			children = (
+				5B950DFC206E09D9005CC30F /* CancelViewController.swift */,
+			);
+			path = "取消订单";
 			sourceTree = "<group>";
 		};
 		5B9854C32047A69600C449C3 /* 待查单 */ = {
@@ -2259,6 +2270,7 @@
 				5BB7616A204D35D700F3A026 /* DToTestifyView.swift in Sources */,
 				5B51FAEF202947E2001AB946 /* UIView.swift in Sources */,
 				5BF3A88F204E339600B76278 /* DUploadViewController.swift in Sources */,
+				5B950DFD206E09D9005CC30F /* CancelViewController.swift in Sources */,
 				5BDE11CE20565F50008D68EC /* NIMCustomLeftBarView.m in Sources */,
 				5B50E1BD20284EDC00B365C8 /* Constant.swift in Sources */,
 				5BDE11E520565F50008D68EC /* NIMKitInfoFetchOption.m in Sources */,

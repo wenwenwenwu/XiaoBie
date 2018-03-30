@@ -56,9 +56,15 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @objc func cancelButtonAction() {
-        Alert.showAlertWith(style: .alert, controller: self, title: "确定要取消订单吗", message: nil, functionButtons: ["确定"]) { _ in
-            self.cancelRequest()
+        let cancelVC = CancelViewController()
+        cancelVC.confirmButtonClosure = {[unowned self] cancelReason in
+            self.cancelVCConfirmButtonAction(cancelReason: cancelReason)
         }
+        navigationController?.pushViewController(cancelVC, animated: true)
+    }
+    
+    func cancelVCConfirmButtonAction(cancelReason: String) {
+        cancelRequest(cancelReason: cancelReason)
     }
     
     //MARK: - Action Method
@@ -109,8 +115,8 @@ class CToTestifyViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func cancelRequest() {
-        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id], success: { (dict) in
+    func cancelRequest(cancelReason: String) {
+        WebTool.post(isShowHud: false, uri:"cancel_order", para:["staff_id": AccountTool.userInfo().id, "order_id":model.id, "remark": cancelReason], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
