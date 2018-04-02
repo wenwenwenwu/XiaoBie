@@ -28,10 +28,8 @@ class DHomeListCell: UITableViewCell {
         contentView.addSubview(whiteView)
         whiteView.addSubview(timeLabel)
         whiteView.addSubview(statusLabel)
-        whiteView.addSubview(paymentLabel)
         whiteView.addSubview(lineView)
         whiteView.addSubview(iconImageView)
-        whiteView.addSubview(costLabel)
         whiteView.addSubview(addressLabel)
         setupFrame()
     }
@@ -56,12 +54,6 @@ class DHomeListCell: UITableViewCell {
             make.centerY.equalTo(timeLabel)
         }
         
-        paymentLabel.snp.makeConstraints { (make) in
-            make.right.equalTo(-14)
-            make.top.equalTo(lineView.snp.bottom).offset(12)
-            make.height.equalTo(10)
-        }
-        
         lineView.snp.makeConstraints { (make) in
             make.left.equalTo(13)
             make.top.equalTo(34)
@@ -76,16 +68,10 @@ class DHomeListCell: UITableViewCell {
             make.height.equalTo(60)
         }
         
-        costLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(iconImageView.snp.right).offset(11)
-            make.top.equalTo(lineView.snp.bottom).offset(10)
-            make.height.equalTo(15)
-        }
-        
         addressLabel.snp.makeConstraints { (make) in
             make.left.equalTo(iconImageView.snp.right).offset(11)
             make.right.equalTo(-15)
-            make.top.equalTo(costLabel.snp.bottom).offset(7)
+            make.top.equalTo(lineView.snp.bottom).offset(10)
         }
         
     }
@@ -113,13 +99,6 @@ class DHomeListCell: UITableViewCell {
         return label
     }()
     
-    lazy var paymentLabel: UILabel = {
-        let label = UILabel()
-        label.font = font14
-        label.textColor = red_D81E32
-        return label
-    }()
-    
     lazy var lineView: UIView = {
         let view = UIView()
         view.backgroundColor = gray_F0F0F0
@@ -127,13 +106,6 @@ class DHomeListCell: UITableViewCell {
     }()
     
     lazy var iconImageView = UIImageView()
-    
-    lazy var costLabel: UILabel = {
-        let label = UILabel()
-        label.font = font16Medium
-        label.textColor = black_333333
-        return label
-    }()
     
     lazy var addressLabel: UILabel = {
         let label = UILabel()
@@ -149,12 +121,8 @@ class DHomeListCell: UITableViewCell {
             timeLabel.text = DateTool.strDateToStr月日时分(strDate: model.update_time)
             //iconImageView
             iconImageView.image = (model.project_type == "0") ? #imageLiteral(resourceName: "icon_phone") : #imageLiteral(resourceName: "icon_ll")
-            //costLabel
-            costLabel.text = "平均话费 \(model.average_cost) 元"
             //addressLabel
             addressLabel.text = model.address
-            //paymentLabel
-            paymentLabel.text = "+\(model.payment)"
             //statusLabel
             var statusStr = ""
             switch model.statusType {
