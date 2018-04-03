@@ -174,6 +174,7 @@ class DCheckedViewController: UIViewController, UITableViewDataSource, UITableVi
                 return setPickCell
             default:
                 let noteCell = DCheckedNoteCell.cellWith(tableView: tableView)
+                noteCell.model = model
                 return noteCell
                 
             }

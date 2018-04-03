@@ -379,6 +379,14 @@ class DCheckedNoteCell: UITableViewCell, UITextFieldDelegate {
         return textField
     }()
     
-    var note = "" 
+    var note = ""
+    
+    var model = DGrabItemModel() {
+        didSet {
+            textField.text = model.remark
+        }
+    }
+    
+    
     
 }

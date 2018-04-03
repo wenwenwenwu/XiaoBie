@@ -160,6 +160,8 @@ class DHomeListCell: UITableViewCell {
                 statusStr = "再联系"
             case .orderClose:
                 statusStr = "停机"
+            case .noCase:
+                statusStr = "无法添加营销案"
             default:
                 statusStr = "预约失败"
             }
