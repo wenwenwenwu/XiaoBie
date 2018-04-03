@@ -65,6 +65,12 @@ class DateTool {
         return (strDate)
     }
     
+    //MARK: - dateToStr
+    class func dateToStrDate(date: Date) -> String {
+        let dateStr = formatter.string(from: date)
+        return dateStr
+    }
+    
     //把"2018-02-01 16:00:01"中的"0"改为"00"
     class func processTime(time: Int) -> String {
         let finalTime = String.init(format: "%02d",time) //不足两位用0补
@@ -76,7 +82,13 @@ class DateTool {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
-    }()    
+    }()
+    
+    static let formatter:DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
 }
 
 

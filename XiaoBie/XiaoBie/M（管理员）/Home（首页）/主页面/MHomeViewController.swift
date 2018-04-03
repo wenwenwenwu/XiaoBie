@@ -38,7 +38,12 @@ class MHomeViewController: UIViewController {
     }
     
     @objc func scratchButtonAction() {
-        scratchRequest()
+//        scratchRequest()
+        datePickView.show()
+    }
+    
+    func datePickerViewSelectedDate(strDate: String) {
+        scratchRequest(strDate: strDate)
     }
     
     //MARK: - Request
@@ -58,8 +63,8 @@ class MHomeViewController: UIViewController {
         }
     }
     
-    func scratchRequest() {
-        WebTool.scratch(success: { (dict) in
+    func scratchRequest(strDate: String) {
+        WebTool.scratch(para: ["req_date": strDate], success: { (dict) in
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
         }) { (error) in
@@ -90,6 +95,10 @@ class MHomeViewController: UIViewController {
         buttonItem.setTitleTextAttributes([NSAttributedStringKey.font : font14, NSAttributedStringKey.foregroundColor : blue_3296FA], for: .highlighted)
         return buttonItem
     }()
+    
+    lazy var datePickView: MDatePickView = MDatePickView.init { [unowned self] (strDate) in
+        self.datePickerViewSelectedDate(strDate: strDate)
+    }
     
     lazy var titleView = UIImageView.init(image: #imageLiteral(resourceName: "pic_logo"))
     

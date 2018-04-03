@@ -25,6 +25,7 @@
 		5B3519A92044091E00CE92E4 /* DMyMoneyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519A82044091E00CE92E4 /* DMyMoneyView.swift */; };
 		5B3519AB20440F2600CE92E4 /* DMyMoneyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */; };
 		5B3819EB205774BB00E3D345 /* NTESTeamListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */; };
+		5B3E2CA220732D120030EF6C /* MDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3E2CA120732D110030EF6C /* MDatePickView.swift */; };
 		5B48A7F020464C6700CA563A /* DAlibiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A7EF20464C6700CA563A /* DAlibiModel.swift */; };
 		5B48A81C2046814000CA563A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81B2046814000CA563A /* MainViewController.swift */; };
 		5B48A8202046927900CA563A /* CTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B48A81F2046927900CA563A /* CTabBarController.swift */; };
@@ -292,6 +293,7 @@
 		5B3519AA20440F2600CE92E4 /* DMyMoneyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMyMoneyModel.swift; sourceTree = "<group>"; };
 		5B3819E9205774BA00E3D345 /* NTESTeamListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTESTeamListViewController.h; sourceTree = "<group>"; };
 		5B3819EA205774BB00E3D345 /* NTESTeamListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTESTeamListViewController.m; sourceTree = "<group>"; };
+		5B3E2CA120732D110030EF6C /* MDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MDatePickView.swift; sourceTree = "<group>"; };
 		5B48A7EF20464C6700CA563A /* DAlibiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAlibiModel.swift; sourceTree = "<group>"; };
 		5B48A81B2046814000CA563A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B48A81F2046927900CA563A /* CTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTabBarController.swift; sourceTree = "<group>"; };
@@ -1943,6 +1945,7 @@
 		5BF520B62057AAE100E2C496 /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
+				5B3E2CA120732D110030EF6C /* MDatePickView.swift */,
 				5B48A82C2046A02C00CA563A /* MHomeViewController.swift */,
 				5B86DE962060B02D005BE448 /* MHomeView.swift */,
 				5BA1E001206A457B00BB8DBC /* MHomeModel.swift */,
@@ -2145,6 +2148,7 @@
 				5BDE11E920565F50008D68EC /* NIMKitInfo.m in Sources */,
 				5BDE11D820565F50008D68EC /* NIMUsrInfoData.m in Sources */,
 				5BDE120420565F50008D68EC /* NIMLoadMoreView.m in Sources */,
+				5B3E2CA220732D120030EF6C /* MDatePickView.swift in Sources */,
 				5BB2AAEE20299C7800AEC5A8 /* LoginModel.swift in Sources */,
 				5BDE121520565F50008D68EC /* NSString+NIMKit.m in Sources */,
 				5B51FAF0202947E2001AB946 /* String.swift in Sources */,

@@ -66,9 +66,9 @@ class WebTool {
     }
     
     //抓单
-    class func scratch(success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
+    class func scratch(para : [String:String], success :@escaping (_ response : NSDictionary)->(),failture : @escaping (_ error : String)->()){
         HudTool.show()
-        Alamofire.request("http://115.231.102.102:8080/lwmanage/orderCatch/catch.do", method: HTTPMethod.post, parameters: [:]).responseJSON { (response) in
+        Alamofire.request("http://115.231.102.102:8080/lwmanage/orderCatch/catch.do", method: HTTPMethod.post, parameters: para).responseJSON { (response) in
             HudTool.dismiss()
             switch response.result {
             case .success:
