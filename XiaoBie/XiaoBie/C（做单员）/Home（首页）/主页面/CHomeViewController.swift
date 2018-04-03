@@ -64,7 +64,7 @@ class CHomeViewController: UIViewController {
             if model.code == "0" {
                 let infoModel = model.data
                 self.infoView.model = infoModel
-                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "待验单(\(infoModel.need_verify_count))", "添加营销案(\(infoModel.need_market_count))", "已完成(\(infoModel.completed_count))"]
+                self.selectView.titleArray = ["待查单(\(infoModel.need_query_count))", "待验单(\(infoModel.need_verify_count))", "营销案(\(infoModel.need_market_count))", "已完成(\(infoModel.completed_count))"]
             }else{
                 
             }

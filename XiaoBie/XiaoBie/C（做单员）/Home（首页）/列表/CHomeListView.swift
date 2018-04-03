@@ -160,9 +160,11 @@ class CHomeListCell: UITableViewCell {
             case .uploaded, .uploaded2:
                 statusStr = "凭证已上传"
             case .complete, .complete2:
-                statusStr = "完成"
+                statusStr = "已完成"
             case .payComplete, .paySuccess:
                 statusStr = "付款完成"
+            case .noCase:
+                statusStr = "无法添加营销案"
             default:
                 statusStr = "稍后联系"
             }

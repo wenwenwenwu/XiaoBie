@@ -17,11 +17,13 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.rightBarButtonItem = chatButtonItem
         view.addSubview(tableView)
         view.addSubview(whiteView)
-        whiteView.addSubview(yesButton)
-        whiteView.addSubview(grayLine)
         whiteView.addSubview(noButton)
+        whiteView.addSubview(grayLine1)
+        whiteView.addSubview(completeButton)
+        whiteView.addSubview(grayLine2)
+        whiteView.addSubview(yesButton)
         
-        navigationItem.title = "待完成"
+        navigationItem.title = "营销案"
         view.backgroundColor = white_FFFFFF
         setupFrame()
         
@@ -37,13 +39,18 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chatSessionRequest()
     }
     
+    @objc func noButtonAction() {
+        judgeCaseRequest(caseType: "1")
+    }
+    
+    @objc func completeButtonAction() {
+        finishOrderRequest()
+    }
+    
     @objc func yesButtonAction() {
         judgeCaseRequest(caseType: "0")
     }
     
-    @objc func noButtonAction() {
-        judgeCaseRequest(caseType: "1")
-    }
     
     //MARK: - Request
     func chatSessionRequest() {
@@ -87,6 +94,18 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    func finishOrderRequest() {
+        WebTool.post(uri: "settle_order_status", para: ["target_status":"17", "order_id": model.id], success: { (dict) in
+            let model = DBasicResponseModel.parse(dict: dict)
+            HudTool.showInfo(string: model.msg)
+            if model.code == "0" {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }) { (error) in
+            HudTool.showInfo(string: error)
+        }
+    }
+    
     //MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -115,14 +134,6 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 1:
-            return 22
-        default:
-            return 118
-        }
-    }
     //变化的sectionHeight要在代理中采用四种方法组合设置才有效，tableView中设置没有用
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
@@ -162,8 +173,15 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
             make.height.equalTo(44)
         }
         
-        grayLine.snp.makeConstraints { (make) in
-            make.left.equalTo(screenWidth / 2)
+        grayLine1.snp.makeConstraints { (make) in
+            make.left.equalTo(screenWidth / 3)
+            make.width.equalTo(1)
+            make.height.equalTo(17)
+            make.centerY.equalToSuperview()
+        }
+        
+        grayLine2.snp.makeConstraints { (make) in
+            make.left.equalTo(screenWidth * 2 / 3)
             make.width.equalTo(1)
             make.height.equalTo(17)
             make.centerY.equalToSuperview()
@@ -171,12 +189,18 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         noButton.snp.makeConstraints { (make) in
             make.top.left.bottom.equalToSuperview()
-            make.right.equalTo(grayLine.snp.left)
+            make.right.equalTo(grayLine1.snp.left)
+        }
+        
+        completeButton.snp.makeConstraints { (make) in
+            make.top.bottom.equalToSuperview()
+            make.left.equalTo(grayLine1.snp.right)
+            make.right.equalTo(grayLine2.snp.left)
         }
         
         yesButton.snp.makeConstraints { (make) in
             make.top.right.bottom.equalToSuperview()
-            make.left.equalTo(grayLine.snp.right)
+            make.left.equalTo(grayLine2.snp.right)
         }
     }
     
@@ -215,13 +239,28 @@ class CAddViewController: UIViewController, UITableViewDataSource, UITableViewDe
     lazy var yesButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.titleLabel?.font = font14
-        button.setTitle("确认添加", for: .normal)
+        button.setTitle("添加营销案", for: .normal)
         button.setTitleColor(blue_3899F7, for: .normal)
         button.addTarget(self, action: #selector(yesButtonAction), for: .touchUpInside)
         return button
     }()
     
-    lazy var grayLine: UIView = {
+    lazy var completeButton: UIButton = {
+        let button = UIButton.init(type: .custom)
+        button.titleLabel?.font = font14
+        button.setTitle("完成此订单", for: .normal)
+        button.setTitleColor(blue_3899F7, for: .normal)
+        button.addTarget(self, action: #selector(completeButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var grayLine1: UIView = {
+        let view = UIView()
+        view.backgroundColor = gray_D9D9D9
+        return view
+    }()
+    
+    lazy var grayLine2: UIView = {
         let view = UIView()
         view.backgroundColor = gray_D9D9D9
         return view

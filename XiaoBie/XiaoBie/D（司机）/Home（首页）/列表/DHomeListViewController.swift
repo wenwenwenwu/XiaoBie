@@ -153,11 +153,11 @@ class DHomeListViewController: UIViewController, UITableViewDataSource, UITableV
             let payVC = DPayViewController()
             payVC.model = cell.model
             navigationController?.pushViewController(payVC, animated: true)
-        case .payComplete, .paySuccess://待添加营销案(除了导航栏标题外与完成页面相同)
+        case .payComplete, .complete://营销案(除了导航栏标题外与完成页面相同)
             let addVC = DAddViewController()
             addVC.model = cell.model
             navigationController?.pushViewController(addVC, animated: true)
-        case .complete, .complete2: //完成
+        case  .paySuccess, .complete2: //完成
             let completeVC = DCompleteViewController()
             completeVC.model = cell.model
             navigationController?.pushViewController(completeVC, animated: true)
