@@ -12,6 +12,7 @@ import UIKit
 enum DSetupCellType {
     case clear
     case version
+    case password
 }
 
 class DSetupCell: UITableViewCell {
@@ -98,12 +99,12 @@ class DSetupCell: UITableViewCell {
             case .clear:
                 titleLabel.text = "清除缓存"
                 infoLabel.text = "\(CacheTool.fileSizeOfCache())M"
+            case .password:
+                titleLabel.text = "修改密码"
             case .version:
                 titleLabel.text = "当前版本"
-                infoLabel.text = "1.0"
+                infoLabel.text = "1.5"
                 lineView.isHidden = true
-            default:
-                break
             }
         }
     }

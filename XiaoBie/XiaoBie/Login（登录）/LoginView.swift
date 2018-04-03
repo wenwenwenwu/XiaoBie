@@ -11,6 +11,9 @@ import UIKit
 enum LoginnCellType {
     case phone
     case password
+    case oldPassword
+    case newPassword
+    case new2Password
 }
 
 class LoginCell: UIView, UITextFieldDelegate {
@@ -126,9 +129,36 @@ class LoginCell: UIView, UITextFieldDelegate {
                 eyeButton.isHidden = true
                 //clearButton
                 clearButton.isHidden = true
-            default:
+            case .password:
                 //textField
                 textField.attributedPlaceholder = NSAttributedString.init(string: "请输入密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
+                textField.keyboardType = .asciiCapable
+                textField.isSecureTextEntry = true
+                //eyeButton
+                eyeButton.isHidden = false
+                //clearButton
+                clearButton.isHidden = true
+            case .oldPassword:
+                //textField
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入旧密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
+                textField.keyboardType = .asciiCapable
+                textField.isSecureTextEntry = true
+                //eyeButton
+                eyeButton.isHidden = false
+                //clearButton
+                clearButton.isHidden = true
+            case .newPassword:
+                //textField
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请输入新密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
+                textField.keyboardType = .asciiCapable
+                textField.isSecureTextEntry = true
+                //eyeButton
+                eyeButton.isHidden = false
+                //clearButton
+                clearButton.isHidden = true
+            case .new2Password:
+                //textField
+                textField.attributedPlaceholder = NSAttributedString.init(string: "请再次输入新密码", attributes: [NSAttributedStringKey.foregroundColor : gray_999999, NSAttributedStringKey.font: font16])
                 textField.keyboardType = .asciiCapable
                 textField.isSecureTextEntry = true
                 //eyeButton

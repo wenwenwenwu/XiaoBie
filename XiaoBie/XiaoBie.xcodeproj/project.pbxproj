@@ -70,6 +70,7 @@
 		5B5B8D7020493E22002484EE /* DDriverListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5B8D6F20493E22002484EE /* DDriverListModel.swift */; };
 		5B61830F204D0F5100147B1A /* PhoneNumberTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */; };
 		5B6325EA203130C100659725 /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6325E9203130C100659725 /* DateTool.swift */; };
+		5B6640BC20731DE90015AEAE /* DPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6640BB20731DE90015AEAE /* DPasswordViewController.swift */; };
 		5B6E0758205F57DA00E827DA /* IInStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E0757205F57DA00E827DA /* IInStoreView.swift */; };
 		5B6F3F97202BE7C70070818C /* DClockinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6F3F96202BE7C70070818C /* DClockinView.swift */; };
 		5B702F3F20412FEB00DB4978 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */; };
@@ -336,6 +337,7 @@
 		5B5B8D6F20493E22002484EE /* DDriverListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDriverListModel.swift; sourceTree = "<group>"; };
 		5B61830E204D0F5100147B1A /* PhoneNumberTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTool.swift; sourceTree = "<group>"; };
 		5B6325E9203130C100659725 /* DateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
+		5B6640BB20731DE90015AEAE /* DPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPasswordViewController.swift; sourceTree = "<group>"; };
 		5B6E0757205F57DA00E827DA /* IInStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IInStoreView.swift; sourceTree = "<group>"; };
 		5B6F3F96202BE7C70070818C /* DClockinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DClockinView.swift; sourceTree = "<group>"; };
 		5B702F3E20412FEB00DB4978 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -1024,6 +1026,14 @@
 			path = "司机列表";
 			sourceTree = "<group>";
 		};
+		5B6640BA20731DCD0015AEAE /* 修改密码 */ = {
+			isa = PBXGroup;
+			children = (
+				5B6640BB20731DE90015AEAE /* DPasswordViewController.swift */,
+			);
+			path = "修改密码";
+			sourceTree = "<group>";
+		};
 		5B6F3F98202C16D00070818C /* 主页面 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1301,6 +1311,7 @@
 		5BDB5034202C52A60055C21E /* Setting（设置） */ = {
 			isa = PBXGroup;
 			children = (
+				5B6640BA20731DCD0015AEAE /* 修改密码 */,
 				5BB90CF62030341300F6CD9E /* 主页面 */,
 			);
 			path = "Setting（设置）";
@@ -2247,6 +2258,7 @@
 				5BDE11DF20565F50008D68EC /* NIMTeamAnnouncementListCell.m in Sources */,
 				5BDE120720565F50008D68EC /* NIMSessionAudioContentView.m in Sources */,
 				5BDE122320565F50008D68EC /* NIMKit.m in Sources */,
+				5B6640BC20731DE90015AEAE /* DPasswordViewController.swift in Sources */,
 				5B51FAF1202947E2001AB946 /* UIButton.swift in Sources */,
 				5B51FAFA202948AA001AB946 /* WebTool.swift in Sources */,
 				5BF0453C203FFD56003F8CE5 /* DHistoryViewController.swift in Sources */,

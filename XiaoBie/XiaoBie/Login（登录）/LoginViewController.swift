@@ -71,12 +71,7 @@ class LoginViewController: UIViewController {
             HudTool.showInfo(string: "密码不能为空")
             return
         }
-        
-        guard ValidateTool.isPassword(vStr: passwordCell.textField.text!) else {
-            HudTool.showInfo(string: "验证码为6-20位的字母数字")
-            return
-        }
-        
+                
         loginRequest()
     }
     

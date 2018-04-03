@@ -33,6 +33,12 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func passwordCellAction() {
+        let passwordVC = DPasswordViewController()
+        navigationController?.pushViewController(passwordVC, animated: true)
+        
+    }
+    
     func logoutCellAction() {
         //删除用户信息
         AccountTool.logout()
@@ -59,7 +65,7 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 2
+            return 3
         default:
             return 1
         }
@@ -73,6 +79,8 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
             case 0:
                 cell.type = .clear
             case 1:
+                cell.type = .password
+            case 2:
                 cell.type = .version
             default:
                 break
@@ -93,6 +101,8 @@ class DSetupViewController: UIViewController, UITableViewDataSource, UITableView
             switch setupCell.type {
             case .clear:
                 clearCellAction()
+            case .password:
+                passwordCellAction()
             default:
                 break
             }
