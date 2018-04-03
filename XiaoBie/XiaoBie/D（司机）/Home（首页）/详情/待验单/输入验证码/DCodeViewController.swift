@@ -43,6 +43,10 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     @objc func codeInputCellButtonAction() {
         let codeCell = tableView.cellForRow(at: IndexPath.init(row: 0, section: 2)) as! DCodeInputCodeCell
+        guard remindSendCode else {
+            HudTool.showInfo(string: "做单员端并未提醒发送验证码")
+            return
+        }
         guard !codeCell.code.isEmpty else {
             HudTool.showInfo(string: "验证码不能为空")
             return
@@ -90,6 +94,7 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
             let model = DBasicResponseModel.parse(dict: dict)
             HudTool.showInfo(string: model.msg)
             if model.code == "0" {
+                self.remindSendCode = false
                 self.codeListRequest()
             } else {
                 HudTool.showInfo(string: model.msg)
@@ -207,6 +212,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     var model = DGrabItemModel()
     var codeListArray: [DCodeItemModel] = []
     var dealerId = ""
-    var isCodeSend = false
+    var remindSendCode = true
     
 }
