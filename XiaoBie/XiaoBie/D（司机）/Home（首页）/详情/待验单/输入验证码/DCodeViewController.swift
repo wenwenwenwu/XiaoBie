@@ -207,5 +207,6 @@ class DCodeViewController: UIViewController, UITableViewDataSource, UITableViewD
     var model = DGrabItemModel()
     var codeListArray: [DCodeItemModel] = []
     var dealerId = ""
+    var isCodeSend = false
     
 }

@@ -26,8 +26,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
         contentView.addSubview(addressKeyLabel)
         addressTextView.isEditable = false
         contentView.addSubview(addressTextView)
-        contentView.addSubview(distanceImageView)
-        contentView.addSubview(distanceLabel)
         contentView.addSubview(editButton)
         setupFrame()
     }
@@ -140,18 +138,9 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
             make.top.equalTo(setValueLabel.snp.bottom).offset(2)
             make.left.equalTo(83)
             make.right.equalTo(-67)
-            make.bottom.equalTo(-22)
-        }
-        //distance
-        distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(90)
-            make.bottom.equalTo(-14)
+            make.bottom.equalTo(-10)
         }
         
-        distanceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.centerY.equalTo(distanceImageView)
-        }
         //editButton
         editButton.snp.makeConstraints { (make) in
             make.right.equalTo(-13)
@@ -237,15 +226,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
         return textView
     }()
     
-    lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
-    
-    lazy var distanceLabel: UILabel = {
-        let label = UILabel()
-        label.font = font10
-        label.textColor = gray_999999
-        return label
-    }()
-    
     lazy var editButton: UIButton = {
         let button = UIButton.init(type: .custom)
         button.adjustsImageWhenHighlighted = false
@@ -267,16 +247,6 @@ class DToCheckInfoCell: UITableViewCell, UITextViewDelegate {
             phoneValueLabel.text = PhoneNumberTool.secret(phoneNumber: model.phone1)
             setValueLabel.text = model.gtcdw
             addressTextView.text = model.address
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                distanceLabel.text = "距离：\(model.distanceKM)km"
-            }
-            
         }
     }
     

@@ -26,8 +26,6 @@ class DCompleteInfoCell: UITableViewCell {
         contentView.addSubview(addressKeyLabel)
         addressTextView.isEditable = false
         contentView.addSubview(addressTextView)
-        contentView.addSubview(distanceImageView)
-        contentView.addSubview(distanceLabel)
         contentView.addSubview(noteKeyLabel)
         contentView.addSubview(noteValueLabel)
     }
@@ -108,16 +106,7 @@ class DCompleteInfoCell: UITableViewCell {
             make.left.equalTo(83)
             make.right.equalTo(-67)
         }
-        //distance
-        distanceImageView.snp.makeConstraints { (make) in
-            make.left.equalTo(90)
-            make.top.equalTo(addressTextView.snp.bottom).offset(2)
-        }
-        
-        distanceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(distanceImageView.snp.right).offset(3)
-            make.centerY.equalTo(distanceImageView)
-        }
+
         //note
         noteKeyLabel.snp.makeConstraints { (make) in
             make.left.equalTo(14)
@@ -210,15 +199,6 @@ class DCompleteInfoCell: UITableViewCell {
         return textView
     }()
     
-    lazy var distanceImageView = UIImageView.init(image: #imageLiteral(resourceName: "icon_dw"))
-    
-    lazy var distanceLabel: UILabel = {
-        let label = UILabel()
-        label.font = font10
-        label.textColor = gray_999999
-        return label
-    }()
-    
     lazy var noteKeyLabel: UILabel = {
         let label = UILabel()
         label.text = "备注"
@@ -243,15 +223,6 @@ class DCompleteInfoCell: UITableViewCell {
             setValueLabel.text = model.gtcdw
             addressTextView.text = model.address
             noteValueLabel.text = model.remark
-            //distanceLabel
-            if model.distance == "-1" { //和后台约好返回的无法解析地址
-                distanceImageView.isHidden = true
-                distanceLabel.isHidden = true
-            } else {
-                distanceImageView.isHidden = false
-                distanceLabel.isHidden = false
-                distanceLabel.text = "距离：\(model.distanceKM)km"
-            }
             setupFrame()
             
         }
